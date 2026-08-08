@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from datetime import datetime, timedelta
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from umwelt.cli import main
@@ -113,6 +114,28 @@ class CliTests(unittest.TestCase):
 
         self.assertEqual(exit_code, 2)
         self.assertIn("not selected", errors.getvalue())
+
+    def test_compare_reports_compact_temporal_run_summary(self) -> None:
+        result = SimpleNamespace(
+            experiment_id="fixture-temporal-lab",
+            output_directory=Path("run"),
+            configuration_sha256="abc123",
+            model_count=4,
+            replicate_records=128,
+            generated_series=512,
+            artifact_count=11,
+        )
+        output = io.StringIO()
+        with (
+            patch("umwelt.cli.load_temporal_lab_config", return_value=object()),
+            patch("umwelt.cli.run_temporal_lab", return_value=result),
+        ):
+            exit_code = main(["compare", "--config", "temporal.json"], stdout=output)
+
+        payload = json.loads(output.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["model_count"], 4)
+        self.assertEqual(payload["replicate_records"], 128)
 
 
 if __name__ == "__main__":
