@@ -8,7 +8,9 @@ Version 0.1 is implemented as pre-alpha research software. Every later milestone
 
 ## v0.1 - Sleep / Activity Mouse
 
-**Status:** implemented baseline in Umwelt 0.1.0.
+**Status:** active pre-alpha research milestone. The original baseline and the
+replicated temporal model-comparison laboratory are implemented; scientific
+acceptance criteria and prospective validation remain unresolved.
 
 **Purpose:** establish the first complete recorded-to-synthetic scientific loop using a deliberately simple temporal behavioral problem.
 
@@ -22,14 +24,25 @@ Implemented capabilities:
 - preserve dataset provenance and published checksums;
 - replay recorded observations reproducibly;
 - represent a small number of behavioral or sleep/activity states;
-- fit a compact, interpretable, phase-conditioned Markov model;
+- preserve the compact phase-conditioned Markov baseline;
+- compare state-only, phase-only, duration-only, and phase-plus-duration models
+  with shared activity emissions;
 - generate synthetic state or activity sequences;
+- summarize deterministic synthetic replicate distributions without retaining
+  every full trajectory;
 - reproduce synthetic runs from configuration and random seeds;
-- quantitatively compare recorded and synthetic behavior;
+- quantitatively compare recorded and synthetic behavior globally and by mouse;
 - explicitly report model failures and mismatches;
 - expose the workflow through a minimal headless CLI.
 
-Implemented comparison dimensions include state occupancy, bout-duration summaries, transition frequencies, activity distributions, daily phase profiles, and sleep-state autocorrelation.
+Implemented comparison dimensions include state occupancy, empirical bout
+distributions, transition frequencies, activity statistics, daily phase
+profiles, sleep-state autocorrelation, individual-subject results, and
+predictive simulation intervals.
+
+Planning v0.2 is contingent on evidence from v0.1 rather than the existence of
+the implementation. Remaining temporal failures, individual variability, and
+prospective evaluation design should be resolved or explicitly deferred first.
 
 v0.1 is not merely a classification milestone. The synthetic animal must generate new behavioral sequences.
 
