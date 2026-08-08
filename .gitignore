@@ -32,6 +32,9 @@ outputs/
 runs/
 artifacts/
 
+# Downloaded datasets
+data/raw/
+
 # Editor and OS noise
 .idea/
 .vscode/
