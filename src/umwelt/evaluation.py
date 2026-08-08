@@ -78,9 +78,13 @@ def _describe_values(values: Sequence[float]) -> dict[str, float | int | None]:
     }
 
 
-def _bouts(
+def bout_durations(
     series: TimeSeries, epoch_seconds: int
 ) -> dict[BehavioralState, list[float]]:
+    """Extract contiguous wake and sleep bout durations in seconds."""
+
+    if epoch_seconds <= 0:
+        raise DataError("Bout extraction requires a positive epoch duration.")
     result = {BehavioralState.WAKE: [], BehavioralState.SLEEP: []}
     current_state: BehavioralState | None = None
     current_epochs = 0
@@ -238,7 +242,7 @@ def describe_dataset(
             previous_state = state
             previous_timestamp = timestamp
 
-        bouts = _bouts(series, epoch_seconds)
+        bouts = bout_durations(series, epoch_seconds)
         all_bouts[BehavioralState.WAKE].extend(bouts[BehavioralState.WAKE])
         all_bouts[BehavioralState.SLEEP].extend(bouts[BehavioralState.SLEEP])
         subject_summaries.append(
