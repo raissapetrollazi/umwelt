@@ -4,20 +4,26 @@ build-backend = "hatchling.build"
 
 [project]
 name = "umwelt"
-version = "0.0.0"
-description = "Early foundation for a computational laboratory for modeling and simulating animal behavior."
+version = "0.1.0"
+description = "Computational laboratory for explicit, reproducible models of animal behavior."
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering",
 ]
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/raissapetrollazi/umwelt"
+Documentation = "https://github.com/raissapetrollazi/umwelt/tree/main/docs"
 
 [project.scripts]
 umwelt = "umwelt.cli:main"
