@@ -1,72 +1,36 @@
 # Umwelt
 
-Umwelt is intended to become an open-source computational laboratory for studying animal behavior through recorded data and explicit computational models.
+Umwelt is an open-source computational laboratory in development for studying animal behavior through recorded observations and explicit computational models.
 
 ## Status
 
-Umwelt is currently in an early design and pre-alpha stage.
+Umwelt is currently pre-alpha, foundation-stage software.
 
-This repository contains the initial architectural and scientific foundation for the project. It does not yet contain a working behavioral simulator, dataset integration, command-line interface, machine learning system, or behavioral model.
+This repository contains the architectural and scientific foundation for the project. It does not yet contain a working behavioral simulator, dataset integration, replay system, functional command-line interface, machine learning system, or behavioral model.
 
-## Motivation
+## Scientific Direction
 
-Animal behavior is observable, but the mechanisms capable of producing it are only partially observable. Computational models can make hypotheses about those mechanisms explicit enough to simulate, perturb, inspect, and compare against recorded behavior.
+Umwelt is intended to make behavioral hypotheses executable. Recorded observations should be replayable and analyzable; explicit behavioral models should eventually generate synthetic behavior that can be compared quantitatively with recorded behavior.
 
-Umwelt is planned as a framework for expressing those hypotheses carefully, with conservative claims and clear separation between observation, interpretation, model state, and generated behavior.
+The project is intentionally ambitious in scope but conservative in scientific claims. Large scientific goals are pursued through narrow, independently testable milestones.
 
-## Concept
+The first planned research milestone is **v0.1 — Sleep / Activity Mouse**, which asks whether a compact, explicit generative model can reproduce key temporal properties of recorded mouse sleep/activity dynamics. This is a planned milestone, not an implemented capability.
 
-Recorded data and synthetic behavior should remain conceptually distinct.
+## Documentation
 
-```text
-real animal
-    -> recorded observations
-    -> replay / analysis
+- [Project Direction](docs/project-direction.md)
+- [Research Roadmap](docs/roadmap.md)
+- [v0.1 Research Direction](docs/v0.1-research-direction.md)
+- [Scientific Principles](docs/scientific-principles.md)
+- [Scope](docs/scope.md)
+- [Architecture Direction](docs/architecture.md)
+- [Data and Ethics](docs/data-and-ethics.md)
 
-recorded observations
-    -> explicit behavioral model
-    -> synthetic animal
-    -> simulated environment
-    -> controlled intervention
-    -> comparison with recorded observations
-```
+## Scientific Boundaries
 
-A synthetic animal in Umwelt is an explicit computational model. Its internal state must not be presented as evidence about the true subjective state, cognition, intention, emotion, or consciousness of a real animal.
+A synthetic animal is an explicit computational model. Synthetic internal state must not be presented as evidence of a real animal's subjective experience, true intention, emotion, consciousness, or complete biological state.
 
-## Intended Direction
-
-Future work is planned to explore narrow, reproducible workflows for:
-
-- behavioral dataset replay;
-- explicit environments;
-- spatial trajectories;
-- behavioral state models;
-- generative simulation;
-- controlled computational interventions;
-- reproducible experiments;
-- comparison between recorded and simulated behavior;
-- possible future integration with neural or physiological data.
-
-These are planned directions, not current capabilities.
-
-## Scientific Principles
-
-Umwelt should favor reproducibility, explicit assumptions, provenance, inspectable mechanisms, deterministic seeds where applicable, and modest claims. Real observations, derived interpretations, internal model variables, and synthetic behavior should remain distinguishable throughout the workflow.
-
-## Initial Scope
-
-The first research milestone has not yet been selected.
-
-That milestone should be deliberately narrow, likely involving one species, one open dataset, a small number of behavioral variables or states, one simple environment or recorded context, and one clearly defined scientific question.
-
-## Non-Goals
-
-- Umwelt does not claim to reconstruct animal consciousness.
-- Umwelt does not infer true intentions or subjective experiences merely from observed behavior.
-- Umwelt is not a veterinary or medical tool.
-- Umwelt is not currently a real-time monitoring platform.
-- Umwelt is not currently a general-purpose artificial life simulator.
-- Umwelt is not intended to replace biological experiments.
+Umwelt is not intended to replace biological experiments or provide veterinary or medical diagnosis, and it is not a general-purpose artificial-life platform.
 
 ## License
 
