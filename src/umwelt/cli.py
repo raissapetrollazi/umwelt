@@ -20,6 +20,8 @@ from umwelt.datasets.compass import (
 )
 from umwelt.errors import ConfigurationError, UmweltError
 from umwelt.experiment import run_experiment
+from umwelt.temporal_config import load_temporal_lab_config
+from umwelt.temporal_lab import run_temporal_lab
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -94,6 +96,17 @@ def _parser() -> argparse.ArgumentParser:
     )
     run.add_argument("--config", type=Path, required=True)
     run.add_argument(
+        "--output",
+        type=Path,
+        help="Override the configured output directory without changing the input file.",
+    )
+
+    compare = commands.add_parser(
+        "compare",
+        help="Run the replicated v0.1 temporal model comparison.",
+    )
+    compare.add_argument("--config", type=Path, required=True)
+    compare.add_argument(
         "--output",
         type=Path,
         help="Override the configured output directory without changing the input file.",
@@ -211,6 +224,24 @@ def _run(arguments: argparse.Namespace, output: TextIO) -> int:
     return 0
 
 
+def _compare(arguments: argparse.Namespace, output: TextIO) -> int:
+    config = load_temporal_lab_config(arguments.config)
+    result = run_temporal_lab(config, output_directory=arguments.output)
+    _print_json(
+        {
+            "experiment_id": result.experiment_id,
+            "output_directory": str(result.output_directory),
+            "configuration_sha256": result.configuration_sha256,
+            "model_count": result.model_count,
+            "replicate_records": result.replicate_records,
+            "generated_series": result.generated_series,
+            "artifact_count": result.artifact_count,
+        },
+        output,
+    )
+    return 0
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -231,6 +262,8 @@ def main(
             return _replay(arguments, output)
         if arguments.command == "run":
             return _run(arguments, output)
+        if arguments.command == "compare":
+            return _compare(arguments, output)
     except UmweltError as error:
         errors.write(f"error: {error}\n")
         return 2

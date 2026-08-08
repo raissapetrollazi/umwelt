@@ -8,7 +8,6 @@ from math import sqrt
 from statistics import fmean
 
 from umwelt.errors import DataError
-from umwelt.evaluation import bout_durations, describe_dataset
 from umwelt.observations import (
     BehavioralState,
     ObservationDataset,
@@ -87,45 +86,209 @@ def _profile_rmse(
     return sqrt(fmean(squared)) if squared else None
 
 
-def metric_snapshot(metrics: Mapping[str, object]) -> dict[str, object]:
-    """Flatten important v0.1 metrics while retaining declared phase profiles."""
+@dataclass(slots=True)
+class _Accumulator:
+    observed: int
+    sleep: int
+    activity_sum: float
+    nonzero_activity: int
+    transition_exposure: int
+    state_changes: int
+    phase_observations: list[int]
+    phase_sleep: list[int]
+    phase_activity: list[float]
+    bouts: dict[str, list[float]]
+    autocorrelation: dict[int, list[float]]
 
-    occupancy = metrics["state_occupancy"]
-    activity = metrics["activity"]
-    transitions = metrics["transitions"]
-    bouts = metrics["bout_durations_seconds"]
-    autocorrelation = metrics["sleep_state_autocorrelation"]
-    profile = metrics["phase_profile"]
-    scalars: dict[str, float | int | None] = {
-        "sleep_fraction": occupancy["sleep_fraction"],
-        "wake_fraction": occupancy["wake_fraction"],
-        "mean_activity": activity["all_epochs"]["mean"],
-        "nonzero_activity_fraction": activity["nonzero_fraction"],
-        "state_changes_per_hour": transitions["state_changes_per_hour"],
+
+def _empty_accumulator(
+    phase_bins: int, autocorrelation_lags: tuple[int, ...]
+) -> _Accumulator:
+    return _Accumulator(
+        observed=0,
+        sleep=0,
+        activity_sum=0.0,
+        nonzero_activity=0,
+        transition_exposure=0,
+        state_changes=0,
+        phase_observations=[0] * phase_bins,
+        phase_sleep=[0] * phase_bins,
+        phase_activity=[0.0] * phase_bins,
+        bouts={"wake": [], "sleep": []},
+        autocorrelation={lag: [0.0] * 6 for lag in autocorrelation_lags},
+    )
+
+
+def _phase(timestamp, phase_bins: int) -> int:
+    seconds = (
+        timestamp.hour * 3_600
+        + timestamp.minute * 60
+        + timestamp.second
+        + timestamp.microsecond / 1_000_000
+    )
+    return min(int(seconds * phase_bins / 86_400), phase_bins - 1)
+
+
+def _regular_epoch_seconds(dataset: ObservationDataset) -> int:
+    expected: int | None = None
+    for series in dataset.series:
+        for previous, current in zip(series.timestamps, series.timestamps[1:]):
+            delta = (current - previous).total_seconds()
+            if delta <= 0 or not delta.is_integer():
+                raise DataError(
+                    "Temporal evaluation requires positive whole-second epochs."
+                )
+            if expected is None:
+                expected = int(delta)
+            elif delta != expected:
+                raise DataError("Temporal evaluation requires one regular time grid.")
+    if expected is None:
+        raise DataError("Temporal evaluation requires at least two timestamps.")
+    return expected
+
+
+def _accumulate_series(
+    series: TimeSeries,
+    *,
+    phase_bins: int,
+    autocorrelation_lags: tuple[int, ...],
+    epoch_seconds: int,
+) -> _Accumulator:
+    accumulator = _empty_accumulator(phase_bins, autocorrelation_lags)
+    previous_state: BehavioralState | None = None
+    bout_state: BehavioralState | None = None
+    bout_epochs = 0
+
+    def finish_bout() -> None:
+        nonlocal bout_state, bout_epochs
+        if bout_state is not None and bout_epochs:
+            accumulator.bouts[bout_state.value].append(
+                float(bout_epochs * epoch_seconds)
+            )
+        bout_state = None
+        bout_epochs = 0
+
+    for index, (timestamp, state, activity) in enumerate(
+        zip(series.timestamps, series.states, series.activities, strict=True)
+    ):
+        if state is None or activity is None:
+            finish_bout()
+            previous_state = None
+            continue
+        accumulator.observed += 1
+        accumulator.sleep += state is BehavioralState.SLEEP
+        accumulator.activity_sum += activity
+        accumulator.nonzero_activity += activity > 0
+        phase = _phase(timestamp, phase_bins)
+        accumulator.phase_observations[phase] += 1
+        accumulator.phase_sleep[phase] += state is BehavioralState.SLEEP
+        accumulator.phase_activity[phase] += activity
+
+        if previous_state is not None:
+            accumulator.transition_exposure += 1
+            accumulator.state_changes += state is not previous_state
+        previous_state = state
+
+        if bout_state is None:
+            bout_state = state
+            bout_epochs = 1
+        elif state is bout_state:
+            bout_epochs += 1
+        else:
+            finish_bout()
+            bout_state = state
+            bout_epochs = 1
+
+        y = 1.0 if state is BehavioralState.SLEEP else 0.0
+        for lag in autocorrelation_lags:
+            if index < lag:
+                continue
+            prior_state = series.states[index - lag]
+            if prior_state is None:
+                continue
+            x = 1.0 if prior_state is BehavioralState.SLEEP else 0.0
+            values = accumulator.autocorrelation[lag]
+            values[0] += 1
+            values[1] += x
+            values[2] += y
+            values[3] += x * x
+            values[4] += y * y
+            values[5] += x * y
+    finish_bout()
+    return accumulator
+
+
+def _merge(target: _Accumulator, source: _Accumulator) -> None:
+    target.observed += source.observed
+    target.sleep += source.sleep
+    target.activity_sum += source.activity_sum
+    target.nonzero_activity += source.nonzero_activity
+    target.transition_exposure += source.transition_exposure
+    target.state_changes += source.state_changes
+    for index in range(len(target.phase_observations)):
+        target.phase_observations[index] += source.phase_observations[index]
+        target.phase_sleep[index] += source.phase_sleep[index]
+        target.phase_activity[index] += source.phase_activity[index]
+    for state in ("wake", "sleep"):
+        target.bouts[state].extend(source.bouts[state])
+    for lag, values in target.autocorrelation.items():
+        for index, value in enumerate(source.autocorrelation[lag]):
+            values[index] += value
+
+
+def _bout_summary(values: Sequence[float]) -> dict[str, float | None]:
+    if not values:
+        return {"mean": None, "median": None, "q90": None}
+    ordered = sorted(values)
+    return {
+        "mean": fmean(values),
+        "median": quantile(ordered, 0.5),
+        "q90": quantile(ordered, 0.9),
+    }
+
+
+def _snapshot(accumulator: _Accumulator, epoch_seconds: int) -> dict[str, object]:
+    if not accumulator.observed:
+        raise DataError("Temporal evaluation requires present observations.")
+    scalars: dict[str, float | None] = {
+        "sleep_fraction": accumulator.sleep / accumulator.observed,
+        "wake_fraction": 1.0 - accumulator.sleep / accumulator.observed,
+        "mean_activity": accumulator.activity_sum / accumulator.observed,
+        "nonzero_activity_fraction": accumulator.nonzero_activity
+        / accumulator.observed,
+        "state_changes_per_hour": (
+            accumulator.state_changes
+            * 3_600
+            / (accumulator.transition_exposure * epoch_seconds)
+            if accumulator.transition_exposure
+            else None
+        ),
     }
     for state in ("wake", "sleep"):
-        for statistic in ("mean", "median", "q90"):
-            scalars[f"{state}_bout_{statistic}_seconds"] = bouts[state][statistic]
-    for item in autocorrelation:
-        scalars[f"sleep_autocorrelation_lag_{item['lag_epochs']}"] = item["value"]
+        for statistic, value in _bout_summary(accumulator.bouts[state]).items():
+            scalars[f"{state}_bout_{statistic}_seconds"] = value
+    for lag, values in accumulator.autocorrelation.items():
+        count, sum_x, sum_y, sum_x2, sum_y2, sum_xy = values
+        covariance = count * sum_xy - sum_x * sum_y
+        variance_x = count * sum_x2 - sum_x * sum_x
+        variance_y = count * sum_y2 - sum_y * sum_y
+        denominator = sqrt(variance_x * variance_y)
+        scalars[f"sleep_autocorrelation_lag_{lag}"] = (
+            covariance / denominator if count >= 2 and denominator else None
+        )
     return {
         "scalars": scalars,
         "phase_profile": {
-            "sleep_fraction": [item["sleep_fraction"] for item in profile],
-            "mean_activity": [item["mean_activity"] for item in profile],
+            "sleep_fraction": [
+                accumulator.phase_sleep[index] / count if count else None
+                for index, count in enumerate(accumulator.phase_observations)
+            ],
+            "mean_activity": [
+                accumulator.phase_activity[index] / count if count else None
+                for index, count in enumerate(accumulator.phase_observations)
+            ],
         },
     }
-
-
-def _collect_bouts(
-    series_collection: Iterable[TimeSeries], epoch_seconds: int
-) -> dict[str, list[float]]:
-    collected = {"wake": [], "sleep": []}
-    for series in series_collection:
-        values = bout_durations(series, epoch_seconds)
-        collected["wake"].extend(values[BehavioralState.WAKE])
-        collected["sleep"].extend(values[BehavioralState.SLEEP])
-    return collected
 
 
 @dataclass(frozen=True, slots=True)
@@ -162,14 +325,6 @@ class RecordedReference:
         }
 
 
-def _singleton(dataset: ObservationDataset, series: TimeSeries) -> ObservationDataset:
-    return ObservationDataset(
-        dataset_id=f"{dataset.dataset_id}:{series.subject_id}",
-        series=(series,),
-        provenance=dataset.provenance,
-    )
-
-
 def build_recorded_reference(
     dataset: ObservationDataset,
     *,
@@ -182,26 +337,31 @@ def build_recorded_reference(
         series.source is not ObservationSource.RECORDED for series in dataset.series
     ):
         raise DataError("A recorded reference may contain only recorded observations.")
+    if not dataset.series:
+        raise DataError("A recorded reference requires at least one subject.")
+    if not 1 <= phase_bins <= 1_440:
+        raise DataError("Temporal evaluation phase bins must be between 1 and 1440.")
     lags = tuple(autocorrelation_lags)
-    aggregate_metrics = describe_dataset(
-        dataset, phase_bins=phase_bins, autocorrelation_lags=lags
-    )
-    epoch_seconds = int(aggregate_metrics["epoch_seconds"])
+    if not lags or any(lag <= 0 for lag in lags) or len(lags) != len(set(lags)):
+        raise DataError("Temporal autocorrelation lags must be positive and unique.")
+    epoch_seconds = _regular_epoch_seconds(dataset)
+    aggregate = _empty_accumulator(phase_bins, lags)
     subjects = {}
     for series in dataset.series:
-        metrics = describe_dataset(
-            _singleton(dataset, series),
+        accumulator = _accumulate_series(
+            series,
             phase_bins=phase_bins,
             autocorrelation_lags=lags,
+            epoch_seconds=epoch_seconds,
         )
+        _merge(aggregate, accumulator)
         subjects[series.subject_id] = EvaluationUnit(
-            snapshot=metric_snapshot(metrics),
-            bouts=_collect_bouts((series,), epoch_seconds),
+            snapshot=_snapshot(accumulator, epoch_seconds),
+            bouts=accumulator.bouts,
         )
     return RecordedReference(
         aggregate=EvaluationUnit(
-            snapshot=metric_snapshot(aggregate_metrics),
-            bouts=_collect_bouts(dataset.series, epoch_seconds),
+            snapshot=_snapshot(aggregate, epoch_seconds), bouts=aggregate.bouts
         ),
         subjects=subjects,
         phase_bins=phase_bins,
@@ -212,10 +372,9 @@ def build_recorded_reference(
 
 def _compare_unit(
     recorded: EvaluationUnit,
-    synthetic_metrics: Mapping[str, object],
+    synthetic_snapshot: Mapping[str, object],
     synthetic_bouts: Mapping[str, Sequence[float]],
 ) -> dict[str, object]:
-    synthetic = metric_snapshot(synthetic_metrics)
     discrepancies = {}
     for state in ("wake", "sleep"):
         distances = empirical_distribution_distances(
@@ -227,9 +386,9 @@ def _compare_unit(
         label = "sleep" if variable == "sleep_fraction" else "activity"
         discrepancies[f"{label}_phase_rmse"] = _profile_rmse(
             recorded.snapshot["phase_profile"][variable],
-            synthetic["phase_profile"][variable],
+            synthetic_snapshot["phase_profile"][variable],
         )
-    return {"metrics": synthetic, "discrepancies": discrepancies}
+    return {"metrics": synthetic_snapshot, "discrepancies": discrepancies}
 
 
 def evaluate_synthetic_replicate(
@@ -249,24 +408,28 @@ def evaluate_synthetic_replicate(
         raise DataError(
             "Synthetic replicate subjects must exactly match recorded reference subjects."
         )
-    arguments = {
-        "phase_bins": recorded.phase_bins,
-        "autocorrelation_lags": recorded.autocorrelation_lags,
-    }
-    aggregate_metrics = describe_dataset(dataset, **arguments)
-    aggregate = _compare_unit(
-        recorded.aggregate,
-        aggregate_metrics,
-        _collect_bouts(dataset.series, recorded.epoch_seconds),
+    aggregate_accumulator = _empty_accumulator(
+        recorded.phase_bins, recorded.autocorrelation_lags
     )
     subjects = {}
     for series in dataset.series:
-        metrics = describe_dataset(_singleton(dataset, series), **arguments)
+        accumulator = _accumulate_series(
+            series,
+            phase_bins=recorded.phase_bins,
+            autocorrelation_lags=recorded.autocorrelation_lags,
+            epoch_seconds=recorded.epoch_seconds,
+        )
+        _merge(aggregate_accumulator, accumulator)
         subjects[series.subject_id] = _compare_unit(
             recorded.subjects[series.subject_id],
-            metrics,
-            _collect_bouts((series,), recorded.epoch_seconds),
+            _snapshot(accumulator, recorded.epoch_seconds),
+            accumulator.bouts,
         )
+    aggregate = _compare_unit(
+        recorded.aggregate,
+        _snapshot(aggregate_accumulator, recorded.epoch_seconds),
+        aggregate_accumulator.bouts,
+    )
     return {"aggregate": aggregate, "subjects": subjects}
 
 
