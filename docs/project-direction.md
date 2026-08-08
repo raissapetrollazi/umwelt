@@ -38,7 +38,7 @@ This is an important recurring question, not the only question Umwelt may study.
 
 Researchers should not directly command synthetic animal actions such as "go to food," "turn left," or "sleep."
 
-Instead, researchers manipulate modeled experimental conditions—such as food placement, lighting, stimuli, resource availability, or environmental state—and observe how an explicit behavioral model responds as simulation advances.
+Instead, researchers manipulate modeled experimental conditions - such as food placement, lighting, stimuli, resource availability, or environmental state - and observe how an explicit behavioral model responds as simulation advances.
 
 This is a scientific interaction principle, not a frozen CLI or API specification.
 
@@ -96,9 +96,9 @@ Negative results are valid results. A model that fails in an informative and rep
 
 ## Relationship to the Roadmap
 
-The foundation stage establishes project principles and boundaries. The primary product and research roadmap is the versioned sequence from v0.1 through v1.0.
+The foundation stage established project principles and boundaries. Version 0.1 now implements the first narrow temporal baseline; the broader product and research direction remains the versioned sequence through v1.0.
 
-See the [Umwelt Research Roadmap](roadmap.md) for the complete milestone sequence and [v0.1 Research Direction](v0.1-research-direction.md) for the first planned scientific milestone.
+See the [Umwelt Research Roadmap](roadmap.md) for the complete milestone sequence and [v0.1 Experiment](v0.1-research-direction.md) for the implemented baseline.
 
 ## Permanent Scientific Boundaries
 

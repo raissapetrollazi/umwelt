@@ -2,11 +2,13 @@
 
 Umwelt is intentionally ambitious in scope but conservative in scientific claims. Large scientific goals are pursued through narrow, independently testable milestones.
 
-The repository is currently in its foundation stage. That historical Stage 0 established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. The product and research roadmap is the version sequence below; the old foundation stages are not a competing roadmap.
+The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Version 0.1 now implements the first narrow recorded-to-synthetic baseline.
 
-All capabilities described below are planned unless repository evidence explicitly shows that they have been implemented.
+Version 0.1 is implemented as pre-alpha research software. Every later milestone remains planned unless repository evidence explicitly shows otherwise.
 
-## v0.1 — Sleep / Activity Mouse
+## v0.1 - Sleep / Activity Mouse
+
+**Status:** implemented baseline in Umwelt 0.1.0.
 
 **Purpose:** establish the first complete recorded-to-synthetic scientific loop using a deliberately simple temporal behavioral problem.
 
@@ -14,28 +16,28 @@ All capabilities described below are planned unless repository evidence explicit
 
 > Can a compact, explicit generative model reproduce key temporal properties of recorded mouse sleep/activity dynamics?
 
-Planned capabilities:
+Implemented capabilities:
 
-- ingest one suitable open mouse dataset;
-- preserve dataset provenance;
+- download, verify, and ingest the open COMPASS mouse dataset;
+- preserve dataset provenance and published checksums;
 - replay recorded observations reproducibly;
 - represent a small number of behavioral or sleep/activity states;
-- build at least one compact, interpretable temporal generative model;
+- fit a compact, interpretable, phase-conditioned Markov model;
 - generate synthetic state or activity sequences;
 - reproduce synthetic runs from configuration and random seeds;
 - quantitatively compare recorded and synthetic behavior;
 - explicitly report model failures and mismatches;
-- expose the workflow through a minimal headless interface.
+- expose the workflow through a minimal headless CLI.
 
-Potential comparison dimensions include state occupancy, bout-duration distributions, transition frequencies, activity profiles, temporal rhythms, and autocorrelation or related temporal dependence. These are planned evaluation targets, not implemented features.
+Implemented comparison dimensions include state occupancy, bout-duration summaries, transition frequencies, activity distributions, daily phase profiles, and sleep-state autocorrelation.
 
 v0.1 is not merely a classification milestone. The synthetic animal must generate new behavioral sequences.
 
-A dataset containing activity measurements and sleep/wake information, ideally with sleep scoring validated against electrophysiological measurements such as EEG, is particularly attractive. COMPASS may be treated as a current leading candidate during dataset selection, but it is not described here as integrated or permanently selected.
+The selected weekly COMPASS labels are based on PIR immobility and remain explicitly distinct from the separate EEG scoring files in the deposit. EEG integration is not part of v0.1.
 
 See [v0.1 Research Direction](v0.1-research-direction.md).
 
-## v0.2 — Spatial Mouse
+## v0.2 - Spatial Mouse
 
 Introduce an explicit body and spatial world.
 
@@ -53,7 +55,7 @@ Planned concepts include:
 
 Recorded pose and movement datasets should connect to explicit spatial representations. At this stage Umwelt should become recognizably a computational world rather than only a temporal sequence generator.
 
-## v0.3 — Behavioral World
+## v0.3 - Behavioral World
 
 Give the environment causal structure.
 
@@ -63,7 +65,7 @@ Synthetic animals should perceive some subset of environmental state and respond
 
 This is the first milestone where controlled environmental intervention becomes central.
 
-## v0.4 — Social Animals
+## v0.4 - Social Animals
 
 Support multiple individuals and explicit social context.
 
@@ -79,7 +81,7 @@ Potential areas include:
 
 This milestone must not claim true social cognition or intention. It should remain distinct from abstract population-game or general artificial-life systems: Umwelt's emphasis is empirical animal behavior and experimentally grounded behavioral models.
 
-## v0.5 — Neural Mouse
+## v0.5 - Neural Mouse
 
 Introduce neural or electrophysiological modalities when supported by appropriate open datasets.
 
@@ -89,7 +91,7 @@ A major scientific direction is to evaluate whether neural information contribut
 
 This milestone does not mean simulating a biological brain, and electrophysiological signals must not be equated with direct access to subjective experience.
 
-## v0.6 — Latent State Inference
+## v0.6 - Latent State Inference
 
 Make observer/model-state separation an experimental capability.
 
@@ -99,7 +101,7 @@ Because the internal state of the synthetic model is known, Umwelt can provide c
 
 Synthetic latent state is not equivalent to real animal mental state.
 
-## v0.7 — Counterfactual Laboratory
+## v0.7 - Counterfactual Laboratory
 
 Support controlled branching from reproducible initial conditions.
 
@@ -112,7 +114,7 @@ Examples include:
 
 Runs should make interventions explicit and reproducible so counterfactual computational experiments can be compared systematically.
 
-## v0.8 — Multimodal Ethology
+## v0.8 - Multimodal Ethology
 
 Support synchronized combinations of modalities such as movement, pose, behavioral labels, environmental variables, physiological measurements, and neural signals.
 
@@ -120,7 +122,7 @@ Preserve synchronization assumptions, modality provenance, preprocessing provena
 
 Do not assume every dataset or species provides every modality.
 
-## v0.9 — Multiple Species and Model Families
+## v0.9 - Multiple Species and Model Families
 
 Remove implicit mouse-specific assumptions from the general infrastructure.
 
@@ -128,7 +130,7 @@ Support multiple species, environments, observational modalities, and behavioral
 
 This milestone does not promise universal animal modeling.
 
-## v1.0 — Umwelt
+## v1.0 - Umwelt
 
 The long-term target is a computational laboratory capable of:
 

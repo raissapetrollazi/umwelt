@@ -1,35 +1,76 @@
 # Data and Ethics
 
-Initial Umwelt development should prioritize public or open datasets that were previously collected. The project does not authorize, prescribe, or require new animal experimentation.
+Umwelt prioritizes public or open data that was collected previously. The
+software does not authorize, prescribe, or require new animal experimentation.
 
-## Dataset Use
+## Dataset use in v0.1
 
-Dataset licenses and access conditions must be respected. Original provenance, authorship, versioning, and access conditions should be preserved in future dataset integrations and derived artifacts.
+Version 0.1 integrates two files from the COMPASS Zenodo deposit
+[`10.5281/zenodo.160344`](https://doi.org/10.5281/zenodo.160344). The deposit
+identifies its data license as CC0 1.0. Umwelt preserves the dataset title,
+authors, DOI, related article DOI, license, selected filenames, published sizes,
+published MD5 checksums, local paths, adapter name, and known experimental
+context in run provenance.
 
-Original experimental conditions matter. When recorded data is used, future documentation should preserve relevant context such as recording conditions, preprocessing steps, annotations, exclusions, synchronization assumptions, missing-data handling, and known limitations.
+The data is downloaded locally and is not redistributed in this repository.
+CC0 permits broad reuse, but provenance and authorship remain scientifically
+important even where attribution is not a license condition.
 
-## Information Categories
+## Original experimental context
 
-Recorded, derived, inferred, and synthetic information must remain explicitly distinguishable throughout preprocessing, modeling, training, validation, evaluation, and reporting.
+The selected weekly files describe 24 male C57BL/6J mice, individually housed
+in four groups of six cages, under a 12-hour light / 12-hour dark cycle. Activity
+was measured by passive infrared sensors at 10-second intervals. The weekly
+sleep labels were derived from extended immobility.
 
-Where relevant, Umwelt should also distinguish annotations, derived measurements or features, inferred variables, model parameters, synthetic trajectories, synthetic behavioral states, and synthetic internal model variables.
+That context constrains interpretation. Umwelt does not generalize the resulting
+baseline to other sexes, strains, housing conditions, measurement systems,
+protocols, species, or sleep definitions.
 
-A result should preserve enough provenance to determine whether information was observed, annotated, derived, inferred, or generated.
+## Information categories
+
+The v0.1 workflow distinguishes:
+
+- recorded activity measurements;
+- recorded, behaviorally derived sleep labels;
+- missing source measurements;
+- model parameters fitted from selected recorded subjects;
+- synthetic model states;
+- synthetic activity emissions;
+- metrics derived separately from recorded or synthetic series;
+- comparisons derived from those metric sets.
+
+The held-out time grid and missingness mask may structure synthetic generation,
+but held-out state and activity values do not become model inputs. Every exported
+synthetic row includes the `synthetic` source label.
 
 ## Traceability
 
-Derived outputs should remain traceable to their source data and transformation steps. Recorded animal data must not silently become synthetic data, inferred state, training data, or evaluation data without documentation of its role and transformations.
+Derived outputs remain traceable to source files and transformations. A run
+records source checksums, resolved configuration, subject roles, model
+parameters, random seeds, software version, Git revision when available,
+platform, and hashes of completed artifacts.
 
-Synthetic results must be labeled as synthetic. Generated behavior and synthetic internal variables must not be presented as direct evidence about real animals' subjective experience, true intentions, emotions, consciousness, or complete biological state.
+Recorded data must not silently become synthetic training or evaluation data.
+Synthetic output must not be described as observed behavior. A metric computed
+from one category must retain that category in its artifact.
 
-## Reproducibility
+## Scientific claims
 
-Reproducibility is part of the laboratory infrastructure. Future experiments should preserve enough information to reproduce computational runs, including where applicable dataset provenance, configuration, model version, preprocessing choices, random seed, initial conditions, environment configuration, interventions, outputs, and evaluation artifacts.
+A close numerical match between recorded and synthetic summaries does not prove
+that the model has recovered a biological mechanism. A mismatch does not by
+itself invalidate the source data. Claims must remain bounded by the selected
+observations, preprocessing supplied by the deposit, explicit model assumptions,
+held-out design, and implemented metrics.
 
-This principle does not freeze exact storage formats or classes.
+Synthetic states and internal variables must not be presented as evidence of a
+real animal's subjective experience, true intention, emotion, consciousness, or
+complete biological state.
 
-## Future Animal Data
+## Future animal data
 
-Any future use involving newly collected animal data would require appropriate institutional, ethical, and legal processes outside the scope of this software.
-
-Umwelt documentation and software should avoid implying that running the software is sufficient authorization for animal experimentation. The repository should not fabricate or generalize legal requirements beyond the requirements applicable to a specific future context.
+Any future use of newly collected animal data would require the institutional,
+ethical, and legal processes applicable to that specific work, outside the
+scope of Umwelt. Running the software is not authorization for animal
+experimentation. Project documentation must not fabricate or generalize
+regulatory requirements beyond a known future context.

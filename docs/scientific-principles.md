@@ -4,7 +4,7 @@ Umwelt should support careful computational experiments without overstating what
 
 ## 1. Observation Is Not Interpretation
 
-Recorded observations describe measured or annotated events. Interpretations are claims derived from those observations. Future tools should preserve this distinction in data structures, analysis outputs, and documentation.
+Recorded observations describe measured or annotated events. Interpretations are claims derived from those observations. Umwelt preserves this distinction in data structures, analysis outputs, and documentation.
 
 ## 2. A Model State Is Not an Animal Mental State
 
@@ -12,7 +12,7 @@ A synthetic animal is an explicit computational model. Internal model variables 
 
 ## 3. Real and Synthetic Data Must Remain Distinguishable
 
-Recorded animal data and model-generated behavior must be labeled and stored in ways that prevent accidental conflation. Evaluation should compare these categories without erasing their different origins.
+Recorded animal data and model-generated behavior are labeled and stored in ways that prevent accidental conflation. Evaluation compares these categories without erasing their different origins.
 
 ## 4. Assumptions Should Be Explicit
 
@@ -20,15 +20,15 @@ Model assumptions, preprocessing choices, excluded variables, and simplification
 
 ## 5. Experiments Should Be Reproducible
 
-Future experiments should be defined by inspectable configuration, stable inputs, and repeatable execution procedures.
+Experiments should be defined by inspectable configuration, stable inputs, and repeatable execution procedures. Version 0.1 records a resolved configuration and refuses to overwrite an existing run directory.
 
 ## 6. Seeds and Configuration Should Be Recorded When Applicable
 
-When stochastic procedures are used, deterministic seeds should be recorded where applicable. Configuration should be sufficient to understand how an output was produced.
+When stochastic procedures are used, deterministic seeds should be recorded. Version 0.1 stores both the master seed and each derived synthetic-series seed.
 
 ## 7. Provenance Matters
 
-Datasets, transformations, intermediate artifacts, model versions, and generated outputs should remain traceable to their sources.
+Datasets, transformations, intermediate artifacts, model versions, and generated outputs should remain traceable to their sources. Source and artifact checksums are part of the current run record.
 
 ## 8. Negative or Null Results Must Not Be Hidden
 
