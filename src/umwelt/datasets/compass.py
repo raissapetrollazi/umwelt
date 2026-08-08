@@ -23,6 +23,7 @@ from umwelt.observations import (
 COMPASS_DATASET_ID = "compass-zenodo-160344-v1"
 COMPASS_DOI = "10.5281/zenodo.160344"
 COMPASS_RECORD_URL = "https://zenodo.org/records/160344"
+COMPASS_ARTICLE_DOI = "10.12688/wellcomeopenres.9892.2"
 COMPASS_LICENSE = "CC0-1.0"
 COMPASS_SUBJECT_IDS = tuple(str(index) for index in range(1, 25))
 CORE_FILE_NAMES = (
@@ -389,8 +390,24 @@ def load_compass_week(
             "doi": COMPASS_DOI,
             "record_url": COMPASS_RECORD_URL,
             "license": COMPASS_LICENSE,
+            "authors": [
+                "Laurence A. Brown",
+                "Sibah Hasan",
+                "Russell G. Foster",
+                "Stuart N. Peirson",
+            ],
+            "related_article_doi": COMPASS_ARTICLE_DOI,
             "adapter": "umwelt.datasets.compass",
             "sleep_label": "behaviorally defined from at least 40 seconds of immobility",
+            "experimental_context": {
+                "species": "Mus musculus",
+                "strain": "C57BL/6J",
+                "sex": "male",
+                "housing": "individually housed in four groups of six cages",
+                "lighting": "12-hour light / 12-hour dark cycle; light begins at time zero",
+                "measurement": "passive infrared activity sensing",
+                "sampling_interval_seconds": 10,
+            },
             "files": provenance_files,
         },
     )

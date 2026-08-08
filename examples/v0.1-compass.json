@@ -1,0 +1,31 @@
+{
+  "schema_version": "umwelt.experiment.v1",
+  "experiment_id": "v0.1-compass-sleep-activity",
+  "dataset": {
+    "id": "compass-zenodo-160344-v1",
+    "directory": "../data/raw/compass",
+    "training_subjects": [
+      "1", "2", "3", "4", "5", "6",
+      "7", "8", "9", "10", "11", "12",
+      "13", "14", "15", "16", "17", "18"
+    ],
+    "evaluation_subjects": ["19", "20", "21", "22", "23", "24"]
+  },
+  "model": {
+    "type": "phase-conditioned-markov-v1",
+    "phase_bins": 24,
+    "transition_prior": 0.5,
+    "emission_prior": 0.5
+  },
+  "simulation": {
+    "seed": 1729,
+    "replicates": 1
+  },
+  "evaluation": {
+    "phase_bins": 24,
+    "autocorrelation_lags": [1, 6, 60, 360]
+  },
+  "output": {
+    "directory": "../runs/v0.1-compass"
+  }
+}
