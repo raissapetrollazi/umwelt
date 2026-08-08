@@ -5,8 +5,8 @@ from __future__ import annotations
 import unittest
 from datetime import datetime, timedelta
 
-from umwelt.evaluation import compare_metrics, describe_dataset
 from umwelt.errors import DataError
+from umwelt.evaluation import compare_metrics, describe_dataset
 from umwelt.observations import (
     BehavioralState,
     ObservationDataset,
@@ -16,7 +16,7 @@ from umwelt.observations import (
 
 
 def _dataset(source: ObservationSource, subject_id: str) -> ObservationDataset:
-    start = datetime(2020, 1, 1)
+    start = datetime.fromisoformat("2020-01-01 00:00:00")
     timestamps = tuple(start + timedelta(seconds=10 * index) for index in range(8))
     series = TimeSeries(
         subject_id=subject_id,
@@ -72,7 +72,10 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(comparison["synthetic_dataset_id"], "synthetic-fixture")
         self.assertEqual(comparison["phase_profile"]["sleep_fraction_rmse"], 0.0)
         self.assertTrue(
-            all(item["absolute_difference"] == 0 for item in comparison["scalar_metrics"])
+            all(
+                item["absolute_difference"] == 0
+                for item in comparison["scalar_metrics"]
+            )
         )
 
     def test_comparison_rejects_reversed_sources(self) -> None:

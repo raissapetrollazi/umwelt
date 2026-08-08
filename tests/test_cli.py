@@ -45,7 +45,7 @@ def _config(root: Path) -> Path:
 
 
 def _recorded_fixture() -> ObservationDataset:
-    start = datetime(2020, 1, 1)
+    start = datetime.fromisoformat("2020-01-01 00:00:00")
     series = TimeSeries(
         subject_id="2",
         source=ObservationSource.RECORDED,

@@ -7,7 +7,6 @@ from collections import Counter
 from dataclasses import asdict, dataclass
 from datetime import datetime
 from math import isclose
-from typing import Iterable
 
 from umwelt.errors import DataError
 from umwelt.observations import (
@@ -253,7 +252,9 @@ def fit_phase_conditioned_markov(
 
     if not dataset.series:
         raise DataError("Model fitting requires at least one time series.")
-    if any(series.source is not ObservationSource.RECORDED for series in dataset.series):
+    if any(
+        series.source is not ObservationSource.RECORDED for series in dataset.series
+    ):
         raise DataError("The v0.1 model may only be fit to recorded observations.")
     if phase_bins < 1 or phase_bins > 1_440:
         raise DataError("Model phase bins must be between 1 and 1440.")
@@ -439,11 +440,8 @@ def simulate_from_template(
             previous_timestamp = None
             continue
 
-        contiguous = (
-            previous_timestamp is not None
-            and isclose(
-                (timestamp - previous_timestamp).total_seconds(), model.epoch_seconds
-            )
+        contiguous = previous_timestamp is not None and isclose(
+            (timestamp - previous_timestamp).total_seconds(), model.epoch_seconds
         )
         if previous_state is None or not contiguous:
             state = model.initial_state(timestamp, generator)

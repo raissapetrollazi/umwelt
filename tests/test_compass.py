@@ -55,9 +55,7 @@ class CompassAdapterTests(unittest.TestCase):
             root = Path(temporary)
             self._write_fixture(root)
 
-            dataset = load_compass_week(
-                root, subject_ids=["1"], verify_integrity=False
-            )
+            dataset = load_compass_week(root, subject_ids=["1"], verify_integrity=False)
 
         series = dataset.subject("1")
         self.assertEqual(series.source, ObservationSource.RECORDED)
@@ -71,11 +69,14 @@ class CompassAdapterTests(unittest.TestCase):
                 BehavioralState.WAKE,
             ),
         )
-        self.assertEqual([item.source for item in series.observations()], [
-            ObservationSource.RECORDED,
-            ObservationSource.RECORDED,
-            ObservationSource.RECORDED,
-        ])
+        self.assertEqual(
+            [item.source for item in series.observations()],
+            [
+                ObservationSource.RECORDED,
+                ObservationSource.RECORDED,
+                ObservationSource.RECORDED,
+            ],
+        )
         self.assertEqual(dataset.provenance["doi"], COMPASS_DOI)
 
     def test_loader_rejects_misaligned_source_rows(self) -> None:
@@ -94,7 +95,23 @@ class CompassAdapterTests(unittest.TestCase):
             root = Path(temporary)
             row = [("2015-02-26 00:00:00", "1.0")]
             self._write_fixture(root, sleep_rows=row, activity_rows=row)
-            with self.assertRaisesRegex(DataError, "sleep labels and activity disagree"):
+            with self.assertRaisesRegex(
+                DataError, "sleep labels and activity disagree"
+            ):
+                load_compass_week(root, subject_ids=["1"], verify_integrity=False)
+
+    def test_loader_rejects_different_source_row_counts(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_fixture(
+                root,
+                sleep_rows=[("2015-02-26 00:00:00", "0.0")],
+                activity_rows=[
+                    ("2015-02-26 00:00:00", "1.0"),
+                    ("2015-02-26 00:00:10", "1.0"),
+                ],
+            )
+            with self.assertRaisesRegex(DataError, "different row counts"):
                 load_compass_week(root, subject_ids=["1"], verify_integrity=False)
 
     def test_verification_reports_missing_files(self) -> None:

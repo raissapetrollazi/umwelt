@@ -20,7 +20,7 @@ from umwelt.observations import (
 
 
 def _series(subject_id: str, source: ObservationSource) -> TimeSeries:
-    start = datetime(2020, 1, 1)
+    start = datetime.fromisoformat("2020-01-01 00:00:00")
     timestamps = tuple(start + timedelta(seconds=10 * index) for index in range(12))
     states = (
         BehavioralState.WAKE,
@@ -60,9 +60,7 @@ class CircadianMarkovTests(unittest.TestCase):
         self.assertEqual(model.training_observations, 22)
         self.assertEqual(model.training_transitions, 18)
         self.assertEqual(len(model.phases), 2)
-        self.assertTrue(
-            0 <= model.phases[0].wake_to_sleep_probability <= 1
-        )
+        self.assertTrue(0 <= model.phases[0].wake_to_sleep_probability <= 1)
         self.assertIn("assumptions", artifact)
 
     def test_simulation_is_reproducible_and_explicitly_synthetic(self) -> None:

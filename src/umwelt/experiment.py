@@ -52,6 +52,9 @@ def _canonical_hash(value: object) -> str:
 
 
 def _git_revision() -> str | None:
+    repository = Path(__file__).resolve().parents[2]
+    if not (repository / ".git").exists():
+        return None
     try:
         completed = subprocess.run(
             ["git", "rev-parse", "HEAD"],
@@ -59,6 +62,7 @@ def _git_revision() -> str | None:
             capture_output=True,
             text=True,
             timeout=3,
+            cwd=repository,
         )
     except (OSError, subprocess.SubprocessError):
         return None
@@ -121,9 +125,7 @@ def run_experiment(
     synthetic_series = []
     for replicate in range(1, config.simulation.replicates + 1):
         for template in recorded_evaluation.series:
-            synthetic_id = (
-                f"synthetic-r{replicate:03d}-source-{template.subject_id}"
-            )
+            synthetic_id = f"synthetic-r{replicate:03d}-source-{template.subject_id}"
             seed = master_generator.getrandbits(64)
             derived_seeds[synthetic_id] = seed
             synthetic_series.append(
@@ -162,6 +164,9 @@ def run_experiment(
         "experiment_id": config.experiment_id,
         "executed_at_utc": datetime.now(UTC).isoformat(),
         "configuration_sha256": configuration_sha256,
+        "configuration_source": (
+            str(config.source_path) if config.source_path is not None else None
+        ),
         "software": {
             "name": "umwelt",
             "version": __version__,
@@ -188,10 +193,13 @@ def run_experiment(
         write_json(partial / "recorded-metrics.json", recorded_metrics)
         write_json(partial / "synthetic-metrics.json", synthetic_metrics)
         write_json(partial / "comparison.json", comparison)
-        write_json(partial / "seeds.json", {
-            "master_seed": config.simulation.seed,
-            "derived_seeds": derived_seeds,
-        })
+        write_json(
+            partial / "seeds.json",
+            {
+                "master_seed": config.simulation.seed,
+                "derived_seeds": derived_seeds,
+            },
+        )
         write_synthetic_csv(
             partial / "synthetic-observations.csv", synthetic_dataset.series
         )

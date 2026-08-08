@@ -6,9 +6,10 @@ import argparse
 import csv
 import json
 import sys
+from collections.abc import Sequence
 from dataclasses import asdict
 from pathlib import Path
-from typing import Sequence, TextIO
+from typing import TextIO
 
 from umwelt import __version__
 from umwelt.config import load_experiment_config
@@ -81,9 +82,7 @@ def _parser() -> argparse.ArgumentParser:
     replay.add_argument(
         "--limit", type=int, default=20, help="Maximum number of time-grid rows."
     )
-    replay.add_argument(
-        "--format", choices=("jsonl", "csv"), default="jsonl"
-    )
+    replay.add_argument("--format", choices=("jsonl", "csv"), default="jsonl")
     replay.add_argument(
         "--omit-gaps",
         action="store_true",
@@ -176,8 +175,9 @@ def _replay_rows(arguments: argparse.Namespace):
 def _replay(arguments: argparse.Namespace, output: TextIO) -> int:
     rows = _replay_rows(arguments)
     if arguments.format == "jsonl":
-        for row in rows:
-            output.write(json.dumps(row, sort_keys=True, ensure_ascii=True) + "\n")
+        output.writelines(
+            json.dumps(row, sort_keys=True, ensure_ascii=True) + "\n" for row in rows
+        )
         return 0
 
     fieldnames = [

@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 from umwelt.datasets.compass import COMPASS_DATASET_ID, COMPASS_SUBJECT_IDS
 from umwelt.errors import ConfigurationError
@@ -123,9 +124,7 @@ class ExperimentConfig:
                 "underscores, or hyphens."
             )
         if self.dataset.dataset_id != COMPASS_DATASET_ID:
-            raise ConfigurationError(
-                f"v0.1 requires dataset id {COMPASS_DATASET_ID}."
-            )
+            raise ConfigurationError(f"v0.1 requires dataset id {COMPASS_DATASET_ID}.")
         available = set(COMPASS_SUBJECT_IDS)
         selected = set(self.dataset.training_subjects) | set(
             self.dataset.evaluation_subjects
@@ -150,7 +149,9 @@ class ExperimentConfig:
         if self.model.transition_prior <= 0 or self.model.emission_prior <= 0:
             raise ConfigurationError("Model priors must be positive.")
         if not 0 <= self.simulation.seed <= 2**64 - 1:
-            raise ConfigurationError("simulation.seed must be a 64-bit unsigned integer.")
+            raise ConfigurationError(
+                "simulation.seed must be a 64-bit unsigned integer."
+            )
         if not 1 <= self.simulation.replicates <= 100:
             raise ConfigurationError("simulation.replicates must be between 1 and 100.")
         if not 1 <= self.evaluation.phase_bins <= 1_440:
@@ -186,9 +187,7 @@ class ExperimentConfig:
             },
             "evaluation": {
                 "phase_bins": self.evaluation.phase_bins,
-                "autocorrelation_lags": list(
-                    self.evaluation.autocorrelation_lags
-                ),
+                "autocorrelation_lags": list(self.evaluation.autocorrelation_lags),
             },
             "output": {"directory": str(self.output_directory)},
         }

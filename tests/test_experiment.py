@@ -19,7 +19,7 @@ class ExperimentTests(unittest.TestCase):
     def _prepare(self, root: Path):
         data = root / "data"
         data.mkdir()
-        start = datetime(2020, 1, 1)
+        start = datetime.fromisoformat("2020-01-01 00:00:00")
         timestamps = [start + timedelta(seconds=10 * index) for index in range(40)]
         for filename, sleep_file in (
             ("24mice_activity_LD1week.csv", False),
@@ -92,6 +92,9 @@ class ExperimentTests(unittest.TestCase):
             self.assertEqual(
                 provenance["synthetic_output"]["source_category"], "synthetic"
             )
+            self.assertEqual(
+                provenance["configuration_source"], str(config.source_path)
+            )
 
             with (result.output_directory / "synthetic-observations.csv").open(
                 newline="", encoding="utf-8"
@@ -101,9 +104,7 @@ class ExperimentTests(unittest.TestCase):
             self.assertEqual({row["source"] for row in rows}, {"synthetic"})
 
             manifest = json.loads(
-                (result.output_directory / "artifact-manifest.json").read_text(
-                    "utf-8"
-                )
+                (result.output_directory / "artifact-manifest.json").read_text("utf-8")
             )
             model_entry = next(
                 item for item in manifest["artifacts"] if item["name"] == "model.json"

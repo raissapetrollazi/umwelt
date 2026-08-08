@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from collections import Counter
+from collections.abc import Iterable, Sequence
 from math import sqrt
 from statistics import fmean, pstdev
-from typing import Iterable, Sequence
 
 from umwelt.errors import DataError
 from umwelt.observations import (
@@ -78,7 +78,9 @@ def _describe_values(values: Sequence[float]) -> dict[str, float | int | None]:
     }
 
 
-def _bouts(series: TimeSeries, epoch_seconds: int) -> dict[BehavioralState, list[float]]:
+def _bouts(
+    series: TimeSeries, epoch_seconds: int
+) -> dict[BehavioralState, list[float]]:
     result = {BehavioralState.WAKE: [], BehavioralState.SLEEP: []}
     current_state: BehavioralState | None = None
     current_epochs = 0
@@ -244,8 +246,12 @@ def describe_dataset(
                 "subject_id": series.subject_id,
                 "valid_epochs": subject_valid,
                 "missing_epochs": len(series.states) - subject_valid,
-                "sleep_fraction": subject_sleep / subject_valid if subject_valid else None,
-                "mean_activity": subject_activity / subject_valid if subject_valid else None,
+                "sleep_fraction": subject_sleep / subject_valid
+                if subject_valid
+                else None,
+                "mean_activity": subject_activity / subject_valid
+                if subject_valid
+                else None,
             }
         )
 
@@ -348,7 +354,7 @@ def describe_dataset(
 
 
 def _scalar_comparison(
-    name: str, recorded: float | int | None, synthetic: float | int | None
+    name: str, recorded: float | None, synthetic: float | None
 ) -> dict[str, object]:
     if recorded is None or synthetic is None:
         absolute = None
@@ -439,9 +445,7 @@ def compare_metrics(
     synthetic_autocorrelation = {
         item["lag_epochs"]: item for item in synthetic["sleep_state_autocorrelation"]
     }
-    common_lags = sorted(
-        set(recorded_autocorrelation) & set(synthetic_autocorrelation)
-    )
+    common_lags = sorted(set(recorded_autocorrelation) & set(synthetic_autocorrelation))
     autocorrelation = [
         _scalar_comparison(
             f"sleep_autocorrelation_lag_{lag}",

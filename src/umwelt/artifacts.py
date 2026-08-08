@@ -5,8 +5,8 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+from collections.abc import Iterable, Mapping
 from pathlib import Path
-from typing import Iterable, Mapping
 
 from umwelt.config import ExperimentConfig
 from umwelt.observations import TimeSeries

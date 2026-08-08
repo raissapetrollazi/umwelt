@@ -5,10 +5,11 @@ from __future__ import annotations
 import csv
 import hashlib
 import os
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
 from datetime import datetime
+from itertools import zip_longest
 from pathlib import Path
-from typing import Iterable
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -170,6 +171,9 @@ def verify_compass(
 
 
 def _download_file(spec: CompassFile, target: Path, repair: bool) -> str:
+    target_existed = target.exists()
+    if target_existed and not target.is_file():
+        raise DataError(f"Dataset target exists but is not a file: {target}")
     if target.is_file():
         actual_size = target.stat().st_size
         actual_md5 = _md5(target)
@@ -183,6 +187,12 @@ def _download_file(spec: CompassFile, target: Path, repair: bool) -> str:
 
     partial = target.with_name(f"{target.name}.part")
     offset = partial.stat().st_size if partial.is_file() else 0
+    if offset >= spec.size:
+        if offset == spec.size and _md5(partial) == spec.md5:
+            os.replace(partial, target)
+            return "repaired" if target_existed else "downloaded"
+        partial.unlink()
+        offset = 0
     headers = {"User-Agent": "umwelt-dataset-client/0.1"}
     if offset:
         headers["Range"] = f"bytes={offset}-"
@@ -200,12 +210,13 @@ def _download_file(spec: CompassFile, target: Path, repair: bool) -> str:
     actual_size = partial.stat().st_size
     actual_md5 = _md5(partial)
     if actual_size != spec.size or actual_md5 != spec.md5:
+        partial.unlink()
         raise DataIntegrityError(
             f"Downloaded file failed verification: {spec.name} "
             f"(size={actual_size}, md5={actual_md5})."
         )
     os.replace(partial, target)
-    return "repaired" if target.exists() and repair else "downloaded"
+    return "repaired" if target_existed and repair else "downloaded"
 
 
 def download_compass(
@@ -221,10 +232,7 @@ def download_compass(
     results: list[DownloadResult] = []
     for spec in compass_files(include_all):
         target = root / spec.name
-        existed = target.exists()
         status = _download_file(spec, target, repair)
-        if status == "repaired" and not existed:
-            status = "downloaded"
         results.append(
             DownloadResult(
                 name=spec.name,
@@ -299,12 +307,14 @@ def load_compass_week(
                 )
 
         for row_number, (activity_row, sleep_row) in enumerate(
-            zip(activity_rows, sleep_rows, strict=True), start=2
+            zip_longest(activity_rows, sleep_rows), start=2
         ):
-            if activity_row["Time"] != sleep_row["Time"]:
+            if activity_row is None or sleep_row is None:
                 raise DataError(
-                    f"COMPASS timestamps diverge at CSV row {row_number}."
+                    "COMPASS activity and sleep files contain different row counts."
                 )
+            if activity_row["Time"] != sleep_row["Time"]:
+                raise DataError(f"COMPASS timestamps diverge at CSV row {row_number}.")
             try:
                 timestamp = datetime.fromisoformat(activity_row["Time"])
             except ValueError as error:
