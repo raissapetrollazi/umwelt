@@ -19,5 +19,8 @@ classifiers = [
 ]
 dependencies = []
 
+[project.scripts]
+umwelt = "umwelt.cli:main"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/umwelt"]
