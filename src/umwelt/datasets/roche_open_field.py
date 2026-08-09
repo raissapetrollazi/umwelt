@@ -12,7 +12,14 @@ from pathlib import Path, PurePosixPath
 
 from umwelt.errors import DataError
 from umwelt.observations import ObservationSource
-from umwelt.spatial import CoordinateFrame, Keypoint2D, Point2D, Pose2D, SpatialFrame
+from umwelt.spatial import (
+    CoordinateFrame,
+    Keypoint2D,
+    LandmarkSet2D,
+    Point2D,
+    Pose2D,
+    SpatialFrame,
+)
 
 ROCHE_OPEN_FIELD_DATASET_ID = "roche-open-field-zenodo-8188683-v1"
 ROCHE_OPEN_FIELD_DOI = "10.5281/zenodo.8188683"
@@ -31,11 +38,13 @@ ROCHE_METADATA_COLUMNS = (
     "Dosage",
     "Video",
 )
-ROCHE_KEYPOINTS = (
+ROCHE_ARENA_LANDMARKS = (
     "tl",
     "tr",
     "bl",
     "br",
+)
+ROCHE_MOUSE_KEYPOINTS = (
     "nose",
     "headcentre",
     "neck",
@@ -50,6 +59,9 @@ ROCHE_KEYPOINTS = (
     "tailcentre",
     "tailtip",
 )
+# Ordered columns in the published DeepLabCut CSVs. Arena landmarks are source
+# measurements, but they are not part of the animal's body pose.
+ROCHE_KEYPOINTS = ROCHE_ARENA_LANDMARKS + ROCHE_MOUSE_KEYPOINTS
 ROCHE_COORDINATE_FRAME = CoordinateFrame("roche-open-field-image", "px")
 
 
@@ -342,7 +354,9 @@ def _optional_float(text: str, *, label: str) -> float | None:
     return value
 
 
-def _parse_pose(values: list[str], *, path: Path, row_number: int) -> Pose2D:
+def _parse_spatial_frame(
+    values: list[str], *, path: Path, row_number: int
+) -> tuple[Pose2D, LandmarkSet2D]:
     keypoints: list[Keypoint2D] = []
     for index, name in enumerate(ROCHE_KEYPOINTS):
         offset = 1 + index * 3
@@ -362,7 +376,12 @@ def _parse_pose(values: list[str], *, path: Path, row_number: int) -> Pose2D:
             )
         point = None if x is None else Point2D(x, y)  # type: ignore[arg-type]
         keypoints.append(Keypoint2D(name=name, point=point, confidence=likelihood))
-    return Pose2D(tuple(keypoints))
+    by_name = {keypoint.name: keypoint for keypoint in keypoints}
+    pose = Pose2D(tuple(by_name[name] for name in ROCHE_MOUSE_KEYPOINTS))
+    landmarks = LandmarkSet2D(
+        tuple(by_name[name] for name in ROCHE_ARENA_LANDMARKS)
+    )
+    return pose, landmarks
 
 
 def _iter_pose_frames(path: Path, *, validate_frame_count: bool) -> Iterator[SpatialFrame]:
@@ -398,9 +417,13 @@ def _iter_pose_frames(path: Path, *, validate_frame_count: bool) -> Iterator[Spa
                     f"Roche frame indices must start at 0 and be sequential in {path.name}; "
                     f"expected {expected_index}, found {frame_index}."
                 )
+            pose, landmarks = _parse_spatial_frame(
+                values, path=path, row_number=row_number
+            )
             yield SpatialFrame(
                 frame_index=frame_index,
-                pose=_parse_pose(values, path=path, row_number=row_number),
+                pose=pose,
+                landmarks=landmarks,
             )
             expected_index += 1
 
@@ -456,7 +479,9 @@ def roche_provenance(
         },
         "sampling_rate_hz": None,
         "physical_arena_dimensions": None,
-        "keypoints": list(ROCHE_KEYPOINTS),
+        "mouse_keypoints": list(ROCHE_MOUSE_KEYPOINTS),
+        "arena_landmarks": list(ROCHE_ARENA_LANDMARKS),
+        "source_keypoint_columns": list(ROCHE_KEYPOINTS),
         "recording_count": len(catalog),
         "selected_recordings": [
             {

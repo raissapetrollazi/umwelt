@@ -86,11 +86,38 @@ class Pose2D:
 
 
 @dataclass(frozen=True, slots=True)
+class LandmarkSet2D:
+    """A named set of environmental landmarks kept separate from body pose."""
+
+    landmarks: tuple[Keypoint2D, ...]
+
+    def __post_init__(self) -> None:
+        names = [landmark.name for landmark in self.landmarks]
+        if len(names) != len(set(names)):
+            raise DataError("Environmental landmark names must be unique within one frame.")
+
+    def landmark(self, name: str) -> Keypoint2D:
+        """Return one environmental landmark by name."""
+
+        for landmark in self.landmarks:
+            if landmark.name == name:
+                return landmark
+        raise DataError(f"Unknown environmental landmark: {name}")
+
+    @property
+    def observed_landmark_count(self) -> int:
+        """Return the number of landmarks with accepted coordinates."""
+
+        return sum(landmark.point is not None for landmark in self.landmarks)
+
+
+@dataclass(frozen=True, slots=True)
 class SpatialFrame:
-    """One frame-indexed recorded or synthetic pose sample."""
+    """One frame-indexed pose sample with optional environmental landmarks."""
 
     frame_index: int
     pose: Pose2D | None
+    landmarks: LandmarkSet2D | None = None
 
     def __post_init__(self) -> None:
         if self.frame_index < 0:

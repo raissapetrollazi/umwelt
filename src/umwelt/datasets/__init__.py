@@ -8,7 +8,9 @@ from umwelt.datasets.compass import (
     verify_compass,
 )
 from umwelt.datasets.roche_open_field import (
+    ROCHE_ARENA_LANDMARKS,
     ROCHE_KEYPOINTS,
+    ROCHE_MOUSE_KEYPOINTS,
     ROCHE_OPEN_FIELD_DATASET_ID,
     ROCHE_OPEN_FIELD_DOI,
     RocheRecording,
@@ -23,7 +25,9 @@ from umwelt.datasets.roche_open_field import (
 __all__ = [
     "COMPASS_DATASET_ID",
     "COMPASS_DOI",
+    "ROCHE_ARENA_LANDMARKS",
     "ROCHE_KEYPOINTS",
+    "ROCHE_MOUSE_KEYPOINTS",
     "ROCHE_OPEN_FIELD_DATASET_ID",
     "ROCHE_OPEN_FIELD_DOI",
     "RocheRecording",

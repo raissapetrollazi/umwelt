@@ -8,10 +8,12 @@ import unittest
 from pathlib import Path
 
 from umwelt.datasets.roche_open_field import (
+    ROCHE_ARENA_LANDMARKS,
     ROCHE_KEYPOINTS,
     ROCHE_METADATA_COLUMNS,
     ROCHE_METADATA_FILE,
     ROCHE_OPEN_FIELD_DOI,
+    ROCHE_MOUSE_KEYPOINTS,
     ROCHE_RECORDING_COUNT,
     catalog_roche_open_field,
     load_roche_metadata,
@@ -119,10 +121,20 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         self.assertEqual([frame.frame_index for frame in frames], [0, 1, 2])
         pose = frames[0].pose
         assert pose is not None
-        self.assertEqual(tuple(keypoint.name for keypoint in pose.keypoints), ROCHE_KEYPOINTS)
+        self.assertEqual(
+            tuple(keypoint.name for keypoint in pose.keypoints), ROCHE_MOUSE_KEYPOINTS
+        )
         self.assertEqual(pose.keypoint("bodycentre").point.x, 9.0)
         self.assertEqual(pose.keypoint("bodycentre").confidence, 0.9)
-        self.assertEqual(pose.keypoint("tl").point.y, 0.5)
+        landmarks = frames[0].landmarks
+        assert landmarks is not None
+        self.assertEqual(
+            tuple(landmark.name for landmark in landmarks.landmarks),
+            ROCHE_ARENA_LANDMARKS,
+        )
+        self.assertEqual(landmarks.landmark("tl").point.y, 0.5)
+        with self.assertRaisesRegex(DataError, "Unknown pose keypoint"):
+            pose.keypoint("tl")
 
     def test_canonical_frame_count_is_checked_when_stream_is_exhausted(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

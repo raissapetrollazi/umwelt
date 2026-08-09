@@ -10,6 +10,7 @@ from umwelt.observations import ObservationSource
 from umwelt.spatial import (
     CoordinateFrame,
     Keypoint2D,
+    LandmarkSet2D,
     Point2D,
     Pose2D,
     SpatialDataset,
@@ -28,6 +29,12 @@ class SpatialObservationTests(unittest.TestCase):
                 Keypoint2D("tail_base", None, 0.20),
             )
         )
+        self.landmarks = LandmarkSet2D(
+            (
+                Keypoint2D("top_left", Point2D(0.0, 0.0), 0.98),
+                Keypoint2D("top_right", Point2D(100.0, 0.0), 0.97),
+            )
+        )
 
     def _series(
         self,
@@ -40,7 +47,7 @@ class SpatialObservationTests(unittest.TestCase):
             source=source,
             coordinate_frame=self.frame,
             frames=(
-                SpatialFrame(0, self.pose),
+                SpatialFrame(0, self.pose, self.landmarks),
                 SpatialFrame(1, None),
                 SpatialFrame(2, self.pose),
             ),
@@ -51,6 +58,17 @@ class SpatialObservationTests(unittest.TestCase):
         self.assertEqual(self.pose.observed_keypoint_count, 2)
         self.assertEqual(self.pose.keypoint("nose").confidence, 0.99)
         self.assertIsNone(self.pose.keypoint("tail_base").point)
+
+    def test_environmental_landmarks_remain_separate_from_body_pose(self) -> None:
+        frame = SpatialFrame(0, self.pose, self.landmarks)
+
+        self.assertEqual(frame.pose.observed_keypoint_count, 2)
+        self.assertEqual(frame.landmarks.observed_landmark_count, 2)
+        self.assertEqual(
+            frame.landmarks.landmark("top_right").point, Point2D(100.0, 0.0)
+        )
+        with self.assertRaisesRegex(DataError, "Unknown pose keypoint"):
+            frame.pose.keypoint("top_left")
 
     def test_series_preserves_source_gaps_and_sampling_calibration(self) -> None:
         series = self._series()
@@ -82,6 +100,13 @@ class SpatialObservationTests(unittest.TestCase):
                 (
                     Keypoint2D("nose", Point2D(0.0, 0.0)),
                     Keypoint2D("nose", Point2D(1.0, 1.0)),
+                )
+            )
+        with self.assertRaisesRegex(DataError, "landmark names must be unique"):
+            LandmarkSet2D(
+                (
+                    Keypoint2D("corner", Point2D(0.0, 0.0)),
+                    Keypoint2D("corner", Point2D(1.0, 1.0)),
                 )
             )
         with self.assertRaisesRegex(DataError, "strictly increasing"):
