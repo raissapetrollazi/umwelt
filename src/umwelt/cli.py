@@ -20,6 +20,7 @@ from umwelt.datasets.compass import (
 )
 from umwelt.errors import ConfigurationError, UmweltError
 from umwelt.experiment import run_experiment
+from umwelt.individual_lab import run_individual_variation_lab
 from umwelt.temporal_config import load_temporal_lab_config
 from umwelt.temporal_lab import run_temporal_lab
 
@@ -110,6 +111,18 @@ def _parser() -> argparse.ArgumentParser:
         "--output",
         type=Path,
         help="Override the configured output directory without changing the input file.",
+    )
+
+    individual = commands.add_parser(
+        "individual",
+        help="Compare pooled temporal dynamics with training-population variation.",
+    )
+    individual.add_argument("--config", type=Path, required=True)
+    individual.add_argument(
+        "--output",
+        type=Path,
+        required=True,
+        help="Output directory for the individual-variation experiment.",
     )
     return parser
 
@@ -242,6 +255,27 @@ def _compare(arguments: argparse.Namespace, output: TextIO) -> int:
     return 0
 
 
+def _individual(arguments: argparse.Namespace, output: TextIO) -> int:
+    config = load_temporal_lab_config(arguments.config)
+    result = run_individual_variation_lab(
+        config,
+        output_directory=arguments.output,
+    )
+    _print_json(
+        {
+            "experiment_id": result.experiment_id,
+            "output_directory": str(result.output_directory),
+            "configuration_sha256": result.configuration_sha256,
+            "model_count": result.model_count,
+            "replicate_records": result.replicate_records,
+            "generated_series": result.generated_series,
+            "artifact_count": result.artifact_count,
+        },
+        output,
+    )
+    return 0
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -264,6 +298,8 @@ def main(
             return _run(arguments, output)
         if arguments.command == "compare":
             return _compare(arguments, output)
+        if arguments.command == "individual":
+            return _individual(arguments, output)
     except UmweltError as error:
         errors.write(f"error: {error}\n")
         return 2
