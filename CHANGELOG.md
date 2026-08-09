@@ -18,8 +18,29 @@
   individual-variation artifacts without changing activity emissions.
 - Record the canonical individual-variation comparison, including its improved
   population spread and worsened bout-distribution and circadian trade-offs.
-- Open v0.2 planning while explicitly deferring unresolved v0.1 validation and
-  model-fidelity questions.
+- Define the v0.2 spatial research question while explicitly deferring
+  unresolved v0.1 validation and model-fidelity questions.
+- Add axis-aware coordinate frames, two-dimensional pose observations,
+  frame-indexed spatial series, rectangular arena geometry, and gap-aware
+  trajectory measurements.
+- Add the pinned Roche open-field adapter for 32 metadata records and extracted
+  DeepLabCut pose files, preserving source likelihoods and treatment provenance.
+- Verify metadata and archive against their published byte sizes and MD5s, then
+  validate all 32 extracted pose files against exact frame counts, sizes, and
+  SHA-256s derived from the verified archive.
+- Keep 13 mouse keypoints separate from the four arena landmarks and keep
+  sampling rate, physical calibration, and arena dimensions explicitly unknown
+  while declaring Roche image axes as `x-right-y-down`.
+- Preserve subject, recording, source category, coordinate unit, and axis
+  orientation through trajectory derivation; preserve source coordinates and
+  explicit likelihood-rejection reasons; normalize headings counterclockwise
+  from `+x`; and return path length with its selection rule, spatial context,
+  and unit.
+- Document the manual Roche download, extraction layout, published archive and
+  metadata checksums, and current spatial experiment boundary.
+- Add GitHub Actions unit-test coverage for Python 3.12 and 3.13.
+- Defer the v0.2 generative movement baseline, synthetic trajectory workflow,
+  and recorded-versus-synthetic evaluation to subsequent work.
 
 ## 0.1.0 - 2026-08-08
 
