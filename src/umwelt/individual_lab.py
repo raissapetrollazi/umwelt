@@ -21,13 +21,13 @@ from umwelt.individual_variation import (
     POPULATION_MODEL_ID,
     derive_profile_seed,
     fit_population_temporal_model,
+    simulate_pooled_from_template,
     simulate_population_from_template,
 )
 from umwelt.models.temporal_hazard import (
     PHASE_DURATION_MODEL,
     TemporalHazardModel,
     fit_temporal_model_ladder,
-    simulate_temporal_from_template,
 )
 from umwelt.observations import ObservationDataset, ObservationSource
 from umwelt.temporal_config import TemporalLabConfig
@@ -71,15 +71,17 @@ class IndividualLabResult:
     comparison: dict[str, object]
 
 
-def derive_paired_trajectory_seed(
-    master_seed: int, subject_id: str, replicate: int
+def derive_paired_stream_seed(
+    master_seed: int, subject_id: str, replicate: int, stream: str
 ) -> int:
-    """Derive one trajectory seed shared by pooled and population variants."""
+    """Derive a model-independent state or activity seed for paired comparison."""
 
     if replicate < 1:
         raise ConfigurationError("Replicate numbers begin at one.")
+    if stream not in {"state", "activity"}:
+        raise ConfigurationError("Paired stream must be 'state' or 'activity'.")
     payload = json.dumps(
-        [master_seed, "individual-variation", subject_id, replicate, "trajectory"],
+        [master_seed, "individual-variation", subject_id, replicate, stream],
         separators=(",", ":"),
         ensure_ascii=True,
     ).encode("ascii")
@@ -245,25 +247,30 @@ def run_individual_variation_lab(
         profile_assignments = []
 
         for template in development.series:
-            trajectory_seed = derive_paired_trajectory_seed(
-                config.simulation.seed, template.subject_id, replicate
+            state_seed = derive_paired_stream_seed(
+                config.simulation.seed, template.subject_id, replicate, "state"
+            )
+            activity_seed = derive_paired_stream_seed(
+                config.simulation.seed, template.subject_id, replicate, "activity"
             )
             profile_seed = derive_profile_seed(
                 config.simulation.seed, template.subject_id, replicate
             )
             pooled_series.append(
-                simulate_temporal_from_template(
+                simulate_pooled_from_template(
                     pooled_model,
                     template,
                     subject_id=template.subject_id,
-                    seed=trajectory_seed,
+                    state_seed=state_seed,
+                    activity_seed=activity_seed,
                 )
             )
             population_generated, profile = simulate_population_from_template(
                 population_model,
                 template,
                 subject_id=template.subject_id,
-                seed=trajectory_seed,
+                state_seed=state_seed,
+                activity_seed=activity_seed,
                 profile_seed=profile_seed,
             )
             population_series.append(population_generated)
@@ -271,7 +278,8 @@ def run_individual_variation_lab(
                 {
                     "source_subject_id": template.subject_id,
                     "replicate": replicate,
-                    "trajectory_seed": trajectory_seed,
+                    "state_seed": state_seed,
+                    "activity_seed": activity_seed,
                     "profile_seed": None,
                     "profile_source_subject_id": None,
                 }
@@ -280,7 +288,8 @@ def run_individual_variation_lab(
                 {
                     "source_subject_id": template.subject_id,
                     "replicate": replicate,
-                    "trajectory_seed": trajectory_seed,
+                    "state_seed": state_seed,
+                    "activity_seed": activity_seed,
                     "profile_seed": profile_seed,
                     "profile_source_subject_id": profile.source_subject_id,
                 }
@@ -322,7 +331,7 @@ def run_individual_variation_lab(
                 "schema_version": "umwelt.individual-variation-replicate.v1",
                 "model_id": model_id,
                 "replicate": replicate,
-                "paired_trajectory_stream": True,
+                "paired_state_random_stream": True,
                 "seeds": seeds,
                 "profile_assignments": assignments,
                 "evaluation": evaluation,
@@ -353,7 +362,8 @@ def run_individual_variation_lab(
         ),
         "replicates_per_model": config.simulation.replicates,
         "replicate_interval": list(config.evaluation.replicate_interval),
-        "paired_trajectory_streams": True,
+        "paired_state_random_streams": True,
+        "matched_activity_seed_initialization": True,
         "models": [
             {
                 "model_id": POOLED_MODEL_ID,
@@ -385,7 +395,8 @@ def run_individual_variation_lab(
             "population_model_id": POPULATION_MODEL_ID,
             "population_profile_source": "training subjects only",
             "profile_sampling": "uniform empirical resampling with replacement",
-            "paired_trajectory_streams": True,
+            "paired_state_random_streams": True,
+            "separate_activity_random_stream": True,
         },
     }
     configuration_sha256 = canonical_hash(resolved)
@@ -415,13 +426,21 @@ def run_individual_variation_lab(
                 "wake-leaving hazard logit offset",
                 "sleep-leaving hazard logit offset",
             ],
+            "random_stream_design": (
+                "State and activity randomness use separate generators. Pooled and population "
+                "variants share the same state seed for a subject/replicate, so the state "
+                "generator consumes one paired draw per available epoch in both variants. "
+                "Activity seeds also match, but activity-generator consumption may diverge "
+                "after state trajectories diverge."
+            ),
         },
         "synthetic_output": {
             "source_category": ObservationSource.SYNTHETIC.value,
             "master_seed": config.simulation.seed,
             "replicates_per_model": config.simulation.replicates,
             "generated_series": generated_series,
-            "paired_trajectory_streams": True,
+            "paired_state_random_streams": True,
+            "activity_randomness_isolated_from_state": True,
             "profile_seed_derivation": (
                 "SHA-256 over master seed, individual-profile role, source subject, and replicate"
             ),
@@ -464,7 +483,8 @@ def run_individual_variation_lab(
             {
                 "schema_version": "umwelt.individual-variation-seeds.v1",
                 "master_seed": config.simulation.seed,
-                "paired_trajectory_streams": True,
+                "paired_state_random_streams": True,
+                "separate_activity_random_stream": True,
                 "series": seed_records,
             },
         )
