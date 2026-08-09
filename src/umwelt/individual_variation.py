@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import random
 from dataclasses import dataclass
 from datetime import datetime
@@ -296,9 +297,68 @@ def derive_profile_seed(
     payload = f"{master_seed}|individual-profile|{subject_id}|{replicate}".encode(
         "ascii"
     )
-    import hashlib
-
     return int.from_bytes(hashlib.sha256(payload).digest()[:8], "big")
+
+
+def simulate_pooled_from_template(
+    model: TemporalHazardModel,
+    template: TimeSeries,
+    *,
+    subject_id: str,
+    state_seed: int,
+    activity_seed: int,
+) -> TimeSeries:
+    """Generate the pooled control with state and activity randomness isolated."""
+
+    if model.spec.model_id != PHASE_DURATION_MODEL:
+        raise DataError("Pooled individuality control requires phase+duration dynamics.")
+    state_generator = random.Random(state_seed)
+    activity_generator = random.Random(activity_seed)
+    states: list[BehavioralState | None] = []
+    activities: list[float | None] = []
+    previous_state: BehavioralState | None = None
+    previous_timestamp: datetime | None = None
+    bout_age = 0
+
+    for timestamp, available in zip(
+        template.timestamps,
+        (state is not None for state in template.states),
+        strict=True,
+    ):
+        if not available:
+            states.append(None)
+            activities.append(None)
+            previous_state = None
+            previous_timestamp = None
+            bout_age = 0
+            continue
+
+        contiguous = previous_timestamp is not None and isclose(
+            (timestamp - previous_timestamp).total_seconds(), model.epoch_seconds
+        )
+        if previous_state is None or not contiguous:
+            state = model.initial_state(timestamp, state_generator)
+            bout_age = 1
+        else:
+            state = model.next_state(
+                previous_state, previous_timestamp, bout_age, state_generator
+            )
+            bout_age = next_bout_age(previous_state, state, bout_age)
+        activity = model.activity_model.activity_for(
+            state, timestamp, activity_generator
+        )
+        states.append(state)
+        activities.append(activity)
+        previous_state = state
+        previous_timestamp = timestamp
+
+    return TimeSeries(
+        subject_id=subject_id,
+        source=ObservationSource.SYNTHETIC,
+        timestamps=template.timestamps,
+        states=tuple(states),
+        activities=tuple(activities),
+    )
 
 
 def simulate_population_from_template(
@@ -306,13 +366,15 @@ def simulate_population_from_template(
     template: TimeSeries,
     *,
     subject_id: str,
-    seed: int,
+    state_seed: int,
+    activity_seed: int,
     profile_seed: int,
 ) -> tuple[TimeSeries, IndividualVariationProfile]:
-    """Generate one synthetic individual from timestamps/gaps and one sampled profile."""
+    """Generate one synthetic individual with isolated state/activity randomness."""
 
     profile = model.profile_for_seed(profile_seed)
-    generator = random.Random(seed)
+    state_generator = random.Random(state_seed)
+    activity_generator = random.Random(activity_seed)
     states: list[BehavioralState | None] = []
     activities: list[float | None] = []
     previous_state: BehavioralState | None = None
@@ -340,7 +402,7 @@ def simulate_population_from_template(
             probability = model.initial_sleep_probability(timestamp, profile)
             state = (
                 BehavioralState.SLEEP
-                if generator.random() < probability
+                if state_generator.random() < probability
                 else BehavioralState.WAKE
             )
             bout_age = 1
@@ -348,7 +410,7 @@ def simulate_population_from_template(
             probability = model.leave_probability(
                 previous_state, previous_timestamp, bout_age, profile
             )
-            if generator.random() < probability:
+            if state_generator.random() < probability:
                 state = (
                     BehavioralState.WAKE
                     if previous_state is BehavioralState.SLEEP
@@ -359,7 +421,7 @@ def simulate_population_from_template(
             bout_age = next_bout_age(previous_state, state, bout_age)
 
         activity = model.base_model.activity_model.activity_for(
-            state, timestamp, generator
+            state, timestamp, activity_generator
         )
         states.append(state)
         activities.append(activity)
