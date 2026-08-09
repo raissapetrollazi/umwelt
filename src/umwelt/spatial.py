@@ -3,24 +3,53 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import StrEnum
 from math import isfinite
 
 from umwelt.errors import DataError
 from umwelt.observations import ObservationSource
 
 
+class AxisOrientation(StrEnum):
+    """Orientation of the coordinate axes relative to a viewed plane."""
+
+    X_RIGHT_Y_UP = "x-right-y-up"
+    X_RIGHT_Y_DOWN = "x-right-y-down"
+
+
 @dataclass(frozen=True, slots=True)
 class CoordinateFrame:
-    """Named coordinate frame with an explicit unit and no implied calibration."""
+    """Named coordinate frame with explicit units and axis orientation."""
 
     frame_id: str
     unit: str
+    axis_orientation: AxisOrientation
 
     def __post_init__(self) -> None:
         if not self.frame_id.strip():
             raise DataError("A coordinate frame must have a non-empty identifier.")
         if not self.unit.strip():
             raise DataError("A coordinate frame must declare its unit.")
+        if not isinstance(self.axis_orientation, AxisOrientation):
+            raise DataError(
+                "A coordinate frame must use a declared AxisOrientation value."
+            )
+
+
+@dataclass(frozen=True, slots=True)
+class SpatialContext:
+    """Identity, source, and coordinate frame shared by spatial samples."""
+
+    subject_id: str
+    recording_id: str
+    source: ObservationSource
+    coordinate_frame: CoordinateFrame
+
+    def __post_init__(self) -> None:
+        if not self.subject_id.strip():
+            raise DataError("A spatial context must have a subject identifier.")
+        if not self.recording_id.strip():
+            raise DataError("A spatial context must have a recording identifier.")
 
 
 @dataclass(frozen=True, slots=True)
@@ -94,7 +123,9 @@ class LandmarkSet2D:
     def __post_init__(self) -> None:
         names = [landmark.name for landmark in self.landmarks]
         if len(names) != len(set(names)):
-            raise DataError("Environmental landmark names must be unique within one frame.")
+            raise DataError(
+                "Environmental landmark names must be unique within one frame."
+            )
 
     def landmark(self, name: str) -> Keypoint2D:
         """Return one environmental landmark by name."""
@@ -113,8 +144,9 @@ class LandmarkSet2D:
 
 @dataclass(frozen=True, slots=True)
 class SpatialFrame:
-    """One frame-indexed pose sample with optional environmental landmarks."""
+    """One context-bound pose sample with optional environmental landmarks."""
 
+    context: SpatialContext
     frame_index: int
     pose: Pose2D | None
     landmarks: LandmarkSet2D | None = None
@@ -147,9 +179,22 @@ class SpatialSeries:
 
         previous_index: int | None = None
         for frame in self.frames:
+            if frame.context != self.context:
+                raise DataError("Spatial series frames must share the series context.")
             if previous_index is not None and frame.frame_index <= previous_index:
                 raise DataError("Spatial frame indices must be strictly increasing.")
             previous_index = frame.frame_index
+
+    @property
+    def context(self) -> SpatialContext:
+        """Return the identity and coordinate conventions shared by the series."""
+
+        return SpatialContext(
+            subject_id=self.subject_id,
+            recording_id=self.recording_id,
+            source=self.source,
+            coordinate_frame=self.coordinate_frame,
+        )
 
     @property
     def valid_pose_count(self) -> int:
@@ -200,7 +245,9 @@ class SpatialDataset:
 
         sources = {item.source for item in self.series}
         if len(sources) > 1:
-            raise DataError("A spatial dataset cannot silently mix observation sources.")
+            raise DataError(
+                "A spatial dataset cannot silently mix observation sources."
+            )
 
     def recording(self, recording_id: str) -> SpatialSeries:
         """Return one spatial series by recording identifier."""

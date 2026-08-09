@@ -8,11 +8,13 @@ from umwelt.arena import RectangularArena
 from umwelt.errors import DataError
 from umwelt.observations import ObservationSource
 from umwelt.spatial import (
+    AxisOrientation,
     CoordinateFrame,
     Keypoint2D,
     LandmarkSet2D,
     Point2D,
     Pose2D,
+    SpatialContext,
     SpatialDataset,
     SpatialFrame,
     SpatialSeries,
@@ -21,7 +23,15 @@ from umwelt.spatial import (
 
 class SpatialObservationTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.frame = CoordinateFrame("camera-pixels", "px")
+        self.frame = CoordinateFrame(
+            "camera-pixels", "px", AxisOrientation.X_RIGHT_Y_DOWN
+        )
+        self.context = SpatialContext(
+            subject_id="mouse-1",
+            recording_id="recording-1",
+            source=ObservationSource.RECORDED,
+            coordinate_frame=self.frame,
+        )
         self.pose = Pose2D(
             (
                 Keypoint2D("nose", Point2D(10.0, 20.0), 0.99),
@@ -41,15 +51,21 @@ class SpatialObservationTests(unittest.TestCase):
         recording_id: str = "recording-1",
         source: ObservationSource = ObservationSource.RECORDED,
     ) -> SpatialSeries:
+        context = SpatialContext(
+            subject_id="mouse-1",
+            recording_id=recording_id,
+            source=source,
+            coordinate_frame=self.frame,
+        )
         return SpatialSeries(
             subject_id="mouse-1",
             recording_id=recording_id,
             source=source,
             coordinate_frame=self.frame,
             frames=(
-                SpatialFrame(0, self.pose, self.landmarks),
-                SpatialFrame(1, None),
-                SpatialFrame(2, self.pose),
+                SpatialFrame(context, 0, self.pose, self.landmarks),
+                SpatialFrame(context, 1, None),
+                SpatialFrame(context, 2, self.pose),
             ),
             sampling_rate_hz=30.0,
         )
@@ -60,7 +76,7 @@ class SpatialObservationTests(unittest.TestCase):
         self.assertIsNone(self.pose.keypoint("tail_base").point)
 
     def test_environmental_landmarks_remain_separate_from_body_pose(self) -> None:
-        frame = SpatialFrame(0, self.pose, self.landmarks)
+        frame = SpatialFrame(self.context, 0, self.pose, self.landmarks)
 
         self.assertEqual(frame.pose.observed_keypoint_count, 2)
         self.assertEqual(frame.landmarks.observed_landmark_count, 2)
@@ -78,6 +94,8 @@ class SpatialObservationTests(unittest.TestCase):
         self.assertEqual(series.missing_pose_count, 1)
         self.assertAlmostEqual(series.elapsed_seconds(15), 0.5)
         self.assertEqual(series.keypoint_names(), ("center", "nose", "tail_base"))
+        self.assertEqual(series.context.subject_id, "mouse-1")
+        self.assertEqual(series.context.coordinate_frame, self.frame)
 
     def test_series_without_sampling_rate_rejects_time_conversion(self) -> None:
         series = SpatialSeries(
@@ -85,12 +103,14 @@ class SpatialObservationTests(unittest.TestCase):
             recording_id="recording-1",
             source=ObservationSource.RECORDED,
             coordinate_frame=self.frame,
-            frames=(SpatialFrame(0, self.pose),),
+            frames=(SpatialFrame(self.context, 0, self.pose),),
         )
         with self.assertRaisesRegex(DataError, "no validated sampling rate"):
             series.elapsed_seconds(1)
 
     def test_spatial_validation_rejects_invalid_values(self) -> None:
+        with self.assertRaisesRegex(DataError, "AxisOrientation"):
+            CoordinateFrame("bad", "px", "x-right-y-down")  # type: ignore[arg-type]
         with self.assertRaisesRegex(DataError, "coordinates must be finite"):
             Point2D(float("nan"), 1.0)
         with self.assertRaisesRegex(DataError, "confidence must be between"):
@@ -115,7 +135,25 @@ class SpatialObservationTests(unittest.TestCase):
                 recording_id="recording-1",
                 source=ObservationSource.RECORDED,
                 coordinate_frame=self.frame,
-                frames=(SpatialFrame(2, self.pose), SpatialFrame(1, self.pose)),
+                frames=(
+                    SpatialFrame(self.context, 2, self.pose),
+                    SpatialFrame(self.context, 1, self.pose),
+                ),
+            )
+
+        other_context = SpatialContext(
+            subject_id="mouse-2",
+            recording_id="recording-1",
+            source=ObservationSource.RECORDED,
+            coordinate_frame=self.frame,
+        )
+        with self.assertRaisesRegex(DataError, "share the series context"):
+            SpatialSeries(
+                subject_id="mouse-1",
+                recording_id="recording-1",
+                source=ObservationSource.RECORDED,
+                coordinate_frame=self.frame,
+                frames=(SpatialFrame(other_context, 0, self.pose),),
             )
 
     def test_dataset_rejects_source_mixing_and_duplicate_recordings(self) -> None:
@@ -131,7 +169,7 @@ class SpatialObservationTests(unittest.TestCase):
 
 class ArenaTests(unittest.TestCase):
     def setUp(self) -> None:
-        frame = CoordinateFrame("camera-pixels", "px")
+        frame = CoordinateFrame("camera-pixels", "px", AxisOrientation.X_RIGHT_Y_DOWN)
         self.arena = RectangularArena(
             arena_id="open-field",
             coordinate_frame=frame,

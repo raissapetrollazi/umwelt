@@ -6,13 +6,32 @@ import math
 import unittest
 
 from umwelt.errors import DataError
-from umwelt.spatial import Keypoint2D, Point2D, Pose2D, SpatialFrame
+from umwelt.observations import ObservationSource
+from umwelt.spatial import (
+    AxisOrientation,
+    CoordinateFrame,
+    Keypoint2D,
+    Point2D,
+    Pose2D,
+    SpatialContext,
+    SpatialFrame,
+)
 from umwelt.trajectory import (
     PositionSample,
     bodycentre_samples,
     iter_trajectory_steps,
     keypoint_position_samples,
     trajectory_path_length,
+)
+
+
+CONTEXT = SpatialContext(
+    subject_id="mouse-1",
+    recording_id="recording-1",
+    source=ObservationSource.RECORDED,
+    coordinate_frame=CoordinateFrame(
+        "arena-cartesian", "cm", AxisOrientation.X_RIGHT_Y_UP
+    ),
 )
 
 
@@ -28,8 +47,8 @@ def _pose(x: float, y: float, confidence: float = 0.95) -> Pose2D:
 class TrajectoryTests(unittest.TestCase):
     def test_bodycentre_is_used_without_inventing_a_confidence_threshold(self) -> None:
         frames = (
-            SpatialFrame(0, _pose(1.0, 2.0, 0.2)),
-            SpatialFrame(1, None),
+            SpatialFrame(CONTEXT, 0, _pose(1.0, 2.0, 0.2)),
+            SpatialFrame(CONTEXT, 1, None),
         )
         samples = tuple(bodycentre_samples(frames))
 
@@ -40,8 +59,8 @@ class TrajectoryTests(unittest.TestCase):
 
     def test_explicit_likelihood_threshold_turns_rejected_points_into_gaps(self) -> None:
         frames = (
-            SpatialFrame(0, _pose(1.0, 2.0, 0.2)),
-            SpatialFrame(1, _pose(2.0, 2.0, 0.95)),
+            SpatialFrame(CONTEXT, 0, _pose(1.0, 2.0, 0.2)),
+            SpatialFrame(CONTEXT, 1, _pose(2.0, 2.0, 0.95)),
         )
         samples = tuple(bodycentre_samples(frames, minimum_likelihood=0.8))
 
@@ -51,11 +70,11 @@ class TrajectoryTests(unittest.TestCase):
 
     def test_displacement_and_path_length_do_not_cross_missing_frames(self) -> None:
         frames = (
-            SpatialFrame(0, _pose(0.0, 0.0)),
-            SpatialFrame(1, _pose(3.0, 4.0)),
-            SpatialFrame(2, None),
-            SpatialFrame(3, _pose(6.0, 8.0)),
-            SpatialFrame(4, _pose(9.0, 12.0)),
+            SpatialFrame(CONTEXT, 0, _pose(0.0, 0.0)),
+            SpatialFrame(CONTEXT, 1, _pose(3.0, 4.0)),
+            SpatialFrame(CONTEXT, 2, None),
+            SpatialFrame(CONTEXT, 3, _pose(6.0, 8.0)),
+            SpatialFrame(CONTEXT, 4, _pose(9.0, 12.0)),
         )
         steps = tuple(iter_trajectory_steps(bodycentre_samples(frames)))
 
@@ -101,7 +120,7 @@ class TrajectoryTests(unittest.TestCase):
         self.assertIsNone(steps[2].turning_radians)
 
     def test_position_extraction_supports_other_recorded_keypoints(self) -> None:
-        frame = SpatialFrame(0, _pose(5.0, 7.0))
+        frame = SpatialFrame(CONTEXT, 0, _pose(5.0, 7.0))
         sample = next(keypoint_position_samples((frame,), keypoint_name="nose"))
 
         self.assertEqual(sample.point, Point2D(6.0, 7.0))

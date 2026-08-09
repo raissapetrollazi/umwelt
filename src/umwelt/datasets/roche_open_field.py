@@ -13,11 +13,13 @@ from pathlib import Path, PurePosixPath
 from umwelt.errors import DataError, DataIntegrityError
 from umwelt.observations import ObservationSource
 from umwelt.spatial import (
+    AxisOrientation,
     CoordinateFrame,
     Keypoint2D,
     LandmarkSet2D,
     Point2D,
     Pose2D,
+    SpatialContext,
     SpatialFrame,
 )
 
@@ -72,7 +74,9 @@ ROCHE_MOUSE_KEYPOINTS = (
 # Ordered columns in the published DeepLabCut CSVs. Arena landmarks are source
 # measurements, but they are not part of the animal's body pose.
 ROCHE_KEYPOINTS = ROCHE_ARENA_LANDMARKS + ROCHE_MOUSE_KEYPOINTS
-ROCHE_COORDINATE_FRAME = CoordinateFrame("roche-open-field-image", "px")
+ROCHE_COORDINATE_FRAME = CoordinateFrame(
+    "roche-open-field-image", "px", AxisOrientation.X_RIGHT_Y_DOWN
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -139,6 +143,15 @@ class RocheRecording:
         return ROCHE_COORDINATE_FRAME
 
     @property
+    def context(self) -> SpatialContext:
+        return SpatialContext(
+            subject_id=self.subject_id,
+            recording_id=self.recording_id,
+            source=self.source,
+            coordinate_frame=self.coordinate_frame,
+        )
+
+    @property
     def sampling_rate_hz(self) -> None:
         """The downloaded source material does not establish a sampling rate."""
 
@@ -147,7 +160,11 @@ class RocheRecording:
     def frames(self, *, validate_frame_count: bool = True) -> Iterator[SpatialFrame]:
         """Stream frames and validate indices; canonical count is checked on exhaustion."""
 
-        yield from _iter_pose_frames(self.path, validate_frame_count=validate_frame_count)
+        yield from _iter_pose_frames(
+            self.path,
+            context=self.context,
+            validate_frame_count=validate_frame_count,
+        )
 
 
 def _md5(path: Path) -> str:
@@ -452,7 +469,12 @@ def _parse_spatial_frame(
     return pose, landmarks
 
 
-def _iter_pose_frames(path: Path, *, validate_frame_count: bool) -> Iterator[SpatialFrame]:
+def _iter_pose_frames(
+    path: Path,
+    *,
+    context: SpatialContext,
+    validate_frame_count: bool,
+) -> Iterator[SpatialFrame]:
     try:
         handle = path.open(newline="", encoding="utf-8-sig")
     except OSError as error:
@@ -489,6 +511,7 @@ def _iter_pose_frames(path: Path, *, validate_frame_count: bool) -> Iterator[Spa
                 values, path=path, row_number=row_number
             )
             yield SpatialFrame(
+                context=context,
                 frame_index=frame_index,
                 pose=pose,
                 landmarks=landmarks,
@@ -556,6 +579,7 @@ def roche_provenance(
         "coordinate_frame": {
             "frame_id": ROCHE_COORDINATE_FRAME.frame_id,
             "unit": ROCHE_COORDINATE_FRAME.unit,
+            "axis_orientation": ROCHE_COORDINATE_FRAME.axis_orientation.value,
             "physical_calibration": None,
         },
         "sampling_rate_hz": None,
