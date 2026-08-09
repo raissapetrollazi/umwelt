@@ -1,0 +1,2312 @@
+{
+  "master_seed": 1729,
+  "paired_state_random_streams": true,
+  "schema_version": "umwelt.individual-variation-seeds.v1",
+  "separate_activity_random_stream": true,
+  "series": [
+    {
+      "activity_seed": 6215538180561924255,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 1,
+      "source_subject_id": "6",
+      "state_seed": 12116629434126940461
+    },
+    {
+      "activity_seed": 8877741225842266666,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 1,
+      "source_subject_id": "12",
+      "state_seed": 15577642365188871376
+    },
+    {
+      "activity_seed": 14692446328761240490,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 1,
+      "source_subject_id": "18",
+      "state_seed": 7687947717324406640
+    },
+    {
+      "activity_seed": 17667869981265810933,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 1,
+      "source_subject_id": "24",
+      "state_seed": 8336797105961508930
+    },
+    {
+      "activity_seed": 6215538180561924255,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 11078475046531475256,
+      "profile_source_subject_id": "11",
+      "replicate": 1,
+      "source_subject_id": "6",
+      "state_seed": 12116629434126940461
+    },
+    {
+      "activity_seed": 8877741225842266666,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6830191689758241001,
+      "profile_source_subject_id": "9",
+      "replicate": 1,
+      "source_subject_id": "12",
+      "state_seed": 15577642365188871376
+    },
+    {
+      "activity_seed": 14692446328761240490,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2362980110951980992,
+      "profile_source_subject_id": "7",
+      "replicate": 1,
+      "source_subject_id": "18",
+      "state_seed": 7687947717324406640
+    },
+    {
+      "activity_seed": 17667869981265810933,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 14669244862290550483,
+      "profile_source_subject_id": "7",
+      "replicate": 1,
+      "source_subject_id": "24",
+      "state_seed": 8336797105961508930
+    },
+    {
+      "activity_seed": 15905328682480445554,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 2,
+      "source_subject_id": "6",
+      "state_seed": 7154994369405481375
+    },
+    {
+      "activity_seed": 16471845085772898045,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 2,
+      "source_subject_id": "12",
+      "state_seed": 2829217449575349764
+    },
+    {
+      "activity_seed": 10700007515395593187,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 2,
+      "source_subject_id": "18",
+      "state_seed": 18000371477947243691
+    },
+    {
+      "activity_seed": 1567561658487326561,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 2,
+      "source_subject_id": "24",
+      "state_seed": 17856036486457676745
+    },
+    {
+      "activity_seed": 15905328682480445554,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12646909159965549956,
+      "profile_source_subject_id": "3",
+      "replicate": 2,
+      "source_subject_id": "6",
+      "state_seed": 7154994369405481375
+    },
+    {
+      "activity_seed": 16471845085772898045,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17788638224292104051,
+      "profile_source_subject_id": "7",
+      "replicate": 2,
+      "source_subject_id": "12",
+      "state_seed": 2829217449575349764
+    },
+    {
+      "activity_seed": 10700007515395593187,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3695707769009577217,
+      "profile_source_subject_id": "21",
+      "replicate": 2,
+      "source_subject_id": "18",
+      "state_seed": 18000371477947243691
+    },
+    {
+      "activity_seed": 1567561658487326561,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 14405200520091726725,
+      "profile_source_subject_id": "5",
+      "replicate": 2,
+      "source_subject_id": "24",
+      "state_seed": 17856036486457676745
+    },
+    {
+      "activity_seed": 3085488899277182125,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 3,
+      "source_subject_id": "6",
+      "state_seed": 3186507251402471803
+    },
+    {
+      "activity_seed": 1556111762646961089,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 3,
+      "source_subject_id": "12",
+      "state_seed": 649751845790276204
+    },
+    {
+      "activity_seed": 5779571580949367409,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 3,
+      "source_subject_id": "18",
+      "state_seed": 14225127824268796381
+    },
+    {
+      "activity_seed": 11269572507756137617,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 3,
+      "source_subject_id": "24",
+      "state_seed": 9909964299842518204
+    },
+    {
+      "activity_seed": 3085488899277182125,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5869146854221450822,
+      "profile_source_subject_id": "4",
+      "replicate": 3,
+      "source_subject_id": "6",
+      "state_seed": 3186507251402471803
+    },
+    {
+      "activity_seed": 1556111762646961089,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5852632679907167736,
+      "profile_source_subject_id": "17",
+      "replicate": 3,
+      "source_subject_id": "12",
+      "state_seed": 649751845790276204
+    },
+    {
+      "activity_seed": 5779571580949367409,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5977458329091575026,
+      "profile_source_subject_id": "7",
+      "replicate": 3,
+      "source_subject_id": "18",
+      "state_seed": 14225127824268796381
+    },
+    {
+      "activity_seed": 11269572507756137617,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3946620601311572317,
+      "profile_source_subject_id": "1",
+      "replicate": 3,
+      "source_subject_id": "24",
+      "state_seed": 9909964299842518204
+    },
+    {
+      "activity_seed": 3237938188737215527,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 4,
+      "source_subject_id": "6",
+      "state_seed": 15936745232464287222
+    },
+    {
+      "activity_seed": 7796442382346697563,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 4,
+      "source_subject_id": "12",
+      "state_seed": 10441035943464844412
+    },
+    {
+      "activity_seed": 2141155123586498145,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 4,
+      "source_subject_id": "18",
+      "state_seed": 12950200356568224320
+    },
+    {
+      "activity_seed": 10081217248187278796,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 4,
+      "source_subject_id": "24",
+      "state_seed": 9974392731921878262
+    },
+    {
+      "activity_seed": 3237938188737215527,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 15391918296824267208,
+      "profile_source_subject_id": "10",
+      "replicate": 4,
+      "source_subject_id": "6",
+      "state_seed": 15936745232464287222
+    },
+    {
+      "activity_seed": 7796442382346697563,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 11667504490002959523,
+      "profile_source_subject_id": "1",
+      "replicate": 4,
+      "source_subject_id": "12",
+      "state_seed": 10441035943464844412
+    },
+    {
+      "activity_seed": 2141155123586498145,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3008063937253997708,
+      "profile_source_subject_id": "16",
+      "replicate": 4,
+      "source_subject_id": "18",
+      "state_seed": 12950200356568224320
+    },
+    {
+      "activity_seed": 10081217248187278796,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2165864685246221675,
+      "profile_source_subject_id": "20",
+      "replicate": 4,
+      "source_subject_id": "24",
+      "state_seed": 9974392731921878262
+    },
+    {
+      "activity_seed": 1355759866743536351,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 5,
+      "source_subject_id": "6",
+      "state_seed": 3855631601450241621
+    },
+    {
+      "activity_seed": 9666181700020050618,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 5,
+      "source_subject_id": "12",
+      "state_seed": 1394320819547795577
+    },
+    {
+      "activity_seed": 8878080643307596187,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 5,
+      "source_subject_id": "18",
+      "state_seed": 900113492537316458
+    },
+    {
+      "activity_seed": 16479843789285934188,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 5,
+      "source_subject_id": "24",
+      "state_seed": 11971323506036799698
+    },
+    {
+      "activity_seed": 1355759866743536351,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8252020889758100497,
+      "profile_source_subject_id": "1",
+      "replicate": 5,
+      "source_subject_id": "6",
+      "state_seed": 3855631601450241621
+    },
+    {
+      "activity_seed": 9666181700020050618,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 9034049203112268336,
+      "profile_source_subject_id": "14",
+      "replicate": 5,
+      "source_subject_id": "12",
+      "state_seed": 1394320819547795577
+    },
+    {
+      "activity_seed": 8878080643307596187,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 7693023779833112234,
+      "profile_source_subject_id": "3",
+      "replicate": 5,
+      "source_subject_id": "18",
+      "state_seed": 900113492537316458
+    },
+    {
+      "activity_seed": 16479843789285934188,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3423614761395285514,
+      "profile_source_subject_id": "5",
+      "replicate": 5,
+      "source_subject_id": "24",
+      "state_seed": 11971323506036799698
+    },
+    {
+      "activity_seed": 9455095779330131925,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 6,
+      "source_subject_id": "6",
+      "state_seed": 11693762289264128395
+    },
+    {
+      "activity_seed": 18334300228476470225,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 6,
+      "source_subject_id": "12",
+      "state_seed": 8256925908063353570
+    },
+    {
+      "activity_seed": 16673042212368748592,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 6,
+      "source_subject_id": "18",
+      "state_seed": 17570921140261941396
+    },
+    {
+      "activity_seed": 683798043216856861,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 6,
+      "source_subject_id": "24",
+      "state_seed": 4035778850031299083
+    },
+    {
+      "activity_seed": 9455095779330131925,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5024112474307815140,
+      "profile_source_subject_id": "19",
+      "replicate": 6,
+      "source_subject_id": "6",
+      "state_seed": 11693762289264128395
+    },
+    {
+      "activity_seed": 18334300228476470225,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8850661461100206303,
+      "profile_source_subject_id": "16",
+      "replicate": 6,
+      "source_subject_id": "12",
+      "state_seed": 8256925908063353570
+    },
+    {
+      "activity_seed": 16673042212368748592,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2153659115967654151,
+      "profile_source_subject_id": "14",
+      "replicate": 6,
+      "source_subject_id": "18",
+      "state_seed": 17570921140261941396
+    },
+    {
+      "activity_seed": 683798043216856861,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10367255229872818699,
+      "profile_source_subject_id": "21",
+      "replicate": 6,
+      "source_subject_id": "24",
+      "state_seed": 4035778850031299083
+    },
+    {
+      "activity_seed": 999471305660468648,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 7,
+      "source_subject_id": "6",
+      "state_seed": 16636326540478430815
+    },
+    {
+      "activity_seed": 13733304618045848418,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 7,
+      "source_subject_id": "12",
+      "state_seed": 4119348867603340595
+    },
+    {
+      "activity_seed": 18377580072738097628,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 7,
+      "source_subject_id": "18",
+      "state_seed": 3805096895232066823
+    },
+    {
+      "activity_seed": 66388960520539154,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 7,
+      "source_subject_id": "24",
+      "state_seed": 18169087828017903970
+    },
+    {
+      "activity_seed": 999471305660468648,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16779922302976326475,
+      "profile_source_subject_id": "21",
+      "replicate": 7,
+      "source_subject_id": "6",
+      "state_seed": 16636326540478430815
+    },
+    {
+      "activity_seed": 13733304618045848418,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 1866114664124642667,
+      "profile_source_subject_id": "13",
+      "replicate": 7,
+      "source_subject_id": "12",
+      "state_seed": 4119348867603340595
+    },
+    {
+      "activity_seed": 18377580072738097628,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6179648521115355581,
+      "profile_source_subject_id": "11",
+      "replicate": 7,
+      "source_subject_id": "18",
+      "state_seed": 3805096895232066823
+    },
+    {
+      "activity_seed": 66388960520539154,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16430171901577845408,
+      "profile_source_subject_id": "1",
+      "replicate": 7,
+      "source_subject_id": "24",
+      "state_seed": 18169087828017903970
+    },
+    {
+      "activity_seed": 12613577305581907782,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 8,
+      "source_subject_id": "6",
+      "state_seed": 43836426692975085
+    },
+    {
+      "activity_seed": 16836342385244589670,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 8,
+      "source_subject_id": "12",
+      "state_seed": 7602024048815967776
+    },
+    {
+      "activity_seed": 14187102769235220078,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 8,
+      "source_subject_id": "18",
+      "state_seed": 2878817725586525445
+    },
+    {
+      "activity_seed": 8532533413330864778,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 8,
+      "source_subject_id": "24",
+      "state_seed": 15735265566670896484
+    },
+    {
+      "activity_seed": 12613577305581907782,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 15185131951229683693,
+      "profile_source_subject_id": "22",
+      "replicate": 8,
+      "source_subject_id": "6",
+      "state_seed": 43836426692975085
+    },
+    {
+      "activity_seed": 16836342385244589670,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6260210437886440250,
+      "profile_source_subject_id": "15",
+      "replicate": 8,
+      "source_subject_id": "12",
+      "state_seed": 7602024048815967776
+    },
+    {
+      "activity_seed": 14187102769235220078,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 7171834206438039173,
+      "profile_source_subject_id": "21",
+      "replicate": 8,
+      "source_subject_id": "18",
+      "state_seed": 2878817725586525445
+    },
+    {
+      "activity_seed": 8532533413330864778,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 631905336618586942,
+      "profile_source_subject_id": "13",
+      "replicate": 8,
+      "source_subject_id": "24",
+      "state_seed": 15735265566670896484
+    },
+    {
+      "activity_seed": 3828554313312862574,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 9,
+      "source_subject_id": "6",
+      "state_seed": 10893235441057813290
+    },
+    {
+      "activity_seed": 6109393403908403489,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 9,
+      "source_subject_id": "12",
+      "state_seed": 3271674923329873699
+    },
+    {
+      "activity_seed": 12447849127069742809,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 9,
+      "source_subject_id": "18",
+      "state_seed": 6064793223881216965
+    },
+    {
+      "activity_seed": 13832669128401031750,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 9,
+      "source_subject_id": "24",
+      "state_seed": 13444791915829337676
+    },
+    {
+      "activity_seed": 3828554313312862574,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3086304214535137350,
+      "profile_source_subject_id": "8",
+      "replicate": 9,
+      "source_subject_id": "6",
+      "state_seed": 10893235441057813290
+    },
+    {
+      "activity_seed": 6109393403908403489,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3955547230602457650,
+      "profile_source_subject_id": "16",
+      "replicate": 9,
+      "source_subject_id": "12",
+      "state_seed": 3271674923329873699
+    },
+    {
+      "activity_seed": 12447849127069742809,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 14092930071185360620,
+      "profile_source_subject_id": "22",
+      "replicate": 9,
+      "source_subject_id": "18",
+      "state_seed": 6064793223881216965
+    },
+    {
+      "activity_seed": 13832669128401031750,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3757575548818209385,
+      "profile_source_subject_id": "7",
+      "replicate": 9,
+      "source_subject_id": "24",
+      "state_seed": 13444791915829337676
+    },
+    {
+      "activity_seed": 15563435178698755243,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 10,
+      "source_subject_id": "6",
+      "state_seed": 1802182065237185449
+    },
+    {
+      "activity_seed": 18289792575294938850,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 10,
+      "source_subject_id": "12",
+      "state_seed": 4835103384691232415
+    },
+    {
+      "activity_seed": 10614769300658680853,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 10,
+      "source_subject_id": "18",
+      "state_seed": 3722960252540763989
+    },
+    {
+      "activity_seed": 4690598191231640232,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 10,
+      "source_subject_id": "24",
+      "state_seed": 18374102064084731277
+    },
+    {
+      "activity_seed": 15563435178698755243,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8614855076888850313,
+      "profile_source_subject_id": "2",
+      "replicate": 10,
+      "source_subject_id": "6",
+      "state_seed": 1802182065237185449
+    },
+    {
+      "activity_seed": 18289792575294938850,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12990494763082492071,
+      "profile_source_subject_id": "2",
+      "replicate": 10,
+      "source_subject_id": "12",
+      "state_seed": 4835103384691232415
+    },
+    {
+      "activity_seed": 10614769300658680853,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2591897922303467072,
+      "profile_source_subject_id": "8",
+      "replicate": 10,
+      "source_subject_id": "18",
+      "state_seed": 3722960252540763989
+    },
+    {
+      "activity_seed": 4690598191231640232,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16279623697038506510,
+      "profile_source_subject_id": "11",
+      "replicate": 10,
+      "source_subject_id": "24",
+      "state_seed": 18374102064084731277
+    },
+    {
+      "activity_seed": 15008707699375236067,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 11,
+      "source_subject_id": "6",
+      "state_seed": 2627002018935743215
+    },
+    {
+      "activity_seed": 1162791941922177630,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 11,
+      "source_subject_id": "12",
+      "state_seed": 1183518236096667115
+    },
+    {
+      "activity_seed": 4820071296064977823,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 11,
+      "source_subject_id": "18",
+      "state_seed": 690353102782880039
+    },
+    {
+      "activity_seed": 6403223991508098508,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 11,
+      "source_subject_id": "24",
+      "state_seed": 5807964012126559420
+    },
+    {
+      "activity_seed": 15008707699375236067,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17654413344211167155,
+      "profile_source_subject_id": "20",
+      "replicate": 11,
+      "source_subject_id": "6",
+      "state_seed": 2627002018935743215
+    },
+    {
+      "activity_seed": 1162791941922177630,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10543593864766162867,
+      "profile_source_subject_id": "4",
+      "replicate": 11,
+      "source_subject_id": "12",
+      "state_seed": 1183518236096667115
+    },
+    {
+      "activity_seed": 4820071296064977823,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 18270814541027747972,
+      "profile_source_subject_id": "21",
+      "replicate": 11,
+      "source_subject_id": "18",
+      "state_seed": 690353102782880039
+    },
+    {
+      "activity_seed": 6403223991508098508,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 14870676856177204921,
+      "profile_source_subject_id": "7",
+      "replicate": 11,
+      "source_subject_id": "24",
+      "state_seed": 5807964012126559420
+    },
+    {
+      "activity_seed": 1000857438798713081,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 12,
+      "source_subject_id": "6",
+      "state_seed": 1415325253396486543
+    },
+    {
+      "activity_seed": 6362920981695191530,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 12,
+      "source_subject_id": "12",
+      "state_seed": 3058995029236624156
+    },
+    {
+      "activity_seed": 15792426849109356333,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 12,
+      "source_subject_id": "18",
+      "state_seed": 11046324517936837232
+    },
+    {
+      "activity_seed": 17817191442254262162,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 12,
+      "source_subject_id": "24",
+      "state_seed": 15752649675054559106
+    },
+    {
+      "activity_seed": 1000857438798713081,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 15980674164226144311,
+      "profile_source_subject_id": "16",
+      "replicate": 12,
+      "source_subject_id": "6",
+      "state_seed": 1415325253396486543
+    },
+    {
+      "activity_seed": 6362920981695191530,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10706677232476264376,
+      "profile_source_subject_id": "19",
+      "replicate": 12,
+      "source_subject_id": "12",
+      "state_seed": 3058995029236624156
+    },
+    {
+      "activity_seed": 15792426849109356333,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6941660647264365222,
+      "profile_source_subject_id": "21",
+      "replicate": 12,
+      "source_subject_id": "18",
+      "state_seed": 11046324517936837232
+    },
+    {
+      "activity_seed": 17817191442254262162,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 18215175060452613725,
+      "profile_source_subject_id": "1",
+      "replicate": 12,
+      "source_subject_id": "24",
+      "state_seed": 15752649675054559106
+    },
+    {
+      "activity_seed": 15964736267914968417,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 13,
+      "source_subject_id": "6",
+      "state_seed": 13176260224095329970
+    },
+    {
+      "activity_seed": 1426256173930530153,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 13,
+      "source_subject_id": "12",
+      "state_seed": 16373857805024611309
+    },
+    {
+      "activity_seed": 13922571123317342754,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 13,
+      "source_subject_id": "18",
+      "state_seed": 964611993728430854
+    },
+    {
+      "activity_seed": 17542269086345436730,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 13,
+      "source_subject_id": "24",
+      "state_seed": 13250431401603931563
+    },
+    {
+      "activity_seed": 15964736267914968417,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 1550162718319704185,
+      "profile_source_subject_id": "16",
+      "replicate": 13,
+      "source_subject_id": "6",
+      "state_seed": 13176260224095329970
+    },
+    {
+      "activity_seed": 1426256173930530153,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6605758269443230831,
+      "profile_source_subject_id": "20",
+      "replicate": 13,
+      "source_subject_id": "12",
+      "state_seed": 16373857805024611309
+    },
+    {
+      "activity_seed": 13922571123317342754,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8818264804800016966,
+      "profile_source_subject_id": "17",
+      "replicate": 13,
+      "source_subject_id": "18",
+      "state_seed": 964611993728430854
+    },
+    {
+      "activity_seed": 17542269086345436730,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3135002026424001701,
+      "profile_source_subject_id": "13",
+      "replicate": 13,
+      "source_subject_id": "24",
+      "state_seed": 13250431401603931563
+    },
+    {
+      "activity_seed": 8498084579810342409,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 14,
+      "source_subject_id": "6",
+      "state_seed": 2279067229197065412
+    },
+    {
+      "activity_seed": 6496978980009500602,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 14,
+      "source_subject_id": "12",
+      "state_seed": 171655114047840506
+    },
+    {
+      "activity_seed": 9981301039841562902,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 14,
+      "source_subject_id": "18",
+      "state_seed": 8357614474166634236
+    },
+    {
+      "activity_seed": 14690525822901554850,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 14,
+      "source_subject_id": "24",
+      "state_seed": 14610824705151324598
+    },
+    {
+      "activity_seed": 8498084579810342409,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2598692651080677477,
+      "profile_source_subject_id": "22",
+      "replicate": 14,
+      "source_subject_id": "6",
+      "state_seed": 2279067229197065412
+    },
+    {
+      "activity_seed": 6496978980009500602,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 15009025443488738475,
+      "profile_source_subject_id": "17",
+      "replicate": 14,
+      "source_subject_id": "12",
+      "state_seed": 171655114047840506
+    },
+    {
+      "activity_seed": 9981301039841562902,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17308956364104115905,
+      "profile_source_subject_id": "1",
+      "replicate": 14,
+      "source_subject_id": "18",
+      "state_seed": 8357614474166634236
+    },
+    {
+      "activity_seed": 14690525822901554850,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3193573299714328418,
+      "profile_source_subject_id": "11",
+      "replicate": 14,
+      "source_subject_id": "24",
+      "state_seed": 14610824705151324598
+    },
+    {
+      "activity_seed": 12392074694136158953,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 15,
+      "source_subject_id": "6",
+      "state_seed": 17511602471044134202
+    },
+    {
+      "activity_seed": 10741319939429922091,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 15,
+      "source_subject_id": "12",
+      "state_seed": 10146339625431381610
+    },
+    {
+      "activity_seed": 9775822328733960651,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 15,
+      "source_subject_id": "18",
+      "state_seed": 9690598518942956630
+    },
+    {
+      "activity_seed": 2454456968144029519,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 15,
+      "source_subject_id": "24",
+      "state_seed": 17431682530848377821
+    },
+    {
+      "activity_seed": 12392074694136158953,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 13593010159935726350,
+      "profile_source_subject_id": "8",
+      "replicate": 15,
+      "source_subject_id": "6",
+      "state_seed": 17511602471044134202
+    },
+    {
+      "activity_seed": 10741319939429922091,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3520402114647149314,
+      "profile_source_subject_id": "11",
+      "replicate": 15,
+      "source_subject_id": "12",
+      "state_seed": 10146339625431381610
+    },
+    {
+      "activity_seed": 9775822328733960651,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10755891640854264529,
+      "profile_source_subject_id": "11",
+      "replicate": 15,
+      "source_subject_id": "18",
+      "state_seed": 9690598518942956630
+    },
+    {
+      "activity_seed": 2454456968144029519,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10111354934365910515,
+      "profile_source_subject_id": "22",
+      "replicate": 15,
+      "source_subject_id": "24",
+      "state_seed": 17431682530848377821
+    },
+    {
+      "activity_seed": 9540769817049345914,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 16,
+      "source_subject_id": "6",
+      "state_seed": 13410820978922172348
+    },
+    {
+      "activity_seed": 2149018810621942187,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 16,
+      "source_subject_id": "12",
+      "state_seed": 12375063240212285652
+    },
+    {
+      "activity_seed": 16522142474036229422,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 16,
+      "source_subject_id": "18",
+      "state_seed": 9492734832101658885
+    },
+    {
+      "activity_seed": 11526356712300476893,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 16,
+      "source_subject_id": "24",
+      "state_seed": 10923277648741477214
+    },
+    {
+      "activity_seed": 9540769817049345914,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 133629058298437909,
+      "profile_source_subject_id": "1",
+      "replicate": 16,
+      "source_subject_id": "6",
+      "state_seed": 13410820978922172348
+    },
+    {
+      "activity_seed": 2149018810621942187,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 4001949245557235679,
+      "profile_source_subject_id": "19",
+      "replicate": 16,
+      "source_subject_id": "12",
+      "state_seed": 12375063240212285652
+    },
+    {
+      "activity_seed": 16522142474036229422,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17408070848372057464,
+      "profile_source_subject_id": "17",
+      "replicate": 16,
+      "source_subject_id": "18",
+      "state_seed": 9492734832101658885
+    },
+    {
+      "activity_seed": 11526356712300476893,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8111430829339993375,
+      "profile_source_subject_id": "11",
+      "replicate": 16,
+      "source_subject_id": "24",
+      "state_seed": 10923277648741477214
+    },
+    {
+      "activity_seed": 4044665693121885442,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 17,
+      "source_subject_id": "6",
+      "state_seed": 9171456929708956311
+    },
+    {
+      "activity_seed": 14429641888240482306,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 17,
+      "source_subject_id": "12",
+      "state_seed": 3544899721520900334
+    },
+    {
+      "activity_seed": 13474704555486473768,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 17,
+      "source_subject_id": "18",
+      "state_seed": 2510854347179953298
+    },
+    {
+      "activity_seed": 15980587252110224796,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 17,
+      "source_subject_id": "24",
+      "state_seed": 17309613381906684951
+    },
+    {
+      "activity_seed": 4044665693121885442,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8579503936799821196,
+      "profile_source_subject_id": "13",
+      "replicate": 17,
+      "source_subject_id": "6",
+      "state_seed": 9171456929708956311
+    },
+    {
+      "activity_seed": 14429641888240482306,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 14817691067951277028,
+      "profile_source_subject_id": "15",
+      "replicate": 17,
+      "source_subject_id": "12",
+      "state_seed": 3544899721520900334
+    },
+    {
+      "activity_seed": 13474704555486473768,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 13416713953593922729,
+      "profile_source_subject_id": "3",
+      "replicate": 17,
+      "source_subject_id": "18",
+      "state_seed": 2510854347179953298
+    },
+    {
+      "activity_seed": 15980587252110224796,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16721105185527591971,
+      "profile_source_subject_id": "23",
+      "replicate": 17,
+      "source_subject_id": "24",
+      "state_seed": 17309613381906684951
+    },
+    {
+      "activity_seed": 10769707129625776480,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 18,
+      "source_subject_id": "6",
+      "state_seed": 18287376180599177602
+    },
+    {
+      "activity_seed": 12935132920712517378,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 18,
+      "source_subject_id": "12",
+      "state_seed": 11043131219926569226
+    },
+    {
+      "activity_seed": 17535877956679251288,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 18,
+      "source_subject_id": "18",
+      "state_seed": 16936678844455030628
+    },
+    {
+      "activity_seed": 16897724188110007736,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 18,
+      "source_subject_id": "24",
+      "state_seed": 5004491418492261390
+    },
+    {
+      "activity_seed": 10769707129625776480,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10767534261955185636,
+      "profile_source_subject_id": "8",
+      "replicate": 18,
+      "source_subject_id": "6",
+      "state_seed": 18287376180599177602
+    },
+    {
+      "activity_seed": 12935132920712517378,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 13923102127778412695,
+      "profile_source_subject_id": "15",
+      "replicate": 18,
+      "source_subject_id": "12",
+      "state_seed": 11043131219926569226
+    },
+    {
+      "activity_seed": 17535877956679251288,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 7087205855436461407,
+      "profile_source_subject_id": "9",
+      "replicate": 18,
+      "source_subject_id": "18",
+      "state_seed": 16936678844455030628
+    },
+    {
+      "activity_seed": 16897724188110007736,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 1527030784523341494,
+      "profile_source_subject_id": "8",
+      "replicate": 18,
+      "source_subject_id": "24",
+      "state_seed": 5004491418492261390
+    },
+    {
+      "activity_seed": 13575516025172392110,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 19,
+      "source_subject_id": "6",
+      "state_seed": 10654813207421322714
+    },
+    {
+      "activity_seed": 8990370403026920424,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 19,
+      "source_subject_id": "12",
+      "state_seed": 12808230348917635002
+    },
+    {
+      "activity_seed": 4244435094855694547,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 19,
+      "source_subject_id": "18",
+      "state_seed": 16140957858410339288
+    },
+    {
+      "activity_seed": 7739567692311306491,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 19,
+      "source_subject_id": "24",
+      "state_seed": 6229261633218090003
+    },
+    {
+      "activity_seed": 13575516025172392110,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17737804211763627661,
+      "profile_source_subject_id": "15",
+      "replicate": 19,
+      "source_subject_id": "6",
+      "state_seed": 10654813207421322714
+    },
+    {
+      "activity_seed": 8990370403026920424,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5360137920415527587,
+      "profile_source_subject_id": "14",
+      "replicate": 19,
+      "source_subject_id": "12",
+      "state_seed": 12808230348917635002
+    },
+    {
+      "activity_seed": 4244435094855694547,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 11891308991342068225,
+      "profile_source_subject_id": "14",
+      "replicate": 19,
+      "source_subject_id": "18",
+      "state_seed": 16140957858410339288
+    },
+    {
+      "activity_seed": 7739567692311306491,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 971349184310477617,
+      "profile_source_subject_id": "20",
+      "replicate": 19,
+      "source_subject_id": "24",
+      "state_seed": 6229261633218090003
+    },
+    {
+      "activity_seed": 10124165987315762754,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 20,
+      "source_subject_id": "6",
+      "state_seed": 9461532964737127447
+    },
+    {
+      "activity_seed": 6638209946836364919,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 20,
+      "source_subject_id": "12",
+      "state_seed": 1072209140234755935
+    },
+    {
+      "activity_seed": 11699589137052257489,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 20,
+      "source_subject_id": "18",
+      "state_seed": 14057576339257497805
+    },
+    {
+      "activity_seed": 5177863733976370226,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 20,
+      "source_subject_id": "24",
+      "state_seed": 10643510618646995978
+    },
+    {
+      "activity_seed": 10124165987315762754,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5937694798385718830,
+      "profile_source_subject_id": "10",
+      "replicate": 20,
+      "source_subject_id": "6",
+      "state_seed": 9461532964737127447
+    },
+    {
+      "activity_seed": 6638209946836364919,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 643219708907102565,
+      "profile_source_subject_id": "19",
+      "replicate": 20,
+      "source_subject_id": "12",
+      "state_seed": 1072209140234755935
+    },
+    {
+      "activity_seed": 11699589137052257489,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16103573028730369258,
+      "profile_source_subject_id": "11",
+      "replicate": 20,
+      "source_subject_id": "18",
+      "state_seed": 14057576339257497805
+    },
+    {
+      "activity_seed": 5177863733976370226,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 11407788959427079881,
+      "profile_source_subject_id": "8",
+      "replicate": 20,
+      "source_subject_id": "24",
+      "state_seed": 10643510618646995978
+    },
+    {
+      "activity_seed": 9048578911406787706,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 21,
+      "source_subject_id": "6",
+      "state_seed": 2476153089871158219
+    },
+    {
+      "activity_seed": 15543391748541335406,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 21,
+      "source_subject_id": "12",
+      "state_seed": 6561782666208834011
+    },
+    {
+      "activity_seed": 12856170570049657539,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 21,
+      "source_subject_id": "18",
+      "state_seed": 4923323492214405887
+    },
+    {
+      "activity_seed": 13393275124624201047,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 21,
+      "source_subject_id": "24",
+      "state_seed": 17096152683700570563
+    },
+    {
+      "activity_seed": 9048578911406787706,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3464831627987713580,
+      "profile_source_subject_id": "21",
+      "replicate": 21,
+      "source_subject_id": "6",
+      "state_seed": 2476153089871158219
+    },
+    {
+      "activity_seed": 15543391748541335406,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17841322681912796931,
+      "profile_source_subject_id": "1",
+      "replicate": 21,
+      "source_subject_id": "12",
+      "state_seed": 6561782666208834011
+    },
+    {
+      "activity_seed": 12856170570049657539,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17928613924466841402,
+      "profile_source_subject_id": "14",
+      "replicate": 21,
+      "source_subject_id": "18",
+      "state_seed": 4923323492214405887
+    },
+    {
+      "activity_seed": 13393275124624201047,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10481997674459768383,
+      "profile_source_subject_id": "17",
+      "replicate": 21,
+      "source_subject_id": "24",
+      "state_seed": 17096152683700570563
+    },
+    {
+      "activity_seed": 6721226796919102599,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 22,
+      "source_subject_id": "6",
+      "state_seed": 7612866295458013937
+    },
+    {
+      "activity_seed": 17896291027005386541,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 22,
+      "source_subject_id": "12",
+      "state_seed": 15969232288589907226
+    },
+    {
+      "activity_seed": 9837261243864463453,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 22,
+      "source_subject_id": "18",
+      "state_seed": 14421257342757492241
+    },
+    {
+      "activity_seed": 18104341985365484629,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 22,
+      "source_subject_id": "24",
+      "state_seed": 15850763120108446704
+    },
+    {
+      "activity_seed": 6721226796919102599,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10711540125669979730,
+      "profile_source_subject_id": "4",
+      "replicate": 22,
+      "source_subject_id": "6",
+      "state_seed": 7612866295458013937
+    },
+    {
+      "activity_seed": 17896291027005386541,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2003310777647310963,
+      "profile_source_subject_id": "9",
+      "replicate": 22,
+      "source_subject_id": "12",
+      "state_seed": 15969232288589907226
+    },
+    {
+      "activity_seed": 9837261243864463453,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2389377372714655538,
+      "profile_source_subject_id": "5",
+      "replicate": 22,
+      "source_subject_id": "18",
+      "state_seed": 14421257342757492241
+    },
+    {
+      "activity_seed": 18104341985365484629,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 4744957645352352331,
+      "profile_source_subject_id": "15",
+      "replicate": 22,
+      "source_subject_id": "24",
+      "state_seed": 15850763120108446704
+    },
+    {
+      "activity_seed": 15319048367238648625,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 23,
+      "source_subject_id": "6",
+      "state_seed": 6737366779326826010
+    },
+    {
+      "activity_seed": 1859849474701708249,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 23,
+      "source_subject_id": "12",
+      "state_seed": 8927326958016392314
+    },
+    {
+      "activity_seed": 6633086972411490615,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 23,
+      "source_subject_id": "18",
+      "state_seed": 14038973916392171406
+    },
+    {
+      "activity_seed": 10934024088607699979,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 23,
+      "source_subject_id": "24",
+      "state_seed": 17284403835667423536
+    },
+    {
+      "activity_seed": 15319048367238648625,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10521918523596470603,
+      "profile_source_subject_id": "4",
+      "replicate": 23,
+      "source_subject_id": "6",
+      "state_seed": 6737366779326826010
+    },
+    {
+      "activity_seed": 1859849474701708249,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12063191955992494750,
+      "profile_source_subject_id": "20",
+      "replicate": 23,
+      "source_subject_id": "12",
+      "state_seed": 8927326958016392314
+    },
+    {
+      "activity_seed": 6633086972411490615,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6966002319482092442,
+      "profile_source_subject_id": "19",
+      "replicate": 23,
+      "source_subject_id": "18",
+      "state_seed": 14038973916392171406
+    },
+    {
+      "activity_seed": 10934024088607699979,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2361627000311367567,
+      "profile_source_subject_id": "3",
+      "replicate": 23,
+      "source_subject_id": "24",
+      "state_seed": 17284403835667423536
+    },
+    {
+      "activity_seed": 117820079672423839,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 24,
+      "source_subject_id": "6",
+      "state_seed": 10819485627001319232
+    },
+    {
+      "activity_seed": 4323378092334913149,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 24,
+      "source_subject_id": "12",
+      "state_seed": 3306858502288352909
+    },
+    {
+      "activity_seed": 2515410247661754833,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 24,
+      "source_subject_id": "18",
+      "state_seed": 2549278188000903112
+    },
+    {
+      "activity_seed": 12285622276913346735,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 24,
+      "source_subject_id": "24",
+      "state_seed": 16115188983405279411
+    },
+    {
+      "activity_seed": 117820079672423839,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8121701605076741573,
+      "profile_source_subject_id": "20",
+      "replicate": 24,
+      "source_subject_id": "6",
+      "state_seed": 10819485627001319232
+    },
+    {
+      "activity_seed": 4323378092334913149,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 18351476559890822490,
+      "profile_source_subject_id": "11",
+      "replicate": 24,
+      "source_subject_id": "12",
+      "state_seed": 3306858502288352909
+    },
+    {
+      "activity_seed": 2515410247661754833,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 3492568804677593992,
+      "profile_source_subject_id": "16",
+      "replicate": 24,
+      "source_subject_id": "18",
+      "state_seed": 2549278188000903112
+    },
+    {
+      "activity_seed": 12285622276913346735,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12528085959715255041,
+      "profile_source_subject_id": "5",
+      "replicate": 24,
+      "source_subject_id": "24",
+      "state_seed": 16115188983405279411
+    },
+    {
+      "activity_seed": 7555723562842740607,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 25,
+      "source_subject_id": "6",
+      "state_seed": 6773370124058543579
+    },
+    {
+      "activity_seed": 15667879120695317692,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 25,
+      "source_subject_id": "12",
+      "state_seed": 6515911616727438073
+    },
+    {
+      "activity_seed": 4483325437677650417,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 25,
+      "source_subject_id": "18",
+      "state_seed": 16271952855359147962
+    },
+    {
+      "activity_seed": 13757362866014912864,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 25,
+      "source_subject_id": "24",
+      "state_seed": 4541942269126946855
+    },
+    {
+      "activity_seed": 7555723562842740607,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 14880283840912642794,
+      "profile_source_subject_id": "19",
+      "replicate": 25,
+      "source_subject_id": "6",
+      "state_seed": 6773370124058543579
+    },
+    {
+      "activity_seed": 15667879120695317692,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16092420996045654348,
+      "profile_source_subject_id": "11",
+      "replicate": 25,
+      "source_subject_id": "12",
+      "state_seed": 6515911616727438073
+    },
+    {
+      "activity_seed": 4483325437677650417,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 8108970622463271502,
+      "profile_source_subject_id": "8",
+      "replicate": 25,
+      "source_subject_id": "18",
+      "state_seed": 16271952855359147962
+    },
+    {
+      "activity_seed": 13757362866014912864,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 7637120140779034035,
+      "profile_source_subject_id": "17",
+      "replicate": 25,
+      "source_subject_id": "24",
+      "state_seed": 4541942269126946855
+    },
+    {
+      "activity_seed": 15170047923378259281,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 26,
+      "source_subject_id": "6",
+      "state_seed": 14701985273068227122
+    },
+    {
+      "activity_seed": 6085104042480451010,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 26,
+      "source_subject_id": "12",
+      "state_seed": 12678896058168681764
+    },
+    {
+      "activity_seed": 5986883271831947989,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 26,
+      "source_subject_id": "18",
+      "state_seed": 16643018962286956803
+    },
+    {
+      "activity_seed": 6542071035637007383,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 26,
+      "source_subject_id": "24",
+      "state_seed": 11969260667726982314
+    },
+    {
+      "activity_seed": 15170047923378259281,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 10573795627589303622,
+      "profile_source_subject_id": "19",
+      "replicate": 26,
+      "source_subject_id": "6",
+      "state_seed": 14701985273068227122
+    },
+    {
+      "activity_seed": 6085104042480451010,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 4782451718533910932,
+      "profile_source_subject_id": "15",
+      "replicate": 26,
+      "source_subject_id": "12",
+      "state_seed": 12678896058168681764
+    },
+    {
+      "activity_seed": 5986883271831947989,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2637160933444472655,
+      "profile_source_subject_id": "2",
+      "replicate": 26,
+      "source_subject_id": "18",
+      "state_seed": 16643018962286956803
+    },
+    {
+      "activity_seed": 6542071035637007383,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 843703686151380658,
+      "profile_source_subject_id": "5",
+      "replicate": 26,
+      "source_subject_id": "24",
+      "state_seed": 11969260667726982314
+    },
+    {
+      "activity_seed": 5395093037106712194,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 27,
+      "source_subject_id": "6",
+      "state_seed": 10928350091982156581
+    },
+    {
+      "activity_seed": 17505725201445438447,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 27,
+      "source_subject_id": "12",
+      "state_seed": 5927239743275429215
+    },
+    {
+      "activity_seed": 5743155372007579473,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 27,
+      "source_subject_id": "18",
+      "state_seed": 17918078493166178023
+    },
+    {
+      "activity_seed": 492267598792785766,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 27,
+      "source_subject_id": "24",
+      "state_seed": 8273066897304965680
+    },
+    {
+      "activity_seed": 5395093037106712194,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12581956698402614440,
+      "profile_source_subject_id": "10",
+      "replicate": 27,
+      "source_subject_id": "6",
+      "state_seed": 10928350091982156581
+    },
+    {
+      "activity_seed": 17505725201445438447,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 4823002620440536817,
+      "profile_source_subject_id": "14",
+      "replicate": 27,
+      "source_subject_id": "12",
+      "state_seed": 5927239743275429215
+    },
+    {
+      "activity_seed": 5743155372007579473,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 15945853223898544072,
+      "profile_source_subject_id": "14",
+      "replicate": 27,
+      "source_subject_id": "18",
+      "state_seed": 17918078493166178023
+    },
+    {
+      "activity_seed": 492267598792785766,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12868092150150954890,
+      "profile_source_subject_id": "21",
+      "replicate": 27,
+      "source_subject_id": "24",
+      "state_seed": 8273066897304965680
+    },
+    {
+      "activity_seed": 7147516389165582338,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 28,
+      "source_subject_id": "6",
+      "state_seed": 16148507268327105736
+    },
+    {
+      "activity_seed": 4197667080182864274,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 28,
+      "source_subject_id": "12",
+      "state_seed": 2349372429187052598
+    },
+    {
+      "activity_seed": 1439936054821738777,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 28,
+      "source_subject_id": "18",
+      "state_seed": 8532482251415520342
+    },
+    {
+      "activity_seed": 5121524421802926941,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 28,
+      "source_subject_id": "24",
+      "state_seed": 8149181304973579635
+    },
+    {
+      "activity_seed": 7147516389165582338,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 9400295999275414743,
+      "profile_source_subject_id": "15",
+      "replicate": 28,
+      "source_subject_id": "6",
+      "state_seed": 16148507268327105736
+    },
+    {
+      "activity_seed": 4197667080182864274,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 15281019912950766379,
+      "profile_source_subject_id": "22",
+      "replicate": 28,
+      "source_subject_id": "12",
+      "state_seed": 2349372429187052598
+    },
+    {
+      "activity_seed": 1439936054821738777,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 16960018546222776712,
+      "profile_source_subject_id": "15",
+      "replicate": 28,
+      "source_subject_id": "18",
+      "state_seed": 8532482251415520342
+    },
+    {
+      "activity_seed": 5121524421802926941,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 17057632728127464810,
+      "profile_source_subject_id": "10",
+      "replicate": 28,
+      "source_subject_id": "24",
+      "state_seed": 8149181304973579635
+    },
+    {
+      "activity_seed": 1829848632500861550,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 29,
+      "source_subject_id": "6",
+      "state_seed": 3209432064343206589
+    },
+    {
+      "activity_seed": 12869978581122821486,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 29,
+      "source_subject_id": "12",
+      "state_seed": 13763803376167334594
+    },
+    {
+      "activity_seed": 12936085906743921969,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 29,
+      "source_subject_id": "18",
+      "state_seed": 11650584696317916785
+    },
+    {
+      "activity_seed": 6910703930984992540,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 29,
+      "source_subject_id": "24",
+      "state_seed": 3041994528172863891
+    },
+    {
+      "activity_seed": 1829848632500861550,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 402353893789061610,
+      "profile_source_subject_id": "19",
+      "replicate": 29,
+      "source_subject_id": "6",
+      "state_seed": 3209432064343206589
+    },
+    {
+      "activity_seed": 12869978581122821486,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 4294428417877459037,
+      "profile_source_subject_id": "14",
+      "replicate": 29,
+      "source_subject_id": "12",
+      "state_seed": 13763803376167334594
+    },
+    {
+      "activity_seed": 12936085906743921969,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 12429731221419639582,
+      "profile_source_subject_id": "22",
+      "replicate": 29,
+      "source_subject_id": "18",
+      "state_seed": 11650584696317916785
+    },
+    {
+      "activity_seed": 6910703930984992540,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 18099865484416183512,
+      "profile_source_subject_id": "14",
+      "replicate": 29,
+      "source_subject_id": "24",
+      "state_seed": 3041994528172863891
+    },
+    {
+      "activity_seed": 15817843890349543827,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 30,
+      "source_subject_id": "6",
+      "state_seed": 9976313726250045378
+    },
+    {
+      "activity_seed": 15453547035782712591,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 30,
+      "source_subject_id": "12",
+      "state_seed": 5504850988384971987
+    },
+    {
+      "activity_seed": 17113166971011104767,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 30,
+      "source_subject_id": "18",
+      "state_seed": 7418249087695676584
+    },
+    {
+      "activity_seed": 15017344937591016132,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 30,
+      "source_subject_id": "24",
+      "state_seed": 11221509942208267791
+    },
+    {
+      "activity_seed": 15817843890349543827,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6195856418167144945,
+      "profile_source_subject_id": "3",
+      "replicate": 30,
+      "source_subject_id": "6",
+      "state_seed": 9976313726250045378
+    },
+    {
+      "activity_seed": 15453547035782712591,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 7563408085730939821,
+      "profile_source_subject_id": "9",
+      "replicate": 30,
+      "source_subject_id": "12",
+      "state_seed": 5504850988384971987
+    },
+    {
+      "activity_seed": 17113166971011104767,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5957611235061271932,
+      "profile_source_subject_id": "13",
+      "replicate": 30,
+      "source_subject_id": "18",
+      "state_seed": 7418249087695676584
+    },
+    {
+      "activity_seed": 15017344937591016132,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 2977374710457114786,
+      "profile_source_subject_id": "13",
+      "replicate": 30,
+      "source_subject_id": "24",
+      "state_seed": 11221509942208267791
+    },
+    {
+      "activity_seed": 364112223129103261,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 31,
+      "source_subject_id": "6",
+      "state_seed": 11895640771876323991
+    },
+    {
+      "activity_seed": 11655870897476478009,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 31,
+      "source_subject_id": "12",
+      "state_seed": 17200065149270768520
+    },
+    {
+      "activity_seed": 6751800770499601850,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 31,
+      "source_subject_id": "18",
+      "state_seed": 9359400109672071414
+    },
+    {
+      "activity_seed": 15566330853833684049,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 31,
+      "source_subject_id": "24",
+      "state_seed": 17159852625943131549
+    },
+    {
+      "activity_seed": 364112223129103261,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 6118404326039685320,
+      "profile_source_subject_id": "1",
+      "replicate": 31,
+      "source_subject_id": "6",
+      "state_seed": 11895640771876323991
+    },
+    {
+      "activity_seed": 11655870897476478009,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 7616627465102853476,
+      "profile_source_subject_id": "11",
+      "replicate": 31,
+      "source_subject_id": "12",
+      "state_seed": 17200065149270768520
+    },
+    {
+      "activity_seed": 6751800770499601850,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 5727568913610541675,
+      "profile_source_subject_id": "9",
+      "replicate": 31,
+      "source_subject_id": "18",
+      "state_seed": 9359400109672071414
+    },
+    {
+      "activity_seed": 15566330853833684049,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 13744849396592229556,
+      "profile_source_subject_id": "14",
+      "replicate": 31,
+      "source_subject_id": "24",
+      "state_seed": 17159852625943131549
+    },
+    {
+      "activity_seed": 16460764127098330977,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 32,
+      "source_subject_id": "6",
+      "state_seed": 14386794152639268675
+    },
+    {
+      "activity_seed": 10795672531122284515,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 32,
+      "source_subject_id": "12",
+      "state_seed": 14019959216356655950
+    },
+    {
+      "activity_seed": 634772661863492374,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 32,
+      "source_subject_id": "18",
+      "state_seed": 5629962981156902013
+    },
+    {
+      "activity_seed": 335632369197955983,
+      "model_id": "phase-duration-hazard-v1:pooled-individuality-control",
+      "profile_seed": null,
+      "profile_source_subject_id": null,
+      "replicate": 32,
+      "source_subject_id": "24",
+      "state_seed": 9829753211273810275
+    },
+    {
+      "activity_seed": 16460764127098330977,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 11965983951148021728,
+      "profile_source_subject_id": "21",
+      "replicate": 32,
+      "source_subject_id": "6",
+      "state_seed": 14386794152639268675
+    },
+    {
+      "activity_seed": 10795672531122284515,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 706744523662382414,
+      "profile_source_subject_id": "16",
+      "replicate": 32,
+      "source_subject_id": "12",
+      "state_seed": 14019959216356655950
+    },
+    {
+      "activity_seed": 634772661863492374,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 4131479541117613626,
+      "profile_source_subject_id": "11",
+      "replicate": 32,
+      "source_subject_id": "18",
+      "state_seed": 5629962981156902013
+    },
+    {
+      "activity_seed": 335632369197955983,
+      "model_id": "phase-duration-population-v1",
+      "profile_seed": 9151899903459062277,
+      "profile_source_subject_id": "3",
+      "replicate": 32,
+      "source_subject_id": "24",
+      "state_seed": 9829753211273810275
+    }
+  ]
+}

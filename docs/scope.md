@@ -7,9 +7,9 @@ assumptions, and quantitatively comparing those categories.
 
 ## Current scope
 
-Version 0.1 implements one narrow temporal experiment: **Sleep / Activity
-Mouse**. It asks whether a compact generative baseline can reproduce selected
-temporal properties of recorded mouse sleep/activity dynamics.
+Version 0.1 implements one narrow temporal laboratory: **Sleep / Activity
+Mouse**. It asks which minimal explicit temporal mechanisms reproduce selected
+properties of recorded mouse sleep/activity dynamics.
 
 The current implementation provides:
 
@@ -17,10 +17,14 @@ The current implementation provides:
 - paired loading of weekly PIR activity and behaviorally defined sleep labels;
 - explicit `recorded` and `synthetic` source categories;
 - recorded-data replay through a headless CLI;
-- a pooled two-state Markov model conditioned on daily phase;
+- a four-model factorial ladder separating phase and elapsed-bout-duration
+  conditioning;
+- one shared phase- and state-conditioned activity-emission model;
 - seeded generation of synthetic state and activity sequences;
-- held-out comparison of occupancy, activity, transitions, bouts, daily phase,
-  and sleep-state autocorrelation;
+- deterministic replicated development comparison of occupancy, activity,
+  transitions, empirical bout distributions, daily phase, and sleep-state
+  autocorrelation;
+- aggregate and individual-subject predictive simulation summaries;
 - resolved configuration, provenance, seed, report, and checksum artifacts.
 
 This scope establishes a complete computational loop. It does not establish
@@ -59,8 +63,9 @@ metrics, and discrepancies can all be examined directly. This allows Umwelt to
 test its scientific infrastructure before adding space, interaction, neural
 signals, model selection, or intervention.
 
-The first baseline is expected to fail on some temporal structure. Such failure
-is an output to preserve and explain, not a reason to hide the experiment.
+The first baseline fails on important bout-duration and longer-lag temporal
+structure. The expanded model ladder tests phase and duration memory separately
+without hiding those failures or changing activity emissions at the same time.
 
 ## Current non-goals
 

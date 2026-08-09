@@ -12,10 +12,11 @@ narrow recorded-to-synthetic experiment for mouse sleep/activity dynamics. It
 is not a general animal simulator, a validated biological model, or a finished
 research platform.
 
-The current release can download and verify a pinned open dataset, replay fixed
-recorded observations, fit an inspectable generative baseline, generate seeded
-synthetic sequences, and compare recorded and synthetic temporal statistics.
-It has no runtime dependencies outside the Python 3.12 standard library.
+The current source tree can download and verify a pinned open dataset, replay
+fixed recorded observations, fit inspectable temporal models, generate seeded
+synthetic sequences, and compare recorded and synthetic temporal statistics
+across deterministic replicates. It has no runtime dependencies outside the
+Python 3.12 standard library.
 
 ## Scientific question
 
@@ -45,12 +46,31 @@ sleep labels for 24 male C57BL/6J mice under a documented 12-hour light / 12-hou
 dark cycle. The sleep labels are based on at least 40 seconds of immobility;
 they are not EEG labels or claims about subjective experience.
 
-The implemented baseline is a pooled, phase-conditioned, two-state Markov model
-with explicit activity emissions. Twenty subjects are used for fitting and four
-are held out for evaluation, one from each published group of six cages. The
-comparison reports occupancy, activity, transition, bout-duration, circadian,
-and autocorrelation statistics without assigning an unvalidated pass/fail
-threshold.
+The original baseline is a pooled, phase-conditioned, two-state Markov model.
+The expanded temporal laboratory compares state-only, phase-only,
+duration-only, and phase-plus-duration state dynamics while holding the
+activity-emission model constant. Twenty subjects are used for fitting. Subjects
+6, 12, 18, and 24 are held out from fitting but are now described as held-out
+development subjects because their original baseline results informed the
+expanded model comparison.
+
+The replicated comparison reports aggregate and per-subject occupancy,
+activity, transitions, empirical bout-distribution distances, circadian
+profiles, and autocorrelation. It exposes predictive simulation intervals and
+does not assign an unvalidated pass/fail threshold.
+
+A separate v0.1 development experiment asks whether the pooled model's "average
+mouse" limitation can be reduced by a minimal, explicit population mechanism.
+It fits two sustained logit offsets for each training mouse: sleep bias and
+state-switching rate. These reconstruct state-specific leaving hazards, and one
+fixed training-derived profile is resampled for each synthetic individual.
+Development mice are not used to calibrate profiles, and activity emissions
+remain pooled. In the 32-replicate canonical comparison, this mechanism
+increased realistic between-subject spread but systematically worsened bout
+distribution and phase-profile discrepancies. It is therefore retained as an
+experimental diagnostic, not selected as a replacement for the pooled model.
+The [canonical report](runs/v0.1-individual-variation/report.md) preserves the
+full result and its limitations.
 
 See [the v0.1 experiment document](docs/v0.1-research-direction.md) for the
 design, assumptions, artifact contract, and limitations.
@@ -65,12 +85,17 @@ umwelt data download
 umwelt data verify
 umwelt replay --config examples/v0.1-compass.json --subject 24 --limit 12 --format csv
 umwelt run --config examples/v0.1-compass.json
+umwelt compare --config examples/v0.1-temporal-lab.json
+umwelt individual --config examples/v0.1-temporal-lab.json --output runs/v0.1-individual-variation
 ```
 
-Downloaded source data is stored under `data/raw/` and excluded from Git. A run
-writes its resolved configuration, source provenance and checksums, fitted
-model, derived seeds, synthetic observations, separate recorded and synthetic
-metrics, comparison, report, and artifact hash manifest under `runs/`.
+Downloaded source data is stored under `data/raw/` and excluded from Git. The
+original `run` command retains its trajectory artifact contract. The `compare`
+command writes compact replicate metrics, model-family summaries, subject-level
+comparisons, SVG diagnostics, provenance, seeds, a report, and an artifact hash
+manifest. The `individual` command performs a separate paired comparison of the
+pooled phase+duration model and the training-population variation model. Both
+replicated workflows intentionally discard full replicate trajectories.
 Existing run directories are never overwritten.
 
 ## Scientific principles

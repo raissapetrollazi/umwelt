@@ -1,0 +1,51 @@
+{
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "bytes": 3826,
+      "name": "individual-variation.svg",
+      "sha256": "ef55b68e4862b8904cfb082e3a53ae15b9677aaa0cbd558541ec0809936668af"
+    },
+    {
+      "bytes": 240661,
+      "name": "model-comparison.json",
+      "sha256": "f5477381d38a1cfcaaaf26bd2c776b000fdd616d8ceee96ae2af4540955b5365"
+    },
+    {
+      "bytes": 160280,
+      "name": "models.json",
+      "sha256": "9393a97d1ac6165da33fa1162cea1bcbe0b57d5473345120620783c3f58f0c41"
+    },
+    {
+      "bytes": 4862,
+      "name": "provenance.json",
+      "sha256": "bd3ffe46a98309a767a7fc2d2c68c6706fed8d796b0cfb6a92d448266f9bf5f3"
+    },
+    {
+      "bytes": 12360,
+      "name": "recorded-reference.json",
+      "sha256": "79aaef7362ccc93dc57c2134cd86c51e8c9e5c7be17a4d4b42f51c605e8ad261"
+    },
+    {
+      "bytes": 696690,
+      "name": "replicate-metrics.jsonl",
+      "sha256": "9ab6abcf5c6e3569f5bc3650e4b0e24d65b5bc43cf9a23373c374afc7b9f3c9f"
+    },
+    {
+      "bytes": 8441,
+      "name": "report.md",
+      "sha256": "835909d947d36f458d25e06135cf23a2860442c0a309d49077a2d9e1f8e2c820"
+    },
+    {
+      "bytes": 1753,
+      "name": "resolved-config.json",
+      "sha256": "0ef69a4bb699929beea277b9957252bd5ac1f84ba659e2ca5e45c2b48235b4e9"
+    },
+    {
+      "bytes": 75025,
+      "name": "seeds.json",
+      "sha256": "f67b73d850b775608c6e143057f4693ac9d872cd01f4e4a35d70d6bcb386d927"
+    }
+  ],
+  "schema_version": "umwelt.artifacts.v1"
+}

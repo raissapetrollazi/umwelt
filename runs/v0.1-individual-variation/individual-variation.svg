@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="454" viewBox="0 0 960 454">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Arial,sans-serif;fill:#202124}.title{font-size:20px;font-weight:700}.label{font-size:12px}.subject{font-size:13px;font-weight:700}</style>
+<text class="title" x="24" y="32">Individual sleep-fraction variation</text>
+<text class="label" x="24" y="52">Recorded weekly values and predictive simulation intervals; development evidence only.</text>
+<line x1="170" y1="80" x2="910" y2="80" stroke="#202124"/>
+<line x1="170.00" y1="76" x2="170.00" y2="412" stroke="#e2e5e7"/>
+<text class="label" text-anchor="middle" x="170.00" y="70">0.0</text>
+<line x1="318.00" y1="76" x2="318.00" y2="412" stroke="#e2e5e7"/>
+<text class="label" text-anchor="middle" x="318.00" y="70">0.2</text>
+<line x1="466.00" y1="76" x2="466.00" y2="412" stroke="#e2e5e7"/>
+<text class="label" text-anchor="middle" x="466.00" y="70">0.4</text>
+<line x1="614.00" y1="76" x2="614.00" y2="412" stroke="#e2e5e7"/>
+<text class="label" text-anchor="middle" x="614.00" y="70">0.6</text>
+<line x1="762.00" y1="76" x2="762.00" y2="412" stroke="#e2e5e7"/>
+<text class="label" text-anchor="middle" x="762.00" y="70">0.8</text>
+<line x1="910.00" y1="76" x2="910.00" y2="412" stroke="#e2e5e7"/>
+<text class="label" text-anchor="middle" x="910.00" y="70">1.0</text>
+<text class="subject" text-anchor="end" x="152" y="118">Mouse 6</text>
+<line x1="607.85" y1="102" x2="637.57" y2="102" stroke="#006d77" stroke-width="5" opacity="0.55"/>
+<circle cx="619.07" cy="102" r="5" fill="#006d77"/>
+<line x1="545.13" y1="126" x2="661.01" y2="126" stroke="#6a4c93" stroke-width="5" opacity="0.55"/>
+<circle cx="624.84" cy="126" r="5" fill="#6a4c93"/>
+<line x1="551.55" y1="91" x2="551.55" y2="137" stroke="#111111" stroke-width="3"/>
+<text class="label" x="918" y="118">0.516</text>
+<text class="subject" text-anchor="end" x="152" y="194">Mouse 12</text>
+<line x1="606.40" y1="178" x2="634.05" y2="178" stroke="#006d77" stroke-width="5" opacity="0.55"/>
+<circle cx="620.95" cy="178" r="5" fill="#006d77"/>
+<line x1="594.16" y1="202" x2="676.78" y2="202" stroke="#6a4c93" stroke-width="5" opacity="0.55"/>
+<circle cx="636.92" cy="202" r="5" fill="#6a4c93"/>
+<line x1="645.72" y1="167" x2="645.72" y2="213" stroke="#111111" stroke-width="3"/>
+<text class="label" x="918" y="194">0.643</text>
+<text class="subject" text-anchor="end" x="152" y="270">Mouse 18</text>
+<line x1="609.10" y1="254" x2="636.82" y2="254" stroke="#006d77" stroke-width="5" opacity="0.55"/>
+<circle cx="621.58" cy="254" r="5" fill="#006d77"/>
+<line x1="581.87" y1="278" x2="673.39" y2="278" stroke="#6a4c93" stroke-width="5" opacity="0.55"/>
+<circle cx="622.78" cy="278" r="5" fill="#6a4c93"/>
+<line x1="607.18" y1="243" x2="607.18" y2="289" stroke="#111111" stroke-width="3"/>
+<text class="label" x="918" y="270">0.591</text>
+<text class="subject" text-anchor="end" x="152" y="346">Mouse 24</text>
+<line x1="607.03" y1="330" x2="635.87" y2="330" stroke="#006d77" stroke-width="5" opacity="0.55"/>
+<circle cx="622.58" cy="330" r="5" fill="#006d77"/>
+<line x1="567.39" y1="354" x2="654.51" y2="354" stroke="#6a4c93" stroke-width="5" opacity="0.55"/>
+<circle cx="619.64" cy="354" r="5" fill="#6a4c93"/>
+<line x1="622.14" y1="319" x2="622.14" y2="365" stroke="#111111" stroke-width="3"/>
+<text class="label" x="918" y="346">0.611</text>
+<line x1="170" y1="432" x2="198" y2="432" stroke="#006d77" stroke-width="5"/><text class="label" x="206" y="436">Pooled phase+duration</text>
+<line x1="380" y1="432" x2="408" y2="432" stroke="#6a4c93" stroke-width="5"/><text class="label" x="416" y="436">Population variation</text>
+<line x1="610" y1="422" x2="610" y2="440" stroke="#111111" stroke-width="3"/><text class="label" x="620" y="436">Recorded</text>
+</svg>

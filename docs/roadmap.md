@@ -8,7 +8,10 @@ Version 0.1 is implemented as pre-alpha research software. Every later milestone
 
 ## v0.1 - Sleep / Activity Mouse
 
-**Status:** implemented baseline in Umwelt 0.1.0.
+**Status:** implemented pre-alpha research laboratory. The original baseline,
+replicated temporal model comparison, and individual-variation experiment are
+implemented. The models are not scientifically validated, and prospective
+evaluation remains unresolved.
 
 **Purpose:** establish the first complete recorded-to-synthetic scientific loop using a deliberately simple temporal behavioral problem.
 
@@ -22,14 +25,27 @@ Implemented capabilities:
 - preserve dataset provenance and published checksums;
 - replay recorded observations reproducibly;
 - represent a small number of behavioral or sleep/activity states;
-- fit a compact, interpretable, phase-conditioned Markov model;
+- preserve the compact phase-conditioned Markov baseline;
+- compare state-only, phase-only, duration-only, and phase-plus-duration models
+  with shared activity emissions;
 - generate synthetic state or activity sequences;
+- summarize deterministic synthetic replicate distributions without retaining
+  every full trajectory;
 - reproduce synthetic runs from configuration and random seeds;
-- quantitatively compare recorded and synthetic behavior;
+- quantitatively compare recorded and synthetic behavior globally and by mouse;
 - explicitly report model failures and mismatches;
 - expose the workflow through a minimal headless CLI.
 
-Implemented comparison dimensions include state occupancy, bout-duration summaries, transition frequencies, activity distributions, daily phase profiles, and sleep-state autocorrelation.
+Implemented comparison dimensions include state occupancy, empirical bout
+distributions, transition frequencies, activity statistics, daily phase
+profiles, sleep-state autocorrelation, individual-subject results, and
+predictive simulation intervals.
+
+The canonical evidence supports beginning v0.2 planning. This decision reflects
+the maturity of the reproducible laboratory, not acceptance of a biological
+model. Remaining bout-distribution and long-lag discrepancies, pooled activity
+emissions, and prospective evaluation are explicitly deferred and must remain
+visible in future work.
 
 v0.1 is not merely a classification milestone. The synthetic animal must generate new behavioral sequences.
 
@@ -38,6 +54,8 @@ The selected weekly COMPASS labels are based on PIR immobility and remain explic
 See [v0.1 Research Direction](v0.1-research-direction.md).
 
 ## v0.2 - Spatial Mouse
+
+**Status:** planning may begin; no v0.2 capability is implemented yet.
 
 Introduce an explicit body and spatial world.
 
