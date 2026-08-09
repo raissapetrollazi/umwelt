@@ -19,7 +19,6 @@ from umwelt.individual_reporting import (
 )
 from umwelt.individual_variation import (
     POPULATION_MODEL_ID,
-    PopulationTemporalModel,
     derive_profile_seed,
     fit_population_temporal_model,
     simulate_population_from_template,
