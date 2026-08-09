@@ -36,8 +36,6 @@ ROCHE_POSE_ARCHIVE_SIZE = 514_028_268
 ROCHE_POSE_ARCHIVE_MD5 = "8b48f2060146c03d578d5d6971aa70e9"
 ROCHE_POSE_DIRECTORY = PurePosixPath("data/Yohimbine_Roche")
 ROCHE_RECORDING_COUNT = 32
-ROCHE_MIN_FRAME_COUNT = 53_914
-ROCHE_MAX_FRAME_COUNT = 53_964
 ROCHE_METADATA_COLUMNS = (
     "Animal ID",
     "DLC file",
@@ -360,6 +358,7 @@ class RocheRecording:
     metadata: RocheRecordingMetadata
     path: Path
     scorer: str
+    pose_file: RochePoseFileManifestEntry | None = None
 
     @property
     def subject_id(self) -> str:
@@ -392,13 +391,30 @@ class RocheRecording:
 
         return None
 
-    def frames(self, *, validate_frame_count: bool = True) -> Iterator[SpatialFrame]:
-        """Stream frames and validate indices; canonical count is checked on exhaustion."""
+    def frames(
+        self,
+        *,
+        validate_integrity: bool = True,
+        validate_frame_count: bool = True,
+    ) -> Iterator[SpatialFrame]:
+        """Stream frames after integrity checks; count is checked on exhaustion."""
 
+        if self.pose_file is None and (validate_integrity or validate_frame_count):
+            raise DataIntegrityError(
+                f"Roche recording {self.recording_id!r} has no canonical manifest entry."
+            )
+        if validate_integrity:
+            assert self.pose_file is not None
+            _validate_pose_file_integrity(self.path, self.pose_file)
+        expected_frame_count = (
+            self.pose_file.frame_count
+            if validate_frame_count and self.pose_file is not None
+            else None
+        )
         yield from _iter_pose_frames(
             self.path,
             context=self.context,
-            validate_frame_count=validate_frame_count,
+            expected_frame_count=expected_frame_count,
         )
 
 
@@ -408,6 +424,41 @@ def _md5(path: Path) -> str:
         while chunk := handle.read(1024 * 1024):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while chunk := handle.read(1024 * 1024):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _validate_pose_file_integrity(
+    path: Path, manifest_entry: RochePoseFileManifestEntry
+) -> None:
+    try:
+        actual_size = path.stat().st_size
+    except OSError as error:
+        raise DataIntegrityError(
+            f"Could not inspect Roche pose file {path}: {error}"
+        ) from error
+    if actual_size != manifest_entry.size_bytes:
+        raise DataIntegrityError(
+            f"Roche pose file {path.name} has size {actual_size}; expected "
+            f"{manifest_entry.size_bytes} bytes from the verified archive."
+        )
+    try:
+        actual_sha256 = _sha256(path)
+    except OSError as error:
+        raise DataIntegrityError(
+            f"Could not hash Roche pose file {path}: {error}"
+        ) from error
+    if actual_sha256 != manifest_entry.sha256:
+        raise DataIntegrityError(
+            f"Roche pose file {path.name} does not match the SHA-256 derived from "
+            "the verified archive."
+        )
 
 
 def _verify_file(
@@ -510,9 +561,7 @@ def load_roche_metadata(
         raise DataError("Roche metadata DLC filenames must be unique.")
     if len(videos) != len(set(videos)):
         raise DataError("Roche metadata video filenames must be unique.")
-    if any(
-        Path(record.dlc_file).stem != Path(record.video).stem for record in records
-    ):
+    if any(Path(record.dlc_file).stem != Path(record.video).stem for record in records):
         raise DataError(
             "Roche metadata DLC and video filenames must identify the same recording."
         )
@@ -557,7 +606,9 @@ def resolve_roche_pose_files(
         relative = _safe_source_path(record.dlc_file)
         direct = root / relative.name
         extracted = root.joinpath(*ROCHE_POSE_DIRECTORY.parts, relative.name)
-        matches = [candidate for candidate in (direct, extracted) if candidate.is_file()]
+        matches = [
+            candidate for candidate in (direct, extracted) if candidate.is_file()
+        ]
         if len(matches) != 1:
             raise DataError(
                 f"Roche DLC file {record.dlc_file!r} resolved to {len(matches)} "
@@ -576,34 +627,45 @@ def resolve_roche_pose_files(
     return resolved
 
 
-def _validate_header_rows(path: Path, rows: tuple[list[str], list[str], list[str]]) -> str:
+def _validate_header_rows(
+    path: Path, rows: tuple[list[str], list[str], list[str]]
+) -> str:
     scorer_row, bodypart_row, coordinate_row = rows
     expected_columns = 1 + len(ROCHE_KEYPOINTS) * 3
     if any(len(row) != expected_columns for row in rows):
         raise DataError(f"Roche pose header has an unexpected column count: {path}")
 
     if scorer_row[0].strip().lower() != "scorer":
-        raise DataError(f"Roche pose file is missing the DeepLabCut scorer header: {path}")
+        raise DataError(
+            f"Roche pose file is missing the DeepLabCut scorer header: {path}"
+        )
     scorers = {value.strip() for value in scorer_row[1:] if value.strip()}
     if len(scorers) != 1 or any(not value.strip() for value in scorer_row[1:]):
-        raise DataError(f"Roche pose file must declare one scorer for all keypoints: {path}")
+        raise DataError(
+            f"Roche pose file must declare one scorer for all keypoints: {path}"
+        )
 
     expected_bodyparts = tuple(
         keypoint for keypoint in ROCHE_KEYPOINTS for _ in range(3)
     )
     if bodypart_row[0].strip().lower() != "bodyparts":
-        raise DataError(f"Roche pose file is missing the DeepLabCut bodyparts header: {path}")
+        raise DataError(
+            f"Roche pose file is missing the DeepLabCut bodyparts header: {path}"
+        )
     if tuple(value.strip() for value in bodypart_row[1:]) != expected_bodyparts:
         raise DataError(f"Roche pose keypoints do not match the pinned schema: {path}")
 
     expected_coordinates = tuple(
-        coordinate
-        for _ in ROCHE_KEYPOINTS
-        for coordinate in ("x", "y", "likelihood")
+        coordinate for _ in ROCHE_KEYPOINTS for coordinate in ("x", "y", "likelihood")
     )
     if coordinate_row[0].strip().lower() != "coords":
-        raise DataError(f"Roche pose file is missing the DeepLabCut coords header: {path}")
-    if tuple(value.strip().lower() for value in coordinate_row[1:]) != expected_coordinates:
+        raise DataError(
+            f"Roche pose file is missing the DeepLabCut coords header: {path}"
+        )
+    if (
+        tuple(value.strip().lower() for value in coordinate_row[1:])
+        != expected_coordinates
+    ):
         raise DataError(
             f"Roche pose coordinate columns do not match x/y/likelihood triples: {path}"
         )
@@ -620,8 +682,24 @@ def _read_header(path: Path) -> str:
         try:
             rows = (next(reader), next(reader), next(reader))
         except StopIteration as error:
-            raise DataError(f"Roche pose file has fewer than three header rows: {path}") from error
+            raise DataError(
+                f"Roche pose file has fewer than three header rows: {path}"
+            ) from error
     return _validate_header_rows(path, rows)
+
+
+def _validate_manifest_correspondence(
+    records: Iterable[RocheRecordingMetadata],
+) -> None:
+    metadata_pairs = {(record.animal_id, record.dlc_file) for record in records}
+    manifest_pairs = {
+        (entry.animal_id, entry.dlc_file) for entry in ROCHE_POSE_MANIFEST.values()
+    }
+    if metadata_pairs != manifest_pairs:
+        raise DataIntegrityError(
+            "Roche metadata animal identifiers and DLC filenames do not correspond "
+            "exactly to the manifest derived from the verified archive."
+        )
 
 
 def catalog_roche_open_field(
@@ -631,12 +709,17 @@ def catalog_roche_open_field(
 
     root = Path(directory)
     records = load_roche_metadata(root, verify_integrity=verify_integrity)
+    if verify_integrity:
+        _validate_manifest_correspondence(records)
     paths = resolve_roche_pose_files(root, records)
     return tuple(
         RocheRecording(
             metadata=record,
             path=paths[record.animal_id],
             scorer=_read_header(paths[record.animal_id]),
+            pose_file=(
+                ROCHE_POSE_MANIFEST[record.animal_id] if verify_integrity else None
+            ),
         )
         for record in records
     )
@@ -684,10 +767,12 @@ def _parse_spatial_frame(
             values[offset], label=f"{name} x coordinate in {path.name} row {row_number}"
         )
         y = _optional_float(
-            values[offset + 1], label=f"{name} y coordinate in {path.name} row {row_number}"
+            values[offset + 1],
+            label=f"{name} y coordinate in {path.name} row {row_number}",
         )
         likelihood = _optional_float(
-            values[offset + 2], label=f"{name} likelihood in {path.name} row {row_number}"
+            values[offset + 2],
+            label=f"{name} likelihood in {path.name} row {row_number}",
         )
         if (x is None) != (y is None):
             raise DataError(
@@ -698,9 +783,7 @@ def _parse_spatial_frame(
         keypoints.append(Keypoint2D(name=name, point=point, confidence=likelihood))
     by_name = {keypoint.name: keypoint for keypoint in keypoints}
     pose = Pose2D(tuple(by_name[name] for name in ROCHE_MOUSE_KEYPOINTS))
-    landmarks = LandmarkSet2D(
-        tuple(by_name[name] for name in ROCHE_ARENA_LANDMARKS)
-    )
+    landmarks = LandmarkSet2D(tuple(by_name[name] for name in ROCHE_ARENA_LANDMARKS))
     return pose, landmarks
 
 
@@ -708,7 +791,7 @@ def _iter_pose_frames(
     path: Path,
     *,
     context: SpatialContext,
-    validate_frame_count: bool,
+    expected_frame_count: int | None,
 ) -> Iterator[SpatialFrame]:
     try:
         handle = path.open(newline="", encoding="utf-8-sig")
@@ -721,7 +804,9 @@ def _iter_pose_frames(
         try:
             header = (next(reader), next(reader), next(reader))
         except StopIteration as error:
-            raise DataError(f"Roche pose file has fewer than three header rows: {path}") from error
+            raise DataError(
+                f"Roche pose file has fewer than three header rows: {path}"
+            ) from error
         _validate_header_rows(path, header)
 
         expected_index = 0
@@ -753,12 +838,10 @@ def _iter_pose_frames(
             )
             expected_index += 1
 
-    if validate_frame_count and not (
-        ROCHE_MIN_FRAME_COUNT <= expected_index <= ROCHE_MAX_FRAME_COUNT
-    ):
+    if expected_frame_count is not None and expected_index != expected_frame_count:
         raise DataError(
             f"Roche pose file {path.name} contains {expected_index} frames; expected "
-            f"{ROCHE_MIN_FRAME_COUNT}-{ROCHE_MAX_FRAME_COUNT}."
+            f"exactly {expected_frame_count}."
         )
 
 
@@ -771,10 +854,12 @@ def roche_provenance(
 ) -> dict[str, object]:
     """Return source provenance without materializing pose trajectories."""
 
-    catalog = catalog_roche_open_field(
-        directory, verify_integrity=verify_integrity
+    catalog = catalog_roche_open_field(directory, verify_integrity=verify_integrity)
+    selected = (
+        catalog
+        if subject_ids is None
+        else select_roche_recordings(catalog, subject_ids)
     )
-    selected = catalog if subject_ids is None else select_roche_recordings(catalog, subject_ids)
     archive = verify_roche_pose_archive(directory) if verify_archive else None
     metadata = verify_roche_metadata(directory) if verify_integrity else None
     return {
@@ -806,9 +891,12 @@ def roche_provenance(
         },
         "pose_archive": {
             "name": ROCHE_POSE_ARCHIVE,
+            "published_size": ROCHE_POSE_ARCHIVE_SIZE,
             "published_md5": ROCHE_POSE_ARCHIVE_MD5,
             "verification": (
-                asdict(archive) if archive is not None else {"verification_skipped": True}
+                asdict(archive)
+                if archive is not None
+                else {"verification_skipped": True}
             ),
         },
         "coordinate_frame": {
@@ -826,8 +914,27 @@ def roche_provenance(
         "selected_recordings": [
             {
                 **recording.metadata.to_dict(),
-                "resolved_pose_path": str(recording.path),
                 "scorer": recording.scorer,
+                "pose_file": {
+                    "archive_member": str(
+                        ROCHE_POSE_DIRECTORY / recording.metadata.dlc_file
+                    ),
+                    "size_bytes": (
+                        recording.pose_file.size_bytes
+                        if recording.pose_file is not None
+                        else None
+                    ),
+                    "frame_count": (
+                        recording.pose_file.frame_count
+                        if recording.pose_file is not None
+                        else None
+                    ),
+                    "derived_sha256_from_verified_archive": (
+                        recording.pose_file.sha256
+                        if recording.pose_file is not None
+                        else None
+                    ),
+                },
             }
             for recording in selected
         ],

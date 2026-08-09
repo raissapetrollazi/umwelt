@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 from umwelt.datasets.roche_open_field import (
@@ -16,6 +17,7 @@ from umwelt.datasets.roche_open_field import (
     ROCHE_MOUSE_KEYPOINTS,
     ROCHE_POSE_MANIFEST,
     ROCHE_RECORDING_COUNT,
+    RochePoseFileManifestEntry,
     catalog_roche_open_field,
     load_roche_metadata,
     roche_provenance,
@@ -62,7 +64,9 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
     ) -> None:
         with path.open("w", newline="", encoding="utf-8") as handle:
             writer = csv.writer(handle)
-            writer.writerow(["scorer", *("fixture-scorer" for _ in range(len(keypoints) * 3))])
+            writer.writerow(
+                ["scorer", *("fixture-scorer" for _ in range(len(keypoints) * 3))]
+            )
             writer.writerow(
                 ["bodyparts", *(name for name in keypoints for _ in range(3))]
             )
@@ -113,6 +117,11 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         self.assertEqual(recordings[0].subject_id, "mouse-01")
         self.assertEqual(recordings[0].source, ObservationSource.RECORDED)
         self.assertEqual(recordings[0].coordinate_frame.unit, "px")
+        self.assertEqual(
+            recordings[0].coordinate_frame.axis_orientation, "x-right-y-down"
+        )
+        self.assertEqual(recordings[0].context.subject_id, "mouse-01")
+        self.assertEqual(recordings[0].context.recording_id, "mouse-01.csv")
         self.assertIsNone(recordings[0].sampling_rate_hz)
         self.assertEqual(recordings[0].scorer, "fixture-scorer")
 
@@ -135,9 +144,12 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             root = Path(temporary)
             self._write_fixture(root)
             recording = catalog_roche_open_field(root, verify_integrity=False)[0]
-            frames = tuple(recording.frames(validate_frame_count=False))
+            frames = tuple(
+                recording.frames(validate_integrity=False, validate_frame_count=False)
+            )
 
         self.assertEqual([frame.frame_index for frame in frames], [0, 1, 2])
+        self.assertEqual(frames[0].context, recording.context)
         pose = frames[0].pose
         assert pose is not None
         self.assertEqual(
@@ -155,13 +167,63 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(DataError, "Unknown pose keypoint"):
             pose.keypoint("tl")
 
-    def test_canonical_frame_count_is_checked_when_stream_is_exhausted(self) -> None:
+    def test_individual_frame_count_is_checked_when_stream_is_exhausted(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
             recording = catalog_roche_open_field(root, verify_integrity=False)[0]
-            with self.assertRaisesRegex(DataError, "contains 3 frames"):
-                tuple(recording.frames())
+            recording = replace(
+                recording,
+                pose_file=RochePoseFileManifestEntry(
+                    animal_id=recording.subject_id,
+                    dlc_file=recording.recording_id,
+                    size_bytes=recording.path.stat().st_size,
+                    frame_count=4,
+                    sha256="0" * 64,
+                ),
+            )
+            with self.assertRaisesRegex(
+                DataError, "contains 3 frames; expected exactly 4"
+            ):
+                tuple(recording.frames(validate_integrity=False))
+
+    def test_pose_integrity_rejects_size_mismatch_before_emitting_frames(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_fixture(root)
+            recording = catalog_roche_open_field(root, verify_integrity=False)[0]
+            recording = replace(
+                recording,
+                pose_file=RochePoseFileManifestEntry(
+                    animal_id=recording.subject_id,
+                    dlc_file=recording.recording_id,
+                    size_bytes=recording.path.stat().st_size + 1,
+                    frame_count=3,
+                    sha256="0" * 64,
+                ),
+            )
+
+            with self.assertRaisesRegex(DataIntegrityError, "has size"):
+                next(recording.frames(validate_frame_count=False))
+
+    def test_pose_integrity_rejects_same_size_sha_mismatch(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_fixture(root)
+            recording = catalog_roche_open_field(root, verify_integrity=False)[0]
+            recording = replace(
+                recording,
+                pose_file=RochePoseFileManifestEntry(
+                    animal_id=recording.subject_id,
+                    dlc_file=recording.recording_id,
+                    size_bytes=recording.path.stat().st_size,
+                    frame_count=3,
+                    sha256="0" * 64,
+                ),
+            )
+
+            with self.assertRaisesRegex(DataIntegrityError, "SHA-256 derived"):
+                next(recording.frames(validate_frame_count=False))
 
     def test_frame_indices_must_start_at_zero_and_be_sequential(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -170,7 +232,11 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             self._write_pose(root / "mouse-01.csv", indices=(0, 2))
             recording = catalog_roche_open_field(root, verify_integrity=False)[0]
             with self.assertRaisesRegex(DataError, "expected 1, found 2"):
-                tuple(recording.frames(validate_frame_count=False))
+                tuple(
+                    recording.frames(
+                        validate_integrity=False, validate_frame_count=False
+                    )
+                )
 
     def test_catalog_rejects_wrong_keypoint_schema(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -214,7 +280,9 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             self._write_metadata(root)
             path = root / ROCHE_METADATA_FILE
             text = path.read_text(encoding="utf-8-sig")
-            path.write_text(text.replace("Control;0", "Invented;"), encoding="utf-8-sig")
+            path.write_text(
+                text.replace("Control;0", "Invented;"), encoding="utf-8-sig"
+            )
 
             with self.assertRaisesRegex(DataError, "empty dosage"):
                 load_roche_metadata(root, verify_integrity=False)
@@ -261,7 +329,9 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             catalog = catalog_roche_open_field(root, verify_integrity=False)
             selected = select_roche_recordings(catalog, ["mouse-01", "mouse-09"])
 
-        self.assertEqual([item.subject_id for item in selected], ["mouse-01", "mouse-09"])
+        self.assertEqual(
+            [item.subject_id for item in selected], ["mouse-01", "mouse-09"]
+        )
         with self.assertRaisesRegex(DataError, "duplicates"):
             select_roche_recordings(catalog, ["mouse-01", "mouse-01"])
         with self.assertRaisesRegex(DataError, "Unknown Roche"):
@@ -279,6 +349,9 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         self.assertIsNone(provenance["sampling_rate_hz"])
         self.assertIsNone(provenance["physical_arena_dimensions"])
         self.assertEqual(provenance["coordinate_frame"]["unit"], "px")
+        self.assertEqual(
+            provenance["coordinate_frame"]["axis_orientation"], "x-right-y-down"
+        )
         self.assertIsNone(provenance["coordinate_frame"]["physical_calibration"])
         self.assertEqual(len(provenance["selected_recordings"]), 1)
 
@@ -304,6 +377,20 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
 
         self.assertTrue(verification.valid)
         self.assertEqual(len(records), 32)
+
+    def test_local_pose_files_authenticate_against_derived_manifest(self) -> None:
+        real_root = Path("data/raw/roche-open-field")
+        if not real_root.is_dir():
+            self.skipTest("Downloaded Roche source is not available locally.")
+
+        recordings = catalog_roche_open_field(real_root)
+        first_frames = [
+            next(recording.frames(validate_frame_count=False))
+            for recording in recordings
+        ]
+
+        self.assertEqual(len(first_frames), ROCHE_RECORDING_COUNT)
+        self.assertTrue(all(frame.frame_index == 0 for frame in first_frames))
 
 
 if __name__ == "__main__":
