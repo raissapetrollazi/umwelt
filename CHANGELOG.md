@@ -13,9 +13,9 @@
   their baseline results informed model development.
 - Add a separate `umwelt individual` experiment comparing pooled phase+duration
   dynamics with a minimal training-population individual-variation mechanism.
-- Preserve paired stochastic streams, training-only profile provenance,
-  between-subject dispersion diagnostics, and compact individual-variation
-  artifacts without changing activity emissions.
+- Preserve paired state streams, isolated activity randomness, training-only
+  profile provenance, between-subject dispersion diagnostics, and compact
+  individual-variation artifacts without changing activity emissions.
 
 ## 0.1.0 - 2026-08-08
 

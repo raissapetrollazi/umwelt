@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import hashlib
 import json
+import platform
 import shutil
+import sys
 from dataclasses import dataclass, replace
 from pathlib import Path
 from statistics import pstdev
 from uuid import uuid4
 
+from umwelt import __version__
 from umwelt.artifacts import write_artifact_manifest, write_json
 from umwelt.datasets.compass import load_compass_week
 from umwelt.errors import ConfigurationError
@@ -408,8 +411,12 @@ def run_individual_variation_lab(
             str(config.source_path) if config.source_path is not None else None
         ),
         "software": {
+            "name": "umwelt",
+            "version": __version__,
             "git_revision": _git_revision(),
             "git_tracked_worktree_dirty": _git_dirty(),
+            "python": sys.version,
+            "platform": platform.platform(),
         },
         "recorded_input": source_dataset.provenance,
         "protocol": {
@@ -422,9 +429,8 @@ def run_individual_variation_lab(
             "subject_specific_development_calibration": False,
             "population_profiles_fit_from": list(config.dataset.training_subjects),
             "population_profile_dimensions": [
-                "sleep occupancy logit offset",
-                "wake-leaving hazard logit offset",
-                "sleep-leaving hazard logit offset",
+                "sustained sleep-bias logit offset",
+                "sustained state-switching logit offset",
             ],
             "random_stream_design": (
                 "State and activity randomness use separate generators. Pooled and population "
@@ -441,6 +447,10 @@ def run_individual_variation_lab(
             "generated_series": generated_series,
             "paired_state_random_streams": True,
             "activity_randomness_isolated_from_state": True,
+            "state_activity_seed_derivation": (
+                "SHA-256 JSON array [master_seed, individual-variation role, "
+                "source_subject_id, replicate, stream role], first 64 bits"
+            ),
             "profile_seed_derivation": (
                 "SHA-256 over master seed, individual-profile role, source subject, and replicate"
             ),
@@ -452,7 +462,8 @@ def run_individual_variation_lab(
                 "COMPASS PIR activity and behaviorally defined immobility labels"
             ),
             "derived_population_profiles": (
-                "three smoothed training-subject logit offsets relative to pooled training dynamics"
+                "two smoothed training-subject logit offsets reconstructed from "
+                "state-specific leaving hazards relative to pooled training dynamics"
             ),
             "synthetic_individual_profile": (
                 "one empirically resampled training-derived computational profile per generated subject"

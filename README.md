@@ -59,14 +59,14 @@ activity, transitions, empirical bout-distribution distances, circadian
 profiles, and autocorrelation. It exposes predictive simulation intervals and
 does not assign an unvalidated pass/fail threshold.
 
-A separate v0.1 development experiment now asks whether the pooled model's
-"average mouse" limitation can be reduced by a minimal, explicit population
-mechanism. It fits three global logit offsets for each training mouse—sleep
-occupancy, wake-leaving hazard, and sleep-leaving hazard—and resamples those
-training-derived profiles when generating synthetic individuals. Development
-mice are not used to calibrate profiles, and activity emissions remain pooled.
-This implementation is an experimental mechanism; no scientific improvement is
-claimed until its canonical comparison has been run and reviewed.
+A separate v0.1 development experiment asks whether the pooled model's "average
+mouse" limitation can be reduced by a minimal, explicit population mechanism.
+It fits two sustained logit offsets for each training mouse: sleep bias and
+state-switching rate. These reconstruct state-specific leaving hazards, and one
+fixed training-derived profile is resampled for each synthetic individual.
+Development mice are not used to calibrate profiles, and activity emissions
+remain pooled. Scientific improvement is assessed only through the canonical
+comparison.
 
 See [the v0.1 experiment document](docs/v0.1-research-direction.md) for the
 design, assumptions, artifact contract, and limitations.

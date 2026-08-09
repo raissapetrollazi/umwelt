@@ -122,15 +122,14 @@ def write_individual_variation_report(
             "from the training population."
         ),
         "",
-        "Each training profile contains only three smoothed logit offsets:",
+        "Each training profile contains two sustained smoothed logit offsets:",
         "",
-        "- overall sleep occupancy relative to pooled training occupancy;",
-        "- probability of leaving wake relative to the pooled wake hazard;",
-        "- probability of leaving sleep relative to the pooled sleep hazard.",
+        "- sleep bias, which increases wake-to-sleep hazard and decreases sleep-to-wake hazard when positive;",
+        "- switching rate, which shifts both leaving hazards in the same direction.",
         "",
         (
-            "Profiles are sampled uniformly with replacement. They are global offsets applied "
-            "to the pooled phase+duration dynamics; the model does not memorize a training "
+            "Profiles are sampled uniformly with replacement. Their effects remain active "
+            "throughout pooled phase+duration dynamics; the model does not memorize a training "
             "mouse's trajectory and does not calibrate to a development mouse."
         ),
         "",
@@ -140,8 +139,11 @@ def write_individual_variation_report(
         f"- Configuration SHA-256: `{provenance['configuration_sha256']}`",
         f"- Master seed: {config.simulation.seed}",
         f"- Replicates per model: {config.simulation.replicates}",
-        "- Pooled and population variants use paired trajectory random streams for each subject/replicate.",
+        "- Pooled and population variants use paired state random streams for each subject/replicate.",
+        "- Activity uses a separate matched seed; draw consumption may diverge after state trajectories diverge.",
         "- Population-profile selection uses a separate deterministic SHA-256-derived seed.",
+        "- Source checksums are preserved in `provenance.json`.",
+        "- Artifact checksums are preserved in `artifact-manifest.json`.",
         "- Full replicate trajectories are intentionally discarded after compact evaluation.",
         "",
         (
@@ -184,6 +186,21 @@ def write_individual_variation_report(
             f"{_interval(_aggregate_discrepancy(model, 'sleep_phase_rmse'))} | "
             f"{_interval(_aggregate_discrepancy(model, 'activity_phase_rmse'))} |"
         )
+
+    lines.extend(["", "## Temporal preservation", ""])
+    lines.extend(
+        _metric_table(
+            models,
+            recorded_scalars,
+            tuple(
+                (
+                    f"sleep_autocorrelation_lag_{lag}",
+                    f"Sleep autocorrelation, lag {lag}",
+                )
+                for lag in config.evaluation.autocorrelation_lags
+            ),
+        )
+    )
 
     lines.extend(["", "## Between-subject heterogeneity", ""])
     lines.extend(
@@ -265,7 +282,7 @@ def write_individual_variation_report(
             "## Remaining limitations",
             "",
             "- The empirical population contains only the training mice in this COMPASS experiment.",
-            "- Only three global state-dynamics offsets vary between synthetic individuals.",
+            "- Only two global state-dynamics offsets vary between synthetic individuals.",
             "- The profile distribution is resampled rather than estimated as a continuous biological population distribution.",
             "- Activity-emission parameters remain pooled and conditionally independent across epochs.",
             "- Development subjects were previously inspected and cannot support pristine confirmatory claims.",
@@ -325,9 +342,15 @@ def write_individual_variation_svg(
 
     for index, subject_id in enumerate(subjects):
         center = top + index * 76 + 22
-        recorded_value = float(recorded["subjects"][subject_id]["scalars"]["sleep_fraction"])
-        pooled_summary = pooled["summary"]["subjects"][subject_id]["metrics"]["sleep_fraction"]
-        population_summary = population["summary"]["subjects"][subject_id]["metrics"]["sleep_fraction"]
+        recorded_value = float(
+            recorded["subjects"][subject_id]["scalars"]["sleep_fraction"]
+        )
+        pooled_summary = pooled["summary"]["subjects"][subject_id]["metrics"][
+            "sleep_fraction"
+        ]
+        population_summary = population["summary"]["subjects"][subject_id]["metrics"][
+            "sleep_fraction"
+        ]
         parts.append(
             f'<text class="subject" text-anchor="end" x="{left - 18}" y="{center + 4}">Mouse {escape(str(subject_id))}</text>'
         )
