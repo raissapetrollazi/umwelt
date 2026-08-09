@@ -11,7 +11,7 @@ from pathlib import Path
 
 from umwelt.artifacts import sha256_file
 from umwelt.individual_lab import (
-    derive_paired_trajectory_seed,
+    derive_paired_stream_seed,
     run_individual_variation_lab,
 )
 from umwelt.temporal_config import load_temporal_lab_config
@@ -77,13 +77,16 @@ def _prepare(root: Path):
 
 
 class IndividualLabTests(unittest.TestCase):
-    def test_paired_seed_uses_subject_and_replicate(self) -> None:
-        seed = derive_paired_trajectory_seed(1729, "3", 1)
-        self.assertEqual(seed, derive_paired_trajectory_seed(1729, "3", 1))
-        self.assertNotEqual(seed, derive_paired_trajectory_seed(1729, "4", 1))
-        self.assertNotEqual(seed, derive_paired_trajectory_seed(1729, "3", 2))
+    def test_paired_stream_seeds_use_subject_replicate_and_role(self) -> None:
+        seed = derive_paired_stream_seed(1729, "3", 1, "state")
+        self.assertEqual(seed, derive_paired_stream_seed(1729, "3", 1, "state"))
+        self.assertNotEqual(seed, derive_paired_stream_seed(1729, "4", 1, "state"))
+        self.assertNotEqual(seed, derive_paired_stream_seed(1729, "3", 2, "state"))
+        self.assertNotEqual(seed, derive_paired_stream_seed(1729, "3", 1, "activity"))
 
-    def test_run_keeps_profiles_training_only_and_writes_compact_artifacts(self) -> None:
+    def test_run_keeps_profiles_training_only_and_writes_compact_artifacts(
+        self,
+    ) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             config = _prepare(root)
@@ -130,19 +133,32 @@ class IndividualLabTests(unittest.TestCase):
                 item for item in seeds if item["profile_seed"] is not None
             ]
             self.assertEqual(len(pooled), len(population_seeds))
-            paired = {
-                (item["source_subject_id"], item["replicate"]): item["trajectory_seed"]
+            paired_state = {
+                (item["source_subject_id"], item["replicate"]): item["state_seed"]
+                for item in pooled
+            }
+            paired_activity = {
+                (item["source_subject_id"], item["replicate"]): item["activity_seed"]
                 for item in pooled
             }
             for item in population_seeds:
                 key = (item["source_subject_id"], item["replicate"])
-                self.assertEqual(item["trajectory_seed"], paired[key])
+                self.assertEqual(item["state_seed"], paired_state[key])
+                self.assertEqual(item["activity_seed"], paired_activity[key])
                 self.assertIn(item["profile_source_subject_id"], {"1", "2"})
 
             recorded = json.loads(
                 (result.output_directory / "recorded-reference.json").read_text("utf-8")
             )
             self.assertIn("sleep_fraction_sd", recorded["between_subject"])
+
+            provenance = json.loads(
+                (result.output_directory / "provenance.json").read_text("utf-8")
+            )
+            self.assertEqual(provenance["software"]["name"], "umwelt")
+            self.assertIn("version", provenance["software"])
+            self.assertIn("python", provenance["software"])
+            self.assertIn("platform", provenance["software"])
 
             comparison = json.loads(
                 (result.output_directory / "model-comparison.json").read_text("utf-8")
@@ -159,6 +175,9 @@ class IndividualLabTests(unittest.TestCase):
                     item["sha256"],
                     sha256_file(result.output_directory / item["name"]),
                 )
+
+            report = (result.output_directory / "report.md").read_text("utf-8")
+            self.assertIn("## Temporal preservation", report)
 
     def test_scientific_artifacts_reproduce_across_output_directories(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

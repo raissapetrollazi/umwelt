@@ -54,9 +54,8 @@ class IndividualVariationProfile:
     """Training-subject offsets used as an empirical population profile."""
 
     source_subject_id: str
-    sleep_occupancy_logit_offset: float
-    wake_leave_logit_offset: float
-    sleep_leave_logit_offset: float
+    sleep_bias_logit_offset: float
+    switching_logit_offset: float
     observations: int
     transitions: int
 
@@ -64,17 +63,16 @@ class IndividualVariationProfile:
         """Return the fitted logit offset for leaving one explicit state."""
 
         if state is BehavioralState.WAKE:
-            return self.wake_leave_logit_offset
-        return self.sleep_leave_logit_offset
+            return self.switching_logit_offset + self.sleep_bias_logit_offset
+        return self.switching_logit_offset - self.sleep_bias_logit_offset
 
     def to_dict(self) -> dict[str, object]:
         """Return an inspectable representation of one training profile."""
 
         return {
             "source_subject_id": self.source_subject_id,
-            "sleep_occupancy_logit_offset": self.sleep_occupancy_logit_offset,
-            "wake_leave_logit_offset": self.wake_leave_logit_offset,
-            "sleep_leave_logit_offset": self.sleep_leave_logit_offset,
+            "sleep_bias_logit_offset": self.sleep_bias_logit_offset,
+            "switching_logit_offset": self.switching_logit_offset,
             "observations": self.observations,
             "transitions": self.transitions,
         }
@@ -84,7 +82,6 @@ class IndividualVariationProfile:
 class _SubjectStatistics:
     subject_id: str
     observations: int
-    sleep_observations: int
     exposures: dict[BehavioralState, int]
     leaves: dict[BehavioralState, int]
 
@@ -117,9 +114,9 @@ class PopulationTemporalModel:
 
     @property
     def parameter_count(self) -> int:
-        """Count pooled state parameters plus three stored offsets per training mouse."""
+        """Count pooled parameters plus two sustained offsets per training mouse."""
 
-        return self.base_model.parameter_count + 3 * len(self.profiles)
+        return self.base_model.parameter_count + 2 * len(self.profiles)
 
     @property
     def training_subject_ids(self) -> tuple[str, ...]:
@@ -136,12 +133,12 @@ class PopulationTemporalModel:
     def initial_sleep_probability(
         self, timestamp: datetime, profile: IndividualVariationProfile
     ) -> float:
-        """Apply one subject-level occupancy offset to the pooled phase probability."""
+        """Apply sustained sleep bias to the pooled segment-start probability."""
 
         pooled = self.base_model.initial_sleep_probabilities[
             self.base_model.phase_for(timestamp)
         ]
-        return _offset_probability(pooled, profile.sleep_occupancy_logit_offset)
+        return _offset_probability(pooled, profile.sleep_bias_logit_offset)
 
     def leave_probability(
         self,
@@ -169,8 +166,8 @@ class PopulationTemporalModel:
             "profile_count": len(self.profiles),
             "profile_sampling": "uniform empirical resampling with replacement",
             "profile_effects": (
-                "global logit offsets for sleep occupancy, wake-leaving hazard, "
-                "and sleep-leaving hazard"
+                "a sustained sleep-bias offset and a sustained state-switching "
+                "offset, reconstructed into state-specific leaving hazards"
             ),
             "profiles": [profile.to_dict() for profile in self.profiles],
             "assumptions": [
@@ -178,6 +175,8 @@ class PopulationTemporalModel:
                 "Development animals are never used to calibrate profile values or selection.",
                 "A synthetic individual samples one fixed profile for its full generated series.",
                 "The profile modifies pooled phase+duration state dynamics but not activity emissions.",
+                "Positive sleep bias increases wake-to-sleep hazard and decreases sleep-to-wake hazard throughout generation.",
+                "The switching offset changes both leaving hazards in the same direction throughout generation.",
                 "Profile offsets are computational population variation, not inferred personality, physiology, or mental state.",
                 "The empirical profile distribution is a minimal baseline, not a claim of a biological random-effects distribution.",
             ],
@@ -186,7 +185,6 @@ class PopulationTemporalModel:
 
 def _subject_statistics(series: TimeSeries, epoch_seconds: int) -> _SubjectStatistics:
     observations = 0
-    sleep_observations = 0
     exposures = {state: 0 for state in BehavioralState}
     leaves = {state: 0 for state in BehavioralState}
     previous_state: BehavioralState | None = None
@@ -198,7 +196,6 @@ def _subject_statistics(series: TimeSeries, epoch_seconds: int) -> _SubjectStati
             previous_timestamp = None
             continue
         observations += 1
-        sleep_observations += state is BehavioralState.SLEEP
         contiguous = previous_timestamp is not None and isclose(
             (timestamp - previous_timestamp).total_seconds(), epoch_seconds
         )
@@ -214,7 +211,6 @@ def _subject_statistics(series: TimeSeries, epoch_seconds: int) -> _SubjectStati
     return _SubjectStatistics(
         subject_id=series.subject_id,
         observations=observations,
-        sleep_observations=sleep_observations,
         exposures=exposures,
         leaves=leaves,
     )
@@ -233,7 +229,9 @@ def fit_population_temporal_model(
     if any(
         series.source is not ObservationSource.RECORDED for series in dataset.series
     ):
-        raise DataError("Individual variation may only be fit to recorded observations.")
+        raise DataError(
+            "Individual variation may only be fit to recorded observations."
+        )
     subject_ids = tuple(series.subject_id for series in dataset.series)
     if subject_ids != base_model.training_subject_ids:
         raise DataError(
@@ -243,12 +241,8 @@ def fit_population_temporal_model(
         raise DataError("Population variation requires at least one training subject.")
 
     statistics = tuple(
-        _subject_statistics(series, base_model.epoch_seconds) for series in dataset.series
-    )
-    total_observations = sum(item.observations for item in statistics)
-    total_sleep = sum(item.sleep_observations for item in statistics)
-    pooled_sleep = _smoothed_probability(
-        total_sleep, total_observations, base_model.transition_prior
+        _subject_statistics(series, base_model.epoch_seconds)
+        for series in dataset.series
     )
     pooled_leave = {
         state: _smoothed_probability(
@@ -261,24 +255,23 @@ def fit_population_temporal_model(
 
     profiles = []
     for item in statistics:
-        subject_sleep = _smoothed_probability(
-            item.sleep_observations, item.observations, base_model.transition_prior
-        )
         subject_leave = {
             state: _smoothed_probability(
                 item.leaves[state], item.exposures[state], base_model.transition_prior
             )
             for state in BehavioralState
         }
+        wake_leave_offset = _logit(subject_leave[BehavioralState.WAKE]) - _logit(
+            pooled_leave[BehavioralState.WAKE]
+        )
+        sleep_leave_offset = _logit(subject_leave[BehavioralState.SLEEP]) - _logit(
+            pooled_leave[BehavioralState.SLEEP]
+        )
         profiles.append(
             IndividualVariationProfile(
                 source_subject_id=item.subject_id,
-                sleep_occupancy_logit_offset=_logit(subject_sleep)
-                - _logit(pooled_sleep),
-                wake_leave_logit_offset=_logit(subject_leave[BehavioralState.WAKE])
-                - _logit(pooled_leave[BehavioralState.WAKE]),
-                sleep_leave_logit_offset=_logit(subject_leave[BehavioralState.SLEEP])
-                - _logit(pooled_leave[BehavioralState.SLEEP]),
+                sleep_bias_logit_offset=(wake_leave_offset - sleep_leave_offset) / 2,
+                switching_logit_offset=(wake_leave_offset + sleep_leave_offset) / 2,
                 observations=item.observations,
                 transitions=item.transitions,
             )
@@ -287,9 +280,7 @@ def fit_population_temporal_model(
     return PopulationTemporalModel(base_model=base_model, profiles=tuple(profiles))
 
 
-def derive_profile_seed(
-    master_seed: int, subject_id: str, replicate: int
-) -> int:
+def derive_profile_seed(master_seed: int, subject_id: str, replicate: int) -> int:
     """Derive a stable seed for empirical population-profile selection."""
 
     if replicate < 1:
@@ -311,7 +302,9 @@ def simulate_pooled_from_template(
     """Generate the pooled control with state and activity randomness isolated."""
 
     if model.spec.model_id != PHASE_DURATION_MODEL:
-        raise DataError("Pooled individuality control requires phase+duration dynamics.")
+        raise DataError(
+            "Pooled individuality control requires phase+duration dynamics."
+        )
     state_generator = random.Random(state_seed)
     activity_generator = random.Random(activity_seed)
     states: list[BehavioralState | None] = []
