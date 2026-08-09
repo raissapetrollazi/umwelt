@@ -59,6 +59,15 @@ activity, transitions, empirical bout-distribution distances, circadian
 profiles, and autocorrelation. It exposes predictive simulation intervals and
 does not assign an unvalidated pass/fail threshold.
 
+A separate v0.1 development experiment now asks whether the pooled model's
+"average mouse" limitation can be reduced by a minimal, explicit population
+mechanism. It fits three global logit offsets for each training mouse—sleep
+occupancy, wake-leaving hazard, and sleep-leaving hazard—and resamples those
+training-derived profiles when generating synthetic individuals. Development
+mice are not used to calibrate profiles, and activity emissions remain pooled.
+This implementation is an experimental mechanism; no scientific improvement is
+claimed until its canonical comparison has been run and reviewed.
+
 See [the v0.1 experiment document](docs/v0.1-research-direction.md) for the
 design, assumptions, artifact contract, and limitations.
 
@@ -73,13 +82,16 @@ umwelt data verify
 umwelt replay --config examples/v0.1-compass.json --subject 24 --limit 12 --format csv
 umwelt run --config examples/v0.1-compass.json
 umwelt compare --config examples/v0.1-temporal-lab.json
+umwelt individual --config examples/v0.1-temporal-lab.json --output runs/v0.1-individual-variation
 ```
 
 Downloaded source data is stored under `data/raw/` and excluded from Git. The
 original `run` command retains its trajectory artifact contract. The `compare`
-command instead writes compact replicate metrics, model-family summaries,
-subject-level comparisons, SVG diagnostics, provenance, seeds, a report, and an
-artifact hash manifest. It intentionally discards full replicate trajectories.
+command writes compact replicate metrics, model-family summaries, subject-level
+comparisons, SVG diagnostics, provenance, seeds, a report, and an artifact hash
+manifest. The `individual` command performs a separate paired comparison of the
+pooled phase+duration model and the training-population variation model. Both
+replicated workflows intentionally discard full replicate trajectories.
 Existing run directories are never overwritten.
 
 ## Scientific principles
