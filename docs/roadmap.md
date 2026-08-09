@@ -8,9 +8,10 @@ Version 0.1 is implemented as pre-alpha research software. Every later milestone
 
 ## v0.1 - Sleep / Activity Mouse
 
-**Status:** active pre-alpha research milestone. The original baseline and the
-replicated temporal model-comparison laboratory are implemented; scientific
-acceptance criteria and prospective validation remain unresolved.
+**Status:** implemented pre-alpha research laboratory. The original baseline,
+replicated temporal model comparison, and individual-variation experiment are
+implemented. The models are not scientifically validated, and prospective
+evaluation remains unresolved.
 
 **Purpose:** establish the first complete recorded-to-synthetic scientific loop using a deliberately simple temporal behavioral problem.
 
@@ -40,9 +41,11 @@ distributions, transition frequencies, activity statistics, daily phase
 profiles, sleep-state autocorrelation, individual-subject results, and
 predictive simulation intervals.
 
-Planning v0.2 is contingent on evidence from v0.1 rather than the existence of
-the implementation. Remaining temporal failures, individual variability, and
-prospective evaluation design should be resolved or explicitly deferred first.
+The canonical evidence supports beginning v0.2 planning. This decision reflects
+the maturity of the reproducible laboratory, not acceptance of a biological
+model. Remaining bout-distribution and long-lag discrepancies, pooled activity
+emissions, and prospective evaluation are explicitly deferred and must remain
+visible in future work.
 
 v0.1 is not merely a classification milestone. The synthetic animal must generate new behavioral sequences.
 
@@ -51,6 +54,8 @@ The selected weekly COMPASS labels are based on PIR immobility and remain explic
 See [v0.1 Research Direction](v0.1-research-direction.md).
 
 ## v0.2 - Spatial Mouse
+
+**Status:** planning may begin; no v0.2 capability is implemented yet.
 
 Introduce an explicit body and spatial world.
 

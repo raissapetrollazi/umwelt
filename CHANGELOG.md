@@ -16,6 +16,10 @@
 - Preserve paired state streams, isolated activity randomness, training-only
   profile provenance, between-subject dispersion diagnostics, and compact
   individual-variation artifacts without changing activity emissions.
+- Record the canonical individual-variation comparison, including its improved
+  population spread and worsened bout-distribution and circadian trade-offs.
+- Open v0.2 planning while explicitly deferring unresolved v0.1 validation and
+  model-fidelity questions.
 
 ## 0.1.0 - 2026-08-08
 

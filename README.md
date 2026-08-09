@@ -65,8 +65,12 @@ It fits two sustained logit offsets for each training mouse: sleep bias and
 state-switching rate. These reconstruct state-specific leaving hazards, and one
 fixed training-derived profile is resampled for each synthetic individual.
 Development mice are not used to calibrate profiles, and activity emissions
-remain pooled. Scientific improvement is assessed only through the canonical
-comparison.
+remain pooled. In the 32-replicate canonical comparison, this mechanism
+increased realistic between-subject spread but systematically worsened bout
+distribution and phase-profile discrepancies. It is therefore retained as an
+experimental diagnostic, not selected as a replacement for the pooled model.
+The [canonical report](runs/v0.1-individual-variation/report.md) preserves the
+full result and its limitations.
 
 See [the v0.1 experiment document](docs/v0.1-research-direction.md) for the
 design, assumptions, artifact contract, and limitations.
