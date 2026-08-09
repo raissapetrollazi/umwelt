@@ -19,6 +19,7 @@ from umwelt.datasets.roche_open_field import (
     load_roche_metadata,
     roche_provenance,
     select_roche_recordings,
+    verify_roche_metadata,
     verify_roche_pose_archive,
 )
 
@@ -39,5 +40,6 @@ __all__ = [
     "roche_provenance",
     "select_roche_recordings",
     "verify_compass",
+    "verify_roche_metadata",
     "verify_roche_pose_archive",
 ]

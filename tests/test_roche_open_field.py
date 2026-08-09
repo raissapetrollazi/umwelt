@@ -19,9 +19,10 @@ from umwelt.datasets.roche_open_field import (
     load_roche_metadata,
     roche_provenance,
     select_roche_recordings,
+    verify_roche_metadata,
     verify_roche_pose_archive,
 )
-from umwelt.errors import DataError
+from umwelt.errors import DataError, DataIntegrityError
 from umwelt.observations import ObservationSource
 
 
@@ -34,13 +35,13 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             writer.writerow(columns)
             for index in range(ROCHE_RECORDING_COUNT):
                 if index < 8:
-                    group, dosage = "control", "saline"
+                    group, dosage = "Control", "0"
                 elif index < 16:
-                    group, dosage = "yohimbine", "1"
+                    group, dosage = "Yohimbine", "1"
                 elif index < 24:
-                    group, dosage = "yohimbine", "3"
+                    group, dosage = "Yohimbine", "3"
                 else:
-                    group, dosage = "yohimbine", "6"
+                    group, dosage = "Yohimbine", "6"
                 writer.writerow(
                     [
                         f"mouse-{index + 1:02d}",
@@ -90,19 +91,22 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
-            records = load_roche_metadata(root)
+            with self.assertRaisesRegex(DataIntegrityError, "published by Zenodo"):
+                load_roche_metadata(root)
+            records = load_roche_metadata(root, verify_integrity=False)
 
         self.assertEqual(len(records), 32)
         self.assertEqual(len({record.animal_id for record in records}), 32)
         self.assertEqual(len({record.dlc_file for record in records}), 32)
-        self.assertEqual(records[0].group, "control")
+        self.assertEqual(records[0].group, "Control")
+        self.assertEqual(records[0].dosage, "0")
         self.assertEqual(records[8].dosage, "1")
 
     def test_catalog_matches_all_metadata_rows_to_pinned_dlc_schema(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
-            recordings = catalog_roche_open_field(root)
+            recordings = catalog_roche_open_field(root, verify_integrity=False)
 
         self.assertEqual(len(recordings), 32)
         self.assertEqual(recordings[0].subject_id, "mouse-01")
@@ -115,7 +119,7 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
-            recording = catalog_roche_open_field(root)[0]
+            recording = catalog_roche_open_field(root, verify_integrity=False)[0]
             frames = tuple(recording.frames(validate_frame_count=False))
 
         self.assertEqual([frame.frame_index for frame in frames], [0, 1, 2])
@@ -140,7 +144,7 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
-            recording = catalog_roche_open_field(root)[0]
+            recording = catalog_roche_open_field(root, verify_integrity=False)[0]
             with self.assertRaisesRegex(DataError, "contains 3 frames"):
                 tuple(recording.frames())
 
@@ -149,7 +153,7 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             root = Path(temporary)
             self._write_fixture(root)
             self._write_pose(root / "mouse-01.csv", indices=(0, 2))
-            recording = catalog_roche_open_field(root)[0]
+            recording = catalog_roche_open_field(root, verify_integrity=False)[0]
             with self.assertRaisesRegex(DataError, "expected 1, found 2"):
                 tuple(recording.frames(validate_frame_count=False))
 
@@ -160,27 +164,86 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
             wrong = ("nose", *tuple(name for name in ROCHE_KEYPOINTS if name != "nose"))
             self._write_pose(root / "mouse-01.csv", keypoints=wrong)
             with self.assertRaisesRegex(DataError, "keypoints do not match"):
-                catalog_roche_open_field(root)
+                catalog_roche_open_field(root, verify_integrity=False)
 
     def test_metadata_rejects_wrong_columns_and_incomplete_source(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_metadata(root, columns=("Animal ID", "DLC file"))
             with self.assertRaisesRegex(DataError, "columns do not match"):
-                load_roche_metadata(root)
+                load_roche_metadata(root, verify_integrity=False)
 
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
             (root / "mouse-32.csv").unlink()
             with self.assertRaisesRegex(DataError, "resolved to 0 local files"):
-                catalog_roche_open_field(root)
+                catalog_roche_open_field(root, verify_integrity=False)
+
+    def test_metadata_rejects_wrong_categories(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_metadata(root)
+            path = root / ROCHE_METADATA_FILE
+            text = path.read_text(encoding="utf-8-sig")
+            path.write_text(
+                text.replace("Control;0", "Placebo;0"), encoding="utf-8-sig"
+            )
+
+            with self.assertRaisesRegex(DataError, "does not match the verified"):
+                load_roche_metadata(root, verify_integrity=False)
+
+    def test_metadata_rejects_empty_or_mismatched_source_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_metadata(root)
+            path = root / ROCHE_METADATA_FILE
+            text = path.read_text(encoding="utf-8-sig")
+            path.write_text(text.replace("Control;0", "Invented;"), encoding="utf-8-sig")
+
+            with self.assertRaisesRegex(DataError, "empty dosage"):
+                load_roche_metadata(root, verify_integrity=False)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_metadata(root)
+            path = root / ROCHE_METADATA_FILE
+            text = path.read_text(encoding="utf-8-sig")
+            path.write_text(
+                text.replace("mouse-02.mp4", "mouse-01.mp4"), encoding="utf-8-sig"
+            )
+
+            with self.assertRaisesRegex(DataError, "video filenames must be unique"):
+                load_roche_metadata(root, verify_integrity=False)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_metadata(root)
+            path = root / ROCHE_METADATA_FILE
+            text = path.read_text(encoding="utf-8-sig")
+            path.write_text(
+                text.replace("mouse-02.mp4", "different.mp4"), encoding="utf-8-sig"
+            )
+
+            with self.assertRaisesRegex(DataError, "same recording"):
+                load_roche_metadata(root, verify_integrity=False)
+
+    def test_pose_resolution_rejects_direct_and_extracted_duplicates(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self._write_fixture(root)
+            extracted = root / "data/Yohimbine_Roche"
+            extracted.mkdir(parents=True)
+            self._write_pose(extracted / "mouse-01.csv")
+
+            with self.assertRaisesRegex(DataError, "resolved to 2 local files"):
+                catalog_roche_open_field(root, verify_integrity=False)
 
     def test_selection_is_by_unique_animal_identity(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
-            catalog = catalog_roche_open_field(root)
+            catalog = catalog_roche_open_field(root, verify_integrity=False)
             selected = select_roche_recordings(catalog, ["mouse-01", "mouse-09"])
 
         self.assertEqual([item.subject_id for item in selected], ["mouse-01", "mouse-09"])
@@ -193,7 +256,9 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self._write_fixture(root)
-            provenance = roche_provenance(root, subject_ids=["mouse-01"])
+            provenance = roche_provenance(
+                root, subject_ids=["mouse-01"], verify_integrity=False
+            )
 
         self.assertEqual(provenance["doi"], ROCHE_OPEN_FIELD_DOI)
         self.assertIsNone(provenance["sampling_rate_hz"])
@@ -213,6 +278,17 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         self.assertIsNone(missing.actual_md5)
         self.assertFalse(mismatched.valid)
         self.assertIsNotNone(mismatched.actual_md5)
+
+    def test_published_metadata_verification_accepts_only_the_real_source(self) -> None:
+        real_root = Path("data/raw/roche-open-field")
+        if not real_root.is_dir():
+            self.skipTest("Downloaded Roche source is not available locally.")
+
+        verification = verify_roche_metadata(real_root)
+        records = load_roche_metadata(real_root)
+
+        self.assertTrue(verification.valid)
+        self.assertEqual(len(records), 32)
 
 
 if __name__ == "__main__":

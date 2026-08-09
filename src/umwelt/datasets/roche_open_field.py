@@ -10,7 +10,7 @@ from dataclasses import asdict, dataclass
 from math import isfinite
 from pathlib import Path, PurePosixPath
 
-from umwelt.errors import DataError
+from umwelt.errors import DataError, DataIntegrityError
 from umwelt.observations import ObservationSource
 from umwelt.spatial import (
     CoordinateFrame,
@@ -26,8 +26,12 @@ ROCHE_OPEN_FIELD_DOI = "10.5281/zenodo.8188683"
 ROCHE_OPEN_FIELD_RECORD_URL = "https://zenodo.org/records/8188683"
 ROCHE_OPEN_FIELD_LICENSE = "CC-BY-4.0"
 ROCHE_METADATA_FILE = "METADATA_ROCHE.csv"
+ROCHE_METADATA_SIZE = 6_266
+ROCHE_METADATA_MD5 = "096e21e4d319130370aa4bb244b670f8"
 ROCHE_POSE_ARCHIVE = "data.zip"
+ROCHE_POSE_ARCHIVE_SIZE = 514_028_268
 ROCHE_POSE_ARCHIVE_MD5 = "8b48f2060146c03d578d5d6971aa70e9"
+ROCHE_POSE_DIRECTORY = PurePosixPath("data/Yohimbine_Roche")
 ROCHE_RECORDING_COUNT = 32
 ROCHE_MIN_FRAME_COUNT = 53_914
 ROCHE_MAX_FRAME_COUNT = 53_964
@@ -38,6 +42,12 @@ ROCHE_METADATA_COLUMNS = (
     "Dosage",
     "Video",
 )
+ROCHE_EXPECTED_GROUP_COUNTS = {
+    ("Control", "0"): 8,
+    ("Yohimbine", "1"): 8,
+    ("Yohimbine", "3"): 8,
+    ("Yohimbine", "6"): 8,
+}
 ROCHE_ARENA_LANDMARKS = (
     "tl",
     "tr",
@@ -76,10 +86,15 @@ class RocheRecordingMetadata:
     video: str
 
     def __post_init__(self) -> None:
-        if not self.animal_id:
-            raise DataError("Roche metadata contains an empty animal identifier.")
-        if not self.dlc_file:
-            raise DataError("Roche metadata contains an empty DLC filename.")
+        for label, value in (
+            ("animal identifier", self.animal_id),
+            ("DLC filename", self.dlc_file),
+            ("group", self.group),
+            ("dosage", self.dosage),
+            ("video filename", self.video),
+        ):
+            if not value:
+                raise DataError(f"Roche metadata contains an empty {label}.")
 
     def to_dict(self) -> dict[str, str]:
         """Return the original metadata categories in a JSON-compatible shape."""
@@ -88,10 +103,12 @@ class RocheRecordingMetadata:
 
 
 @dataclass(frozen=True, slots=True)
-class ArchiveVerification:
-    """MD5 verification result for the published pose archive."""
+class FileVerification:
+    """Size and MD5 verification result for one published source file."""
 
     path: str
+    expected_size: int
+    actual_size: int | None
     expected_md5: str
     actual_md5: str | None
     valid: bool
@@ -141,30 +158,63 @@ def _md5(path: Path) -> str:
     return digest.hexdigest()
 
 
-def verify_roche_pose_archive(directory: str | Path) -> ArchiveVerification:
-    """Verify data.zip against the MD5 published by the Zenodo record."""
-
-    path = Path(directory) / ROCHE_POSE_ARCHIVE
+def _verify_file(
+    path: Path, *, expected_size: int, expected_md5: str
+) -> FileVerification:
     if not path.is_file():
-        return ArchiveVerification(
+        return FileVerification(
             path=str(path),
-            expected_md5=ROCHE_POSE_ARCHIVE_MD5,
+            expected_size=expected_size,
+            actual_size=None,
+            expected_md5=expected_md5,
             actual_md5=None,
             valid=False,
         )
+    actual_size = path.stat().st_size
     actual = _md5(path)
-    return ArchiveVerification(
+    return FileVerification(
         path=str(path),
-        expected_md5=ROCHE_POSE_ARCHIVE_MD5,
+        expected_size=expected_size,
+        actual_size=actual_size,
+        expected_md5=expected_md5,
         actual_md5=actual,
-        valid=actual == ROCHE_POSE_ARCHIVE_MD5,
+        valid=actual_size == expected_size and actual == expected_md5,
     )
 
 
-def load_roche_metadata(directory: str | Path) -> tuple[RocheRecordingMetadata, ...]:
+def verify_roche_pose_archive(directory: str | Path) -> FileVerification:
+    """Verify data.zip against the size and MD5 published by Zenodo."""
+
+    return _verify_file(
+        Path(directory) / ROCHE_POSE_ARCHIVE,
+        expected_size=ROCHE_POSE_ARCHIVE_SIZE,
+        expected_md5=ROCHE_POSE_ARCHIVE_MD5,
+    )
+
+
+def verify_roche_metadata(directory: str | Path) -> FileVerification:
+    """Verify METADATA_ROCHE.csv against the published size and MD5."""
+
+    return _verify_file(
+        Path(directory) / ROCHE_METADATA_FILE,
+        expected_size=ROCHE_METADATA_SIZE,
+        expected_md5=ROCHE_METADATA_MD5,
+    )
+
+
+def load_roche_metadata(
+    directory: str | Path, *, verify_integrity: bool = True
+) -> tuple[RocheRecordingMetadata, ...]:
     """Load and validate the semicolon-delimited UTF-8-BOM metadata table."""
 
-    path = Path(directory) / ROCHE_METADATA_FILE
+    root = Path(directory)
+    path = root / ROCHE_METADATA_FILE
+    if verify_integrity:
+        verification = verify_roche_metadata(root)
+        if not verification.valid:
+            raise DataIntegrityError(
+                "Roche metadata does not match the size and MD5 published by Zenodo."
+            )
     try:
         handle = path.open(newline="", encoding="utf-8-sig")
     except OSError as error:
@@ -201,22 +251,37 @@ def load_roche_metadata(directory: str | Path) -> tuple[RocheRecordingMetadata, 
         )
     animal_ids = [record.animal_id for record in records]
     dlc_files = [record.dlc_file for record in records]
+    videos = [record.video for record in records]
     if len(animal_ids) != len(set(animal_ids)):
         raise DataError("Roche metadata animal identifiers must be unique.")
     if len(dlc_files) != len(set(dlc_files)):
         raise DataError("Roche metadata DLC filenames must be unique.")
+    if len(videos) != len(set(videos)):
+        raise DataError("Roche metadata video filenames must be unique.")
+    if any(
+        Path(record.dlc_file).stem != Path(record.video).stem for record in records
+    ):
+        raise DataError(
+            "Roche metadata DLC and video filenames must identify the same recording."
+        )
 
     group_counts = Counter((record.group, record.dosage) for record in records)
-    if sorted(group_counts.values()) != [8, 8, 8, 8]:
+    if group_counts != ROCHE_EXPECTED_GROUP_COUNTS:
         raise DataError(
-            "Roche metadata does not preserve the verified four groups of eight recordings."
+            "Roche metadata does not match the verified Control/0 and "
+            "Yohimbine/1/3/6 groups of eight recordings."
         )
     return tuple(records)
 
 
 def _safe_source_path(text: str) -> PurePosixPath:
     path = PurePosixPath(text.replace("\\", "/"))
-    if path.is_absolute() or ".." in path.parts:
+    if (
+        path.is_absolute()
+        or ".." in path.parts
+        or len(path.parts) != 1
+        or path.suffix.lower() != ".csv"
+    ):
         raise DataError(f"Unsafe Roche DLC source path: {text}")
     return path
 
@@ -228,18 +293,19 @@ def resolve_roche_pose_files(
     """Resolve every metadata DLC filename to exactly one extracted CSV file."""
 
     root = Path(directory)
-    records = tuple(metadata) if metadata is not None else load_roche_metadata(root)
+    records = (
+        tuple(metadata)
+        if metadata is not None
+        else load_roche_metadata(root, verify_integrity=True)
+    )
     resolved: dict[str, Path] = {}
     claimed: set[Path] = set()
 
     for record in records:
         relative = _safe_source_path(record.dlc_file)
-        direct = root.joinpath(*relative.parts)
-        matches = [direct] if direct.is_file() else [
-            candidate
-            for candidate in root.rglob(relative.name)
-            if candidate.is_file()
-        ]
+        direct = root / relative.name
+        extracted = root.joinpath(*ROCHE_POSE_DIRECTORY.parts, relative.name)
+        matches = [candidate for candidate in (direct, extracted) if candidate.is_file()]
         if len(matches) != 1:
             raise DataError(
                 f"Roche DLC file {record.dlc_file!r} resolved to {len(matches)} "
@@ -306,11 +372,13 @@ def _read_header(path: Path) -> str:
     return _validate_header_rows(path, rows)
 
 
-def catalog_roche_open_field(directory: str | Path) -> tuple[RocheRecording, ...]:
+def catalog_roche_open_field(
+    directory: str | Path, *, verify_integrity: bool = True
+) -> tuple[RocheRecording, ...]:
     """Validate metadata/file correspondence and return lightweight recordings."""
 
     root = Path(directory)
-    records = load_roche_metadata(root)
+    records = load_roche_metadata(root, verify_integrity=verify_integrity)
     paths = resolve_roche_pose_files(root, records)
     return tuple(
         RocheRecording(
@@ -440,13 +508,17 @@ def roche_provenance(
     directory: str | Path,
     *,
     subject_ids: Iterable[str] | None = None,
+    verify_integrity: bool = True,
     verify_archive: bool = False,
 ) -> dict[str, object]:
     """Return source provenance without materializing pose trajectories."""
 
-    catalog = catalog_roche_open_field(directory)
+    catalog = catalog_roche_open_field(
+        directory, verify_integrity=verify_integrity
+    )
     selected = catalog if subject_ids is None else select_roche_recordings(catalog, subject_ids)
     archive = verify_roche_pose_archive(directory) if verify_archive else None
+    metadata = verify_roche_metadata(directory) if verify_integrity else None
     return {
         "source_category": ObservationSource.RECORDED.value,
         "record_title": (
@@ -464,7 +536,16 @@ def roche_provenance(
             "Johannes Bohacek",
         ],
         "adapter": "umwelt.datasets.roche_open_field",
-        "metadata_file": ROCHE_METADATA_FILE,
+        "metadata_file": {
+            "name": ROCHE_METADATA_FILE,
+            "published_size": ROCHE_METADATA_SIZE,
+            "published_md5": ROCHE_METADATA_MD5,
+            "verification": (
+                asdict(metadata)
+                if metadata is not None
+                else {"verification_skipped": True}
+            ),
+        },
         "pose_archive": {
             "name": ROCHE_POSE_ARCHIVE,
             "published_md5": ROCHE_POSE_ARCHIVE_MD5,
