@@ -1,0 +1,136 @@
+{
+  "configuration_sha256": "c39e4379be241a99ed1b512286a5f172938719dd96c9af2fe127aa730343c016",
+  "configuration_source": "D:\\VS\\umwelt\\examples\\v0.1-temporal-lab.json",
+  "experiment_id": "v0.1-compass-temporal-lab-individual-variation",
+  "information_categories": {
+    "derived_population_profiles": "two smoothed training-subject logit offsets reconstructed from state-specific leaving hazards relative to pooled training dynamics",
+    "recorded_observations": "COMPASS PIR activity and behaviorally defined immobility labels",
+    "synthetic_individual_profile": "one empirically resampled training-derived computational profile per generated subject",
+    "synthetic_internal_state": "explicit wake/sleep model state, not real-animal physiology, personality, or mental state"
+  },
+  "protocol": {
+    "development_exposure_caveat": "Results for these development subjects were previously inspected; this experiment is model-development evidence, not a pristine confirmatory test.",
+    "held_out_development_subjects": [
+      "6",
+      "12",
+      "18",
+      "24"
+    ],
+    "population_profile_dimensions": [
+      "sustained sleep-bias logit offset",
+      "sustained state-switching logit offset"
+    ],
+    "population_profiles_fit_from": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "random_stream_design": "State and activity randomness use separate generators. Pooled and population variants share the same state seed for a subject/replicate, so the state generator consumes one paired draw per available epoch in both variants. Activity seeds also match, but activity-generator consumption may diverge after state trajectories diverge.",
+    "subject_specific_development_calibration": false,
+    "training_subjects": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ]
+  },
+  "recorded_input": {
+    "adapter": "umwelt.datasets.compass",
+    "authors": [
+      "Laurence A. Brown",
+      "Sibah Hasan",
+      "Russell G. Foster",
+      "Stuart N. Peirson"
+    ],
+    "doi": "10.5281/zenodo.160344",
+    "experimental_context": {
+      "housing": "individually housed in four groups of six cages",
+      "lighting": "12-hour light / 12-hour dark cycle; light begins at time zero",
+      "measurement": "passive infrared activity sensing",
+      "sampling_interval_seconds": 10,
+      "sex": "male",
+      "species": "Mus musculus",
+      "strain": "C57BL/6J"
+    },
+    "files": [
+      {
+        "actual_md5": "95add81ff28407668d4b8b25cc5a5f13",
+        "actual_size": 8707872,
+        "expected_md5": "95add81ff28407668d4b8b25cc5a5f13",
+        "expected_size": 8707872,
+        "name": "24mice_activity_LD1week.csv",
+        "path": "D:\\VS\\umwelt\\data\\raw\\compass\\24mice_activity_LD1week.csv",
+        "valid": true
+      },
+      {
+        "actual_md5": "8b6407ad4306e88463d96256b2302002",
+        "actual_size": 8037598,
+        "expected_md5": "8b6407ad4306e88463d96256b2302002",
+        "expected_size": 8037598,
+        "name": "24mice_sleep_LD1week.csv",
+        "path": "D:\\VS\\umwelt\\data\\raw\\compass\\24mice_sleep_LD1week.csv",
+        "valid": true
+      }
+    ],
+    "license": "CC0-1.0",
+    "record_title": "PIR data and EEG scoring for Wellcome Open Research methods paper (Brown et al 2016)",
+    "record_url": "https://zenodo.org/records/160344",
+    "related_article_doi": "10.12688/wellcomeopenres.9892.2",
+    "sleep_label": "behaviorally defined from at least 40 seconds of immobility",
+    "source_category": "recorded"
+  },
+  "schema_version": "umwelt.individual-variation-provenance.v1",
+  "software": {
+    "git_revision": "6e2e97d57c7b0388806565f5e010cbfa3c80f217",
+    "git_tracked_worktree_dirty": false,
+    "name": "umwelt",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "version": "0.1.0"
+  },
+  "synthetic_output": {
+    "activity_randomness_isolated_from_state": true,
+    "full_trajectories_retained": false,
+    "generated_series": 256,
+    "master_seed": 1729,
+    "paired_state_random_streams": true,
+    "profile_seed_derivation": "SHA-256 over master seed, individual-profile role, source subject, and replicate",
+    "replicates_per_model": 32,
+    "source_category": "synthetic",
+    "state_activity_seed_derivation": "SHA-256 JSON array [master_seed, individual-variation role, source_subject_id, replicate, stream role], first 64 bits",
+    "template_use": "timestamps and missingness only"
+  }
+}

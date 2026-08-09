@@ -1,0 +1,5954 @@
+{
+  "pooled_state_model": {
+    "assumptions": [
+      "The observable state space contains only wake and behaviorally defined sleep.",
+      "State transitions depend only on the enabled phase and duration mechanisms.",
+      "Duration is elapsed time in the current synthetic state, not a mental variable.",
+      "Parameters are pooled across training subjects.",
+      "All ladder models use the same fitted activity-emission mechanism."
+    ],
+    "duration_bin_edges_epochs": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "duration_prior_strength": 8.0,
+    "epoch_seconds": 10,
+    "hazards": [
+      {
+        "duration_bin": 0,
+        "exposures": 645,
+        "leave_probability": 0.10277494207863722,
+        "leaves": 67,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 578,
+        "leave_probability": 0.07186354467124591,
+        "leaves": 42,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1043,
+        "leave_probability": 0.05529213813258811,
+        "leaves": 58,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1774,
+        "leave_probability": 0.04327274813543777,
+        "leaves": 77,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2978,
+        "leave_probability": 0.02180577266488617,
+        "leaves": 65,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4859,
+        "leave_probability": 0.012350942506133163,
+        "leaves": 60,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6955,
+        "leave_probability": 0.009638379603238562,
+        "leaves": 67,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9199,
+        "leave_probability": 0.005225593263533192,
+        "leaves": 48,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 8467,
+        "leave_probability": 0.005676936540100307,
+        "leaves": 48,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 2795,
+        "leave_probability": 0.007175182724705709,
+        "leaves": 20,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 300,
+        "leave_probability": 0.006857263562825011,
+        "leaves": 2,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.014004647168762943,
+        "leaves": 0,
+        "phase": 0,
+        "prior_probability": 0.014004647168762943,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 626,
+        "leave_probability": 0.11530745483176175,
+        "leaves": 73,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 554,
+        "leave_probability": 0.07314043836892695,
+        "leaves": 41,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 990,
+        "leave_probability": 0.04719932501336367,
+        "leaves": 47,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1748,
+        "leave_probability": 0.03422831797456546,
+        "leaves": 60,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2944,
+        "leave_probability": 0.01968324063798677,
+        "leaves": 58,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4774,
+        "leave_probability": 0.012987228432316382,
+        "leaves": 62,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 7616,
+        "leave_probability": 0.0064408350424104074,
+        "leaves": 49,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9743,
+        "leave_probability": 0.00718951147198615,
+        "leaves": 70,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 8606,
+        "leave_probability": 0.007906306752186782,
+        "leaves": 68,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 4563,
+        "leave_probability": 0.005710988047109372,
+        "leaves": 26,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 341,
+        "leave_probability": 0.008896637144231922,
+        "leaves": 3,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.013115795417117583,
+        "leaves": 0,
+        "phase": 1,
+        "prior_probability": 0.013115795417117583,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 528,
+        "leave_probability": 0.08226058283941613,
+        "leaves": 44,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 481,
+        "leave_probability": 0.05540219305097556,
+        "leaves": 27,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 886,
+        "leave_probability": 0.04820097584108171,
+        "leaves": 43,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1562,
+        "leave_probability": 0.033816351848361174,
+        "leaves": 53,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2570,
+        "leave_probability": 0.029127879131856882,
+        "leaves": 75,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3989,
+        "leave_probability": 0.01328288026067727,
+        "leaves": 53,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6693,
+        "leave_probability": 0.006430633099824959,
+        "leaves": 43,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 10071,
+        "leave_probability": 0.006358931679921326,
+        "leaves": 64,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 11040,
+        "leave_probability": 0.00552965897917515,
+        "leaves": 61,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 5256,
+        "leave_probability": 0.006476381535320488,
+        "leaves": 34,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 513,
+        "leave_probability": 0.0040147262992841605,
+        "leaves": 2,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.011459050240880935,
+        "leaves": 0,
+        "phase": 2,
+        "prior_probability": 0.011459050240880935,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 570,
+        "leave_probability": 0.09879772936501294,
+        "leaves": 57,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 515,
+        "leave_probability": 0.11683573149708887,
+        "leaves": 61,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 882,
+        "leave_probability": 0.05067987367750279,
+        "leaves": 45,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1470,
+        "leave_probability": 0.058257840035844034,
+        "leaves": 86,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2357,
+        "leave_probability": 0.02710574527398625,
+        "leaves": 64,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3727,
+        "leave_probability": 0.014485967221680718,
+        "leaves": 54,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5865,
+        "leave_probability": 0.005977368903963474,
+        "leaves": 35,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9221,
+        "leave_probability": 0.005754154033262269,
+        "leaves": 53,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 9717,
+        "leave_probability": 0.004432399750434702,
+        "leaves": 43,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 5984,
+        "leave_probability": 0.005524881103634426,
+        "leaves": 33,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 457,
+        "leave_probability": 0.008828145318231144,
+        "leaves": 4,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.013135946622185155,
+        "leaves": 0,
+        "phase": 3,
+        "prior_probability": 0.013135946622185155,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 571,
+        "leave_probability": 0.10033582037671304,
+        "leaves": 58,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 511,
+        "leave_probability": 0.07918003853201705,
+        "leaves": 41,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 909,
+        "leave_probability": 0.06444322791506744,
+        "leaves": 59,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1536,
+        "leave_probability": 0.03568292745992024,
+        "leaves": 55,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2552,
+        "leave_probability": 0.021521265624264395,
+        "leaves": 55,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4200,
+        "leave_probability": 0.01190457224289849,
+        "leaves": 50,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6590,
+        "leave_probability": 0.007440806304655478,
+        "leaves": 49,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 8706,
+        "leave_probability": 0.004715910029620937,
+        "leaves": 41,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 9274,
+        "leave_probability": 0.005504680025653614,
+        "leaves": 51,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 6554,
+        "leave_probability": 0.005348131666887663,
+        "leaves": 35,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 1078,
+        "leave_probability": 0.0065326335157613715,
+        "leaves": 7,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.011804999764606186,
+        "leaves": 0,
+        "phase": 4,
+        "prior_probability": 0.011804999764606186,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 450,
+        "leave_probability": 0.08093692562059113,
+        "leaves": 37,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 414,
+        "leave_probability": 0.08547182922803491,
+        "leaves": 36,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 740,
+        "leave_probability": 0.03752555071421221,
+        "leaves": 28,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1317,
+        "leave_probability": 0.03250499013904206,
+        "leaves": 43,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2241,
+        "leave_probability": 0.021818191166843366,
+        "leaves": 49,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3661,
+        "leave_probability": 0.01228375904448916,
+        "leaves": 45,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5879,
+        "leave_probability": 0.005617311352850473,
+        "leaves": 33,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9444,
+        "leave_probability": 0.0034986364720938144,
+        "leaves": 33,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 11158,
+        "leave_probability": 0.004663183945390537,
+        "leaves": 52,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 7853,
+        "leave_probability": 0.002807417877398643,
+        "leaves": 22,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 1118,
+        "leave_probability": 0.0036137761405246314,
+        "leaves": 4,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.008638991778841811,
+        "leaves": 0,
+        "phase": 5,
+        "prior_probability": 0.008638991778841811,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 532,
+        "leave_probability": 0.06868263343878836,
+        "leaves": 37,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 494,
+        "leave_probability": 0.0778657809899317,
+        "leaves": 39,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 876,
+        "leave_probability": 0.05326767201011959,
+        "leaves": 47,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1524,
+        "leave_probability": 0.04313878724343716,
+        "leaves": 66,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2470,
+        "leave_probability": 0.021423979845417964,
+        "leaves": 53,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3967,
+        "leave_probability": 0.015871351460866847,
+        "leaves": 63,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6437,
+        "leave_probability": 0.007461384337772803,
+        "leaves": 48,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 8467,
+        "leave_probability": 0.005202197292854952,
+        "leaves": 44,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 9476,
+        "leave_probability": 0.00528138149061005,
+        "leaves": 50,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 8295,
+        "leave_probability": 0.00422601734998744,
+        "leaves": 35,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 2100,
+        "leave_probability": 0.005734640444471404,
+        "leaves": 12,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.011077757118215013,
+        "leaves": 0,
+        "phase": 6,
+        "prior_probability": 0.011077757118215013,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 527,
+        "leave_probability": 0.08053300755699444,
+        "leaves": 43,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 479,
+        "leave_probability": 0.05972311918478855,
+        "leaves": 29,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 869,
+        "leave_probability": 0.053688892865441304,
+        "leaves": 47,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1482,
+        "leave_probability": 0.039654469156370484,
+        "leaves": 59,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2491,
+        "leave_probability": 0.025244161281709494,
+        "leaves": 63,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3900,
+        "leave_probability": 0.012816059120519965,
+        "leaves": 50,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6208,
+        "leave_probability": 0.006609581570622912,
+        "leaves": 41,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9856,
+        "leave_probability": 0.004672055864050287,
+        "leaves": 46,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 11272,
+        "leave_probability": 0.004528826156293619,
+        "leaves": 51,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 5822,
+        "leave_probability": 0.004817351465350262,
+        "leaves": 28,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 729,
+        "leave_probability": 0.009613512948428798,
+        "leaves": 7,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.010644880374003117,
+        "leaves": 0,
+        "phase": 7,
+        "prior_probability": 0.010644880374003117,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 555,
+        "leave_probability": 0.08897134957796342,
+        "leaves": 50,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 508,
+        "leave_probability": 0.050563701186808925,
+        "leaves": 26,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 944,
+        "leave_probability": 0.05471730022310232,
+        "leaves": 52,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1619,
+        "leave_probability": 0.030787258643142842,
+        "leaves": 50,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2750,
+        "leave_probability": 0.019612353086437058,
+        "leaves": 54,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4417,
+        "leave_probability": 0.01312788018359173,
+        "leaves": 58,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6660,
+        "leave_probability": 0.007212188034252161,
+        "leaves": 48,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9302,
+        "leave_probability": 0.006991500516905844,
+        "leaves": 65,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 9393,
+        "leave_probability": 0.005966479078012276,
+        "leaves": 56,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 7324,
+        "leave_probability": 0.0046496003563002465,
+        "leaves": 34,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 502,
+        "leave_probability": 0.01194288198508511,
+        "leaves": 6,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.011358726549175668,
+        "leaves": 0,
+        "phase": 8,
+        "prior_probability": 0.011358726549175668,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 592,
+        "leave_probability": 0.0534957385716239,
+        "leaves": 32,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 561,
+        "leave_probability": 0.06871255385408497,
+        "leaves": 39,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1020,
+        "leave_probability": 0.0428963454698194,
+        "leaves": 44,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1748,
+        "leave_probability": 0.03707143686957536,
+        "leaves": 65,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2901,
+        "leave_probability": 0.025128031331376536,
+        "leaves": 73,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4505,
+        "leave_probability": 0.013759681618208362,
+        "leaves": 62,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 7427,
+        "leave_probability": 0.0062000596022830316,
+        "leaves": 46,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9997,
+        "leave_probability": 0.007705891368613127,
+        "leaves": 77,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 9609,
+        "leave_probability": 0.0056251890551080735,
+        "leaves": 54,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 4652,
+        "leave_probability": 0.006673271060724108,
+        "leaves": 31,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 869,
+        "leave_probability": 0.012653869034178268,
+        "leaves": 11,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.012180392871792534,
+        "leaves": 0,
+        "phase": 9,
+        "prior_probability": 0.012180392871792534,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 687,
+        "leave_probability": 0.0706826727831411,
+        "leaves": 49,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 637,
+        "leave_probability": 0.04670458540198923,
+        "leaves": 30,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1159,
+        "leave_probability": 0.06951538781858017,
+        "leaves": 81,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1976,
+        "leave_probability": 0.04492160160498138,
+        "leaves": 89,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3146,
+        "leave_probability": 0.027940538232175988,
+        "leaves": 88,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4874,
+        "leave_probability": 0.016821888075436924,
+        "leaves": 82,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6850,
+        "leave_probability": 0.008767054182601788,
+        "leaves": 60,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 9249,
+        "leave_probability": 0.007359237072948371,
+        "leaves": 68,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 9586,
+        "leave_probability": 0.007621894682539407,
+        "leaves": 73,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 3727,
+        "leave_probability": 0.008333188108241782,
+        "leaves": 31,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 50,
+        "leave_probability": 0.019387199729018232,
+        "leaves": 1,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.015557198035382195,
+        "leaves": 0,
+        "phase": 10,
+        "prior_probability": 0.015557198035382195,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 953,
+        "leave_probability": 0.08032611343131522,
+        "leaves": 77,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 874,
+        "leave_probability": 0.07391541384069607,
+        "leaves": 65,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1560,
+        "leave_probability": 0.05879680804049358,
+        "leaves": 92,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2580,
+        "leave_probability": 0.05726174459331296,
+        "leaves": 148,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3863,
+        "leave_probability": 0.035441331699171776,
+        "leaves": 137,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 5675,
+        "leave_probability": 0.01956596780001653,
+        "leaves": 111,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 7513,
+        "leave_probability": 0.015050311794640864,
+        "leaves": 113,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 8677,
+        "leave_probability": 0.011190949338801834,
+        "leaves": 97,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 5327,
+        "leave_probability": 0.013344591379099144,
+        "leaves": 71,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1623,
+        "leave_probability": 0.013607231764251335,
+        "leaves": 22,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 52,
+        "leave_probability": 0.03655658345823212,
+        "leaves": 2,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.024174375936740915,
+        "leaves": 0,
+        "phase": 11,
+        "prior_probability": 0.024174375936740915,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 531,
+        "leave_probability": 0.1867592335548588,
+        "leaves": 100,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 433,
+        "leave_probability": 0.16476922196387503,
+        "leaves": 72,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 687,
+        "leave_probability": 0.12469529048355235,
+        "leaves": 86,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 918,
+        "leave_probability": 0.12274646531972881,
+        "leaves": 113,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1063,
+        "leave_probability": 0.07624951156495693,
+        "leaves": 81,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1052,
+        "leave_probability": 0.04968228951515933,
+        "leaves": 52,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1070,
+        "leave_probability": 0.033082770766297676,
+        "leaves": 35,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 1091,
+        "leave_probability": 0.03427045212563139,
+        "leaves": 37,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 308,
+        "leave_probability": 0.05273173065211673,
+        "leaves": 16,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 17,
+        "leave_probability": 0.10652907544275553,
+        "leaves": 2,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.08290336075861107,
+        "leaves": 0,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.08290336075861107,
+        "leaves": 0,
+        "phase": 12,
+        "prior_probability": 0.08290336075861107,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 699,
+        "leave_probability": 0.1648295952044184,
+        "leaves": 116,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 581,
+        "leave_probability": 0.14012652599240036,
+        "leaves": 82,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 935,
+        "leave_probability": 0.11721582588496691,
+        "leaves": 110,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1289,
+        "leave_probability": 0.09601736608290193,
+        "leaves": 124,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1648,
+        "leave_probability": 0.06010538877386703,
+        "leaves": 99,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 2012,
+        "leave_probability": 0.027987388024516738,
+        "leaves": 56,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1896,
+        "leave_probability": 0.028116871748699482,
+        "leaves": 53,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 874,
+        "leave_probability": 0.03461964150739661,
+        "leaves": 30,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 145,
+        "leave_probability": 0.02310146280734516,
+        "leaves": 3,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.06681547619047619,
+        "leaves": 0,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.06681547619047619,
+        "leaves": 0,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.06681547619047619,
+        "leaves": 0,
+        "phase": 13,
+        "prior_probability": 0.06681547619047619,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 872,
+        "leave_probability": 0.1334242507082857,
+        "leaves": 117,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 755,
+        "leave_probability": 0.10932285795975284,
+        "leaves": 83,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1275,
+        "leave_probability": 0.10398545644839549,
+        "leaves": 133,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1929,
+        "leave_probability": 0.0730063709980854,
+        "leaves": 141,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2585,
+        "leave_probability": 0.04913742407377224,
+        "leaves": 127,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3368,
+        "leave_probability": 0.030335705160927554,
+        "leaves": 102,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 3013,
+        "leave_probability": 0.03191437955090745,
+        "leaves": 96,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 1975,
+        "leave_probability": 0.018867040152945748,
+        "leaves": 37,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 688,
+        "leave_probability": 0.020708822734614104,
+        "leaves": 14,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.05166757791142701,
+        "leaves": 0,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.05166757791142701,
+        "leaves": 0,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.05166757791142701,
+        "leaves": 0,
+        "phase": 14,
+        "prior_probability": 0.05166757791142701,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 885,
+        "leave_probability": 0.15954024005359732,
+        "leaves": 142,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 737,
+        "leave_probability": 0.12814689176894284,
+        "leaves": 95,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1200,
+        "leave_probability": 0.1030376112316742,
+        "leaves": 124,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1810,
+        "leave_probability": 0.07561575047737207,
+        "leaves": 137,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2441,
+        "leave_probability": 0.05286624514816759,
+        "leaves": 129,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 2941,
+        "leave_probability": 0.04119004217289333,
+        "leaves": 121,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 2700,
+        "leave_probability": 0.030084724655783757,
+        "leaves": 81,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 1663,
+        "leave_probability": 0.021226471794052914,
+        "leaves": 35,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 456,
+        "leave_probability": 0.020408263723841424,
+        "leaves": 9,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 52,
+        "leave_probability": 0.00782390613104035,
+        "leaves": 0,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.05867929598280263,
+        "leaves": 0,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.05867929598280263,
+        "leaves": 0,
+        "phase": 15,
+        "prior_probability": 0.05867929598280263,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 847,
+        "leave_probability": 0.1888388642771003,
+        "leaves": 161,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 687,
+        "leave_probability": 0.13159313518981405,
+        "leaves": 91,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1114,
+        "leave_probability": 0.12340216484574044,
+        "leaves": 138,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1640,
+        "leave_probability": 0.06763181368745191,
+        "leaves": 111,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2339,
+        "leave_probability": 0.04450670172855593,
+        "leaves": 104,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 2980,
+        "leave_probability": 0.03495891196684095,
+        "leaves": 104,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 2523,
+        "leave_probability": 0.03494951756496276,
+        "leaves": 88,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 1726,
+        "leave_probability": 0.012951112431903552,
+        "leaves": 22,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 742,
+        "leave_probability": 0.02060963860922768,
+        "leaves": 15,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 2,
+        "leave_probability": 0.04572289569207589,
+        "leaves": 0,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.05715361961509486,
+        "leaves": 0,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.05715361961509486,
+        "leaves": 0,
+        "phase": 16,
+        "prior_probability": 0.05715361961509486,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 735,
+        "leave_probability": 0.12292574663420013,
+        "leaves": 91,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 642,
+        "leave_probability": 0.12359050730647798,
+        "leaves": 80,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1071,
+        "leave_probability": 0.09113422590288293,
+        "leaves": 98,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1608,
+        "leave_probability": 0.08188974613193732,
+        "leaves": 132,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2176,
+        "leave_probability": 0.05097702827344812,
+        "leaves": 111,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 2764,
+        "leave_probability": 0.027176706258734015,
+        "leaves": 75,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 3344,
+        "leave_probability": 0.016209376416828968,
+        "leaves": 54,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 3019,
+        "leave_probability": 0.013655047819362637,
+        "leaves": 41,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 1255,
+        "leave_probability": 0.013724330759470072,
+        "leaves": 17,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 172,
+        "leave_probability": 0.007410165273392771,
+        "leaves": 1,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.04172871865133734,
+        "leaves": 0,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.04172871865133734,
+        "leaves": 0,
+        "phase": 17,
+        "prior_probability": 0.04172871865133734,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 888,
+        "leave_probability": 0.12755858502159986,
+        "leaves": 114,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 773,
+        "leave_probability": 0.10024646885960754,
+        "leaves": 78,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1299,
+        "leave_probability": 0.10121843319001798,
+        "leaves": 132,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2003,
+        "leave_probability": 0.06777349188431303,
+        "leaves": 136,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2907,
+        "leave_probability": 0.03371955134797718,
+        "leaves": 98,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4064,
+        "leave_probability": 0.02561210515210056,
+        "leaves": 104,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 4723,
+        "leave_probability": 0.018239799657441026,
+        "leaves": 86,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4180,
+        "leave_probability": 0.015351597941583927,
+        "leaves": 64,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 1875,
+        "leave_probability": 0.013432019213676843,
+        "leaves": 25,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 303,
+        "leave_probability": 0.013802225657085186,
+        "leaves": 4,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.03656152241918665,
+        "leaves": 0,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.03656152241918665,
+        "leaves": 0,
+        "phase": 18,
+        "prior_probability": 0.03656152241918665,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 843,
+        "leave_probability": 0.13779701798477503,
+        "leaves": 117,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 725,
+        "leave_probability": 0.09313132647345641,
+        "leaves": 68,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1259,
+        "leave_probability": 0.07518963086428063,
+        "leaves": 95,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2019,
+        "leave_probability": 0.059824993737071314,
+        "leaves": 121,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2993,
+        "leave_probability": 0.03974184015496286,
+        "leaves": 119,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4243,
+        "leave_probability": 0.02429199301459505,
+        "leaves": 103,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5012,
+        "leave_probability": 0.018379534323713854,
+        "leaves": 92,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4538,
+        "leave_probability": 0.013036793291914551,
+        "leaves": 59,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 2801,
+        "leave_probability": 0.013266380315074244,
+        "leaves": 37,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 251,
+        "leave_probability": 0.028051205810978953,
+        "leaves": 7,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.03315778813044359,
+        "leaves": 0,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.03315778813044359,
+        "leaves": 0,
+        "phase": 19,
+        "prior_probability": 0.03315778813044359,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 933,
+        "leave_probability": 0.1448519058022161,
+        "leaves": 136,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 796,
+        "leave_probability": 0.0998826409948823,
+        "leaves": 80,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1362,
+        "leave_probability": 0.0907340462480915,
+        "leaves": 124,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2184,
+        "leave_probability": 0.054427757007246974,
+        "leaves": 119,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3216,
+        "leave_probability": 0.04072755687341357,
+        "leaves": 131,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4264,
+        "leave_probability": 0.02675693898873721,
+        "leaves": 114,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5033,
+        "leave_probability": 0.01831097864707109,
+        "leaves": 92,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 3821,
+        "leave_probability": 0.02071184208928842,
+        "leaves": 79,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 1718,
+        "leave_probability": 0.015820187346399398,
+        "leaves": 27,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 399,
+        "leave_probability": 0.01057897631421465,
+        "leaves": 4,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.038205419985670334,
+        "leaves": 0,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.038205419985670334,
+        "leaves": 0,
+        "phase": 20,
+        "prior_probability": 0.038205419985670334,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 852,
+        "leave_probability": 0.15382634010965787,
+        "leaves": 132,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 716,
+        "leave_probability": 0.1329981388042897,
+        "leaves": 96,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1162,
+        "leave_probability": 0.10281252349940662,
+        "leaves": 120,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1777,
+        "leave_probability": 0.06738972128532535,
+        "leaves": 120,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2646,
+        "leave_probability": 0.035150961753694705,
+        "leaves": 93,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3878,
+        "leave_probability": 0.01988951428057276,
+        "leaves": 77,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 4552,
+        "leave_probability": 0.020019879932961785,
+        "leaves": 91,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4202,
+        "leave_probability": 0.012658112231426544,
+        "leaves": 53,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 2241,
+        "leave_probability": 0.012134572029482324,
+        "leaves": 27,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 364,
+        "leave_probability": 0.011534012081467064,
+        "leaves": 4,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.03633156178821848,
+        "leaves": 0,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.03633156178821848,
+        "leaves": 0,
+        "phase": 21,
+        "prior_probability": 0.03633156178821848,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 771,
+        "leave_probability": 0.1376564116983349,
+        "leaves": 107,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 668,
+        "leave_probability": 0.11129340933876167,
+        "leaves": 75,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1127,
+        "leave_probability": 0.09888488520969417,
+        "leaves": 112,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1726,
+        "leave_probability": 0.0612654813800478,
+        "leaves": 106,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2633,
+        "leave_probability": 0.031894867365771636,
+        "leaves": 84,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3735,
+        "leave_probability": 0.023305996450174428,
+        "leaves": 87,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5113,
+        "leave_probability": 0.012543320584456725,
+        "leaves": 64,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 5808,
+        "leave_probability": 0.010528601223006,
+        "leaves": 61,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 3312,
+        "leave_probability": 0.010913959250904486,
+        "leaves": 36,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 385,
+        "leave_probability": 0.020952531076343223,
+        "leaves": 8,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.029293089125360973,
+        "leaves": 0,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.029293089125360973,
+        "leaves": 0,
+        "phase": 22,
+        "prior_probability": 0.029293089125360973,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 673,
+        "leave_probability": 0.14270197619217256,
+        "leaves": 97,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 575,
+        "leave_probability": 0.11180110769617413,
+        "leaves": 65,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 962,
+        "leave_probability": 0.08987633586275208,
+        "leaves": 87,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1503,
+        "leave_probability": 0.06232961335994011,
+        "leaves": 94,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2227,
+        "leave_probability": 0.03005818603439352,
+        "leaves": 67,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3465,
+        "leave_probability": 0.014160681194030954,
+        "leaves": 49,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5055,
+        "leave_probability": 0.010701174360432452,
+        "leaves": 54,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 5534,
+        "leave_probability": 0.010137142870239896,
+        "leaves": 56,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 5160,
+        "leave_probability": 0.005839792141422118,
+        "leaves": 30,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1927,
+        "leave_probability": 0.005261005574609565,
+        "leaves": 10,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.022505723358688428,
+        "leaves": 0,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.022505723358688428,
+        "leaves": 0,
+        "phase": 23,
+        "prior_probability": 0.022505723358688428,
+        "state": "sleep"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 579,
+        "leave_probability": 0.0024622093384329188,
+        "leaves": 1,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 583,
+        "leave_probability": 0.0007534972616922562,
+        "leaves": 0,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1166,
+        "leave_probability": 0.14177624947330505,
+        "leaves": 166,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1249,
+        "leave_probability": 0.14991671987403352,
+        "leaves": 188,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1463,
+        "leave_probability": 0.055367312631991926,
+        "leaves": 81,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1678,
+        "leave_probability": 0.04000315354784111,
+        "leaves": 67,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1711,
+        "leave_probability": 0.02701879981481101,
+        "leaves": 46,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 1237,
+        "leave_probability": 0.02606049548727721,
+        "leaves": 32,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 750,
+        "leave_probability": 0.01246084021327193,
+        "leaves": 9,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 281,
+        "leave_probability": 0.0188419269261596,
+        "leaves": 5,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.055664610207515425,
+        "leaves": 0,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.055664610207515425,
+        "leaves": 0,
+        "phase": 0,
+        "prior_probability": 0.055664610207515425,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 564,
+        "leave_probability": 0.0010042956009863973,
+        "leaves": 0,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 563,
+        "leave_probability": 0.0010060544374154452,
+        "leaves": 0,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1125,
+        "leave_probability": 0.15231637871470805,
+        "leaves": 172,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1216,
+        "leave_probability": 0.13609024271549366,
+        "leaves": 166,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1311,
+        "leave_probability": 0.0785249864168038,
+        "leaves": 103,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1434,
+        "leave_probability": 0.03784636413575882,
+        "leaves": 54,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1002,
+        "leave_probability": 0.048093521865113086,
+        "leaves": 48,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 278,
+        "leave_probability": 0.03697362616700776,
+        "leaves": 10,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 25,
+        "leave_probability": 0.04771082072012786,
+        "leaves": 1,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 191,
+        "leave_probability": 0.0028867190138905487,
+        "leaves": 0,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 26,
+        "leave_probability": 0.04630756128718292,
+        "leaves": 1,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.0718071354705274,
+        "leaves": 0,
+        "phase": 1,
+        "prior_probability": 0.0718071354705274,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 509,
+        "leave_probability": 0.0069213439563351,
+        "leaves": 3,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 502,
+        "leave_probability": 0.005055558481225973,
+        "leaves": 2,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 998,
+        "leave_probability": 0.17751325529366327,
+        "leaves": 178,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 943,
+        "leave_probability": 0.1583368399846743,
+        "leaves": 150,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1092,
+        "leave_probability": 0.05143484984129568,
+        "leaves": 56,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1199,
+        "leave_probability": 0.04024717052645008,
+        "leaves": 48,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1071,
+        "leave_probability": 0.031119865454518298,
+        "leaves": 33,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 372,
+        "leave_probability": 0.03573246006690854,
+        "leaves": 13,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 15,
+        "leave_probability": 0.06862325327935853,
+        "leaves": 1,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.07229185317815577,
+        "leaves": 0,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.07229185317815577,
+        "leaves": 0,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.07229185317815577,
+        "leaves": 0,
+        "phase": 2,
+        "prior_probability": 0.07229185317815577,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 552,
+        "leave_probability": 0.0007934005884825557,
+        "leaves": 0,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 548,
+        "leave_probability": 0.0007991085063853079,
+        "leaves": 0,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1088,
+        "leave_probability": 0.14456597110360422,
+        "leaves": 158,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1188,
+        "leave_probability": 0.13582299693106206,
+        "leaves": 162,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1450,
+        "leave_probability": 0.05380267786663254,
+        "leaves": 78,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1713,
+        "leave_probability": 0.029311042608686944,
+        "leaves": 50,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1906,
+        "leave_probability": 0.023220639670611404,
+        "leaves": 44,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 997,
+        "leave_probability": 0.03427293963139326,
+        "leaves": 34,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 73,
+        "leave_probability": 0.03017659666111397,
+        "leaves": 2,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.0555380411937789,
+        "leaves": 0,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.0555380411937789,
+        "leaves": 0,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.0555380411937789,
+        "leaves": 0,
+        "phase": 3,
+        "prior_probability": 0.0555380411937789,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 513,
+        "leave_probability": 0.0029328609703506703,
+        "leaves": 1,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 514,
+        "leave_probability": 0.0010115336504840982,
+        "leaves": 0,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1025,
+        "leave_probability": 0.1708886936743008,
+        "leaves": 176,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1022,
+        "leave_probability": 0.14323108792772107,
+        "leaves": 147,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1231,
+        "leave_probability": 0.0577304443628351,
+        "leaves": 71,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1466,
+        "leave_probability": 0.03631480364013073,
+        "leaves": 53,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1276,
+        "leave_probability": 0.0315638789451345,
+        "leaves": 40,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 668,
+        "leave_probability": 0.03332547420939748,
+        "leaves": 22,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 64,
+        "leave_probability": 0.04900028563267638,
+        "leaves": 3,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.06600257069408741,
+        "leaves": 0,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.06600257069408741,
+        "leaves": 0,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.06600257069408741,
+        "leaves": 0,
+        "phase": 4,
+        "prior_probability": 0.06600257069408741,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 384,
+        "leave_probability": 0.0013404962384554221,
+        "leaves": 0,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 385,
+        "leave_probability": 0.0013370853065509554,
+        "leaves": 0,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 770,
+        "leave_probability": 0.1857653914209184,
+        "leaves": 144,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 732,
+        "leave_probability": 0.15341280341280342,
+        "leaves": 113,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 859,
+        "leave_probability": 0.05135579530043198,
+        "leaves": 44,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1135,
+        "leave_probability": 0.035455358290003965,
+        "leaves": 40,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1133,
+        "leave_probability": 0.02850611264283482,
+        "leaves": 32,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 561,
+        "leave_probability": 0.03255795171436648,
+        "leaves": 18,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 46,
+        "leave_probability": 0.06528656528656528,
+        "leaves": 3,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.06568431568431568,
+        "leaves": 0,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.06568431568431568,
+        "leaves": 0,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.06568431568431568,
+        "leaves": 0,
+        "phase": 5,
+        "prior_probability": 0.06568431568431568,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 500,
+        "leave_probability": 0.005275157989621313,
+        "leaves": 2,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 498,
+        "leave_probability": 0.0013434392464972869,
+        "leaves": 0,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 984,
+        "leave_probability": 0.17709655268016897,
+        "leaves": 175,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 923,
+        "leave_probability": 0.16506958137349906,
+        "leaves": 153,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 920,
+        "leave_probability": 0.0826290735546634,
+        "leaves": 76,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 925,
+        "leave_probability": 0.03824199384643904,
+        "leaves": 35,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 668,
+        "leave_probability": 0.046863580264389984,
+        "leaves": 31,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 220,
+        "leave_probability": 0.02929728183652468,
+        "leaves": 6,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 4,
+        "leave_probability": 0.13998168822730225,
+        "leaves": 1,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.0849725323409534,
+        "leaves": 0,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.0849725323409534,
+        "leaves": 0,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.0849725323409534,
+        "leaves": 0,
+        "phase": 6,
+        "prior_probability": 0.0849725323409534,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 476,
+        "leave_probability": 0.0011761829806447427,
+        "leaves": 0,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 472,
+        "leave_probability": 0.003269317838816782,
+        "leaves": 1,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 944,
+        "leave_probability": 0.171816462775874,
+        "leaves": 163,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 949,
+        "leave_probability": 0.13852588564538354,
+        "leaves": 132,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1100,
+        "leave_probability": 0.06278815213233939,
+        "leaves": 69,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1235,
+        "leave_probability": 0.04390126513486087,
+        "leaves": 54,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1005,
+        "leave_probability": 0.034125639252351486,
+        "leaves": 34,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 430,
+        "leave_probability": 0.040112494435233,
+        "leaves": 17,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 14,
+        "leave_probability": 0.07133057102872979,
+        "leaves": 1,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.07115907032900694,
+        "leaves": 0,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.07115907032900694,
+        "leaves": 0,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.07115907032900694,
+        "leaves": 0,
+        "phase": 7,
+        "prior_probability": 0.07115907032900694,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 503,
+        "leave_probability": 0.0032072619871145705,
+        "leaves": 1,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 503,
+        "leave_probability": 0.0012503148246879557,
+        "leaves": 0,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1005,
+        "leave_probability": 0.17930790807049907,
+        "leaves": 181,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 950,
+        "leave_probability": 0.16559385268832522,
+        "leaves": 158,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 949,
+        "leave_probability": 0.08739698106104028,
+        "leaves": 83,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 997,
+        "leave_probability": 0.03745165261235378,
+        "leaves": 37,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 951,
+        "leave_probability": 0.030906059307002652,
+        "leaves": 29,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 429,
+        "leave_probability": 0.033498651888822756,
+        "leaves": 14,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 29,
+        "leave_probability": 0.044294888524744475,
+        "leaves": 1,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.07986385942694317,
+        "leaves": 0,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.07986385942694317,
+        "leaves": 0,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.07986385942694317,
+        "leaves": 0,
+        "phase": 8,
+        "prior_probability": 0.07986385942694317,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 543,
+        "leave_probability": 0.00119736556746453,
+        "leaves": 0,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 542,
+        "leave_probability": 0.003017724413950829,
+        "leaves": 1,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1076,
+        "leave_probability": 0.18880050592958758,
+        "leaves": 204,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 965,
+        "leave_probability": 0.16922892952484372,
+        "leaves": 164,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1005,
+        "leave_probability": 0.06679145945476106,
+        "leaves": 67,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1090,
+        "leave_probability": 0.036119989460540035,
+        "leaves": 39,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 745,
+        "leave_probability": 0.048684924870747624,
+        "leaves": 36,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 322,
+        "leave_probability": 0.03836287402325138,
+        "leaves": 12,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 71,
+        "leave_probability": 0.0210094737680121,
+        "leaves": 1,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.08246855345911949,
+        "leaves": 0,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.08246855345911949,
+        "leaves": 0,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.08246855345911949,
+        "leaves": 0,
+        "phase": 9,
+        "prior_probability": 0.08246855345911949,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 660,
+        "leave_probability": 0.0039209351082008645,
+        "leaves": 2,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 657,
+        "leave_probability": 0.0024348641387641765,
+        "leaves": 1,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1311,
+        "leave_probability": 0.1642298594786036,
+        "leaves": 216,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1310,
+        "leave_probability": 0.17118299290764655,
+        "leaves": 225,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1294,
+        "leave_probability": 0.06959998821219522,
+        "leaves": 90,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1385,
+        "leave_probability": 0.03849187699373882,
+        "leaves": 53,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1150,
+        "leave_probability": 0.03594057396569791,
+        "leaves": 41,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 541,
+        "leave_probability": 0.03209323251781089,
+        "leaves": 17,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 31,
+        "leave_probability": 0.015876529545594292,
+        "leaves": 0,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.07739808153477218,
+        "leaves": 0,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.07739808153477218,
+        "leaves": 0,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.07739808153477218,
+        "leaves": 0,
+        "phase": 10,
+        "prior_probability": 0.07739808153477218,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 943,
+        "leave_probability": 0.0006638349560711836,
+        "leaves": 0,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 940,
+        "leave_probability": 0.0017207880202781598,
+        "leaves": 1,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1873,
+        "leave_probability": 0.15663546360617953,
+        "leaves": 294,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1925,
+        "leave_probability": 0.15707775842898275,
+        "leaves": 303,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 1907,
+        "leave_probability": 0.08022522561003849,
+        "leaves": 153,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 1959,
+        "leave_probability": 0.041500410291420285,
+        "leaves": 81,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 1554,
+        "leave_probability": 0.04201748210193579,
+        "leaves": 65,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 478,
+        "leave_probability": 0.03422079638523394,
+        "leaves": 16,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 34,
+        "leave_probability": 0.08645969150532608,
+        "leaves": 3,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 0,
+        "leave_probability": 0.07891338040296195,
+        "leaves": 0,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.07891338040296195,
+        "leaves": 0,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.07891338040296195,
+        "leaves": 0,
+        "phase": 11,
+        "prior_probability": 0.07891338040296195,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 679,
+        "leave_probability": 0.0001413306319572159,
+        "leaves": 0,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 677,
+        "leave_probability": 0.005981159334532274,
+        "leaves": 4,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1337,
+        "leave_probability": 0.06773018151981755,
+        "leaves": 91,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2055,
+        "leave_probability": 0.06693993899377343,
+        "leaves": 138,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3244,
+        "leave_probability": 0.023092587375201295,
+        "leaves": 75,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 5473,
+        "leave_probability": 0.009140137592438353,
+        "leaves": 50,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 8452,
+        "leave_probability": 0.006867268811365793,
+        "leaves": 58,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 10885,
+        "leave_probability": 0.004690819254948555,
+        "leaves": 51,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 8625,
+        "leave_probability": 0.0059188108588155465,
+        "leaves": 51,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1623,
+        "leave_probability": 0.0025120135770414515,
+        "leaves": 4,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.012136768019325915,
+        "leaves": 0,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.012136768019325915,
+        "leaves": 0,
+        "phase": 12,
+        "prior_probability": 0.012136768019325915,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 705,
+        "leave_probability": 0.0015953751550962345,
+        "leaves": 1,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 703,
+        "leave_probability": 0.0015998628489221028,
+        "leaves": 1,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1402,
+        "leave_probability": 0.08875000176282526,
+        "leaves": 125,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1966,
+        "leave_probability": 0.08112335485591875,
+        "leaves": 160,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2872,
+        "leave_probability": 0.03338107725193876,
+        "leaves": 96,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4336,
+        "leave_probability": 0.014764618435907829,
+        "leaves": 64,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6187,
+        "leave_probability": 0.012451574251103084,
+        "leaves": 77,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 6986,
+        "leave_probability": 0.011743995208118904,
+        "leaves": 82,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 7261,
+        "leave_probability": 0.007310153045203414,
+        "leaves": 53,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 6669,
+        "leave_probability": 0.004064325668052061,
+        "leaves": 27,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 1144,
+        "leave_probability": 0.004459637574291332,
+        "leaves": 5,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.017187810697951878,
+        "leaves": 0,
+        "phase": 13,
+        "prior_probability": 0.017187810697951878,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 902,
+        "leave_probability": 0.002421087093138216,
+        "leaves": 2,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 899,
+        "leave_probability": 0.00242909509895896,
+        "leaves": 2,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1790,
+        "leave_probability": 0.1057859784509209,
+        "leaves": 190,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2356,
+        "leave_probability": 0.1003397585680016,
+        "leaves": 237,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3190,
+        "leave_probability": 0.03633620677134327,
+        "leaves": 116,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4542,
+        "leave_probability": 0.02290179983621006,
+        "leaves": 104,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5706,
+        "leave_probability": 0.016311373688266673,
+        "leaves": 93,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 6008,
+        "leave_probability": 0.01100451949048467,
+        "leaves": 66,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 4826,
+        "leave_probability": 0.00728241399560525,
+        "leaves": 35,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 2653,
+        "leave_probability": 0.0034585453794647785,
+        "leaves": 9,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 928,
+        "leave_probability": 0.004490586810636513,
+        "leaves": 4,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.025398656844472057,
+        "leaves": 0,
+        "phase": 14,
+        "prior_probability": 0.025398656844472057,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 924,
+        "leave_probability": 0.002356899660884031,
+        "leaves": 2,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 922,
+        "leave_probability": 0.0012866994451009859,
+        "leaves": 1,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1830,
+        "leave_probability": 0.11925823203696623,
+        "leaves": 219,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2306,
+        "leave_probability": 0.09861565708035606,
+        "leaves": 228,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3281,
+        "leave_probability": 0.03472077545878502,
+        "leaves": 114,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4859,
+        "leave_probability": 0.01668309646269651,
+        "leaves": 81,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 6524,
+        "leave_probability": 0.013655332284743405,
+        "leaves": 89,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 7063,
+        "leave_probability": 0.010351666027993766,
+        "leaves": 73,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 4929,
+        "leave_probability": 0.009762331473353031,
+        "leaves": 48,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 2169,
+        "leave_probability": 0.0060618422066807155,
+        "leaves": 13,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 568,
+        "leave_probability": 0.0020774834790693,
+        "leaves": 1,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.024578810492989597,
+        "leaves": 0,
+        "phase": 15,
+        "prior_probability": 0.024578810492989597,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 876,
+        "leave_probability": 0.0013423095749831603,
+        "leaves": 1,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 871,
+        "leave_probability": 0.00021228858280445269,
+        "leaves": 0,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1734,
+        "leave_probability": 0.10171446708627159,
+        "leaves": 177,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2314,
+        "leave_probability": 0.09267295506644492,
+        "leaves": 215,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3346,
+        "leave_probability": 0.032255993340573975,
+        "leaves": 108,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 5095,
+        "leave_probability": 0.01826114083172352,
+        "leaves": 93,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 7143,
+        "leave_probability": 0.013310949750284592,
+        "leaves": 95,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 7575,
+        "leave_probability": 0.01123389181910657,
+        "leaves": 85,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 4917,
+        "leave_probability": 0.009784081556200024,
+        "leaves": 48,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1611,
+        "leave_probability": 0.006291909613517673,
+        "leaves": 10,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 208,
+        "leave_probability": 0.0008638965939125644,
+        "leaves": 0,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.023325208035639238,
+        "leaves": 0,
+        "phase": 16,
+        "prior_probability": 0.023325208035639238,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 754,
+        "leave_probability": 0.0002250951262199352,
+        "leaves": 0,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 756,
+        "leave_probability": 0.0015334063955230242,
+        "leaves": 1,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1506,
+        "leave_probability": 0.09720708222336828,
+        "leaves": 147,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2088,
+        "leave_probability": 0.08405129889607804,
+        "leaves": 176,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3079,
+        "leave_probability": 0.02823826449179773,
+        "leaves": 87,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4626,
+        "leave_probability": 0.020753457593046958,
+        "leaves": 96,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5993,
+        "leave_probability": 0.015192721627425363,
+        "leaves": 91,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 6781,
+        "leave_probability": 0.009746873248811252,
+        "leaves": 66,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 5598,
+        "leave_probability": 0.007344188813089474,
+        "leaves": 41,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 2050,
+        "leave_probability": 0.005428339400475992,
+        "leaves": 11,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 233,
+        "leave_probability": 0.00486108915427216,
+        "leaves": 1,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.021440310772448828,
+        "leaves": 0,
+        "phase": 17,
+        "prior_probability": 0.021440310772448828,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 868,
+        "leave_probability": 0.0037141052967099046,
+        "leaves": 3,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 866,
+        "leave_probability": 0.0014342748740479136,
+        "leaves": 1,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1731,
+        "leave_probability": 0.1347058977802863,
+        "leaves": 234,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2016,
+        "leave_probability": 0.11425570960470251,
+        "leaves": 231,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2621,
+        "leave_probability": 0.04650192325595963,
+        "leaves": 122,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3491,
+        "leave_probability": 0.025222508213751892,
+        "leaves": 88,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 4572,
+        "leave_probability": 0.014684182585134906,
+        "leaves": 67,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 5141,
+        "leave_probability": 0.011896204358111843,
+        "leaves": 61,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 4218,
+        "leave_probability": 0.008815323293875504,
+        "leaves": 37,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1693,
+        "leave_probability": 0.011318963104008158,
+        "leaves": 19,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 58,
+        "leave_probability": 0.018993276362392068,
+        "leaves": 1,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.031694529989734564,
+        "leaves": 0,
+        "phase": 18,
+        "prior_probability": 0.031694529989734564,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 848,
+        "leave_probability": 0.00029823117682789416,
+        "leaves": 0,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 841,
+        "leave_probability": 0.001478546392655686,
+        "leaves": 1,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1674,
+        "leave_probability": 0.12797579422554378,
+        "leaves": 215,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2017,
+        "leave_probability": 0.11518779549993317,
+        "leaves": 233,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2665,
+        "leave_probability": 0.03675843093429281,
+        "leaves": 98,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3757,
+        "leave_probability": 0.02211295773900788,
+        "leaves": 83,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 4875,
+        "leave_probability": 0.016845235692681686,
+        "leaves": 82,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4872,
+        "leave_probability": 0.010298214321181286,
+        "leaves": 50,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 3219,
+        "leave_probability": 0.014333835106093795,
+        "leaves": 46,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 818,
+        "leave_probability": 0.009994292841845855,
+        "leaves": 8,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.031910735920584674,
+        "leaves": 0,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.031910735920584674,
+        "leaves": 0,
+        "phase": 19,
+        "prior_probability": 0.031910735920584674,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 944,
+        "leave_probability": 0.00028549576981725424,
+        "leaves": 0,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 943,
+        "leave_probability": 0.0023888453973354637,
+        "leaves": 2,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1875,
+        "leave_probability": 0.1291937291411928,
+        "leaves": 243,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2261,
+        "leave_probability": 0.11074120404269107,
+        "leaves": 251,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 3015,
+        "leave_probability": 0.04243195235622429,
+        "leaves": 128,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4100,
+        "leave_probability": 0.020514068153083258,
+        "leaves": 84,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5368,
+        "leave_probability": 0.015675556542571807,
+        "leaves": 84,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4865,
+        "leave_probability": 0.01483106750930967,
+        "leaves": 72,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 2678,
+        "leave_probability": 0.010897912126904701,
+        "leaves": 29,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 485,
+        "leave_probability": 0.016778482703582204,
+        "leaves": 8,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.03397399660825325,
+        "leaves": 0,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.03397399660825325,
+        "leaves": 0,
+        "phase": 20,
+        "prior_probability": 0.03397399660825325,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 845,
+        "leave_probability": 0.001447562805517022,
+        "leaves": 1,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 845,
+        "leave_probability": 0.0002752298629613363,
+        "leaves": 0,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1685,
+        "leave_probability": 0.13067617901541997,
+        "leaves": 221,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 2061,
+        "leave_probability": 0.09291192415326537,
+        "leaves": 192,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2894,
+        "leave_probability": 0.03660743317474363,
+        "leaves": 106,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 4435,
+        "leave_probability": 0.016933326822666222,
+        "leaves": 75,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5799,
+        "leave_probability": 0.01622778906029034,
+        "leaves": 94,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 5411,
+        "leave_probability": 0.015544338636852928,
+        "leaves": 84,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 3329,
+        "leave_probability": 0.011757498074050349,
+        "leaves": 39,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 586,
+        "leave_probability": 0.010496247597821582,
+        "leaves": 6,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.029346384138252482,
+        "leaves": 0,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.029346384138252482,
+        "leaves": 0,
+        "phase": 21,
+        "prior_probability": 0.029346384138252482,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 765,
+        "leave_probability": 0.0016029439594386341,
+        "leaves": 1,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 764,
+        "leave_probability": 0.0016050203117176996,
+        "leaves": 1,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1532,
+        "leave_probability": 0.11184355563678317,
+        "leaves": 172,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1934,
+        "leave_probability": 0.10774411724029148,
+        "leaves": 209,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2655,
+        "leave_probability": 0.04027002466415549,
+        "leaves": 107,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3793,
+        "leave_probability": 0.020057636327452267,
+        "leaves": 76,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 5082,
+        "leave_probability": 0.013799425477533609,
+        "leaves": 70,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4761,
+        "leave_probability": 0.01577669861200379,
+        "leaves": 75,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 2724,
+        "leave_probability": 0.011068475724980258,
+        "leaves": 30,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1002,
+        "leave_probability": 0.006177302654105013,
+        "leaves": 6,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.029884460080758006,
+        "leaves": 0,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.029884460080758006,
+        "leaves": 0,
+        "phase": 22,
+        "prior_probability": 0.029884460080758006,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 0,
+        "exposures": 645,
+        "leave_probability": 0.0018638567313872204,
+        "leaves": 1,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 1,
+        "exposures": 638,
+        "leave_probability": 0.0018840533213558125,
+        "leaves": 1,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 2,
+        "exposures": 1269,
+        "leave_probability": 0.12781291969114789,
+        "leaves": 163,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 3,
+        "exposures": 1556,
+        "leave_probability": 0.10052244146137843,
+        "leaves": 157,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 4,
+        "exposures": 2102,
+        "leave_probability": 0.04465265329175159,
+        "leaves": 94,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 5,
+        "exposures": 3015,
+        "leave_probability": 0.01826566273423614,
+        "leaves": 55,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 6,
+        "exposures": 4398,
+        "leave_probability": 0.01344010405029411,
+        "leaves": 59,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 7,
+        "exposures": 4818,
+        "leave_probability": 0.012063219735929517,
+        "leaves": 58,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 8,
+        "exposures": 3458,
+        "leave_probability": 0.009872215362260777,
+        "leaves": 34,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 9,
+        "exposures": 1260,
+        "leave_probability": 0.004903074483908403,
+        "leaves": 6,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 10,
+        "exposures": 0,
+        "leave_probability": 0.027137305699481865,
+        "leaves": 0,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      },
+      {
+        "duration_bin": 11,
+        "exposures": 0,
+        "leave_probability": 0.027137305699481865,
+        "leaves": 0,
+        "phase": 23,
+        "prior_probability": 0.027137305699481865,
+        "state": "wake"
+      }
+    ],
+    "hypothesis": "Tests whether daily phase and elapsed bout duration contribute complementary structure.",
+    "initial_sleep_probabilities": [
+      0.7872672040662352,
+      0.8460583056775501,
+      0.8667123505343026,
+      0.8105619673824517,
+      0.8451749418847231,
+      0.8806241433424048,
+      0.8877555074392642,
+      0.8681627625121694,
+      0.8744587454812696,
+      0.8734226267363526,
+      0.8341411573071651,
+      0.7691536261815871,
+      0.14276202023414364,
+      0.2003634125029788,
+      0.3274025948222765,
+      0.29608988496155453,
+      0.29032097882652047,
+      0.33399236974923496,
+      0.4577225598855917,
+      0.49101041004450097,
+      0.4720649301623254,
+      0.4454122881945134,
+      0.5026516505780002,
+      0.5390095586335725
+    ],
+    "label": "Phase and duration",
+    "mechanisms": {
+      "duration_conditioning": true,
+      "phase_conditioning": true
+    },
+    "model_id": "phase-duration-hazard-v1",
+    "parameter_count": 600,
+    "phase_bins": 24,
+    "schema_version": "umwelt.temporal-model.v1",
+    "shared_activity_emission": "phase-conditioned-zero-inflated-gamma-v1",
+    "training_observations": 1208080,
+    "training_subject_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "training_transitions": 1206520,
+    "transition_prior": 0.5
+  },
+  "population_state_model": {
+    "assumptions": [
+      "Only training animals contribute individual-variation profiles.",
+      "Development animals are never used to calibrate profile values or selection.",
+      "A synthetic individual samples one fixed profile for its full generated series.",
+      "The profile modifies pooled phase+duration state dynamics but not activity emissions.",
+      "Positive sleep bias increases wake-to-sleep hazard and decreases sleep-to-wake hazard throughout generation.",
+      "The switching offset changes both leaving hazards in the same direction throughout generation.",
+      "Profile offsets are computational population variation, not inferred personality, physiology, or mental state.",
+      "The empirical profile distribution is a minimal baseline, not a claim of a biological random-effects distribution."
+    ],
+    "base_model_id": "phase-duration-hazard-v1",
+    "hypothesis": "Tests whether stable between-subject offsets estimated only from training animals are sufficient to reproduce observed individual heterogeneity.",
+    "label": "Phase + duration + population variation",
+    "model_id": "phase-duration-population-v1",
+    "parameter_count": 640,
+    "profile_count": 20,
+    "profile_effects": "a sustained sleep-bias offset and a sustained state-switching offset, reconstructed into state-specific leaving hazards",
+    "profile_sampling": "uniform empirical resampling with replacement",
+    "profiles": [
+      {
+        "observations": 60405,
+        "sleep_bias_logit_offset": 0.0771312911313573,
+        "source_subject_id": "1",
+        "switching_logit_offset": 0.26703896182226394,
+        "transitions": 60328
+      },
+      {
+        "observations": 60405,
+        "sleep_bias_logit_offset": 0.13175061612160888,
+        "source_subject_id": "2",
+        "switching_logit_offset": 0.0009675044829082768,
+        "transitions": 60328
+      },
+      {
+        "observations": 60405,
+        "sleep_bias_logit_offset": -0.04375386098232492,
+        "source_subject_id": "3",
+        "switching_logit_offset": 0.3120737108747311,
+        "transitions": 60328
+      },
+      {
+        "observations": 60405,
+        "sleep_bias_logit_offset": 0.02143792201013639,
+        "source_subject_id": "4",
+        "switching_logit_offset": -0.11217432460353072,
+        "transitions": 60328
+      },
+      {
+        "observations": 60405,
+        "sleep_bias_logit_offset": -0.006395263122524586,
+        "source_subject_id": "5",
+        "switching_logit_offset": -0.27445440098758045,
+        "transitions": 60328
+      },
+      {
+        "observations": 60374,
+        "sleep_bias_logit_offset": -0.0003553921615544464,
+        "source_subject_id": "7",
+        "switching_logit_offset": 0.21090112177790332,
+        "transitions": 60266
+      },
+      {
+        "observations": 60374,
+        "sleep_bias_logit_offset": -0.17399414677119274,
+        "source_subject_id": "8",
+        "switching_logit_offset": -0.10340053646050396,
+        "transitions": 60266
+      },
+      {
+        "observations": 60374,
+        "sleep_bias_logit_offset": 0.014303452982343812,
+        "source_subject_id": "9",
+        "switching_logit_offset": 0.06928177138577163,
+        "transitions": 60266
+      },
+      {
+        "observations": 60374,
+        "sleep_bias_logit_offset": -0.1975431935924279,
+        "source_subject_id": "10",
+        "switching_logit_offset": -0.30868580531328993,
+        "transitions": 60266
+      },
+      {
+        "observations": 60374,
+        "sleep_bias_logit_offset": -0.031597973579090555,
+        "source_subject_id": "11",
+        "switching_logit_offset": 0.07018711881274631,
+        "transitions": 60266
+      },
+      {
+        "observations": 60388,
+        "sleep_bias_logit_offset": 0.05364523199875881,
+        "source_subject_id": "13",
+        "switching_logit_offset": 0.0024130110501787705,
+        "transitions": 60294
+      },
+      {
+        "observations": 60388,
+        "sleep_bias_logit_offset": 0.11754151724626549,
+        "source_subject_id": "14",
+        "switching_logit_offset": -0.10799627502929843,
+        "transitions": 60294
+      },
+      {
+        "observations": 60388,
+        "sleep_bias_logit_offset": 0.048261520750132014,
+        "source_subject_id": "15",
+        "switching_logit_offset": -0.38142401617169996,
+        "transitions": 60294
+      },
+      {
+        "observations": 60388,
+        "sleep_bias_logit_offset": 0.06783528391958993,
+        "source_subject_id": "16",
+        "switching_logit_offset": -0.012550660296000382,
+        "transitions": 60294
+      },
+      {
+        "observations": 60388,
+        "sleep_bias_logit_offset": -0.015356169761487237,
+        "source_subject_id": "17",
+        "switching_logit_offset": -0.049518121732079035,
+        "transitions": 60294
+      },
+      {
+        "observations": 60449,
+        "sleep_bias_logit_offset": 0.03508641943394242,
+        "source_subject_id": "19",
+        "switching_logit_offset": 0.14284753658212246,
+        "transitions": 60416
+      },
+      {
+        "observations": 60449,
+        "sleep_bias_logit_offset": 0.0039258213862056746,
+        "source_subject_id": "20",
+        "switching_logit_offset": -0.22636453904364084,
+        "transitions": 60416
+      },
+      {
+        "observations": 60449,
+        "sleep_bias_logit_offset": -0.0007599815996828241,
+        "source_subject_id": "21",
+        "switching_logit_offset": 0.054664423610419455,
+        "transitions": 60416
+      },
+      {
+        "observations": 60449,
+        "sleep_bias_logit_offset": -0.04543572711486821,
+        "source_subject_id": "22",
+        "switching_logit_offset": -0.16038860172848723,
+        "transitions": 60416
+      },
+      {
+        "observations": 60449,
+        "sleep_bias_logit_offset": -0.029850922490130438,
+        "source_subject_id": "23",
+        "switching_logit_offset": 0.31834821822882664,
+        "transitions": 60416
+      }
+    ],
+    "schema_version": "umwelt.population-temporal-model.v1",
+    "training_subject_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ]
+  },
+  "schema_version": "umwelt.individual-variation-models.v1",
+  "shared_activity_emission": {
+    "assumptions": [
+      "Activity depends on explicit synthetic state and daily phase.",
+      "Zero probability and positive gamma moments are pooled from training subjects.",
+      "Positive draws are capped at the corresponding observed training maximum.",
+      "The same fitted emission object is used by every temporal state model."
+    ],
+    "emission_id": "phase-conditioned-zero-inflated-gamma-v1",
+    "emission_prior": 0.5,
+    "epoch_seconds": 10,
+    "phase_bins": 24,
+    "phases": [
+      {
+        "phase": 0,
+        "sleep_activity": {
+          "observation_count": 39651,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 10714,
+          "positive_cap": 94.0,
+          "positive_count": 7991,
+          "positive_mean": 41.437617319484524,
+          "positive_variance": 600.8273657363904,
+          "zero_probability": 0.2541763882407839
+        }
+      },
+      {
+        "phase": 1,
+        "sleep_activity": {
+          "observation_count": 42574,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 7746,
+          "positive_cap": 94.0,
+          "positive_count": 5208,
+          "positive_mean": 36.23444700460845,
+          "positive_variance": 548.1122988683273,
+          "zero_probability": 0.32767522912095004
+        }
+      },
+      {
+        "phase": 2,
+        "sleep_activity": {
+          "observation_count": 43635,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 6710,
+          "positive_cap": 100.0,
+          "positive_count": 4572,
+          "positive_mean": 36.756561679790195,
+          "positive_variance": 514.1929672171541,
+          "zero_probability": 0.31865593801221875
+        }
+      },
+      {
+        "phase": 3,
+        "sleep_activity": {
+          "observation_count": 40804,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 9536,
+          "positive_cap": 94.0,
+          "positive_count": 6973,
+          "positive_mean": 36.738132797934995,
+          "positive_variance": 464.7713468859754,
+          "zero_probability": 0.26879521862220823
+        }
+      },
+      {
+        "phase": 4,
+        "sleep_activity": {
+          "observation_count": 42538,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 7792,
+          "positive_cap": 93.0,
+          "positive_count": 5487,
+          "positive_mean": 36.25460178603979,
+          "positive_variance": 509.4402700154756,
+          "zero_probability": 0.2958424226870268
+        }
+      },
+      {
+        "phase": 5,
+        "sleep_activity": {
+          "observation_count": 44331,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 6009,
+          "positive_cap": 91.0,
+          "positive_count": 4204,
+          "positive_mean": 34.73572787821122,
+          "positive_variance": 461.42407653406894,
+          "zero_probability": 0.3004159733777038
+        }
+      },
+      {
+        "phase": 6,
+        "sleep_activity": {
+          "observation_count": 44690,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 5650,
+          "positive_cap": 92.0,
+          "positive_count": 3708,
+          "positive_mean": 35.60275080906138,
+          "positive_variance": 499.61042674447066,
+          "zero_probability": 0.3437444700053088
+        }
+      },
+      {
+        "phase": 7,
+        "sleep_activity": {
+          "observation_count": 43695,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 6635,
+          "positive_cap": 93.0,
+          "positive_count": 4586,
+          "positive_mean": 35.291321412996226,
+          "positive_variance": 466.6514273919844,
+          "zero_probability": 0.3088456901748041
+        }
+      },
+      {
+        "phase": 8,
+        "sleep_activity": {
+          "observation_count": 44025,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 6320,
+          "positive_cap": 92.0,
+          "positive_count": 4238,
+          "positive_mean": 35.68357715903735,
+          "positive_variance": 527.6697373071213,
+          "zero_probability": 0.32945736434108525
+        }
+      },
+      {
+        "phase": 9,
+        "sleep_activity": {
+          "observation_count": 43951,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 6369,
+          "positive_cap": 93.0,
+          "positive_count": 4208,
+          "positive_mean": 35.10860266159712,
+          "positive_variance": 486.16719006029166,
+          "zero_probability": 0.3393249607535322
+        }
+      },
+      {
+        "phase": 10,
+        "sleep_activity": {
+          "observation_count": 41991,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 8349,
+          "positive_cap": 95.0,
+          "positive_count": 5697,
+          "positive_mean": 35.64139020537119,
+          "positive_variance": 507.5794171681122,
+          "zero_probability": 0.31766467065868265
+        }
+      },
+      {
+        "phase": 11,
+        "sleep_activity": {
+          "observation_count": 38731,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 11624,
+          "positive_cap": 95.0,
+          "positive_count": 7721,
+          "positive_mean": 34.615723351897515,
+          "positive_variance": 491.5848252830423,
+          "zero_probability": 0.33578494623655913
+        }
+      },
+      {
+        "phase": 12,
+        "sleep_activity": {
+          "observation_count": 7182,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 43128,
+          "positive_cap": 98.0,
+          "positive_count": 39499,
+          "positive_mean": 57.04810248360712,
+          "positive_variance": 615.2207353608118,
+          "zero_probability": 0.08415451320457233
+        }
+      },
+      {
+        "phase": 13,
+        "sleep_activity": {
+          "observation_count": 10089,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 40266,
+          "positive_cap": 97.0,
+          "positive_count": 35924,
+          "positive_mean": 53.80753813606524,
+          "positive_variance": 649.6216161977737,
+          "zero_probability": 0.10784265030918619
+        }
+      },
+      {
+        "phase": 14,
+        "sleep_activity": {
+          "observation_count": 16478,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 33852,
+          "positive_cap": 99.0,
+          "positive_count": 28948,
+          "positive_mean": 51.08967804338801,
+          "positive_variance": 645.4611253601206,
+          "zero_probability": 0.14487637727823235
+        }
+      },
+      {
+        "phase": 15,
+        "sleep_activity": {
+          "observation_count": 14902,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 35428,
+          "positive_cap": 98.0,
+          "positive_count": 30362,
+          "positive_mean": 48.636354653843384,
+          "positive_variance": 614.2258157416845,
+          "zero_probability": 0.14300431849614723
+        }
+      },
+      {
+        "phase": 16,
+        "sleep_activity": {
+          "observation_count": 14616,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 35729,
+          "positive_cap": 98.0,
+          "positive_count": 30721,
+          "positive_mean": 47.78125712053652,
+          "positive_variance": 584.064194265946,
+          "zero_probability": 0.14017632241813602
+        }
+      },
+      {
+        "phase": 17,
+        "sleep_activity": {
+          "observation_count": 16808,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 33517,
+          "positive_cap": 96.0,
+          "positive_count": 28958,
+          "positive_mean": 47.2432488431522,
+          "positive_variance": 565.8791502969499,
+          "zero_probability": 0.13603138612089027
+        }
+      },
+      {
+        "phase": 18,
+        "sleep_activity": {
+          "observation_count": 23044,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 27301,
+          "positive_cap": 96.0,
+          "positive_count": 22574,
+          "positive_mean": 45.39970762824459,
+          "positive_variance": 563.762567583852,
+          "zero_probability": 0.1731558127609699
+        }
+      },
+      {
+        "phase": 19,
+        "sleep_activity": {
+          "observation_count": 24715,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 25620,
+          "positive_cap": 99.0,
+          "positive_count": 21067,
+          "positive_mean": 45.43542032562763,
+          "positive_variance": 586.3746743260718,
+          "zero_probability": 0.17772530346200383
+        }
+      },
+      {
+        "phase": 20,
+        "sleep_activity": {
+          "observation_count": 23759,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 26571,
+          "positive_cap": 97.0,
+          "positive_count": 21595,
+          "positive_mean": 44.83973141931004,
+          "positive_variance": 581.2753686413938,
+          "zero_probability": 0.18728360680415476
+        }
+      },
+      {
+        "phase": 21,
+        "sleep_activity": {
+          "observation_count": 22422,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 27918,
+          "positive_cap": 98.0,
+          "positive_count": 23126,
+          "positive_mean": 44.71625010810332,
+          "positive_variance": 544.7440446793253,
+          "zero_probability": 0.17165729431569898
+        }
+      },
+      {
+        "phase": 22,
+        "sleep_activity": {
+          "observation_count": 25306,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 25039,
+          "positive_cap": 95.0,
+          "positive_count": 20781,
+          "positive_mean": 45.26038207978425,
+          "positive_variance": 557.9017359271617,
+          "zero_probability": 0.1700678913738019
+        }
+      },
+      {
+        "phase": 23,
+        "sleep_activity": {
+          "observation_count": 27123,
+          "positive_cap": 0.0,
+          "positive_count": 0,
+          "positive_mean": 0.0,
+          "positive_variance": 0.0,
+          "zero_probability": 1.0
+        },
+        "wake_activity": {
+          "observation_count": 23197,
+          "positive_cap": 97.0,
+          "positive_count": 19380,
+          "positive_mean": 45.80660474716232,
+          "positive_variance": 558.0709610708686,
+          "zero_probability": 0.16456160013794294
+        }
+      }
+    ],
+    "schema_version": "umwelt.activity-emission.v1",
+    "training_observations": 1208080,
+    "training_subject_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ]
+  }
+}
