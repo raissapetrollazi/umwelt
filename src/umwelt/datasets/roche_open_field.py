@@ -5,10 +5,11 @@ from __future__ import annotations
 import csv
 import hashlib
 from collections import Counter
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable, Iterator, Mapping
 from dataclasses import asdict, dataclass
 from math import isfinite
 from pathlib import Path, PurePosixPath
+from types import MappingProxyType
 
 from umwelt.errors import DataError, DataIntegrityError
 from umwelt.observations import ObservationSource
@@ -104,6 +105,240 @@ class RocheRecordingMetadata:
         """Return the original metadata categories in a JSON-compatible shape."""
 
         return asdict(self)
+
+
+@dataclass(frozen=True, slots=True)
+class RochePoseFileManifestEntry:
+    """Integrity facts derived from one member of the verified pose archive."""
+
+    animal_id: str
+    dlc_file: str
+    size_bytes: int
+    frame_count: int
+    sha256: str
+
+
+def _canonical_dlc_file(animal_id: str) -> str:
+    return (
+        f"02052023_001_{animal_id}"
+        "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv"
+    )
+
+
+def _pose_manifest_entry(
+    animal_id: str, size_bytes: int, frame_count: int, sha256: str
+) -> RochePoseFileManifestEntry:
+    return RochePoseFileManifestEntry(
+        animal_id=animal_id,
+        dlc_file=_canonical_dlc_file(animal_id),
+        size_bytes=size_bytes,
+        frame_count=frame_count,
+        sha256=sha256,
+    )
+
+
+# Zenodo publishes an MD5 for data.zip, not hashes for its individual members.
+# These SHA-256 values, sizes, and frame counts were derived locally from the
+# archive after verifying that published size and MD5.
+ROCHE_POSE_MANIFEST: Mapping[str, RochePoseFileManifestEntry] = MappingProxyType(
+    {
+        entry.animal_id: entry
+        for entry in (
+            _pose_manifest_entry(
+                "16459-67049",
+                50_164_222,
+                53_954,
+                "be45ae2447746ab8aec6c07041cb3ef37cc8d73d6204a265ff36d25f6929e1c4",
+            ),
+            _pose_manifest_entry(
+                "16459-67050",
+                50_129_035,
+                53_954,
+                "42b69780a3252a083ae7de46317417a20943462d99492ff2daafa909680e9c78",
+            ),
+            _pose_manifest_entry(
+                "16459-67051",
+                50_291_971,
+                53_955,
+                "914de7d7dc6f3c24c04027a493502441fac3f5b45daaff77de7edc18c482ba4d",
+            ),
+            _pose_manifest_entry(
+                "16459-67052",
+                50_198_521,
+                53_955,
+                "640a838fe8a490902a70a266951d652660e6be577a20629d93caac55e98c029b",
+            ),
+            _pose_manifest_entry(
+                "16459-67053",
+                50_178_663,
+                53_914,
+                "2b458d2a4c3959e48120d10adaa037902ea13c190b941c5e8f80cfde8ddf2453",
+            ),
+            _pose_manifest_entry(
+                "16459-67054",
+                50_169_396,
+                53_915,
+                "7c886b59f2f2ba251dd35909f7159749095169f6f8eba032b91dacb218fc0cf5",
+            ),
+            _pose_manifest_entry(
+                "16459-67055",
+                50_393_902,
+                53_915,
+                "39ffc07ad8b2b38989364f2e536b78693fe20f8db3ab949004b120444b071153",
+            ),
+            _pose_manifest_entry(
+                "16459-67056",
+                50_278_901,
+                53_915,
+                "8802db4df630b44e3dfd0fd4fadf50cf09f4a6753af6aec55865c206665bdecc",
+            ),
+            _pose_manifest_entry(
+                "16459-67057",
+                50_192_929,
+                53_964,
+                "0fa221aaf47d8fa92170cdb8f34493afdf99ca784c578f9f9db66bb49fc51505",
+            ),
+            _pose_manifest_entry(
+                "16459-67058",
+                50_200_706,
+                53_962,
+                "cfafa48a74582c71042954b17fef8e0964104422d257b869369b911f3091de8a",
+            ),
+            _pose_manifest_entry(
+                "16459-67059",
+                50_418_147,
+                53_964,
+                "34e3ecc85f58c7cd72138f44a4853f8bc78a592e72e833b78f9dc3a15b219ff7",
+            ),
+            _pose_manifest_entry(
+                "16459-67060",
+                50_265_985,
+                53_963,
+                "0b0e7875e209ba71c2bee64aa4655bb194dfba25080471ec70e255c2412f4fd9",
+            ),
+            _pose_manifest_entry(
+                "16459-67061",
+                50_199_160,
+                53_964,
+                "4af3432e8449bec7e4f3e5cf07378100253580fbd91a7637d09f7464f9dc9603",
+            ),
+            _pose_manifest_entry(
+                "16459-67062",
+                50_189_634,
+                53_962,
+                "6b64751bd4045b6792ab89d3842a47de89c59229c6590a69cc6b2db8042d75f7",
+            ),
+            _pose_manifest_entry(
+                "16459-67063",
+                50_202_968,
+                53_963,
+                "c73e91ff6df5aca717f5af1876e8af527f26dc96160ed1576b60de8ff2205d98",
+            ),
+            _pose_manifest_entry(
+                "16459-67064",
+                50_215_592,
+                53_962,
+                "7a2e84d00f2356371d0aa2220fa8dac8852f3cc0ee8dd3e2ca3c92c600e4b5e9",
+            ),
+            _pose_manifest_entry(
+                "16459-67065",
+                50_180_820,
+                53_964,
+                "5b522ceb79155919a196c11224b3093911e8deda1890c8073151b7b038df71b0",
+            ),
+            _pose_manifest_entry(
+                "16459-67066",
+                50_259_872,
+                53_963,
+                "cbbb666406cba10a79213051a1fdd628d496f5a9168244275165543059e6f12e",
+            ),
+            _pose_manifest_entry(
+                "16459-67067",
+                50_264_103,
+                53_964,
+                "48f97efe96bc79a73510a00357fbaebbbbdaeec288393dd031b94388065cc57d",
+            ),
+            _pose_manifest_entry(
+                "16459-67068",
+                50_203_956,
+                53_963,
+                "b2aad10d644a478664ccf72ce8de57247bf6291387137cf38ba31a51c6932d04",
+            ),
+            _pose_manifest_entry(
+                "16459-67069",
+                50_296_340,
+                53_964,
+                "e9129a8780f889e0736d7834646cfb12bd825e67f094d2ad3ab0c1fab0710a3f",
+            ),
+            _pose_manifest_entry(
+                "16459-67070",
+                50_226_377,
+                53_963,
+                "dfaff2087f8aaed46a834498c97b7389748fb1c64f688ece817c83d4cc4a4337",
+            ),
+            _pose_manifest_entry(
+                "16459-67071",
+                50_293_658,
+                53_964,
+                "9ebe7f9f2ef8d32e4b0e9f06f75f92429bfe33a082995946e38a88d50afe5d9e",
+            ),
+            _pose_manifest_entry(
+                "16459-67072",
+                50_221_185,
+                53_962,
+                "910633362dec01302984de59ffe90b6d933357fb229a03bf96f0898264973ecc",
+            ),
+            _pose_manifest_entry(
+                "16459-67073",
+                50_180_300,
+                53_963,
+                "d8e3da48f1f6f2bcc68b83f6eddb60482f3c5ca52b6fb3ed19ca13e7336656e3",
+            ),
+            _pose_manifest_entry(
+                "16459-67074",
+                50_240_183,
+                53_964,
+                "4b7e0db547a5408907fe16ea6b0489f24d89df559f60f88e134993f93a2d0f7f",
+            ),
+            _pose_manifest_entry(
+                "16459-67075",
+                50_259_600,
+                53_963,
+                "614172dba76d34b191b64ce2016226bd4dfabad7db6318d0acb6ace8640643ca",
+            ),
+            _pose_manifest_entry(
+                "16459-67076",
+                50_223_767,
+                53_964,
+                "b0eeb4b7e21739b82b037adebd4415895a61c9d33ebd9870deee755a5ba756be",
+            ),
+            _pose_manifest_entry(
+                "16459-67077",
+                50_186_250,
+                53_963,
+                "274045de5d4404efbf857fcbd1c76ca736dbf3a3cb0495107fb361815d5b18a5",
+            ),
+            _pose_manifest_entry(
+                "16459-67078",
+                50_225_479,
+                53_964,
+                "492d43f5fc53ca50cac67ff920b7f7c6fae49823dd61208c4acdd4612a8ed8ab",
+            ),
+            _pose_manifest_entry(
+                "16459-67079",
+                50_248_917,
+                53_964,
+                "b2d7ead224d34e10c8457833027d67a5b0ab8ca406c0fea36aac426c9b7f3b7e",
+            ),
+            _pose_manifest_entry(
+                "16459-67080",
+                50_174_521,
+                53_962,
+                "67a47b99a3a77ac5de96122131a84f2e8df4f97188bb5ff37da5596eef4bd91d",
+            ),
+        )
+    }
+)
 
 
 @dataclass(frozen=True, slots=True)

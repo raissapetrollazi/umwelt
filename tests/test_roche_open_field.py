@@ -14,6 +14,7 @@ from umwelt.datasets.roche_open_field import (
     ROCHE_METADATA_FILE,
     ROCHE_OPEN_FIELD_DOI,
     ROCHE_MOUSE_KEYPOINTS,
+    ROCHE_POSE_MANIFEST,
     ROCHE_RECORDING_COUNT,
     catalog_roche_open_field,
     load_roche_metadata,
@@ -114,6 +115,20 @@ class RocheOpenFieldAdapterTests(unittest.TestCase):
         self.assertEqual(recordings[0].coordinate_frame.unit, "px")
         self.assertIsNone(recordings[0].sampling_rate_hz)
         self.assertEqual(recordings[0].scorer, "fixture-scorer")
+
+    def test_pose_manifest_covers_every_recording_with_exact_totals(self) -> None:
+        self.assertEqual(len(ROCHE_POSE_MANIFEST), ROCHE_RECORDING_COUNT)
+        self.assertEqual(
+            sum(entry.size_bytes for entry in ROCHE_POSE_MANIFEST.values()),
+            1_607_375_060,
+        )
+        self.assertEqual(
+            sum(entry.frame_count for entry in ROCHE_POSE_MANIFEST.values()),
+            1_726_595,
+        )
+        self.assertTrue(
+            all(len(entry.sha256) == 64 for entry in ROCHE_POSE_MANIFEST.values())
+        )
 
     def test_recording_stream_preserves_all_keypoints_and_frame_indices(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
