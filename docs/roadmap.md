@@ -2,9 +2,9 @@
 
 Umwelt is intentionally ambitious in scope but conservative in scientific claims. Large scientific goals are pursued through narrow, independently testable milestones.
 
-The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Version 0.1 now implements the first narrow recorded-to-synthetic baseline.
+The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Version 0.1 implements the first narrow recorded-to-synthetic baseline, and the in-progress v0.2 branch implements its initial spatial and dataset foundation.
 
-Version 0.1 is implemented as pre-alpha research software. Every later milestone remains planned unless repository evidence explicitly shows otherwise.
+Version 0.1 is implemented as pre-alpha research software. Version 0.2 remains incomplete: its representations and recorded-data adapter exist, but its generative baseline and recorded-to-synthetic experiment do not. Every later milestone remains planned unless repository evidence explicitly shows otherwise.
 
 ## v0.1 - Sleep / Activity Mouse
 
@@ -55,23 +55,50 @@ See [v0.1 Research Direction](v0.1-research-direction.md).
 
 ## v0.2 - Spatial Mouse
 
-**Status:** planning may begin; no v0.2 capability is implemented yet.
+**Status:** spatial foundation implemented; recorded-to-synthetic experiment in
+progress. No spatial generative baseline or model comparison exists yet.
 
-Introduce an explicit body and spatial world.
+**Purpose:** introduce an explicit body and headless spatial world, then ask
+whether a compact generative movement model can reproduce selected geometric
+and kinematic properties of recorded open-field trajectories.
 
-Planned concepts include:
+Implemented foundation:
 
-- `(x, y)` position or equivalent spatial coordinates;
-- orientation;
-- velocity or speed;
-- trajectories;
-- arena geometry;
-- objects;
-- distances;
-- spatial relationships;
-- potentially another animal when supported by data.
+- finite two-dimensional points, named coordinate frames with units and axis
+  orientation, pose keypoints, frame-indexed spatial series, source categories,
+  and explicit gaps;
+- axis-aligned rectangular arena geometry, containment, boundary distance, and
+  deterministic center-region construction;
+- representative-position extraction plus gap-aware displacement, normalized
+  counterclockwise movement heading, turning, and a unit-bearing path-length
+  result, all preserving subject, recording, source, and coordinate context;
+- a pinned adapter for the Roche open-field Zenodo deposit, mapping 32 unique
+  animals and recordings from metadata to their DeepLabCut CSVs;
+- verification of the metadata and archive against their published sizes and
+  MD5s, followed by exact extracted-file sizes, frame counts, and SHA-256s from
+  a 32-entry manifest derived from the verified archive;
+- separation of 13 mouse-body keypoints from the four `tl`, `tr`, `bl`, and `br`
+  arena landmarks;
+- preservation of treatment and dosage as provenance rather than inferred
+  behavioral cause;
+- explicit unknown values for sampling rate, pixel-to-centimeter calibration,
+  and physical arena dimensions, while retaining the declared Roche image-axis
+  convention (`x-right-y-down`).
 
-Recorded pose and movement datasets should connect to explicit spatial representations. At this stage Umwelt should become recognizably a computational world rather than only a temporal sequence generator.
+Remaining work for a complete v0.2 experiment:
+
+- declare a leakage-safe control fitting/development split and confidence/gap
+  policy;
+- define the recorded metric set before inspecting baseline results;
+- implement an explicit seeded movement model that generates new trajectories;
+- create reproducible fitting, generation, evaluation, reporting, provenance,
+  and artifact workflows;
+- compare recorded and synthetic spatial summaries without inventing physical
+  units or implicit acceptance thresholds.
+
+Recorded pose and movement data now connects to explicit spatial
+representations, but Umwelt does not yet provide the complete spatial
+computational world envisioned for this milestone.
 
 ## v0.3 - Behavioral World
 

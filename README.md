@@ -8,15 +8,19 @@ as distinct information categories throughout the workflow.
 ## Status
 
 Umwelt `0.1.0` is pre-alpha research software. It implements one deliberately
-narrow recorded-to-synthetic experiment for mouse sleep/activity dynamics. It
-is not a general animal simulator, a validated biological model, or a finished
-research platform.
+narrow recorded-to-synthetic experiment for mouse sleep/activity dynamics. The
+repository also contains the in-progress v0.2 spatial foundation; that
+foundation is not yet a complete recorded-to-synthetic spatial experiment.
+Umwelt is not a general animal simulator, a validated biological model, or a
+finished research platform.
 
-The current source tree can download and verify a pinned open dataset, replay
-fixed recorded observations, fit inspectable temporal models, generate seeded
+The v0.1 source tree can download and verify a pinned open dataset, replay fixed
+recorded observations, fit inspectable temporal models, generate seeded
 synthetic sequences, and compare recorded and synthetic temporal statistics
-across deterministic replicates. It has no runtime dependencies outside the
-Python 3.12 standard library.
+across deterministic replicates. The v0.2 foundation adds explicit spatial
+types, arena geometry, gap-aware trajectory measurements, and a validated
+adapter for recorded Roche open-field pose data. It has no runtime dependencies
+outside the Python 3.12 standard library.
 
 ## Scientific question
 
@@ -75,6 +79,41 @@ full result and its limitations.
 See [the v0.1 experiment document](docs/v0.1-research-direction.md) for the
 design, assumptions, artifact contract, and limitations.
 
+## v0.2 spatial foundation
+
+The in-progress spatial milestone uses the Roche open-field Zenodo deposit
+([DOI 10.5281/zenodo.8188683](https://doi.org/10.5281/zenodo.8188683)). Its
+metadata describes 32 unique animals and recordings: eight controls at dose 0
+and eight yohimbine recordings at each of doses 1, 3, and 6 mg/kg. Treatment is
+retained as source provenance, not interpreted as a behavioral cause.
+
+The adapter pins the published size and MD5 for both the metadata and pose
+archive. Cataloging verifies the metadata; the archive has a separate verifier
+because it may be removed after extraction. The extracted DeepLabCut CSVs are
+validated against a 32-file manifest derived from the verified archive. Each
+manifest entry pins the extracted byte size, SHA-256, and exact frame count;
+those member hashes are derived integrity facts, not checksums published by
+Zenodo. Each frame keeps 13 mouse keypoints separate from four arena landmarks
+(`tl`, `tr`, `bl`, and `br`), with `(x, y)` coordinates and source likelihoods.
+
+The spatial vocabulary represents coordinate frames with axis orientation,
+recorded or synthetic series, rectangular bounds, and representative positions.
+Derived trajectory samples retain the source point, acceptance/rejection
+status, selected keypoint and likelihood rule, plus a `SpatialContext`
+containing subject, recording, source category, and coordinate frame. Path
+length retains that rule, context, and coordinate unit, while movement headings
+are normalized as counterclockwise radians from `+x` for both Cartesian and
+image coordinates.
+
+All current Roche geometry remains in an `x-right-y-down` image frame measured
+in pixels. The downloaded source does not establish a sampling rate,
+pixel-to-centimeter calibration, or physical arena dimensions, so Umwelt does
+not derive speed or invent physical units from it. No spatial generative
+baseline, seeded synthetic trajectory workflow, or recorded-versus-synthetic
+comparison is implemented yet. See
+[the v0.2 research direction](docs/v0.2-research-direction.md) and
+[local data instructions](data/README.md).
+
 ## Quick start
 
 Python 3.12 or newer is required.
@@ -90,11 +129,13 @@ umwelt individual --config examples/v0.1-temporal-lab.json --output runs/v0.1-in
 ```
 
 Downloaded source data is stored under `data/raw/` and excluded from Git. The
-original `run` command retains its trajectory artifact contract. The `compare`
-command writes compact replicate metrics, model-family summaries, subject-level
-comparisons, SVG diagnostics, provenance, seeds, a report, and an artifact hash
-manifest. The `individual` command performs a separate paired comparison of the
-pooled phase+duration model and the training-population variation model. Both
+commands above currently operate on the v0.1 COMPASS laboratory; Roche data is
+downloaded manually and has no spatial run command yet. The original `run`
+command retains its trajectory artifact contract. The `compare` command writes
+compact replicate metrics, model-family summaries, subject-level comparisons,
+SVG diagnostics, provenance, seeds, a report, and an artifact hash manifest.
+The `individual` command performs a separate paired comparison of the pooled
+phase+duration model and the training-population variation model. Both
 replicated workflows intentionally discard full replicate trajectories.
 Existing run directories are never overwritten.
 
@@ -109,10 +150,11 @@ Existing run directories are never overwritten.
 
 ## Planned direction
 
-Later milestones may add explicit spatial worlds, environmental interventions,
-social context, neural or physiological modalities, latent-state experiments,
-counterfactual branching, multiple species, and additional model families.
-These remain planned directions rather than current capabilities. See the
+The v0.2 spatial foundation is under active development. Its generative model
+and experiment workflow remain to be built. Later milestones may add
+environmental interventions, social context, neural or physiological
+modalities, latent-state experiments, counterfactual branching, multiple
+species, and additional model families. See the
 [research roadmap](docs/roadmap.md).
 
 ## Non-goals
@@ -128,6 +170,7 @@ These remain planned directions rather than current capabilities. See the
 
 - [Project direction](docs/project-direction.md)
 - [v0.1 experiment](docs/v0.1-research-direction.md)
+- [v0.2 spatial experiment](docs/v0.2-research-direction.md)
 - [Architecture](docs/architecture.md)
 - [Scientific principles](docs/scientific-principles.md)
 - [Data and ethics](docs/data-and-ethics.md)
@@ -137,5 +180,6 @@ These remain planned directions rather than current capabilities. See the
 ## License
 
 Umwelt is licensed under the Apache License 2.0. See [LICENSE](LICENSE). The
-COMPASS source data has its own CC0 1.0 terms and remains attributed through
+COMPASS source data has its own CC0 1.0 terms; the Roche open-field source data
+is CC BY 4.0. Both remain governed by their source terms and attributed through
 dataset provenance.
