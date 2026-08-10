@@ -39,6 +39,8 @@
 - Document the manual Roche download, extraction layout, published archive and
   metadata checksums, and current spatial experiment boundary.
 - Add GitHub Actions unit-test coverage for Python 3.12 and 3.13.
+- Freeze an outcome-blind six-control fitting and two-control development split
+  for the first v0.2 spatial experiment before inspecting trajectory outcomes.
 - Defer the v0.2 generative movement baseline, synthetic trajectory workflow,
   and recorded-versus-synthetic evaluation to subsequent work.
 

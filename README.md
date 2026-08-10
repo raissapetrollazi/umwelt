@@ -110,7 +110,9 @@ in pixels. The downloaded source does not establish a sampling rate,
 pixel-to-centimeter calibration, or physical arena dimensions, so Umwelt does
 not derive speed or invent physical units from it. No spatial generative
 baseline, seeded synthetic trajectory workflow, or recorded-versus-synthetic
-comparison is implemented yet. See
+comparison is implemented yet. Pinned protocol facts now freeze the eight
+control animals into an outcome-blind six-animal fitting and two-animal
+development split before any trajectory outcomes are used. See
 [the v0.2 research direction](docs/v0.2-research-direction.md) and
 [local data instructions](data/README.md).
 
