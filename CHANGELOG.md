@@ -41,6 +41,9 @@
 - Add GitHub Actions unit-test coverage for Python 3.12 and 3.13.
 - Freeze an outcome-blind six-control fitting and two-control development split
   for the first v0.2 spatial experiment before inspecting trajectory outcomes.
+- Add an executable `bodycentre` position policy that preserves source
+  likelihood, assumes no unsupported cutoff, applies no interpolation or
+  smoothing, and does not bridge explicit gaps.
 - Defer the v0.2 generative movement baseline, synthetic trajectory workflow,
   and recorded-versus-synthetic evaluation to subsequent work.
 

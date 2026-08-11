@@ -86,11 +86,13 @@ Implemented foundation:
   convention (`x-right-y-down`);
 - machine-readable, leakage-safe eight-control protocol facts with a pinned
   six-animal fitting and two-animal development split derived outcome-blind from
-  animal identifiers and the verified metadata checksum.
+  animal identifiers and the verified metadata checksum;
+- an executable `bodycentre` position protocol with no unsupported likelihood
+  cutoff; it applies no interpolation or smoothing and does not bridge explicit
+  gaps.
 
 Remaining work for a complete v0.2 experiment:
 
-- declare the confidence/gap policy;
 - define the recorded metric set before inspecting baseline results;
 - implement an explicit seeded movement model that generates new trajectories;
 - create reproducible fitting, generation, evaluation, reporting, provenance,

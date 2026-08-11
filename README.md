@@ -112,7 +112,10 @@ not derive speed or invent physical units from it. No spatial generative
 baseline, seeded synthetic trajectory workflow, or recorded-versus-synthetic
 comparison is implemented yet. Pinned protocol facts now freeze the eight
 control animals into an outcome-blind six-animal fitting and two-animal
-development split before any trajectory outcomes are used. See
+development split before any trajectory outcomes are used. The executable
+position policy selects `bodycentre`, retains source likelihood without an
+unsupported cutoff, applies no interpolation or smoothing, and does not bridge
+explicit gaps. See
 [the v0.2 research direction](docs/v0.2-research-direction.md) and
 [local data instructions](data/README.md).
 
