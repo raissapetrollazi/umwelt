@@ -169,6 +169,32 @@ class CliTests(unittest.TestCase):
         self.assertEqual(payload["replicate_records"], 64)
         self.assertEqual(payload["generated_series"], 256)
 
+    def test_spatial_reports_compact_run_summary(self) -> None:
+        result = SimpleNamespace(
+            experiment_id="fixture-spatial",
+            output_directory=Path("spatial-run"),
+            configuration_sha256="789abc",
+            replicate_records=4,
+            generated_series=4,
+            artifact_count=8,
+        )
+        output = io.StringIO()
+        with (
+            patch("umwelt.cli.load_spatial_lab_config", return_value=object()),
+            patch("umwelt.cli.run_spatial_lab", return_value=result),
+        ):
+            exit_code = main(
+                ["spatial", "--config", "spatial.json"],
+                stdout=output,
+            )
+
+        payload = json.loads(output.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["experiment_id"], "fixture-spatial")
+        self.assertEqual(payload["replicate_records"], 4)
+        self.assertEqual(payload["generated_series"], 4)
+        self.assertEqual(payload["artifact_count"], 8)
+
 
 if __name__ == "__main__":
     unittest.main()

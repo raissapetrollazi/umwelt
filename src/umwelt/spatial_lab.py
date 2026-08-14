@@ -5,7 +5,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from umwelt.datasets.roche_open_field import catalog_roche_open_field
+from umwelt.datasets.roche_open_field import (
+    ROCHE_POSE_ARCHIVE,
+    RocheRecording,
+    catalog_roche_open_field,
+    roche_provenance,
+)
 from umwelt.errors import DataError
 from umwelt.spatial_config import SpatialLabConfig
 from umwelt.spatial_execution import execute_spatial_lab
@@ -25,7 +30,7 @@ class SpatialLabResult:
     artifact_count: int
 
 
-def _recording_map(directory: Path):
+def _recording_map(directory: Path) -> dict[str, RocheRecording]:
     recordings = catalog_roche_open_field(directory)
     by_subject = {recording.subject_id: recording for recording in recordings}
     selected = ROCHE_CONTROL_FITTING_SUBJECTS + ROCHE_CONTROL_DEVELOPMENT_SUBJECTS
@@ -47,8 +52,19 @@ def run_spatial_lab(
     if target.exists():
         raise DataError(f"Spatial output directory already exists: {target}")
     recordings = _recording_map(config.dataset_directory)
+    selected_subjects = (
+        ROCHE_CONTROL_FITTING_SUBJECTS + ROCHE_CONTROL_DEVELOPMENT_SUBJECTS
+    )
+    source_provenance = roche_provenance(
+        config.dataset_directory,
+        subject_ids=selected_subjects,
+        verify_archive=(config.dataset_directory / ROCHE_POSE_ARCHIVE).is_file(),
+    )
     config_hash, records, generated, artifacts = execute_spatial_lab(
-        config, recordings, target
+        config,
+        recordings,
+        target,
+        source_provenance=source_provenance,
     )
     return SpatialLabResult(
         experiment_id=config.experiment_id,

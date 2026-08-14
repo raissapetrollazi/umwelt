@@ -2,9 +2,9 @@
 
 Umwelt is intentionally ambitious in scope but conservative in scientific claims. Large scientific goals are pursued through narrow, independently testable milestones.
 
-The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Version 0.1 implements the first narrow recorded-to-synthetic baseline, and the in-progress v0.2 branch implements its initial spatial and dataset foundation.
+The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Versions 0.1 and 0.2 implement the first narrow temporal and spatial recorded-to-synthetic development laboratories.
 
-Version 0.1 is implemented as pre-alpha research software. Version 0.2 remains incomplete: its representations and recorded-data adapter exist, but its generative baseline and recorded-to-synthetic experiment do not. Every later milestone remains planned unless repository evidence explicitly shows otherwise.
+Versions 0.1 and 0.2 remain pre-alpha research software whose models are not scientifically validated. Every later milestone remains planned unless repository evidence explicitly shows otherwise.
 
 ## v0.1 - Sleep / Activity Mouse
 
@@ -55,14 +55,15 @@ See [v0.1 Research Direction](v0.1-research-direction.md).
 
 ## v0.2 - Spatial Mouse
 
-**Status:** spatial foundation implemented; recorded-to-synthetic experiment in
-progress. No spatial generative baseline or model comparison exists yet.
+**Status:** implemented pre-alpha recorded-to-synthetic development laboratory.
+The model is not scientifically validated, and the two development animals do
+not provide confirmatory population evidence.
 
 **Purpose:** introduce an explicit body and headless spatial world, then ask
 whether a compact generative movement model can reproduce selected geometric
 and kinematic properties of recorded open-field trajectories.
 
-Implemented foundation:
+Implemented capabilities:
 
 - finite two-dimensional points, named coordinate frames with units and axis
   orientation, pose keypoints, frame-indexed spatial series, source categories,
@@ -89,20 +90,23 @@ Implemented foundation:
   animal identifiers and the verified metadata checksum;
 - an executable `bodycentre` position protocol with no unsupported likelihood
   cutoff; it applies no interpolation or smoothing and does not bridge explicit
-  gaps.
+  gaps;
+- a frozen per-animal metric contract covering pixel path length with exposure,
+  adjacent displacement, and absolute turning while keeping quality control
+  separate and arena-dependent metrics unregistered;
+- a seeded persistent reflecting random-walk baseline fitted only on six control
+  animals and evaluated descriptively on two designated development animals;
+- generation on the development frame grid with only the recorded availability
+  mask shared, never recorded coordinate values;
+- reproducible fitting, generation, evaluation, reporting, dataset/software
+  provenance, seed, and artifact-hash workflows exposed through `umwelt spatial`.
 
-Remaining work for a complete v0.2 experiment:
-
-- define the recorded metric set before inspecting baseline results;
-- implement an explicit seeded movement model that generates new trajectories;
-- create reproducible fitting, generation, evaluation, reporting, provenance,
-  and artifact workflows;
-- compare recorded and synthetic spatial summaries without inventing physical
-  units or implicit acceptance thresholds.
-
-Recorded pose and movement data now connects to explicit spatial
-representations, but Umwelt does not yet provide the complete spatial
-computational world envisioned for this milestone.
+The canonical 32-replicate spatial run is retained under
+`runs/v0.2-spatial-baseline/`. It exposes systematic path-length overestimation
+and nonzero displacement and turning discrepancies as development evidence,
+not model validation. Later spatial claims require a prospectively declared
+question and independent evaluation rather than further tuning on the two
+development animals.
 
 ## v0.3 - Behavioral World
 

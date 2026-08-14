@@ -21,6 +21,12 @@ classifiers = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+dev = [
+    "mypy==2.1.0",
+    "ruff==0.15.14",
+]
+
 [project.urls]
 Repository = "https://github.com/raissapetrollazi/umwelt"
 Documentation = "https://github.com/raissapetrollazi/umwelt/tree/main/docs"

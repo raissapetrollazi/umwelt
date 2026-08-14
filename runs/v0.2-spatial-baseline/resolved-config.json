@@ -1,0 +1,14 @@
+{
+  "dataset": {
+    "directory": "/home/lucie/Projects/umwelt/data/raw/roche-open-field"
+  },
+  "experiment_id": "v0.2-roche-spatial-baseline",
+  "output": {
+    "directory": "/home/lucie/Projects/umwelt/runs/v0.2-spatial-baseline"
+  },
+  "schema_version": "umwelt.spatial-lab.v1",
+  "simulation": {
+    "replicates": 32,
+    "seed": 1729
+  }
+}

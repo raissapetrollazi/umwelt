@@ -1,83 +1,243 @@
-"""Pre-declared spatial measurements and recorded/synthetic comparison for Umwelt v0.2."""
+"""Pre-declared spatial measurements and comparison for Umwelt v0.2."""
 
 from __future__ import annotations
 
+from collections import Counter
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
-from math import isfinite
-from statistics import fmean, median
+from statistics import fmean, median, pstdev
 
 from umwelt.arena import RectangularArena
 from umwelt.errors import DataError
+from umwelt.observations import ObservationSource
 from umwelt.spatial import Point2D, SpatialContext, SpatialFrame
 from umwelt.spatial_protocol import SpatialTrajectoryProtocol
+from umwelt.trajectory import PositionStatus, TrajectoryStep
+
+
+REGISTERED_SPATIAL_METRIC_IDS = (
+    "path-length-px",
+    "adjacent-displacement-px-distribution",
+    "absolute-turning-radians-distribution",
+)
+SPATIAL_QUALITY_CONTROL_IDS = (
+    "position-status-counts",
+    "source-likelihood-summary",
+    "valid-transition-coverage",
+)
+DISTRIBUTION_SUMMARY_FIELDS = (
+    "count",
+    "mean",
+    "population-standard-deviation",
+    "minimum",
+    "q25",
+    "median",
+    "q75",
+    "q90",
+    "maximum",
+)
 
 
 @dataclass(frozen=True, slots=True)
 class SpatialEvaluationProtocol:
-    """Geometric evaluation choices frozen before inspecting baseline results."""
+    """Measurement definitions frozen before inspecting baseline results."""
 
-    center_margin_fraction: float = 0.25
-    occupancy_grid_size: int = 4
+    registered_metric_ids: tuple[str, ...] = REGISTERED_SPATIAL_METRIC_IDS
+    quality_control_ids: tuple[str, ...] = SPATIAL_QUALITY_CONTROL_IDS
+    distribution_summary_fields: tuple[str, ...] = DISTRIBUTION_SUMMARY_FIELDS
 
     def __post_init__(self) -> None:
-        if (
-            not isfinite(self.center_margin_fraction)
-            or not 0.0 <= self.center_margin_fraction < 0.5
-        ):
-            raise DataError("Spatial center margin fraction must be in [0, 0.5).")
-        if not 2 <= self.occupancy_grid_size <= 32:
-            raise DataError("Spatial occupancy grid size must be between 2 and 32.")
+        if self.registered_metric_ids != REGISTERED_SPATIAL_METRIC_IDS:
+            raise DataError(
+                "Registered spatial metrics must match the frozen protocol."
+            )
+        if self.quality_control_ids != SPATIAL_QUALITY_CONTROL_IDS:
+            raise DataError("Spatial quality control must match the frozen protocol.")
+        if self.distribution_summary_fields != DISTRIBUTION_SUMMARY_FIELDS:
+            raise DataError(
+                "Spatial distribution summaries must match the frozen protocol."
+            )
 
     def to_dict(self) -> dict[str, object]:
+        """Return exact definitions, exposures, and explicit exclusions."""
+
         return {
-            "arena_geometry": "median-axis-aligned-roche-landmarks",
-            "center_margin_fraction": self.center_margin_fraction,
-            "occupancy_grid_size": self.occupancy_grid_size,
-            "metrics": [
-                "path_length",
-                "displacement_wasserstein",
-                "turning_wasserstein",
-                "boundary_distance_wasserstein",
-                "center_fraction_absolute_difference",
-                "occupancy_total_variation",
-                "outside_fraction_absolute_difference",
+            "unit_of_description": "animal-recording",
+            "registered_metrics": [
+                {
+                    "id": "path-length-px",
+                    "definition": (
+                        "sum of displacement between adjacent accepted positions"
+                    ),
+                    "unit": "px",
+                    "required_exposure": "valid-transition-count",
+                },
+                {
+                    "id": "adjacent-displacement-px-distribution",
+                    "definition": (
+                        "displacement between adjacent accepted positions, including zero"
+                    ),
+                    "unit": "px-per-adjacent-frame-interval",
+                    "comparison": "empirical-1-wasserstein",
+                },
+                {
+                    "id": "absolute-turning-radians-distribution",
+                    "definition": (
+                        "absolute turning magnitude across two consecutive "
+                        "nonstationary valid movements"
+                    ),
+                    "unit": "radian",
+                    "comparison": "empirical-1-wasserstein",
+                },
             ],
-            "speed_included": False,
-            "movement_autocorrelation_included": False,
+            "distribution_summary_fields": list(self.distribution_summary_fields),
+            "quality_control": [
+                {
+                    "id": "position-status-counts",
+                    "definition": "per-status counts for every derived position sample",
+                },
+                {
+                    "id": "source-likelihood-summary",
+                    "definition": (
+                        "present and missing counts plus the fixed distribution "
+                        "summary over available source likelihoods"
+                    ),
+                },
+                {
+                    "id": "valid-transition-coverage",
+                    "definition": (
+                        "adjacent frame-pair opportunities, valid and zero "
+                        "displacements, valid turns, and valid displacement "
+                        "fraction over opportunities"
+                    ),
+                },
+            ],
+            "synthetic_observation_mask": (
+                "copy development bodycentre availability only; never coordinate values"
+            ),
+            "excluded_due_to_missing_source_support": [
+                "speed",
+                "duration",
+                "acceleration",
+                "time-lag-autocorrelation",
+                "physical-distance",
+            ],
+            "deferred_pending_validated_arena_bounds": [
+                "boundary-distance",
+                "center-periphery",
+                "spatial-occupancy",
+                "outside-arena-fraction",
+            ],
+            "not_registered_in_first_baseline": ["absolute-heading"],
+            "acceptance_threshold": None,
         }
 
 
 ROCHE_SPATIAL_EVALUATION_PROTOCOL = SpatialEvaluationProtocol()
 
 
-@dataclass(frozen=True, slots=True)
-class SpatialMeasurements:
-    """Measurements for one trajectory, retaining raw 1D samples only in memory."""
+def _quantile(values: Sequence[float], probability: float) -> float | None:
+    if not values:
+        return None
+    ordered = sorted(values)
+    if len(ordered) == 1:
+        return float(ordered[0])
+    position = probability * (len(ordered) - 1)
+    lower = int(position)
+    upper = min(lower + 1, len(ordered) - 1)
+    fraction = position - lower
+    return float(ordered[lower] + fraction * (ordered[upper] - ordered[lower]))
 
-    context: SpatialContext
+
+def distribution_summary(
+    values: Sequence[float],
+) -> dict[str, float | int | None]:
+    """Summarize one finite one-dimensional sample deterministically."""
+
+    if not values:
+        return {
+            "count": 0,
+            "mean": None,
+            "population-standard-deviation": None,
+            "minimum": None,
+            "q25": None,
+            "median": None,
+            "q75": None,
+            "q90": None,
+            "maximum": None,
+        }
+    return {
+        "count": len(values),
+        "mean": fmean(values),
+        "population-standard-deviation": pstdev(values),
+        "minimum": min(values),
+        "q25": _quantile(values, 0.25),
+        "median": _quantile(values, 0.5),
+        "q75": _quantile(values, 0.75),
+        "q90": _quantile(values, 0.9),
+        "maximum": max(values),
+    }
+
+
+@dataclass(frozen=True, slots=True)
+class SpatialQualityControl:
+    """Observation and transition exposure kept separate from model metrics."""
+
     total_samples: int
-    accepted_positions: int
-    in_arena_positions: int
-    outside_positions: int
-    path_length: float
-    displacements: tuple[float, ...]
-    turnings_radians: tuple[float, ...]
-    boundary_distances: tuple[float, ...]
-    center_fraction: float | None
-    occupancy: tuple[float, ...]
+    position_status_counts: tuple[tuple[str, int], ...]
+    source_likelihoods: tuple[float, ...]
+    source_likelihood_missing_count: int
+    adjacent_transition_opportunities: int
+    valid_transition_count: int
+    zero_transition_count: int
+    valid_turn_count: int
+
+    @property
+    def accepted_positions(self) -> int:
+        return dict(self.position_status_counts)[PositionStatus.ACCEPTED.value]
 
     @property
     def accepted_fraction(self) -> float:
-        return self.accepted_positions / self.total_samples if self.total_samples else 0.0
+        return (
+            self.accepted_positions / self.total_samples if self.total_samples else 0.0
+        )
 
     @property
-    def outside_fraction(self) -> float:
-        return (
-            self.outside_positions / self.accepted_positions
-            if self.accepted_positions
-            else 0.0
-        )
+    def valid_transition_fraction(self) -> float | None:
+        if not self.adjacent_transition_opportunities:
+            return None
+        return self.valid_transition_count / self.adjacent_transition_opportunities
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "total_samples": self.total_samples,
+            "position_status_counts": dict(self.position_status_counts),
+            "accepted_positions": self.accepted_positions,
+            "accepted_fraction": self.accepted_fraction,
+            "source_likelihood": {
+                "present_count": len(self.source_likelihoods),
+                "missing_count": self.source_likelihood_missing_count,
+                "summary": distribution_summary(self.source_likelihoods),
+            },
+            "adjacent_transition_opportunities": (
+                self.adjacent_transition_opportunities
+            ),
+            "valid_transition_count": self.valid_transition_count,
+            "valid_transition_fraction": self.valid_transition_fraction,
+            "zero_transition_count": self.zero_transition_count,
+            "valid_turn_count": self.valid_turn_count,
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class SpatialMeasurements:
+    """Registered measurements for one fully attributed trajectory."""
+
+    context: SpatialContext
+    path_length_px: float
+    displacements_px: tuple[float, ...]
+    absolute_turnings_radians: tuple[float, ...]
+    quality_control: SpatialQualityControl
 
     def compact_dict(self) -> dict[str, object]:
         return {
@@ -85,40 +245,66 @@ class SpatialMeasurements:
             "recording_id": self.context.recording_id,
             "source_category": self.context.source.value,
             "coordinate_unit": self.context.coordinate_frame.unit,
-            "total_samples": self.total_samples,
-            "accepted_positions": self.accepted_positions,
-            "accepted_fraction": self.accepted_fraction,
-            "in_arena_positions": self.in_arena_positions,
-            "outside_positions": self.outside_positions,
-            "outside_fraction": self.outside_fraction,
-            "path_length": self.path_length,
-            "valid_displacements": len(self.displacements),
-            "mean_displacement": fmean(self.displacements) if self.displacements else None,
-            "valid_turnings": len(self.turnings_radians),
-            "mean_absolute_turning": (
-                fmean(abs(value) for value in self.turnings_radians)
-                if self.turnings_radians
-                else None
+            "quality_control": self.quality_control.to_dict(),
+            "registered_metrics": {
+                "path-length-px": {
+                    "value": self.path_length_px,
+                    "valid-transition-count": (
+                        self.quality_control.valid_transition_count
+                    ),
+                },
+                "adjacent-displacement-px-distribution": distribution_summary(
+                    self.displacements_px
+                ),
+                "absolute-turning-radians-distribution": distribution_summary(
+                    self.absolute_turnings_radians
+                ),
+            },
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class SpatialComparison:
+    """Descriptive recorded-versus-synthetic differences for one replicate."""
+
+    path_length_signed_difference_px: float
+    path_length_absolute_difference_px: float
+    path_length_signed_relative_difference: float | None
+    path_length_relative_difference: float | None
+    adjacent_displacement_wasserstein_px: float | None
+    absolute_turning_wasserstein_radians: float | None
+
+    def to_dict(self) -> dict[str, float | None]:
+        return {
+            "path_length_signed_difference_px": self.path_length_signed_difference_px,
+            "path_length_absolute_difference_px": (
+                self.path_length_absolute_difference_px
             ),
-            "boundary_samples": len(self.boundary_distances),
-            "mean_boundary_distance": (
-                fmean(self.boundary_distances) if self.boundary_distances else None
+            "path_length_signed_relative_difference": (
+                self.path_length_signed_relative_difference
             ),
-            "center_fraction": self.center_fraction,
-            "occupancy": list(self.occupancy),
+            "path_length_relative_difference": self.path_length_relative_difference,
+            "adjacent_displacement_wasserstein_px": (
+                self.adjacent_displacement_wasserstein_px
+            ),
+            "absolute_turning_wasserstein_radians": (
+                self.absolute_turning_wasserstein_radians
+            ),
         }
 
 
 def _median(values: Sequence[float], label: str) -> float:
     if not values:
-        raise DataError(f"Cannot derive Roche arena geometry without {label} landmarks.")
+        raise DataError(
+            f"Cannot derive Roche arena geometry without {label} landmarks."
+        )
     return float(median(values))
 
 
 def derive_roche_recording_arena(
     frames: Iterable[SpatialFrame], *, arena_id: str | None = None
 ) -> RectangularArena:
-    """Derive one stable image-space rectangle from the four source landmarks."""
+    """Derive model bounds from source landmarks, not trajectory coordinates."""
 
     context: SpatialContext | None = None
     left_x: list[float] = []
@@ -161,84 +347,71 @@ def derive_roche_recording_arena(
     )
 
 
-def _grid_index(point: Point2D, arena: RectangularArena, grid_size: int) -> int:
-    x_fraction = (point.x - arena.minimum.x) / arena.width
-    y_fraction = (point.y - arena.minimum.y) / arena.height
-    x_index = min(grid_size - 1, max(0, int(x_fraction * grid_size)))
-    y_index = min(grid_size - 1, max(0, int(y_fraction * grid_size)))
-    return y_index * grid_size + x_index
+def measure_trajectory_steps(
+    steps: Iterable[TrajectoryStep],
+) -> SpatialMeasurements:
+    """Measure the frozen contract from already derived trajectory steps."""
+
+    materialized = tuple(steps)
+    if not materialized:
+        raise DataError("Spatial evaluation requires at least one trajectory sample.")
+    context = materialized[0].context
+    statuses: Counter[PositionStatus] = Counter()
+    confidences: list[float] = []
+    missing_confidences = 0
+    opportunities = 0
+    displacements: list[float] = []
+    absolute_turnings: list[float] = []
+    zero_transitions = 0
+    previous_index: int | None = None
+
+    for step in materialized:
+        if step.context != context:
+            raise DataError("Spatial evaluation cannot mix trajectory contexts.")
+        statuses[step.status] += 1
+        if step.confidence is None:
+            missing_confidences += 1
+        else:
+            confidences.append(step.confidence)
+        if previous_index is not None and step.frame_index == previous_index + 1:
+            opportunities += 1
+        if step.displacement is not None:
+            displacements.append(step.displacement)
+            zero_transitions += step.displacement == 0
+        if step.turning_radians is not None:
+            absolute_turnings.append(abs(step.turning_radians))
+        previous_index = step.frame_index
+
+    ordered_statuses = tuple(
+        (status.value, statuses[status]) for status in PositionStatus
+    )
+    quality_control = SpatialQualityControl(
+        total_samples=len(materialized),
+        position_status_counts=ordered_statuses,
+        source_likelihoods=tuple(confidences),
+        source_likelihood_missing_count=missing_confidences,
+        adjacent_transition_opportunities=opportunities,
+        valid_transition_count=len(displacements),
+        zero_transition_count=zero_transitions,
+        valid_turn_count=len(absolute_turnings),
+    )
+    return SpatialMeasurements(
+        context=context,
+        path_length_px=sum(displacements),
+        displacements_px=tuple(displacements),
+        absolute_turnings_radians=tuple(absolute_turnings),
+        quality_control=quality_control,
+    )
 
 
 def measure_spatial_trajectory(
     frames: Iterable[SpatialFrame],
     *,
-    arena: RectangularArena,
     trajectory_protocol: SpatialTrajectoryProtocol,
-    evaluation_protocol: SpatialEvaluationProtocol = ROCHE_SPATIAL_EVALUATION_PROTOCOL,
 ) -> SpatialMeasurements:
-    """Measure one trajectory without interpolating gaps or fabricating time units."""
+    """Apply the trajectory rule and frozen metric contract without gap filling."""
 
-    steps = tuple(trajectory_protocol.trajectory_steps(frames))
-    if not steps:
-        raise DataError("Spatial evaluation requires at least one trajectory sample.")
-    context = steps[0].context
-    if arena.coordinate_frame != context.coordinate_frame:
-        raise DataError(
-            "Spatial evaluation arena and trajectory must share a coordinate frame."
-        )
-
-    center = arena.center_region(
-        margin_fraction=evaluation_protocol.center_margin_fraction
-    )
-    occupancy_counts = [0] * (evaluation_protocol.occupancy_grid_size**2)
-    accepted = in_arena = outside = center_count = 0
-    boundary_distances: list[float] = []
-    displacements: list[float] = []
-    turnings: list[float] = []
-    path_length = 0.0
-
-    for step in steps:
-        if step.context != context:
-            raise DataError("Spatial evaluation cannot mix trajectory contexts.")
-        if step.displacement is not None:
-            displacements.append(step.displacement)
-            path_length += step.displacement
-        if step.turning_radians is not None:
-            turnings.append(step.turning_radians)
-        if step.point is None:
-            continue
-        accepted += 1
-        if not arena.contains(step.point):
-            outside += 1
-            continue
-        in_arena += 1
-        boundary_distances.append(arena.distance_to_boundary(step.point))
-        if center.contains(step.point):
-            center_count += 1
-        occupancy_counts[
-            _grid_index(
-                step.point, arena, evaluation_protocol.occupancy_grid_size
-            )
-        ] += 1
-
-    occupancy = (
-        tuple(count / in_arena for count in occupancy_counts)
-        if in_arena
-        else tuple(0.0 for _ in occupancy_counts)
-    )
-    return SpatialMeasurements(
-        context=context,
-        total_samples=len(steps),
-        accepted_positions=accepted,
-        in_arena_positions=in_arena,
-        outside_positions=outside,
-        path_length=path_length,
-        displacements=tuple(displacements),
-        turnings_radians=tuple(turnings),
-        boundary_distances=tuple(boundary_distances),
-        center_fraction=(center_count / in_arena if in_arena else None),
-        occupancy=occupancy,
-    )
+    return measure_trajectory_steps(trajectory_protocol.trajectory_steps(frames))
 
 
 def empirical_wasserstein(
@@ -258,61 +431,49 @@ def empirical_wasserstein(
             ai += 1
         while bi < len(b) and b[bi] <= point:
             bi += 1
-        distance += (
-            abs(ai / len(a) - bi / len(b)) * (points[index + 1] - point)
-        )
+        distance += abs(ai / len(a) - bi / len(b)) * (points[index + 1] - point)
     return distance
-
-
-def occupancy_total_variation(
-    left: Sequence[float], right: Sequence[float]
-) -> float:
-    if len(left) != len(right):
-        raise DataError("Occupancy comparisons require equal grid shapes.")
-    return 0.5 * sum(
-        abs(a - b) for a, b in zip(left, right, strict=True)
-    )
 
 
 def compare_spatial_measurements(
     recorded: SpatialMeasurements, synthetic: SpatialMeasurements
-) -> dict[str, float | None]:
-    """Compare separately measured recorded and synthetic trajectories descriptively."""
+) -> SpatialComparison:
+    """Compare registered metrics without treating frames as independent animals."""
 
+    if recorded.context.source is not ObservationSource.RECORDED:
+        raise DataError("The recorded side must retain the recorded source category.")
+    if synthetic.context.source is not ObservationSource.SYNTHETIC:
+        raise DataError("The synthetic side must retain the synthetic source category.")
+    if recorded.context.subject_id != synthetic.context.subject_id:
+        raise DataError("Spatial comparison requires the same development animal.")
     if recorded.context.coordinate_frame != synthetic.context.coordinate_frame:
         raise DataError(
             "Recorded and synthetic spatial comparisons require one coordinate frame."
         )
-    relative_path = (
-        abs(synthetic.path_length - recorded.path_length) / recorded.path_length
-        if recorded.path_length > 0
-        else None
+    if (
+        recorded.quality_control.valid_transition_count
+        != synthetic.quality_control.valid_transition_count
+    ):
+        raise DataError(
+            "Path-length comparison requires equal valid-transition exposure."
+        )
+
+    signed_path = synthetic.path_length_px - recorded.path_length_px
+    signed_relative_path = (
+        signed_path / recorded.path_length_px if recorded.path_length_px > 0 else None
     )
-    center_difference = (
-        abs(synthetic.center_fraction - recorded.center_fraction)
-        if recorded.center_fraction is not None
-        and synthetic.center_fraction is not None
-        else None
+    return SpatialComparison(
+        path_length_signed_difference_px=signed_path,
+        path_length_absolute_difference_px=abs(signed_path),
+        path_length_signed_relative_difference=signed_relative_path,
+        path_length_relative_difference=(
+            abs(signed_relative_path) if signed_relative_path is not None else None
+        ),
+        adjacent_displacement_wasserstein_px=empirical_wasserstein(
+            recorded.displacements_px, synthetic.displacements_px
+        ),
+        absolute_turning_wasserstein_radians=empirical_wasserstein(
+            recorded.absolute_turnings_radians,
+            synthetic.absolute_turnings_radians,
+        ),
     )
-    return {
-        "path_length_absolute_difference": abs(
-            synthetic.path_length - recorded.path_length
-        ),
-        "path_length_relative_difference": relative_path,
-        "displacement_wasserstein": empirical_wasserstein(
-            recorded.displacements, synthetic.displacements
-        ),
-        "turning_wasserstein": empirical_wasserstein(
-            recorded.turnings_radians, synthetic.turnings_radians
-        ),
-        "boundary_distance_wasserstein": empirical_wasserstein(
-            recorded.boundary_distances, synthetic.boundary_distances
-        ),
-        "center_fraction_absolute_difference": center_difference,
-        "occupancy_total_variation": occupancy_total_variation(
-            recorded.occupancy, synthetic.occupancy
-        ),
-        "outside_fraction_absolute_difference": abs(
-            synthetic.outside_fraction - recorded.outside_fraction
-        ),
-    }

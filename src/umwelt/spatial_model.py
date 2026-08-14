@@ -3,14 +3,21 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import cos, exp, isfinite, log, sin, sqrt
+from math import atan2, cos, exp, isfinite, log, pi, sin, sqrt
 from random import Random
 from statistics import fmean, pstdev
 
 from umwelt.arena import RectangularArena
 from umwelt.errors import DataError
 from umwelt.observations import ObservationSource
-from umwelt.spatial import Keypoint2D, Point2D, Pose2D, SpatialContext, SpatialFrame
+from umwelt.spatial import (
+    AxisOrientation,
+    Keypoint2D,
+    Point2D,
+    Pose2D,
+    SpatialContext,
+    SpatialFrame,
+)
 from umwelt.trajectory import TrajectoryStep
 
 
@@ -58,7 +65,7 @@ class SpatialMovementModel:
                 "family": "zero-mean-normal-radians",
                 "std": self.turning_std_radians,
             },
-            "boundary_rule": "axis-reflection-then-clamp",
+            "boundary_rule": "repeated-axis-reflection",
             "initial_position_fraction": [
                 self.initial_x_fraction,
                 self.initial_y_fraction,
@@ -85,6 +92,11 @@ def fit_spatial_movement_model(
     for steps, arena in zip(trajectories, arenas, strict=True):
         if not steps:
             raise DataError("Spatial fitting trajectories must not be empty.")
+        if steps[0].context.coordinate_frame != arena.coordinate_frame:
+            raise DataError(
+                "Spatial fitting trajectories and arenas must share a coordinate frame."
+            )
+        initial_position_recorded = False
         for step in steps:
             if step.displacement is not None:
                 displacements.append(step.displacement)
@@ -92,23 +104,20 @@ def fit_spatial_movement_model(
                     positive.append(step.displacement)
             if step.turning_radians is not None:
                 turns.append(step.turning_radians)
-            if step.point is not None and arena.contains(step.point):
-                x_fractions.append(
-                    (step.point.x - arena.minimum.x) / arena.width
-                )
-                y_fractions.append(
-                    (step.point.y - arena.minimum.y) / arena.height
-                )
+            if (
+                not initial_position_recorded
+                and step.point is not None
+                and arena.contains(step.point)
+            ):
+                x_fractions.append((step.point.x - arena.minimum.x) / arena.width)
+                y_fractions.append((step.point.y - arena.minimum.y) / arena.height)
+                initial_position_recorded = True
 
     if not displacements or not positive or not x_fractions:
-        raise DataError(
-            "Spatial fitting needs valid movements and in-arena positions."
-        )
+        raise DataError("Spatial fitting needs valid movements and in-arena positions.")
     logs = [log(value) for value in positive]
     stationary = sum(value == 0 for value in displacements) / len(displacements)
-    turning_std = (
-        sqrt(fmean(value * value for value in turns)) if turns else 0.0
-    )
+    turning_std = sqrt(fmean(value * value for value in turns)) if turns else 0.0
     return SpatialMovementModel(
         model_id="persistent-reflecting-random-walk-v1",
         stationary_probability=stationary,
@@ -120,12 +129,14 @@ def fit_spatial_movement_model(
     )
 
 
-def _reflect(value: float, minimum: float, maximum: float) -> float:
-    if value < minimum:
-        value = minimum + (minimum - value)
-    elif value > maximum:
-        value = maximum - (value - maximum)
-    return min(maximum, max(minimum, value))
+def _reflect(value: float, minimum: float, maximum: float) -> tuple[float, int]:
+    """Reflect any finite overshoot and return the resulting direction sign."""
+
+    width = maximum - minimum
+    phase = (value - minimum) % (2 * width)
+    if phase <= width:
+        return minimum + phase, 1
+    return maximum - (phase - width), -1
 
 
 def generate_spatial_trajectory(
@@ -158,7 +169,7 @@ def generate_spatial_trajectory(
         arena.minimum.x + model.initial_x_fraction * arena.width,
         arena.minimum.y + model.initial_y_fraction * arena.height,
     )
-    heading = rng.uniform(-3.141592653589793, 3.141592653589793)
+    heading = rng.uniform(-pi, pi)
     frames: list[SpatialFrame] = []
     previous_index: int | None = None
 
@@ -174,23 +185,26 @@ def generate_spatial_trajectory(
                 heading += rng.gauss(0.0, model.turning_std_radians)
                 dx = displacement * cos(heading)
                 dy_math = displacement * sin(heading)
-                dy_image = (
+                dy_coordinate = (
                     -dy_math
-                    if arena.coordinate_frame.axis_orientation.value
-                    == "x-right-y-down"
+                    if arena.coordinate_frame.axis_orientation
+                    is AxisOrientation.X_RIGHT_Y_DOWN
                     else dy_math
                 )
-                point = Point2D(
-                    _reflect(
-                        point.x + dx,
-                        arena.minimum.x,
-                        arena.maximum.x,
-                    ),
-                    _reflect(
-                        point.y + dy_image,
-                        arena.minimum.y,
-                        arena.maximum.y,
-                    ),
+                x, x_direction = _reflect(
+                    point.x + dx,
+                    arena.minimum.x,
+                    arena.maximum.x,
+                )
+                y, y_direction = _reflect(
+                    point.y + dy_coordinate,
+                    arena.minimum.y,
+                    arena.maximum.y,
+                )
+                point = Point2D(x, y)
+                heading = atan2(
+                    sin(heading) * y_direction,
+                    cos(heading) * x_direction,
                 )
         pose = Pose2D((Keypoint2D("bodycentre", point, None),))
         frames.append(SpatialFrame(context, frame_index, pose))
