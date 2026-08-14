@@ -1,0 +1,30 @@
+{
+  "model.json": {
+    "sha256": "cbfddba86dca5b6b670d19b9fee3049b4618321eaa0c5f5a5aaa7ed023d69a83",
+    "size_bytes": 444
+  },
+  "protocol.json": {
+    "sha256": "b2ea26008c208d0150bbca0a5d4cfb1457d7b365348ca8c2ce067bf0eb672b7d",
+    "size_bytes": 2985
+  },
+  "provenance.json": {
+    "sha256": "1d37bfbd4cf32cd9e2742613201ea063528af8d9ed84419b3dcdea5b356b0a7a",
+    "size_bytes": 8954
+  },
+  "replicate-metrics.jsonl": {
+    "sha256": "78c558f52b452ca0554816552af2951f2787ee65cec70ac0149a334ca9efd585",
+    "size_bytes": 235065
+  },
+  "report.md": {
+    "sha256": "cfcb8dd81a5bc1f9e02dcee45a988fb87629da5808969fe77d427e452ffd7898",
+    "size_bytes": 2293
+  },
+  "resolved-config.json": {
+    "sha256": "360e27f9190711f4d9e0cc7d71ef3c965dd3978ad1e790775bd9fda506e89c5e",
+    "size_bytes": 346
+  },
+  "seeds.json": {
+    "sha256": "cfa85e2e88f9c37a716522a684d6d7241538097fd5685387b68eae8f82b0838f",
+    "size_bytes": 6774
+  }
+}

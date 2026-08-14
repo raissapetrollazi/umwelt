@@ -1,0 +1,101 @@
+{
+  "development_subjects": [
+    "16459-67064",
+    "16459-67078"
+  ],
+  "evaluation": {
+    "acceptance_threshold": null,
+    "deferred_pending_validated_arena_bounds": [
+      "boundary-distance",
+      "center-periphery",
+      "spatial-occupancy",
+      "outside-arena-fraction"
+    ],
+    "distribution_summary_fields": [
+      "count",
+      "mean",
+      "population-standard-deviation",
+      "minimum",
+      "q25",
+      "median",
+      "q75",
+      "q90",
+      "maximum"
+    ],
+    "excluded_due_to_missing_source_support": [
+      "speed",
+      "duration",
+      "acceleration",
+      "time-lag-autocorrelation",
+      "physical-distance"
+    ],
+    "not_registered_in_first_baseline": [
+      "absolute-heading"
+    ],
+    "quality_control": [
+      {
+        "definition": "per-status counts for every derived position sample",
+        "id": "position-status-counts"
+      },
+      {
+        "definition": "present and missing counts plus the fixed distribution summary over available source likelihoods",
+        "id": "source-likelihood-summary"
+      },
+      {
+        "definition": "adjacent frame-pair opportunities, valid and zero displacements, valid turns, and valid displacement fraction over opportunities",
+        "id": "valid-transition-coverage"
+      }
+    ],
+    "registered_metrics": [
+      {
+        "definition": "sum of displacement between adjacent accepted positions",
+        "id": "path-length-px",
+        "required_exposure": "valid-transition-count",
+        "unit": "px"
+      },
+      {
+        "comparison": "empirical-1-wasserstein",
+        "definition": "displacement between adjacent accepted positions, including zero",
+        "id": "adjacent-displacement-px-distribution",
+        "unit": "px-per-adjacent-frame-interval"
+      },
+      {
+        "comparison": "empirical-1-wasserstein",
+        "definition": "absolute turning magnitude across two consecutive nonstationary valid movements",
+        "id": "absolute-turning-radians-distribution",
+        "unit": "radian"
+      }
+    ],
+    "synthetic_observation_mask": "copy development bodycentre availability only; never coordinate values",
+    "unit_of_description": "animal-recording"
+  },
+  "fitting_subjects": [
+    "16459-67049",
+    "16459-67053",
+    "16459-67060",
+    "16459-67067",
+    "16459-67071",
+    "16459-67074"
+  ],
+  "trajectory": {
+    "continuity": {
+      "interpolation_applied_by_protocol": false,
+      "smoothing_applied_by_protocol": false,
+      "turning": "two-consecutive-nonstationary-valid-movements",
+      "valid_displacement": "adjacent-frames-with-accepted-endpoints",
+      "zero_displacement": "retain-and-break-turning"
+    },
+    "input": {
+      "coordinate_frame": {
+        "axis_orientation": "x-right-y-down",
+        "frame_id": "roche-open-field-image",
+        "unit": "px"
+      },
+      "source_category": "recorded"
+    },
+    "position": {
+      "keypoint_name": "bodycentre",
+      "minimum_likelihood": null
+    }
+  }
+}

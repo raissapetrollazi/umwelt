@@ -1,0 +1,222 @@
+{
+  "configuration_sha256": "60c7b515ebeb394592c099e6c2fa6d9bd3a554cbc2ba058e7d4874b22de3ce6b",
+  "dataset": {
+    "adapter": "umwelt.datasets.roche_open_field",
+    "arena_landmarks": [
+      "tl",
+      "tr",
+      "bl",
+      "br"
+    ],
+    "authors": [
+      "Lukas M. von Ziegler",
+      "Fabienne K. Roessler",
+      "Oliver Sturman",
+      "Eoin C. O'Connor",
+      "Johannes Bohacek"
+    ],
+    "coordinate_frame": {
+      "axis_orientation": "x-right-y-down",
+      "frame_id": "roche-open-field-image",
+      "physical_calibration": null,
+      "unit": "px"
+    },
+    "doi": "10.5281/zenodo.8188683",
+    "interpretation_boundary": "Group and dosage are recorded source metadata, not behavioral causes or model-internal state.",
+    "license": "CC-BY-4.0",
+    "metadata_file": {
+      "name": "METADATA_ROCHE.csv",
+      "published_md5": "096e21e4d319130370aa4bb244b670f8",
+      "published_size": 6266,
+      "verification": {
+        "actual_md5": "096e21e4d319130370aa4bb244b670f8",
+        "actual_size": 6266,
+        "expected_md5": "096e21e4d319130370aa4bb244b670f8",
+        "expected_size": 6266,
+        "path": "/home/lucie/Projects/umwelt/data/raw/roche-open-field/METADATA_ROCHE.csv",
+        "valid": true
+      }
+    },
+    "mouse_keypoints": [
+      "nose",
+      "headcentre",
+      "neck",
+      "earl",
+      "earr",
+      "bodycentre",
+      "bcl",
+      "bcr",
+      "hipl",
+      "hipr",
+      "tailbase",
+      "tailcentre",
+      "tailtip"
+    ],
+    "physical_arena_dimensions": null,
+    "pose_archive": {
+      "name": "data.zip",
+      "published_md5": "8b48f2060146c03d578d5d6971aa70e9",
+      "published_size": 514028268,
+      "verification": {
+        "actual_md5": "8b48f2060146c03d578d5d6971aa70e9",
+        "actual_size": 514028268,
+        "expected_md5": "8b48f2060146c03d578d5d6971aa70e9",
+        "expected_size": 514028268,
+        "path": "/home/lucie/Projects/umwelt/data/raw/roche-open-field/data.zip",
+        "valid": true
+      }
+    },
+    "record_title": "Raw video and pose estimation data of top view open field mouse behavior recordings after yohimbine injections",
+    "record_url": "https://zenodo.org/records/8188683",
+    "recording_count": 32,
+    "sampling_rate_hz": null,
+    "selected_recordings": [
+      {
+        "animal_id": "16459-67049",
+        "dlc_file": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "be45ae2447746ab8aec6c07041cb3ef37cc8d73d6204a265ff36d25f6929e1c4",
+          "frame_count": 53954,
+          "size_bytes": 50164222
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67053",
+        "dlc_file": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "2b458d2a4c3959e48120d10adaa037902ea13c190b941c5e8f80cfde8ddf2453",
+          "frame_count": 53914,
+          "size_bytes": 50178663
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67060",
+        "dlc_file": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "0b0e7875e209ba71c2bee64aa4655bb194dfba25080471ec70e255c2412f4fd9",
+          "frame_count": 53963,
+          "size_bytes": 50265985
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67067",
+        "dlc_file": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "48f97efe96bc79a73510a00357fbaebbbbdaeec288393dd031b94388065cc57d",
+          "frame_count": 53964,
+          "size_bytes": 50264103
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67071",
+        "dlc_file": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "9ebe7f9f2ef8d32e4b0e9f06f75f92429bfe33a082995946e38a88d50afe5d9e",
+          "frame_count": 53964,
+          "size_bytes": 50293658
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67074",
+        "dlc_file": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "4b7e0db547a5408907fe16ea6b0489f24d89df559f60f88e134993f93a2d0f7f",
+          "frame_count": 53964,
+          "size_bytes": 50240183
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67064",
+        "dlc_file": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "7a2e84d00f2356371d0aa2220fa8dac8852f3cc0ee8dd3e2ca3c92c600e4b5e9",
+          "frame_count": 53962,
+          "size_bytes": 50215592
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      },
+      {
+        "animal_id": "16459-67078",
+        "dlc_file": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "dosage": "0",
+        "group": "Control",
+        "pose_file": {
+          "archive_member": "data/Yohimbine_Roche/02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "derived_sha256_from_verified_archive": "492d43f5fc53ca50cac67ff920b7f7c6fae49823dd61208c4acdd4612a8ed8ab",
+          "frame_count": 53964,
+          "size_bytes": 50225479
+        },
+        "scorer": "DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000",
+        "video": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.mp4"
+      }
+    ],
+    "source_category": "recorded",
+    "source_keypoint_columns": [
+      "tl",
+      "tr",
+      "bl",
+      "br",
+      "nose",
+      "headcentre",
+      "neck",
+      "earl",
+      "earr",
+      "bodycentre",
+      "bcl",
+      "bcr",
+      "hipl",
+      "hipr",
+      "tailbase",
+      "tailcentre",
+      "tailtip"
+    ]
+  },
+  "development_subjects_used_for_fitting": false,
+  "information_categories": [
+    "recorded",
+    "derived",
+    "model",
+    "synthetic"
+  ],
+  "software": {
+    "git_revision": "48f7193cebc608c2e99220d1f01c0c56f70e118e",
+    "git_tracked_worktree_dirty": false,
+    "name": "umwelt",
+    "version": "0.2.0"
+  },
+  "synthetic_trajectories_retained": false
+}

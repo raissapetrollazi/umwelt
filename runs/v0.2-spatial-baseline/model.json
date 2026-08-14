@@ -1,0 +1,18 @@
+{
+  "boundary_rule": "repeated-axis-reflection",
+  "initial_position_fraction": [
+    0.3482307434903927,
+    0.2897374483092097
+  ],
+  "model_id": "persistent-reflecting-random-walk-v1",
+  "positive_displacement": {
+    "family": "lognormal",
+    "log_mean": 0.5585528829820319,
+    "log_std": 1.388594066511102
+  },
+  "stationary_probability": 0.0,
+  "turning": {
+    "family": "zero-mean-normal-radians",
+    "std": 1.0657326937028495
+  }
+}
