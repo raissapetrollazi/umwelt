@@ -267,15 +267,21 @@ class SpatialMeasurements:
 class SpatialComparison:
     """Descriptive recorded-versus-synthetic differences for one replicate."""
 
+    path_length_signed_difference_px: float
     path_length_absolute_difference_px: float
+    path_length_signed_relative_difference: float | None
     path_length_relative_difference: float | None
     adjacent_displacement_wasserstein_px: float | None
     absolute_turning_wasserstein_radians: float | None
 
     def to_dict(self) -> dict[str, float | None]:
         return {
+            "path_length_signed_difference_px": self.path_length_signed_difference_px,
             "path_length_absolute_difference_px": (
                 self.path_length_absolute_difference_px
+            ),
+            "path_length_signed_relative_difference": (
+                self.path_length_signed_relative_difference
             ),
             "path_length_relative_difference": self.path_length_relative_difference,
             "adjacent_displacement_wasserstein_px": (
@@ -452,17 +458,17 @@ def compare_spatial_measurements(
             "Path-length comparison requires equal valid-transition exposure."
         )
 
-    relative_path = (
-        abs(synthetic.path_length_px - recorded.path_length_px)
-        / recorded.path_length_px
-        if recorded.path_length_px > 0
-        else None
+    signed_path = synthetic.path_length_px - recorded.path_length_px
+    signed_relative_path = (
+        signed_path / recorded.path_length_px if recorded.path_length_px > 0 else None
     )
     return SpatialComparison(
-        path_length_absolute_difference_px=abs(
-            synthetic.path_length_px - recorded.path_length_px
+        path_length_signed_difference_px=signed_path,
+        path_length_absolute_difference_px=abs(signed_path),
+        path_length_signed_relative_difference=signed_relative_path,
+        path_length_relative_difference=(
+            abs(signed_relative_path) if signed_relative_path is not None else None
         ),
-        path_length_relative_difference=relative_path,
         adjacent_displacement_wasserstein_px=empirical_wasserstein(
             recorded.displacements_px, synthetic.displacements_px
         ),

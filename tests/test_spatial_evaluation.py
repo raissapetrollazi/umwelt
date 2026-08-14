@@ -160,7 +160,9 @@ class SpatialEvaluationProtocolTests(unittest.TestCase):
 
         self.assertEqual(recorded.absolute_turnings_radians, (pi / 2,))
         self.assertEqual(synthetic.absolute_turnings_radians, (pi / 2,))
+        self.assertEqual(comparison.path_length_signed_difference_px, 0.0)
         self.assertEqual(comparison.path_length_absolute_difference_px, 0.0)
+        self.assertEqual(comparison.path_length_signed_relative_difference, 0.0)
         self.assertEqual(comparison.adjacent_displacement_wasserstein_px, 0.0)
         self.assertEqual(comparison.absolute_turning_wasserstein_radians, 0.0)
 

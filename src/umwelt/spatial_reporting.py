@@ -39,7 +39,10 @@ def render_spatial_report(
     comparisons: Sequence[tuple[str, SpatialComparison]],
 ) -> str:
     metrics = (
-        ("path_length_relative_difference", "ratio"),
+        (
+            "path_length_signed_relative_difference",
+            "ratio: (synthetic - recorded) / recorded",
+        ),
         ("adjacent_displacement_wasserstein_px", "px"),
         ("absolute_turning_wasserstein_radians", "radian"),
     )

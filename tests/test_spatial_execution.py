@@ -124,7 +124,9 @@ class SpatialExecutionTests(unittest.TestCase):
             self.assertEqual(
                 set(record["comparison"]),
                 {
+                    "path_length_signed_difference_px",
                     "path_length_absolute_difference_px",
+                    "path_length_signed_relative_difference",
                     "path_length_relative_difference",
                     "adjacent_displacement_wasserstein_px",
                     "absolute_turning_wasserstein_radians",
