@@ -83,12 +83,16 @@ Implemented foundation:
   behavioral cause;
 - explicit unknown values for sampling rate, pixel-to-centimeter calibration,
   and physical arena dimensions, while retaining the declared Roche image-axis
-  convention (`x-right-y-down`).
+  convention (`x-right-y-down`);
+- machine-readable, leakage-safe eight-control protocol facts with a pinned
+  six-animal fitting and two-animal development split derived outcome-blind from
+  animal identifiers and the verified metadata checksum;
+- an executable `bodycentre` position protocol with no unsupported likelihood
+  cutoff; it applies no interpolation or smoothing and does not bridge explicit
+  gaps.
 
 Remaining work for a complete v0.2 experiment:
 
-- declare a leakage-safe control fitting/development split and confidence/gap
-  policy;
 - define the recorded metric set before inspecting baseline results;
 - implement an explicit seeded movement model that generates new trajectories;
 - create reproducible fitting, generation, evaluation, reporting, provenance,
