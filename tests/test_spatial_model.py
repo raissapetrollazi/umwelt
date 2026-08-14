@@ -15,13 +15,19 @@ from umwelt.spatial import (
     SpatialContext,
     SpatialFrame,
 )
-from umwelt.spatial_model import fit_spatial_movement_model, generate_spatial_trajectory
+from umwelt.spatial_model import (
+    _reflect,
+    fit_spatial_movement_model,
+    generate_spatial_trajectory,
+)
 from umwelt.spatial_protocol import SpatialTrajectoryProtocol
 
 FRAME = CoordinateFrame("test-image", "px", AxisOrientation.X_RIGHT_Y_DOWN)
 CONTEXT = SpatialContext("mouse", "recording", ObservationSource.RECORDED, FRAME)
 ARENA = RectangularArena("arena", FRAME, Point2D(0, 0), Point2D(10, 10))
-PROTOCOL = SpatialTrajectoryProtocol("bodycentre", None, ObservationSource.RECORDED, FRAME)
+PROTOCOL = SpatialTrajectoryProtocol(
+    "bodycentre", None, ObservationSource.RECORDED, FRAME
+)
 
 
 def frame(index: int, x: float, y: float) -> SpatialFrame:
@@ -61,9 +67,19 @@ class SpatialModelTests(unittest.TestCase):
         )
         self.assertEqual(first, second)
         self.assertTrue(
-            all(ARENA.contains(item.pose.keypoint("bodycentre").point) for item in first)
+            all(
+                ARENA.contains(item.pose.keypoint("bodycentre").point) for item in first
+            )
         )
         self.assertEqual(model.model_id, "persistent-reflecting-random-walk-v1")
+        self.assertEqual(model.initial_x_fraction, 0.2)
+        self.assertEqual(model.initial_y_fraction, 0.2)
+        self.assertEqual(model.to_dict()["boundary_rule"], "repeated-axis-reflection")
+
+    def test_reflection_handles_arbitrarily_large_overshoot(self) -> None:
+        self.assertEqual(_reflect(12.0, 0.0, 10.0), (8.0, -1))
+        self.assertEqual(_reflect(32.0, 0.0, 10.0), (8.0, -1))
+        self.assertEqual(_reflect(-12.0, 0.0, 10.0), (8.0, 1))
 
 
 if __name__ == "__main__":
