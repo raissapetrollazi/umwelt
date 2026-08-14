@@ -101,9 +101,12 @@ Implemented capabilities:
 - reproducible fitting, generation, evaluation, reporting, dataset/software
   provenance, seed, and artifact-hash workflows exposed through `umwelt spatial`.
 
-The canonical spatial run remains development evidence, not model validation.
-Later spatial claims require a prospectively declared question and independent
-evaluation rather than further tuning on the two development animals.
+The canonical 32-replicate spatial run is retained under
+`runs/v0.2-spatial-baseline/`. It exposes systematic path-length overestimation
+and nonzero displacement and turning discrepancies as development evidence,
+not model validation. Later spatial claims require a prospectively declared
+question and independent evaluation rather than further tuning on the two
+development animals.
 
 ## v0.3 - Behavioral World
 

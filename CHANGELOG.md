@@ -52,6 +52,9 @@
 - Add the seeded persistent reflecting random-walk baseline, synthetic
   availability masking, recorded-versus-synthetic evaluation, compact reports,
   dataset/software provenance, and artifact hashes.
+- Preserve the reproducible 32-replicate canonical spatial development run,
+  including systematic path-length overestimation and the nonzero displacement
+  and absolute-turning discrepancies of the minimal baseline.
 
 ## 0.1.0 - 2026-08-08
 

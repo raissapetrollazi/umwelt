@@ -46,6 +46,8 @@ The first spatial baseline is `persistent-reflecting-random-walk-v1`. It fits po
 
 The frozen spatial evaluation compares exactly three registered dimensions: path length with valid-transition exposure, adjacent-displacement distributions including zero, and absolute-turning distributions. Synthetic evaluation copies the development recording's `bodycentre` availability mask but never its coordinate values. Arena bounds constrain generation; boundary distance, center/periphery, occupancy, and outside-arena metrics remain unregistered. No implicit pass/fail threshold is assigned.
 
+The [canonical 32-replicate development run](runs/v0.2-spatial-baseline/report.md) is retained as reproducible evidence. The baseline systematically generated longer paths for both development animals and retained nonzero displacement- and turning-distribution discrepancies; this is model-development evidence, not validation or a confirmatory result.
+
 See `docs/v0.2-research-direction.md` for the full protocol and interpretation boundaries.
 
 ## Quick start
