@@ -44,7 +44,7 @@ Recorded trajectory extraction uses `bodycentre`, preserves source likelihood wi
 
 The first spatial baseline is `persistent-reflecting-random-walk-v1`. It fits pooled stationary probability, positive-displacement magnitude, turning dispersion, and normalized initial position on the six fitting controls. Synthetic trajectories are seeded and constrained by the recorded image-space arena using an explicit reflection rule.
 
-The frozen spatial evaluation compares path length, displacement and turning distributions, boundary-distance distributions, geometric center occupancy, a fixed `4 x 4` occupancy grid, and outside-arena fraction. Recorded and synthetic measurements are computed separately before descriptive comparison. No implicit pass/fail threshold is assigned.
+The frozen spatial evaluation compares exactly three registered dimensions: path length with valid-transition exposure, adjacent-displacement distributions including zero, and absolute-turning distributions. Synthetic evaluation copies the development recording's `bodycentre` availability mask but never its coordinate values. Arena bounds constrain generation; boundary distance, center/periphery, occupancy, and outside-arena metrics remain unregistered. No implicit pass/fail threshold is assigned.
 
 See `docs/v0.2-research-direction.md` for the full protocol and interpretation boundaries.
 

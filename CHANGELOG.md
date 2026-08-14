@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 - 2026-08-13
+
 - Add an interpretable four-model temporal ladder separating phase and elapsed
   bout-duration dependence.
 - Add deterministic replicated model comparison with shared activity emissions.
@@ -44,8 +46,12 @@
 - Add an executable `bodycentre` position policy that preserves source
   likelihood, assumes no unsupported cutoff, applies no interpolation or
   smoothing, and does not bridge explicit gaps.
-- Defer the v0.2 generative movement baseline, synthetic trajectory workflow,
-  and recorded-versus-synthetic evaluation to subsequent work.
+- Freeze the first spatial metric contract to pixel path length with exposure,
+  adjacent displacement, and absolute turning while keeping quality control
+  separate and arena-dependent metrics unregistered.
+- Add the seeded persistent reflecting random-walk baseline, synthetic
+  availability masking, recorded-versus-synthetic evaluation, compact reports,
+  dataset/software provenance, and artifact hashes.
 
 ## 0.1.0 - 2026-08-08
 
