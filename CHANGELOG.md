@@ -7,6 +7,9 @@
   arena-size interventions.
 - Add the first v0.3 headless open-field world contract with explicit geometric
   zones, arena-scale conditions, validation, and provenance-ready serialization.
+- Add environment-linked trajectory measurements that preserve the v0.2 metric
+  contract while exposing zone occupancy, zone-conditioned displacement, and
+  outside-arena quality control.
 
 ## 0.2.0 - 2026-08-13
 
