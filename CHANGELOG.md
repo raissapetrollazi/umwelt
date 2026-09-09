@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Define the v0.3 behavioral-world research direction around an explicit
+  boundary-zone dependency, cross-validated model comparison, and paired
+  arena-size interventions.
+
 ## 0.2.0 - 2026-08-13
 
 - Add an interpretable four-model temporal ladder separating phase and elapsed
