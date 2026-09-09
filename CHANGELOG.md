@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Align the architecture and scope documentation with the completed v0.2
+  spatial laboratory.
+
 ## 0.2.0 - 2026-08-13
 
 - Add an interpretable four-model temporal ladder separating phase and elapsed

@@ -9,9 +9,10 @@ assumptions, and quantitatively comparing those categories.
 
 Version 0.1 implements one narrow temporal laboratory: **Sleep / Activity
 Mouse**. It asks which minimal explicit temporal mechanisms reproduce selected
-properties of recorded mouse sleep/activity dynamics. Version 0.2 is in
-progress: its spatial vocabulary, geometry, derived trajectory measurements,
-and Roche recorded-data adapter exist, but its generative experiment does not.
+properties of recorded mouse sleep/activity dynamics. Version 0.2 implements a
+second narrow laboratory: **Spatial Mouse**. It asks whether a compact,
+explicit movement model reproduces selected image-space properties of recorded
+open-field trajectories.
 
 The implemented v0.1 laboratory provides:
 
@@ -29,7 +30,7 @@ The implemented v0.1 laboratory provides:
 - aggregate and individual-subject predictive simulation summaries;
 - resolved configuration, provenance, seed, report, and checksum artifacts.
 
-The implemented v0.2 foundation provides:
+The implemented v0.2 laboratory provides:
 
 - finite two-dimensional points, coordinate frames with explicit units and axis
   orientation, pose keypoints, frame-indexed spatial series, and rectangular
@@ -48,12 +49,22 @@ The implemented v0.2 foundation provides:
   identity, or source context;
 - image-pixel geometry with sampling rate, physical calibration, and physical
   arena dimensions explicitly unknown and the `x-right-y-down` Roche axis
-  orientation explicit.
+  orientation explicit;
+- an outcome-blind split of the eight untreated control animals into six
+  fitting and two development animals;
+- a seeded persistent reflecting random-walk baseline fitted only on the six
+  fitting animals;
+- synthetic trajectories constrained by recording-specific arena bounds and
+  carrying only the development recording's body-center availability mask;
+- a frozen comparison contract covering path length with exposure, adjacent
+  displacement, and absolute turning;
+- replicated compact evaluation, provenance, reporting, seed records, and
+  artifact hashes exposed through `umwelt spatial`.
 
-The v0.1 scope establishes a complete computational loop. The v0.2 work
-establishes only the input and representation foundation for the next loop. It
-does not yet fit a spatial model, generate synthetic trajectories, compare
-recorded and synthetic movement, or establish biological sufficiency.
+The v0.1 and v0.2 laboratories each establish a complete recorded-to-synthetic
+development loop. Neither establishes biological sufficiency or scientific
+validation. The retained results expose model discrepancies that constrain
+later work rather than justify stronger claims.
 
 ## Observation, modeling, and simulation
 
@@ -84,25 +95,26 @@ Rendering, if introduced, will remain separate from scientific simulation.
 
 ## Why the milestones remain narrow
 
-A two-state temporal problem is small enough to inspect end to end. The source
-files, transformations, split, model parameters, random seeds, generated rows,
-metrics, and discrepancies can all be examined directly. This allows Umwelt to
-test its scientific infrastructure before adding space, interaction, neural
-signals, model selection, or intervention.
+A two-state temporal problem and a compact open-field movement problem are each
+small enough to inspect end to end. Their source files, transformations, splits,
+model parameters, random seeds, generated behavior, metrics, and discrepancies
+can all be examined directly. This allows Umwelt to test its scientific
+infrastructure before adding interaction, neural signals, model selection, or
+intervention.
 
-The first baseline fails on important bout-duration and longer-lag temporal
+The first temporal baseline fails on important bout-duration and longer-lag
 structure. The expanded model ladder tests phase and duration memory separately
 without hiding those failures or changing activity emissions at the same time.
-The next milestone adds only enough space and pose structure for one declared
-open-field question. It does not silently expand into drug-effect inference,
-general navigation, or a physics engine.
+The first spatial baseline systematically overestimates development path length
+and retains displacement and turning discrepancies. It does not silently expand
+those results into drug-effect inference, general navigation, or a physics
+engine.
 
 ## Current non-goals
 
 The current repository does not provide:
 
-- a completed v0.2 generative movement model or recorded-to-synthetic spatial
-  comparison;
+- a scientifically validated temporal or spatial behavioral model;
 - validated Roche sampling frequency, physical-unit calibration, physical arena
   dimensions, or metrics that require those unknown values;
 - causal interpretation of yohimbine treatment, anxiety, intention, preference,
