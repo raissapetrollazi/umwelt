@@ -5,6 +5,8 @@
 - Define the v0.3 behavioral-world research direction around an explicit
   boundary-zone dependency, cross-validated model comparison, and paired
   arena-size interventions.
+- Add the first v0.3 headless open-field world contract with explicit geometric
+  zones, arena-scale conditions, validation, and provenance-ready serialization.
 
 ## 0.2.0 - 2026-08-13
 
