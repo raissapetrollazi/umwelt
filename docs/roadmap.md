@@ -110,13 +110,34 @@ development animals.
 
 ## v0.3 - Behavioral World
 
-Give the environment causal structure.
+**Status:** planned. The first experiment is specified, but no v0.3 environment,
+model, intervention, or result is implemented.
 
-Potential modeled concepts include food, shelter or nest, environmental objects, light, zones, stimuli, resources, and changing environmental conditions.
+**Purpose:** give the environment one narrow causal role without introducing a
+general world simulator.
 
-Synthetic animals should perceive some subset of environmental state and respond according to explicit behavioral models. Researchers manipulate modeled environmental conditions rather than directly puppeteering animals.
+The selected experiment builds on the Roche open-field source and asks whether
+conditioning movement magnitude on a geometrically defined boundary zone
+improves the v0.2 development discrepancy. Model comparison will use
+leave-one-animal-out cross-validation within the six former fitting animals so
+the two already inspected development animals do not become tuning targets.
 
-This is the first milestone where controlled environmental intervention becomes central.
+The fitted candidate will then be simulated under pre-declared compact,
+recorded-scale, and expanded arena conditions with paired random streams. These
+conditions are computational interventions without recorded counterparts, so
+their responses characterize the model rather than establish effects in real
+animals.
+
+The world remains headless and contains only validated image-space arena
+geometry, a boundary-zone definition, condition identity, and the state needed
+by the movement model. Food, shelter, light, reward, social context, general
+physics, and psychological interpretations remain outside the first v0.3
+experiment.
+
+This is the first milestone where controlled environmental intervention becomes
+central. See [v0.3 Research Direction](v0.3-research-direction.md) for the
+question, model ladder, frozen evaluation direction, intervention contract, and
+completion boundary.
 
 ## v0.4 - Social Animals
 

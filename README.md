@@ -98,7 +98,7 @@ Existing run directories are never overwritten.
 
 ## Planned direction
 
-Later milestones may add causal environmental interventions, social context, neural or physiological modalities, latent-state experiments, counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/roadmap.md`.
+Version 0.3 is planned as a narrow behavioral-world experiment. It will test an explicit boundary-zone dependency and controlled arena-size interventions while preserving the v0.2 image-space and interpretation limits. Later milestones may add social context, neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/v0.3-research-direction.md` and `docs/roadmap.md`.
 
 ## Non-goals
 
@@ -114,6 +114,7 @@ Later milestones may add causal environmental interventions, social context, neu
 - `docs/project-direction.md`
 - `docs/v0.1-research-direction.md`
 - `docs/v0.2-research-direction.md`
+- `docs/v0.3-research-direction.md`
 - `docs/architecture.md`
 - `docs/scientific-principles.md`
 - `docs/data-and-ethics.md`

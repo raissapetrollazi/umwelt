@@ -4,6 +4,17 @@
 
 - Align the architecture and scope documentation with the completed v0.2
   spatial laboratory.
+- Define the v0.3 behavioral-world research direction around an explicit
+  boundary-zone dependency, cross-validated model comparison, and paired
+  arena-size interventions.
+- Add the first v0.3 headless open-field world contract with explicit geometric
+  zones, arena-scale conditions, validation, and provenance-ready serialization.
+- Add environment-linked trajectory measurements that preserve the v0.2 metric
+  contract while exposing zone occupancy, zone-conditioned displacement, and
+  outside-arena quality control.
+- Add the first boundary-conditioned movement model with strict recorded-scale
+  fitting, per-zone displacement distributions, and seeded generation bound to
+  explicit world conditions.
 
 ## 0.2.0 - 2026-08-13
 
