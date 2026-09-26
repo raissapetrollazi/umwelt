@@ -56,6 +56,7 @@ jobs:
         run: >-
           mypy
           src/umwelt/calms21.py
+          src/umwelt/calms21_audit.py
           src/umwelt/dyad.py
           src/umwelt/spatial_config.py
           src/umwelt/spatial_evaluation.py

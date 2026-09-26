@@ -8,7 +8,12 @@ import unittest
 from pathlib import Path
 from zipfile import ZipFile
 
-from umwelt.calms21 import Calms21Task1Sequence, iter_calms21_task1_sequences
+from umwelt.calms21 import (
+    Calms21Task1Sequence,
+    iter_calms21_task1_sequences,
+    scan_calms21_task1_sequence_ids,
+)
+from umwelt.calms21_audit import summarize_calms21_training_sequence
 from umwelt.dyad import measure_dyad_frames
 from umwelt.errors import DataError
 from umwelt.spatial import Point2D
@@ -73,6 +78,35 @@ class Calms21AdapterTests(unittest.TestCase):
         self.assertEqual(len(sequences), 1)
         self.assertEqual(sequences[0].frame_count, 1)
         self.assertEqual(len(tuple(sequences[0].frames())), 1)
+
+    def test_identity_scan_reads_only_sequence_keys(self) -> None:
+        frame = source_frame(1.0, 4.0)
+        record = {"keypoints": [frame["keypoints"]], "scores": [frame["scores"]]}
+        test = {"annotator-id_0": {"task1/test/mouse002_task1_annotator1": record}}
+        with tempfile.TemporaryDirectory() as temporary:
+            archive_path = Path(temporary) / "task1.zip"
+            with ZipFile(archive_path, "w") as archive:
+                archive.writestr("task1/calms21_task1_test.json", json.dumps(test))
+
+            identifiers = scan_calms21_task1_sequence_ids(archive_path, split="test")
+
+        self.assertEqual(identifiers, ("task1/test/mouse002_task1_annotator1",))
+
+    def test_training_audit_reports_low_scores_and_outside_image(self) -> None:
+        frame = source_frame(1100.0, 4.0)
+        sequence = Calms21Task1Sequence(
+            "task1/train/mouse001", [frame["keypoints"]], [frame["scores"]]
+        )
+
+        report = summarize_calms21_training_sequence(sequence)
+
+        self.assertEqual(report["frame_count"], 1)
+        self.assertEqual(report["source_keypoint_score_present_count"], 14)
+        self.assertEqual(report["source_keypoint_score_below_0_1_count"], 2)
+        self.assertEqual(report["neck_position_outside_image_count"], 1)
+        self.assertEqual(
+            report["pair_geometry"]["quality_control"]["valid_pair_position_count"], 1
+        )
 
 
 if __name__ == "__main__":

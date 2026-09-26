@@ -131,15 +131,10 @@ def iter_calms21_task1_sequences(
             "Install Umwelt with the calms21 extra to read poses."
         ) from error
 
-    expected_name = f"calms21_task1_{split}.json"
     with ZipFile(archive_path) as archive:
-        matches = [
-            name for name in archive.namelist() if Path(name).name == expected_name
-        ]
-        if len(matches) != 1:
-            raise DataError(f"Expected one {expected_name} in the CalMS21 archive.")
+        member_name = _task1_member_name(archive, split)
         sequence_count = 0
-        with archive.open(matches[0]) as source:
+        with archive.open(member_name) as source:
             for sequence_id, payload in ijson.kvitems(
                 source, "annotator-id_0", use_float=True
             ):
@@ -156,3 +151,42 @@ def iter_calms21_task1_sequences(
                 yield sequence
         if not sequence_count:
             raise DataError("No CalMS21 Task 1 sequences found in selected split.")
+
+
+def _task1_member_name(archive: ZipFile, split: str) -> str:
+    expected_name = f"calms21_task1_{split}.json"
+    matches = [name for name in archive.namelist() if Path(name).name == expected_name]
+    if len(matches) != 1:
+        raise DataError(f"Expected one {expected_name} in the CalMS21 archive.")
+    return matches[0]
+
+
+def scan_calms21_task1_sequence_ids(
+    archive_path: str | Path, *, split: str
+) -> tuple[str, ...]:
+    """Inspect sequence keys while discarding pose and annotation values."""
+
+    if split not in ("train", "test"):
+        raise DataError("CalMS21 Task 1 split must be train or test.")
+    try:
+        import ijson  # type: ignore[import-not-found]
+    except ImportError as error:
+        raise DataError(
+            "Install Umwelt with the calms21 extra to read poses."
+        ) from error
+
+    identifiers: list[str] = []
+    with ZipFile(archive_path) as archive:
+        with archive.open(_task1_member_name(archive, split)) as source:
+            for prefix, event, value in ijson.parse(source, use_float=True):
+                if prefix == "annotator-id_0" and event == "map_key":
+                    if not isinstance(value, str) or not value.startswith(
+                        f"task1/{split}/"
+                    ):
+                        raise DataError(
+                            "CalMS21 sequence does not match selected split."
+                        )
+                    identifiers.append(value)
+    if not identifiers or len(identifiers) != len(set(identifiers)):
+        raise DataError("CalMS21 split has no sequences or duplicate identifiers.")
+    return tuple(identifiers)
