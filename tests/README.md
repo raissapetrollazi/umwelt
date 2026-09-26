@@ -10,6 +10,12 @@ artifacts, and manifest integrity.
 The test suite uses small generated fixtures and does not require network access
 or the downloaded research dataset.
 
+Install the optional CalMS21 reader to run its archive-adapter tests:
+
+```console
+python -m pip install --editable '.[dev,calms21]'
+```
+
 ```console
 python -m unittest discover -s tests -v
 ```
