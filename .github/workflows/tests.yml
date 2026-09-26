@@ -62,3 +62,6 @@ jobs:
           src/umwelt/spatial_model.py
           src/umwelt/spatial_protocol.py
           src/umwelt/spatial_reporting.py
+          src/umwelt/world.py
+          src/umwelt/world_evaluation.py
+          src/umwelt/world_model.py
