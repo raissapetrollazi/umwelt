@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import re
 from collections.abc import Iterator
+from math import hypot
 from pathlib import Path
 from typing import cast
 from zipfile import ZipFile
@@ -17,6 +18,7 @@ from umwelt.calms21 import (
 )
 from umwelt.dyad import DyadFrame, measure_dyad_frames
 from umwelt.errors import DataError
+from umwelt.spatial import Point2D
 
 
 def _hash_archive(path: Path) -> tuple[str, str]:
@@ -47,12 +49,23 @@ def summarize_calms21_training_sequence(
     score_below_tenth = 0
     point_missing = 0
     neck_outside_image = 0
+    neck_score_below_tenth = 0
+    neck_score_below_half = 0
+    neck_jumps_over_50 = 0
+    neck_jumps_over_100 = 0
+    neck_jumps_over_200 = 0
+    neck_jumps_over_100_low_score = 0
+    neck_max_adjacent_displacement = 0.0
+    previous_necks: list[Point2D | None] = [None, None]
 
     def inspected_frames() -> Iterator[DyadFrame]:
         nonlocal score_present, score_missing, score_below_tenth
         nonlocal point_missing, neck_outside_image
+        nonlocal neck_score_below_tenth, neck_score_below_half
+        nonlocal neck_jumps_over_50, neck_jumps_over_100, neck_jumps_over_200
+        nonlocal neck_jumps_over_100_low_score, neck_max_adjacent_displacement
         for frame in sequence.frames():
-            for member in (frame.resident, frame.intruder):
+            for mouse_index, member in enumerate((frame.resident, frame.intruder)):
                 if member.pose is None:
                     continue
                 for keypoint in member.pose.keypoints:
@@ -64,9 +77,27 @@ def summarize_calms21_training_sequence(
                             score_below_tenth += 1
                     if keypoint.point is None:
                         point_missing += 1
-                neck = member.pose.keypoint("neck").point
+                neck_keypoint = member.pose.keypoint("neck")
+                neck = neck_keypoint.point
+                neck_score = neck_keypoint.confidence
+                if neck_score is not None:
+                    neck_score_below_tenth += neck_score < 0.1
+                    neck_score_below_half += neck_score < 0.5
                 if neck is not None and not (0 <= neck.x < 1024 and 0 <= neck.y < 570):
                     neck_outside_image += 1
+                previous = previous_necks[mouse_index]
+                if neck is not None and previous is not None:
+                    step = hypot(neck.x - previous.x, neck.y - previous.y)
+                    neck_max_adjacent_displacement = max(
+                        neck_max_adjacent_displacement, step
+                    )
+                    neck_jumps_over_50 += step > 50
+                    neck_jumps_over_100 += step > 100
+                    neck_jumps_over_200 += step > 200
+                    neck_jumps_over_100_low_score += (
+                        step > 100 and neck_score is not None and neck_score < 0.5
+                    )
+                previous_necks[mouse_index] = neck
             yield frame
 
     measurement = measure_dyad_frames(inspected_frames())
@@ -78,6 +109,15 @@ def summarize_calms21_training_sequence(
         "source_keypoint_score_below_0_1_count": score_below_tenth,
         "source_keypoint_coordinate_missing_count": point_missing,
         "neck_position_outside_image_count": neck_outside_image,
+        "neck_score_below_0_1_count": neck_score_below_tenth,
+        "neck_score_below_0_5_count": neck_score_below_half,
+        "neck_adjacent_displacement_over_50_px_count": neck_jumps_over_50,
+        "neck_adjacent_displacement_over_100_px_count": neck_jumps_over_100,
+        "neck_adjacent_displacement_over_200_px_count": neck_jumps_over_200,
+        "neck_adjacent_displacement_over_100_px_with_current_score_below_0_5_count": (
+            neck_jumps_over_100_low_score
+        ),
+        "neck_max_adjacent_displacement_px": neck_max_adjacent_displacement,
         "pair_geometry": measurement.compact_dict(),
     }
 

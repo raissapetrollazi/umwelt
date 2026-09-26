@@ -110,3 +110,36 @@ frequency, pixel-to-centimeter calibration, or physical arena dimensions. Keep
 those values unknown; do not derive physical speed or dimensions from
 filenames, frame counts, or videos that were not included in the validated
 source boundary.
+
+## CalMS21 Task 1 candidate (v0.4)
+
+The [CalMS21 deposit](https://data.caltech.edu/records/s0vdx-0k302) has DOI
+`10.22002/D1.1991`. Its Task 1 archive includes pose and annotation JSON for
+training and test sequences, plus derived task-programming features. Umwelt's
+first social experiment uses pose coordinates and source confidence only;
+expert action annotations and derived features are separate from geometry.
+
+The [dataset paper](https://arxiv.org/html/2104.02710v4) declares CC-BY-NC-SA
+for the data and links to the 2.0 license text. Store this archive only under
+ignored `data/raw/` and retain the source attribution and license with any
+local analysis. Future commercial use needs its own rights decision or a
+different source. The Umwelt code's Apache-2.0 license does not relicense the
+dataset.
+
+```console
+python -m pip install --editable '.[calms21]'
+mkdir -p data/raw/calms21
+curl --fail --location --retry 12 --retry-all-errors --continue-at - \
+  --output data/raw/calms21/task1_classic_classification.zip \
+  'https://data.caltech.edu/records/s0vdx-0k302/files/task1_classic_classification.zip?download=1'
+md5sum data/raw/calms21/task1_classic_classification.zip
+umwelt social-audit \
+  --archive data/raw/calms21/task1_classic_classification.zip \
+  --output runs/v0.4-source-audit/report.json
+```
+
+The Caltech-published Task 1 MD5 is
+`8a02654fddae28614ee24a6a082261b8`. Its verified byte size is
+457,357,950. The audit command rejects a mismatched MD5, reports training
+pose quality and pair geometry, and scans test sequence identifiers without
+calculating test pose outcomes. The audit output is ignored by Git.

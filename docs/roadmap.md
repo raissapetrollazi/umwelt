@@ -156,7 +156,8 @@ completion boundary.
 ## v0.4 - Social Animals
 
 **Status:** implementation in progress. Pair identity and gap-aware geometry are
-implemented; source adoption and generative comparison remain under audit.
+implemented; the CalMS21 source audit is complete, while the generative
+comparison remains to be executed.
 
 The first proposed experiment uses a pair of individually identified mice in
 one image-space recording. It asks whether one explicit dependence on the
