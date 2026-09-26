@@ -9,6 +9,8 @@ Umwelt `0.2.0` is pre-alpha research software with two narrow mouse experiments:
 - **v0.1 temporal laboratory:** a complete recorded-to-synthetic sleep/activity workflow using the COMPASS dataset, including replicated temporal model comparison and a retained individual-variation development experiment;
 - **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes.
 
+Development toward v0.3 has begun with a minimal behavioral world, environment-linked measurements, and a boundary-conditioned movement model. Its cross-validated experiment and interventions are still pending.
+
 Umwelt is not a general animal simulator, a validated biological model, a veterinary or medical tool, or a finished research platform.
 
 ## Scientific question
@@ -98,7 +100,7 @@ Existing run directories are never overwritten.
 
 ## Planned direction
 
-Later milestones may add causal environmental interventions, social context, neural or physiological modalities, latent-state experiments, counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/roadmap.md`.
+Version 0.3 is planned as a narrow behavioral-world experiment. It will test an explicit boundary-zone dependency and controlled arena-size interventions while preserving the v0.2 image-space and interpretation limits. Later milestones may add social context, neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/v0.3-research-direction.md` and `docs/roadmap.md`.
 
 ## Non-goals
 
@@ -114,6 +116,7 @@ Later milestones may add causal environmental interventions, social context, neu
 - `docs/project-direction.md`
 - `docs/v0.1-research-direction.md`
 - `docs/v0.2-research-direction.md`
+- `docs/v0.3-research-direction.md`
 - `docs/architecture.md`
 - `docs/scientific-principles.md`
 - `docs/data-and-ethics.md`

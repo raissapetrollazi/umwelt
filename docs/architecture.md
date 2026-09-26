@@ -1,9 +1,9 @@
 # Architecture
 
-This document distinguishes the architecture implemented for Umwelt 0.1 from
-the broader architectural direction. The v0.1 modules are intentionally narrow;
-they do not freeze future APIs for spatial worlds, interventions, multimodal
-data, or additional model families.
+This document distinguishes the architecture implemented for Umwelt 0.1 and
+0.2 from the broader architectural direction. The implemented modules are
+intentionally narrow; they do not freeze future APIs for causal environments,
+interventions, multimodal data, or additional model families.
 
 ## Implemented v0.1 flow
 
@@ -50,6 +50,32 @@ held-out time grids and gaps ----------+
 
 Development-subject behavior never enters profile fitting or profile selection.
 
+## Implemented v0.2 flow
+
+```text
+pinned Roche metadata + pose archive
+    -> integrity and schema verification
+    -> 32-recording spatial catalog
+    -> eight untreated controls
+         |
+         +-> six fitting recordings -> bodycentre trajectories
+         |                          -> persistent movement model
+         |
+         +-> two development recordings -> arena bounds + availability masks
+                                                   |
+                                                   v
+                                     replicated synthetic trajectories
+
+recorded development trajectories -> recorded measurements --+
+                                                               +-> comparison
+synthetic trajectories -----------> synthetic measurements ---+   -> report
+```
+
+The development recordings provide frame indices, arena landmarks, coordinate
+context, and body-centre availability masks. Their mouse coordinates do not
+enter model fitting or synthetic movement generation. Full synthetic
+trajectories are discarded after compact evaluation.
+
 ## Implemented boundaries
 
 ### Observation representation
@@ -59,12 +85,23 @@ series. A series is either recorded or synthetic. Missing state and activity
 values must occur together and remain explicit. Dataset containers reject
 duplicate subject identifiers and silent source mixing.
 
+`umwelt.spatial` separately defines finite points, keypoints, poses, landmarks,
+frame-indexed spatial series, coordinate frames, units, axis orientation, and
+recorded or synthetic source categories. `umwelt.arena` provides explicit
+axis-aligned rectangular geometry without coupling simulation to rendering.
+
 ### Recorded data adapter
 
 `umwelt.datasets.compass` pins the Zenodo record, expected files, sizes, MD5
 checksums, DOI, license, authorship, experimental context, and label semantics.
 The adapter pairs activity and sleep rows by timestamp and rejects malformed,
 misaligned, negative, or internally inconsistent values.
+
+`umwelt.datasets.roche_open_field` pins the Roche metadata and pose archive,
+validates their published sizes and MD5 checksums, and authenticates all 32
+extracted DeepLabCut files against a derived manifest. It preserves treatment
+metadata as provenance, separates mouse keypoints from arena landmarks, and
+does not invent sampling rate or physical calibration.
 
 Raw files are downloaded locally and are not committed to the repository.
 
@@ -95,6 +132,12 @@ makes one specific form of between-subject variation executable without using
 development-subject behavior for calibration. None of these models infer
 subjective state, personality, intention, or biological mechanism.
 
+`umwelt.spatial_model` implements the `persistent-reflecting-random-walk-v1`
+baseline. It fits stationary probability, positive-displacement magnitude,
+turning dispersion, and normalized initial position on the fitting controls.
+Seeded generation applies explicit repeated-axis reflection at each recorded
+arena boundary.
+
 ### Evaluation
 
 `umwelt.evaluation` independently summarizes recorded and synthetic datasets.
@@ -113,6 +156,11 @@ ranges for selected metrics while preserving the existing temporal evaluation.
 It compares pooled and population variants using paired state random streams.
 Activity uses a separate matched seed, and profile selection uses another
 deterministic seed.
+
+`umwelt.trajectory` derives representative positions and gap-aware movement
+steps without bridging unavailable or nonadjacent frames. `umwelt.spatial_evaluation`
+keeps quality control separate from the frozen model comparison of path length,
+adjacent-displacement distributions, and absolute-turning distributions.
 
 ### Experiment configuration and execution
 
@@ -135,6 +183,12 @@ explicit output directory. It fits the pooled phase+duration control and the
 training-population profile model, generates paired replicated populations,
 records every profile assignment, and atomically publishes compact artifacts.
 
+`umwelt.spatial_config` strictly validates the `umwelt.spatial-lab.v1` schema.
+`umwelt.spatial_protocol` pins the control split and recorded trajectory policy.
+`umwelt.spatial_lab` coordinates catalog selection and delegates the fit,
+generation, evaluation, and atomic artifact publication to
+`umwelt.spatial_execution`.
+
 ### Artifacts and provenance
 
 Original single-run artifacts include:
@@ -155,12 +209,16 @@ replicate metrics, model-comparison summaries, seed/profile provenance,
 deterministic SVG diagnostics, readable reports, and artifact manifests while
 intentionally discarding full replicate trajectories.
 
+The spatial laboratory retains its resolved configuration, frozen protocol,
+fitted model, per-replicate metrics, seed mapping, provenance, report, and
+artifact manifest. It also intentionally discards full synthetic trajectories.
+
 ### Headless interface
 
 `umwelt.cli` exposes dataset download/verification, recorded replay, complete
-single-run execution, replicated temporal comparison, and the individual-
-variation experiment. It uses only the Python standard library at runtime.
-There is no renderer or graphical dependency.
+single-run execution, replicated temporal comparison, the individual-variation
+experiment, and the replicated spatial laboratory. It uses only the Python
+standard library at runtime. There is no renderer or graphical dependency.
 
 ## Preserved conceptual boundaries
 
