@@ -31,6 +31,23 @@ def _hash_archive(path: Path) -> tuple[str, str]:
     return md5.hexdigest(), sha256.hexdigest()
 
 
+def verify_calms21_task1_archive(archive_path: str | Path) -> dict[str, object]:
+    """Verify the published bytes before any pose JSON is parsed."""
+
+    path = Path(archive_path)
+    if not path.is_file():
+        raise DataError("CalMS21 Task 1 archive file is missing.")
+    md5, sha256 = _hash_archive(path)
+    if md5 != CALMS21_ARCHIVE_MD5:
+        raise DataError("CalMS21 Task 1 archive MD5 differs from the published MD5.")
+    return {
+        "archive_path": str(path.resolve()),
+        "archive_bytes": path.stat().st_size,
+        "archive_md5": md5,
+        "archive_sha256": sha256,
+    }
+
+
 def _animal_key(sequence_id: str) -> str | None:
     match = re.fullmatch(
         r"task1/(?:train|test)/(mouse[0-9]+)_task1_annotator[0-9]+",
@@ -126,11 +143,7 @@ def audit_calms21_task1(archive_path: str | Path) -> dict[str, object]:
     """Verify bytes and train poses; inspect test sequence keys only."""
 
     path = Path(archive_path)
-    if not path.is_file():
-        raise DataError("CalMS21 Task 1 archive file is missing.")
-    md5, sha256 = _hash_archive(path)
-    if md5 != CALMS21_ARCHIVE_MD5:
-        raise DataError("CalMS21 Task 1 archive MD5 differs from the published MD5.")
+    source_integrity = verify_calms21_task1_archive(path)
 
     with ZipFile(path) as archive:
         members = [
@@ -157,10 +170,7 @@ def audit_calms21_task1(archive_path: str | Path) -> dict[str, object]:
         "dataset": "calms21-task1-v1",
         "source_doi": "10.22002/D1.1991",
         "source_license": "CC-BY-NC-SA-2.0 as linked by dataset paper",
-        "archive_path": str(path.resolve()),
-        "archive_bytes": path.stat().st_size,
-        "archive_md5": md5,
-        "archive_sha256": sha256,
+        **source_integrity,
         "archive_members": members,
         "train_sequence_count": len(training_ids),
         "test_sequence_count": len(test_ids),

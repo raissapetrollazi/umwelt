@@ -20,6 +20,7 @@ from umwelt.experiment import run_experiment
 from umwelt.individual_lab import run_individual_variation_lab
 from umwelt.spatial_config import load_spatial_lab_config
 from umwelt.spatial_lab import run_spatial_lab
+from umwelt.social_lab import run_social_development, run_social_test
 from umwelt.temporal_config import load_temporal_lab_config
 from umwelt.temporal_lab import run_temporal_lab
 from umwelt.world_config import load_world_lab_config
@@ -87,6 +88,19 @@ def _parser() -> argparse.ArgumentParser:
     )
     social_audit.add_argument("--archive", type=Path, required=True)
     social_audit.add_argument("--output", type=Path, required=True)
+
+    social_develop = commands.add_parser(
+        "social-develop", help="Fit and compare the frozen v0.4 development models."
+    )
+    social_develop.add_argument("--archive", type=Path, required=True)
+    social_develop.add_argument("--output", type=Path, required=True)
+
+    social_test = commands.add_parser(
+        "social-test", help="Evaluate the frozen v0.4 models on held-out pairs."
+    )
+    social_test.add_argument("--archive", type=Path, required=True)
+    social_test.add_argument("--development", type=Path, required=True)
+    social_test.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -293,6 +307,28 @@ def _social_audit(arguments: argparse.Namespace, output: TextIO) -> int:
     return 0
 
 
+def _social_develop(arguments: argparse.Namespace, output: TextIO) -> int:
+    result = run_social_development(
+        arguments.archive, output_directory=arguments.output
+    )
+    _print_json(
+        {**asdict(result), "output_directory": str(result.output_directory)}, output
+    )
+    return 0
+
+
+def _social_test(arguments: argparse.Namespace, output: TextIO) -> int:
+    result = run_social_test(
+        arguments.archive,
+        development_directory=arguments.development,
+        output_directory=arguments.output,
+    )
+    _print_json(
+        {**asdict(result), "output_directory": str(result.output_directory)}, output
+    )
+    return 0
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -321,6 +357,10 @@ def main(
             return _world(arguments, output)
         if arguments.command == "social-audit":
             return _social_audit(arguments, output)
+        if arguments.command == "social-develop":
+            return _social_develop(arguments, output)
+        if arguments.command == "social-test":
+            return _social_test(arguments, output)
     except UmweltError as error:
         errors.write(f"error: {error}\n")
         return 2

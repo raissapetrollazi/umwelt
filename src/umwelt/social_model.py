@@ -27,6 +27,20 @@ IMAGE_WIDTH_PX = 1024.0
 IMAGE_HEIGHT_PX = 570.0
 
 
+def _float_field(payload: dict[str, object], name: str) -> float:
+    value = payload.get(name)
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise DataError(f"Social fit field {name} must be numeric.")
+    return float(value)
+
+
+def _integer_field(payload: dict[str, object], name: str) -> int:
+    value = payload.get(name)
+    if type(value) is not int:
+        raise DataError(f"Social fit field {name} must be an integer.")
+    return value
+
+
 @dataclass(slots=True)
 class _RoleMoments:
     eligible_triplets: int = 0
@@ -87,6 +101,19 @@ class SocialMovementFit:
             raise DataError("Social innovation scales must be non-negative.")
         if self.fitting_sequence_count < 1:
             raise DataError("Social model fitting needs at least one sequence.")
+        counts = (
+            self.resident_eligible_triplets,
+            self.intruder_eligible_triplets,
+            self.resident_excluded_large_step_triplets,
+            self.intruder_excluded_large_step_triplets,
+            self.resident_excluded_missing_or_gap_triplets,
+            self.intruder_excluded_missing_or_gap_triplets,
+            self.directional_drift_triplets,
+        )
+        if any(count < 0 for count in counts) or not (
+            0 < self.directional_drift_triplets <= self.resident_eligible_triplets
+        ):
+            raise DataError("Social fit exposure counts are inconsistent.")
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -114,6 +141,42 @@ class SocialMovementFit:
             ),
             "directional_drift_triplets": self.directional_drift_triplets,
         }
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, object]) -> SocialMovementFit:
+        """Restore a development fit for the held-out run."""
+
+        return cls(
+            resident_alpha=_float_field(payload, "resident_alpha"),
+            resident_sigma_px=_float_field(payload, "resident_sigma_px"),
+            intruder_alpha=_float_field(payload, "intruder_alpha"),
+            intruder_sigma_px=_float_field(payload, "intruder_sigma_px"),
+            resident_directional_drift_px=_float_field(
+                payload, "resident_directional_drift_px"
+            ),
+            fitting_sequence_count=_integer_field(payload, "fitting_sequence_count"),
+            resident_eligible_triplets=_integer_field(
+                payload, "resident_eligible_triplets"
+            ),
+            intruder_eligible_triplets=_integer_field(
+                payload, "intruder_eligible_triplets"
+            ),
+            resident_excluded_large_step_triplets=_integer_field(
+                payload, "resident_excluded_large_step_triplets"
+            ),
+            intruder_excluded_large_step_triplets=_integer_field(
+                payload, "intruder_excluded_large_step_triplets"
+            ),
+            resident_excluded_missing_or_gap_triplets=_integer_field(
+                payload, "resident_excluded_missing_or_gap_triplets"
+            ),
+            intruder_excluded_missing_or_gap_triplets=_integer_field(
+                payload, "intruder_excluded_missing_or_gap_triplets"
+            ),
+            directional_drift_triplets=_integer_field(
+                payload, "directional_drift_triplets"
+            ),
+        )
 
 
 def _difference(left: Point2D, right: Point2D) -> Point2D:
