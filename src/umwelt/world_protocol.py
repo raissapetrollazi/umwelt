@@ -149,6 +149,7 @@ class WorldExperimentProtocol:
                 "legacy_diagnostic_excluded_from_preference": True,
                 "retain_all_replicate_comparisons": True,
                 "predictive_quantiles": list(WORLD_PREDICTIVE_QUANTILES),
+                "predictive_quantile_method": "linear-interpolation-at-p-times-n-minus-one",
             },
             "simulation": {
                 "master_seed": self.master_seed,
@@ -162,6 +163,8 @@ class WorldExperimentProtocol:
                 "availability_mask": "recorded-bodycentre-availability-only",
             },
             "interventions": {
+                "model_id": BOUNDARY_CONDITIONED_MODEL_ID,
+                "template_subject_ids": list(ROCHE_CONTROL_FITTING_SUBJECTS),
                 "conditions": [
                     condition.to_dict() for condition in V03_ARENA_SCALE_CONDITIONS
                 ],
@@ -169,6 +172,7 @@ class WorldExperimentProtocol:
                 "comparison_anchor": WORLD_RECORDED_CONDITION_ID,
                 "recorded_coordinates_compared_only_at_recorded_scale": True,
                 "registered_metric_ids": list(WORLD_INTERVENTION_METRIC_IDS),
+                "reflection_count_scope": "full-generated-trajectory-before-observation-mask",
             },
         }
 
