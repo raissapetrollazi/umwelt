@@ -52,7 +52,7 @@ jobs:
       - name: Check formatting
         run: ruff format --check .
 
-      - name: Check spatial and world typing
+      - name: Check research model typing
         run: >-
           mypy
           src/umwelt/calms21.py
@@ -61,6 +61,7 @@ jobs:
           src/umwelt/social_model.py
           src/umwelt/social_evaluation.py
           src/umwelt/social_lab.py
+          src/umwelt/social_view.py
           src/umwelt/spatial_config.py
           src/umwelt/spatial_evaluation.py
           src/umwelt/spatial_execution.py

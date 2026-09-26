@@ -21,6 +21,7 @@ from umwelt.individual_lab import run_individual_variation_lab
 from umwelt.spatial_config import load_spatial_lab_config
 from umwelt.spatial_lab import run_spatial_lab
 from umwelt.social_lab import run_social_development, run_social_test
+from umwelt.social_view import render_social_dashboard
 from umwelt.temporal_config import load_temporal_lab_config
 from umwelt.temporal_lab import run_temporal_lab
 from umwelt.world_config import load_world_lab_config
@@ -101,6 +102,13 @@ def _parser() -> argparse.ArgumentParser:
     social_test.add_argument("--archive", type=Path, required=True)
     social_test.add_argument("--development", type=Path, required=True)
     social_test.add_argument("--output", type=Path, required=True)
+
+    social_view = commands.add_parser(
+        "social-view", help="Build an offline read-only v0.4 result dashboard."
+    )
+    social_view.add_argument("--development", type=Path, required=True)
+    social_view.add_argument("--test", type=Path, required=True)
+    social_view.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -329,6 +337,16 @@ def _social_test(arguments: argparse.Namespace, output: TextIO) -> int:
     return 0
 
 
+def _social_view(arguments: argparse.Namespace, output: TextIO) -> int:
+    path = render_social_dashboard(
+        arguments.development,
+        arguments.test,
+        output_path=arguments.output,
+    )
+    _print_json({"dashboard_path": str(path)}, output)
+    return 0
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -361,6 +379,8 @@ def main(
             return _social_develop(arguments, output)
         if arguments.command == "social-test":
             return _social_test(arguments, output)
+        if arguments.command == "social-view":
+            return _social_view(arguments, output)
     except UmweltError as error:
         errors.write(f"error: {error}\n")
         return 2
