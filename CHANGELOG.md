@@ -10,6 +10,9 @@
 - Add environment-linked trajectory measurements that preserve the v0.2 metric
   contract while exposing zone occupancy, zone-conditioned displacement, and
   outside-arena quality control.
+- Add the first boundary-conditioned movement model with strict recorded-scale
+  fitting, per-zone displacement distributions, and seeded generation bound to
+  explicit world conditions.
 
 ## 0.2.0 - 2026-08-13
 
