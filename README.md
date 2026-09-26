@@ -4,12 +4,13 @@ Umwelt is an open-source computational laboratory for studying animal behavior t
 
 ## Status
 
-Umwelt `0.2.0` is pre-alpha research software with two narrow mouse experiments:
+Umwelt `0.2.0` is pre-alpha research software. The repository contains three narrow mouse experiments:
 
 - **v0.1 temporal laboratory:** a complete recorded-to-synthetic sleep/activity workflow using the COMPASS dataset, including replicated temporal model comparison and a retained individual-variation development experiment;
-- **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes.
+- **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes;
+- **v0.3 behavioral-world laboratory:** a six-fold animal-level development comparison of a boundary-conditioned movement model, followed by paired synthetic arena-size interventions. The retained canonical run does not qualify the candidate for independent evaluation under its pre-declared rule.
 
-Development toward v0.3 has begun with a minimal behavioral world, environment-linked measurements, and a boundary-conditioned movement model. Its cross-validated experiment and interventions are still pending.
+The v0.3 experiment is implemented and reproducible; its negative model-selection result does not establish biological validity or finish the longer research roadmap.
 
 Umwelt is not a general animal simulator, a validated biological model, a veterinary or medical tool, or a finished research platform.
 
@@ -52,6 +53,12 @@ The [canonical 32-replicate development run](runs/v0.2-spatial-baseline/report.m
 
 See `docs/v0.2-research-direction.md` for the full protocol and interpretation boundaries.
 
+## v0.3 behavioral-world experiment
+
+Version 0.3 adds an explicit boundary band to the Roche image-space arena. A candidate model conditions positive movement magnitude on the zone at the start of each transition. Six former fitting controls form leave-one-animal-out folds; the two animals inspected in v0.2 remain a separate diagnostic and cannot select the candidate. The final candidate is also simulated with paired random seeds in compact, recorded-scale, and expanded arenas. These are model sensitivity analyses with no recorded intervention counterpart.
+
+The [canonical 16-replicate run](runs/v0.3-behavioral-world/report.md) met two of five pre-declared preference criteria. It reduced median boundary-band occupancy error but increased absolute path-length discrepancy for every cross-validation animal, so it is **not eligible for independent evaluation** under this rule. This is a complete negative development experiment, not a validation result. See `docs/v0.3-research-direction.md` for the frozen protocol and interpretation boundaries.
+
 ## Quick start
 
 Python 3.12 or newer is required.
@@ -69,6 +76,9 @@ umwelt individual --config examples/v0.1-temporal-lab.json --output runs/v0.1-in
 
 # v0.2, after the Roche source files are prepared locally
 umwelt spatial --config examples/v0.2-spatial-lab.json
+
+# v0.3, using the same Roche source files
+umwelt world --config examples/v0.3-world-lab.json
 ```
 
 Downloaded source data remains under `data/raw/` and is excluded from Git. Roche data uses the manual source workflow documented in `data/README.md`.
@@ -88,6 +98,8 @@ A v0.2 spatial run writes compact reproducibility artifacts rather than retainin
 
 Existing run directories are never overwritten.
 
+The v0.3 run adds `world.json`, `models.json`, `interventions.json`, `model-comparison.json`, and `intervention-comparison.json` to its compact artifact set. Its full artifact list and hashes are in `runs/v0.3-behavioral-world/artifact-manifest.json`.
+
 ## Scientific principles
 
 - Keep observation, derivation, inference/model state, and generated behavior distinct.
@@ -100,7 +112,7 @@ Existing run directories are never overwritten.
 
 ## Planned direction
 
-Version 0.3 is planned as a narrow behavioral-world experiment. It will test an explicit boundary-zone dependency and controlled arena-size interventions while preserving the v0.2 image-space and interpretation limits. Later milestones may add social context, neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/v0.3-research-direction.md` and `docs/roadmap.md`.
+The next research decision is how to respond to the v0.3 candidate's failed preference rule. Any revised model requires a new declared experiment and independent evaluation plan. Later milestones may add social context, neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/v0.3-research-direction.md` and `docs/roadmap.md`.
 
 ## Non-goals
 

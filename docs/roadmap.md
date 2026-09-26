@@ -4,7 +4,7 @@ Umwelt is intentionally ambitious in scope but conservative in scientific claims
 
 The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Versions 0.1 and 0.2 implement the first narrow temporal and spatial recorded-to-synthetic development laboratories.
 
-Versions 0.1 and 0.2 remain pre-alpha research software whose models are not scientifically validated. Every later milestone remains planned unless repository evidence explicitly shows otherwise.
+Versions 0.1, 0.2, and 0.3 remain pre-alpha research software whose models are not scientifically validated. Milestones after v0.3 remain planned unless repository evidence explicitly shows otherwise.
 
 ## v0.1 - Sleep / Activity Mouse
 
@@ -110,25 +110,32 @@ development animals.
 
 ## v0.3 - Behavioral World
 
-**Status:** in development. The first experiment is specified, and its minimal
-world, environment-linked measurements, and boundary-conditioned model are
-implemented. Cross-validated comparison, paired interventions, artifacts, and
-results remain planned.
+**Status:** implemented pre-alpha development experiment. The minimal world,
+environment-linked measurements, boundary-conditioned model, cross-validated
+comparison, paired interventions, and reproducibility artifacts are retained.
+The candidate failed its pre-declared preference rule and is not eligible for
+independent evaluation under that rule.
 
 **Purpose:** give the environment one narrow causal role without introducing a
 general world simulator.
 
 The selected experiment builds on the Roche open-field source and asks whether
 conditioning movement magnitude on a geometrically defined boundary zone
-improves the v0.2 development discrepancy. Model comparison will use
+improves the v0.2 development discrepancy. Model comparison uses
 leave-one-animal-out cross-validation within the six former fitting animals so
 the two already inspected development animals do not become tuning targets.
 
-The fitted candidate will then be simulated under pre-declared compact,
+The fitted candidate is also simulated under pre-declared compact,
 recorded-scale, and expanded arena conditions with paired random streams. These
 conditions are computational interventions without recorded counterparts, so
 their responses characterize the model rather than establish effects in real
 animals.
+
+The [canonical 16-replicate run](../runs/v0.3-behavioral-world/report.md)
+passed two of five preference criteria. Boundary-band occupancy error improved,
+while absolute path-length discrepancy worsened for all six cross-validation
+animals. The negative result is retained rather than used to retune the
+candidate after inspection.
 
 The world remains headless and contains only validated image-space arena
 geometry, a boundary-zone definition, condition identity, and the state needed
