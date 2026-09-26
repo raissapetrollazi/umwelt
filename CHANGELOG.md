@@ -15,6 +15,8 @@
 - Add the first boundary-conditioned movement model with strict recorded-scale
   fitting, per-zone displacement distributions, and seeded generation bound to
   explicit world conditions.
+- Freeze the v0.3 cross-validation folds, paired seed derivation, comparison
+  metrics, preference rule, and arena-size intervention protocol before results.
 
 ## 0.2.0 - 2026-08-13
 

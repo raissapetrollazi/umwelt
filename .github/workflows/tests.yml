@@ -52,7 +52,7 @@ jobs:
       - name: Check formatting
         run: ruff format --check .
 
-      - name: Check spatial typing
+      - name: Check spatial and world typing
         run: >-
           mypy
           src/umwelt/spatial_config.py
@@ -65,3 +65,4 @@ jobs:
           src/umwelt/world.py
           src/umwelt/world_evaluation.py
           src/umwelt/world_model.py
+          src/umwelt/world_protocol.py
