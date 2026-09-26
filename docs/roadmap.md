@@ -137,6 +137,11 @@ while absolute path-length discrepancy worsened for all six cross-validation
 animals. The negative result is retained rather than used to retune the
 candidate after inspection.
 
+A separate [frozen-model transfer audit](v0.3-follow-up-evaluation.md) is
+proposed for a metadata-screened open-field cohort. Its source-compatibility
+gates must pass before any model outcomes are measured. The completed v0.3
+preference decision remains final.
+
 The world remains headless and contains only validated image-space arena
 geometry, a boundary-zone definition, condition identity, and the state needed
 by the movement model. Food, shelter, light, reward, social context, general
@@ -150,9 +155,16 @@ completion boundary.
 
 ## v0.4 - Social Animals
 
-Support multiple individuals and explicit social context.
+**Status:** research direction proposed; source and model not implemented.
 
-Potential areas include:
+The first proposed experiment uses a pair of individually identified mice in
+one image-space recording. It asks whether one explicit dependence on the
+other animal's current position helps a generative model reproduce pairwise
+distance dynamics beyond independent movement. CalMS21 is a candidate source,
+subject to data-rights, pose-quality, identity, and train/test split audits.
+See [v0.4 Research Direction](v0.4-research-direction.md).
+
+Later areas may include:
 
 - proximity;
 - approach;
