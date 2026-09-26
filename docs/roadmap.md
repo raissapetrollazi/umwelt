@@ -4,7 +4,7 @@ Umwelt is intentionally ambitious in scope but conservative in scientific claims
 
 The historical foundation stage established project identity, scientific principles, architectural direction, licensing, package metadata, and initial documentation. Versions 0.1 and 0.2 implement the first narrow temporal and spatial recorded-to-synthetic development laboratories.
 
-Versions 0.1, 0.2, and 0.3 remain pre-alpha research software whose models are not scientifically validated. Milestones after v0.3 remain planned unless repository evidence explicitly shows otherwise.
+Versions 0.1 through 0.4 remain pre-alpha research software whose models are not scientifically validated. Milestones after v0.4 remain planned unless repository evidence explicitly shows otherwise.
 
 ## v0.1 - Sleep / Activity Mouse
 
@@ -155,16 +155,18 @@ completion boundary.
 
 ## v0.4 - Social Animals
 
-**Status:** implementation in progress. Pair identity and gap-aware geometry are
-implemented; the CalMS21 source audit is complete, while the generative
-comparison remains to be executed.
+**Status:** implemented pre-alpha experiment. The CalMS21 source audit, frozen
+generative comparison, once-run held-out test, and local read-only result panel
+are complete. The models are not scientifically validated.
 
-The first proposed experiment uses a pair of individually identified mice in
-one image-space recording. It asks whether one explicit dependence on the
-other animal's current position helps a generative model reproduce pairwise
-distance dynamics beyond independent movement. CalMS21 is a candidate source,
-subject to data-rights, pose-quality, identity, and train/test split audits.
-See [v0.4 Research Direction](v0.4-research-direction.md).
+The first experiment uses a pair of individually identified mice in one
+image-space recording. It asks whether one explicit dependence on the other
+animal's current position helps a generative model reproduce pairwise distance
+dynamics beyond independent movement. CalMS21 supplies the recorded poses under
+its separate non-commercial data terms. S1 met the frozen preference rule on
+development and held-out test, while retaining substantial absolute error and
+little improvement in signed distance change. See the
+[research direction](v0.4-research-direction.md) and [results](v0.4-results.md).
 
 Later areas may include:
 
@@ -178,9 +180,10 @@ Later areas may include:
 
 This milestone must not claim true social cognition or intention. It should remain distinct from abstract population-game or general artificial-life systems: Umwelt's emphasis is empirical animal behavior and experimentally grounded behavioral models.
 
-Once the v0.4 observation and report formats settle, add a small, read-only
-visualization of recorded and synthetic trajectories, pair distance, valid-frame
-coverage, and provenance. Keep it optional; the same run must work headlessly.
+The optional, offline HTML panel shows aggregate and per-pair discrepancies,
+the preference decision, provenance revision, and interpretation limits. It
+does not embed raw poses. Recorded/synthetic trajectory playback and coverage
+visualization remain future interface work; the experiment runs headlessly.
 
 ## v0.5 - Neural Mouse
 
