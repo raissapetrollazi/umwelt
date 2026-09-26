@@ -1,0 +1,2581 @@
+{
+  "recordings": [
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "compact",
+            "intervention": "isotropic-arena-scale",
+            "scale": 0.75
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 413.1142101287842,
+            "maximum": {
+              "x": 835.2287483215332,
+              "y": 719.568865776062
+            },
+            "minimum": {
+              "x": 423.4092826843262,
+              "y": 306.45465564727783
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 411.81946563720703
+          },
+          "source_arena_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:compact",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 550.8189468383789,
+            "maximum": {
+              "x": 903.8653259277344,
+              "y": 788.4212341308594
+            },
+            "minimum": {
+              "x": 354.772705078125,
+              "y": 237.60228729248047
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 549.0926208496094
+          },
+          "source_arena_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "expanded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.25
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 688.5236835479736,
+            "maximum": {
+              "x": 972.5019035339355,
+              "y": 857.2736024856567
+            },
+            "minimum": {
+              "x": 286.1361274719238,
+              "y": 168.7499189376831
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 686.3657760620117
+          },
+          "source_arena_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:expanded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53954,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53954,
+            "maximum": 361.2933349609375,
+            "mean": 354.37465970134497,
+            "median": 354.45130920410156,
+            "minimum": 296.914306640625,
+            "population-standard-deviation": 3.2080323940091287,
+            "q25": 354.02467346191406,
+            "q75": 355.1705780029297,
+            "q90": 356.068359375
+          },
+          "y": {
+            "count": 53954,
+            "maximum": 837.5339965820312,
+            "mean": 790.5141280102457,
+            "median": 790.2723693847656,
+            "minimum": 234.66281127929688,
+            "population-standard-deviation": 3.460272198594893,
+            "q25": 789.7241363525391,
+            "q75": 791.0494384765625,
+            "q90": 791.5950927734375
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53954,
+            "maximum": 955.7487182617188,
+            "mean": 905.7231265625652,
+            "median": 905.5021057128906,
+            "minimum": 361.7210693359375,
+            "population-standard-deviation": 4.5019057214985425,
+            "q25": 904.575927734375,
+            "q75": 906.7030944824219,
+            "q90": 907.681982421875
+          },
+          "y": {
+            "count": 53954,
+            "maximum": 853.033203125,
+            "mean": 784.2984160669926,
+            "median": 784.6528930664062,
+            "minimum": 640.221923828125,
+            "population-standard-deviation": 3.0127471785082034,
+            "q25": 782.7797698974609,
+            "q75": 785.3450775146484,
+            "q90": 785.9384704589844
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53954,
+            "maximum": 904.7957763671875,
+            "mean": 355.2281088544285,
+            "median": 355.233642578125,
+            "minimum": 313.848388671875,
+            "population-standard-deviation": 15.877633998816345,
+            "q25": 354.3588409423828,
+            "q75": 355.4945373535156,
+            "q90": 355.7294006347656
+          },
+          "y": {
+            "count": 53954,
+            "maximum": 392.9407958984375,
+            "mean": 240.4022457423855,
+            "median": 240.5083236694336,
+            "minimum": 225.7640380859375,
+            "population-standard-deviation": 3.43113385590248,
+            "q25": 239.79413604736328,
+            "q75": 240.81103134155273,
+            "q90": 241.02568664550782
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53954,
+            "maximum": 967.615966796875,
+            "mean": 902.381665239519,
+            "median": 902.2863464355469,
+            "minimum": 361.58917236328125,
+            "population-standard-deviation": 4.60983140180715,
+            "q25": 901.562255859375,
+            "q75": 902.8547821044922,
+            "q90": 903.4218994140625
+          },
+          "y": {
+            "count": 53954,
+            "maximum": 792.2237548828125,
+            "mean": 236.14309862437116,
+            "median": 236.42188262939453,
+            "minimum": 157.9993438720703,
+            "population-standard-deviation": 10.349388939532377,
+            "q25": 235.72612762451172,
+            "q75": 236.73363876342773,
+            "q90": 236.98591156005858
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 51771,
+          "outside_arena_position_count": 2183,
+          "unclassified_positive_transition_start_count": 2183,
+          "unclassified_transition_start_count": 2183,
+          "zone_position_counts": {
+            "boundary-band": 30957,
+            "interior": 20814
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 30957,
+            "interior": 20813
+          }
+        },
+        "recording_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 51771,
+            "value": 0.5979602480152981
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 30957,
+              "maximum": 21.18106016134909,
+              "mean": 3.3521203456815396,
+              "median": 1.8344272407878326,
+              "minimum": 0.004924784511847832,
+              "population-standard-deviation": 3.607732443721399,
+              "q25": 0.7507090302831662,
+              "q75": 4.879711516074165,
+              "q90": 8.908711084018877
+            },
+            "interior": {
+              "count": 20813,
+              "maximum": 20.830511315429106,
+              "mean": 3.879886214436751,
+              "median": 2.2113100595617383,
+              "minimum": 0.0010429692071920813,
+              "population-standard-deviation": 3.865878448125435,
+              "q25": 0.8211731256216516,
+              "q75": 6.346181443475081,
+              "q90": 9.784438906149807
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53954,
+            "adjacent_transition_opportunities": 53953,
+            "position_status_counts": {
+              "accepted": 53954,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53954,
+              "summary": {
+                "count": 53954,
+                "maximum": 0.9999933242797852,
+                "mean": 0.9995573169219024,
+                "median": 0.999751627445221,
+                "minimum": 0.9407511949539185,
+                "population-standard-deviation": 0.0008156835118437711,
+                "q25": 0.9995195865631104,
+                "q75": 0.999869704246521,
+                "q90": 0.9999265670776367
+              }
+            },
+            "total_samples": 53954,
+            "valid_transition_count": 53953,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53952,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53952,
+              "maximum": 3.141092490233101,
+              "mean": 0.6909540842513343,
+              "median": 0.36031373353953133,
+              "minimum": 1.6130222801891136e-07,
+              "population-standard-deviation": 0.7798669520181795,
+              "q25": 0.14360054709661507,
+              "q75": 0.9476631817423068,
+              "q90": 1.989821846173897
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53953,
+              "maximum": 21.18106016134909,
+              "mean": 3.5242436205513306,
+              "median": 1.9520695603256641,
+              "minimum": 0.0010429692071920813,
+              "population-standard-deviation": 3.6890802219490144,
+              "q25": 0.7813065341521517,
+              "q75": 5.349823467379328,
+              "q90": 9.23849851022501
+            },
+            "path-length-px": {
+              "valid-transition-count": 53953,
+              "value": 190143.51605960593
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67049"
+        },
+        "subject_id": "16459-67049",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67049DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67049"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "compact",
+            "intervention": "isotropic-arena-scale",
+            "scale": 0.75
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 411.740140914917,
+            "maximum": {
+              "x": 852.1581001281738,
+              "y": 712.7053785324097
+            },
+            "minimum": {
+              "x": 439.3736686706543,
+              "y": 300.9652376174927
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 412.78443145751953
+          },
+          "source_arena_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:compact",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 548.9868545532227,
+            "maximum": {
+              "x": 920.9555053710938,
+              "y": 781.3287353515625
+            },
+            "minimum": {
+              "x": 370.5762634277344,
+              "y": 232.34188079833984
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 550.3792419433594
+          },
+          "source_arena_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "expanded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.25
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 686.2335681915283,
+            "maximum": {
+              "x": 989.7529106140137,
+              "y": 849.9520921707153
+            },
+            "minimum": {
+              "x": 301.77885818481445,
+              "y": 163.718523979187
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 687.9740524291992
+          },
+          "source_arena_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:expanded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53914,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53914,
+            "maximum": 405.8994445800781,
+            "mean": 369.08612074754524,
+            "median": 368.9803009033203,
+            "minimum": 312.265380859375,
+            "population-standard-deviation": 2.6588166989745554,
+            "q25": 367.9909133911133,
+            "q75": 370.59774017333984,
+            "q90": 371.60081787109374
+          },
+          "y": {
+            "count": 53914,
+            "maximum": 830.5505981445312,
+            "mean": 782.0739605355944,
+            "median": 782.1049499511719,
+            "minimum": 234.1287384033203,
+            "population-standard-deviation": 2.999814612535331,
+            "q25": 781.6026153564453,
+            "q75": 782.4701843261719,
+            "q90": 782.8592590332031
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53914,
+            "maximum": 960.3037109375,
+            "mean": 921.2319496727337,
+            "median": 921.1555786132812,
+            "minimum": 783.9739990234375,
+            "population-standard-deviation": 4.011041476123153,
+            "q25": 920.5568237304688,
+            "q75": 922.0008392333984,
+            "q90": 922.4309326171875
+          },
+          "y": {
+            "count": 53914,
+            "maximum": 832.4910278320312,
+            "mean": 780.4635193536759,
+            "median": 780.5802612304688,
+            "minimum": 638.532470703125,
+            "population-standard-deviation": 3.3881932403689397,
+            "q25": 779.8190307617188,
+            "q75": 781.1698608398438,
+            "q90": 781.7897277832031
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53914,
+            "maximum": 930.35400390625,
+            "mean": 371.7661896465166,
+            "median": 371.2947235107422,
+            "minimum": 337.1903381347656,
+            "population-standard-deviation": 16.85531148923115,
+            "q25": 370.54815673828125,
+            "q75": 371.99242401123047,
+            "q90": 372.47284545898435
+          },
+          "y": {
+            "count": 53914,
+            "maximum": 426.3227844238281,
+            "mean": 232.89182061785013,
+            "median": 232.71367645263672,
+            "minimum": 198.1387176513672,
+            "population-standard-deviation": 3.8731728476456997,
+            "q25": 232.30187606811523,
+            "q75": 233.04075622558594,
+            "q90": 233.37914276123047
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53914,
+            "maximum": 987.19384765625,
+            "mean": 920.7866753918767,
+            "median": 920.777587890625,
+            "minimum": 370.65692138671875,
+            "population-standard-deviation": 7.471679621611101,
+            "q25": 920.2621765136719,
+            "q75": 921.1939544677734,
+            "q90": 921.4927368164062
+          },
+          "y": {
+            "count": 53914,
+            "maximum": 791.9827880859375,
+            "mean": 231.89624818980963,
+            "median": 231.87863159179688,
+            "minimum": 158.9940948486328,
+            "population-standard-deviation": 10.257768030156937,
+            "q25": 231.24509048461914,
+            "q75": 232.39527893066406,
+            "q90": 232.96109771728516
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 50742,
+          "outside_arena_position_count": 3172,
+          "unclassified_positive_transition_start_count": 3172,
+          "unclassified_transition_start_count": 3172,
+          "zone_position_counts": {
+            "boundary-band": 32516,
+            "interior": 18226
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 32515,
+            "interior": 18226
+          }
+        },
+        "recording_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 50742,
+            "value": 0.6408103740491112
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 32515,
+              "maximum": 558.8617337357762,
+              "mean": 3.3027810512383597,
+              "median": 1.9345739762715863,
+              "minimum": 0.00117403467173287,
+              "population-standard-deviation": 4.69507903133494,
+              "q25": 0.7719362539911954,
+              "q75": 4.58903634645281,
+              "q90": 8.462805255881783
+            },
+            "interior": {
+              "count": 18226,
+              "maximum": 30.436588121071836,
+              "mean": 5.5146966576896865,
+              "median": 3.753587459818686,
+              "minimum": 0.012196536321040384,
+              "population-standard-deviation": 5.110039617363707,
+              "q25": 1.2238711293714317,
+              "q75": 8.887786646373257,
+              "q90": 13.015766876840637
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53914,
+            "adjacent_transition_opportunities": 53913,
+            "position_status_counts": {
+              "accepted": 53914,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53914,
+              "summary": {
+                "count": 53914,
+                "maximum": 0.9999969005584717,
+                "mean": 0.999507675662603,
+                "median": 0.9997285008430481,
+                "minimum": 0.14128786325454712,
+                "population-standard-deviation": 0.004897773820942332,
+                "q25": 0.9994819760322571,
+                "q75": 0.9998584985733032,
+                "q90": 0.9999208450317383
+              }
+            },
+            "total_samples": 53914,
+            "valid_transition_count": 53913,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53912,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53912,
+              "maximum": 3.141568880760791,
+              "mean": 0.6579601863174958,
+              "median": 0.34000998381980685,
+              "minimum": 2.147788188899824e-05,
+              "population-standard-deviation": 0.7588385716001484,
+              "q25": 0.13546431495381725,
+              "q75": 0.873062603008845,
+              "q90": 1.90973405193935
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53913,
+              "maximum": 561.7874640749623,
+              "mean": 4.069238814223665,
+              "median": 2.349990262895307,
+              "minimum": 0.00117403467173287,
+              "population-standard-deviation": 5.467962945109298,
+              "q25": 0.9042776679394748,
+              "q75": 5.959633057344978,
+              "q90": 10.388904405413552
+            },
+            "path-length-px": {
+              "valid-transition-count": 53913,
+              "value": 219384.87219124046
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67053"
+        },
+        "subject_id": "16459-67053",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67053DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67053"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "compact",
+            "intervention": "isotropic-arena-scale",
+            "scale": 0.75
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 416.6001663208008,
+            "maximum": {
+              "x": 843.8848495483398,
+              "y": 722.7979927062988
+            },
+            "minimum": {
+              "x": 425.88028717041016,
+              "y": 306.19782638549805
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 418.0045623779297
+          },
+          "source_arena_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:compact",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 555.4668884277344,
+            "maximum": {
+              "x": 913.5522766113281,
+              "y": 792.2313537597656
+            },
+            "minimum": {
+              "x": 356.2128601074219,
+              "y": 236.76446533203125
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 557.3394165039062
+          },
+          "source_arena_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "expanded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.25
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 694.333610534668,
+            "maximum": {
+              "x": 983.2197036743164,
+              "y": 861.6647148132324
+            },
+            "minimum": {
+              "x": 286.5454330444336,
+              "y": 167.33110427856445
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 696.6742706298828
+          },
+          "source_arena_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:expanded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53963,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53963,
+            "maximum": 402.66448974609375,
+            "mean": 363.8017976064311,
+            "median": 363.88348388671875,
+            "minimum": 311.46160888671875,
+            "population-standard-deviation": 2.744120997464309,
+            "q25": 363.45220947265625,
+            "q75": 364.61155700683594,
+            "q90": 365.061279296875
+          },
+          "y": {
+            "count": 53963,
+            "maximum": 842.719482421875,
+            "mean": 794.013573248078,
+            "median": 793.6351928710938,
+            "minimum": 755.2819213867188,
+            "population-standard-deviation": 2.406662708377434,
+            "q25": 793.2308654785156,
+            "q75": 794.4408569335938,
+            "q90": 794.9364990234375
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53963,
+            "maximum": 954.5798950195312,
+            "mean": 914.9661455452912,
+            "median": 915.4696655273438,
+            "minimum": 354.4974365234375,
+            "population-standard-deviation": 17.85038477058119,
+            "q25": 915.1126403808594,
+            "q75": 915.95166015625,
+            "q90": 916.6319580078125
+          },
+          "y": {
+            "count": 53963,
+            "maximum": 836.5288696289062,
+            "mean": 781.303999990083,
+            "median": 781.0289306640625,
+            "minimum": 654.5450439453125,
+            "population-standard-deviation": 2.5706980841622955,
+            "q25": 780.6819458007812,
+            "q75": 781.6866455078125,
+            "q90": 782.27421875
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53963,
+            "maximum": 904.6826782226562,
+            "mean": 354.8831051499054,
+            "median": 354.7201843261719,
+            "minimum": 311.15582275390625,
+            "population-standard-deviation": 10.39605171309846,
+            "q25": 354.35662841796875,
+            "q75": 355.2130889892578,
+            "q90": 355.5229125976563
+          },
+          "y": {
+            "count": 53963,
+            "maximum": 428.1321716308594,
+            "mean": 245.50838777385073,
+            "median": 245.3919677734375,
+            "minimum": 218.16346740722656,
+            "population-standard-deviation": 3.6433413814188267,
+            "q25": 244.98389434814453,
+            "q75": 245.95879364013672,
+            "q90": 246.31228332519532
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53963,
+            "maximum": 996.1904907226562,
+            "mean": 901.000073406643,
+            "median": 902.4467163085938,
+            "minimum": 355.49163818359375,
+            "population-standard-deviation": 33.6564987399633,
+            "q25": 901.8399353027344,
+            "q75": 902.9771728515625,
+            "q90": 903.4750244140625
+          },
+          "y": {
+            "count": 53963,
+            "maximum": 790.8060913085938,
+            "mean": 233.58419975627288,
+            "median": 234.11688232421875,
+            "minimum": 142.3786163330078,
+            "population-standard-deviation": 7.488661847756209,
+            "q25": 233.831787109375,
+            "q75": 234.65515899658203,
+            "q90": 235.0747314453125
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 50031,
+          "outside_arena_position_count": 3932,
+          "unclassified_positive_transition_start_count": 3932,
+          "unclassified_transition_start_count": 3932,
+          "zone_position_counts": {
+            "boundary-band": 32159,
+            "interior": 17872
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 32159,
+            "interior": 17871
+          }
+        },
+        "recording_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 50031,
+            "value": 0.6427814754851991
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 32159,
+              "maximum": 35.12147267382171,
+              "mean": 3.9083473020324195,
+              "median": 2.120556182780468,
+              "minimum": 0.004896240843052661,
+              "population-standard-deviation": 4.563048747740581,
+              "q25": 0.8709896943204488,
+              "q75": 5.167475844153278,
+              "q90": 10.339288179796679
+            },
+            "interior": {
+              "count": 17871,
+              "maximum": 30.08307879692957,
+              "mean": 5.294915602872044,
+              "median": 2.9569230236218687,
+              "minimum": 0.007361065052946017,
+              "population-standard-deviation": 5.44984863113773,
+              "q25": 1.0470205057207849,
+              "q75": 8.335344414773283,
+              "q90": 13.709140141644715
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53963,
+            "adjacent_transition_opportunities": 53962,
+            "position_status_counts": {
+              "accepted": 53963,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53963,
+              "summary": {
+                "count": 53963,
+                "maximum": 0.9999966621398926,
+                "mean": 0.9992717790070804,
+                "median": 0.9997416138648987,
+                "minimum": 0.9710548520088196,
+                "population-standard-deviation": 0.0019364121366924768,
+                "q25": 0.9994671940803528,
+                "q75": 0.9998682737350464,
+                "q90": 0.9999278783798218
+              }
+            },
+            "total_samples": 53963,
+            "valid_transition_count": 53962,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53961,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53961,
+              "maximum": 3.1409503889598653,
+              "mean": 0.657595306042055,
+              "median": 0.3460260498321459,
+              "minimum": 3.747449444091444e-06,
+              "population-standard-deviation": 0.7524018252946753,
+              "q25": 0.1365154202887845,
+              "q75": 0.8745577068497464,
+              "q90": 1.896745937079087
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53962,
+              "maximum": 40.56446134584546,
+              "mean": 4.306441832732744,
+              "median": 2.3066469848364592,
+              "minimum": 0.004896240843052661,
+              "population-standard-deviation": 4.87692074422403,
+              "q25": 0.9334509949234653,
+              "q75": 5.956279189052936,
+              "q90": 11.576107825056466
+            },
+            "path-length-px": {
+              "valid-transition-count": 53962,
+              "value": 232384.21417792432
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67060"
+        },
+        "subject_id": "16459-67060",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67060DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67060"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "compact",
+            "intervention": "isotropic-arena-scale",
+            "scale": 0.75
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 409.24340057373047,
+            "maximum": {
+              "x": 830.3981170654297,
+              "y": 702.4828605651855
+            },
+            "minimum": {
+              "x": 421.2001495361328,
+              "y": 293.2394599914551
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 409.1979675292969
+          },
+          "source_arena_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:compact",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 545.6578674316406,
+            "maximum": {
+              "x": 898.5977783203125,
+              "y": 770.6900939941406
+            },
+            "minimum": {
+              "x": 353.00048828125,
+              "y": 225.0322265625
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 545.5972900390625
+          },
+          "source_arena_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "expanded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.25
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 682.0723342895508,
+            "maximum": {
+              "x": 966.7974395751953,
+              "y": 838.8973274230957
+            },
+            "minimum": {
+              "x": 284.8008270263672,
+              "y": 156.82499313354492
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 681.9966125488281
+          },
+          "source_arena_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:expanded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53964,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53964,
+            "maximum": 907.6032104492188,
+            "mean": 350.95871523568064,
+            "median": 350.9187774658203,
+            "minimum": 297.04522705078125,
+            "population-standard-deviation": 3.514942480626096,
+            "q25": 349.63507080078125,
+            "q75": 352.5280532836914,
+            "q90": 353.2306671142578
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 820.2120361328125,
+            "mean": 772.6519908926236,
+            "median": 772.47265625,
+            "minimum": 217.47866821289062,
+            "population-standard-deviation": 3.2193849743714,
+            "q25": 771.9576416015625,
+            "q75": 773.0000915527344,
+            "q90": 773.3199523925781
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53964,
+            "maximum": 948.7861328125,
+            "mean": 900.3242454311085,
+            "median": 900.6105651855469,
+            "minimum": 346.2452392578125,
+            "population-standard-deviation": 13.150429229834739,
+            "q25": 900.1959686279297,
+            "q75": 900.8710327148438,
+            "q90": 902.0267150878906
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 852.5805053710938,
+            "mean": 768.1286010029636,
+            "median": 767.5026245117188,
+            "minimum": 653.5108642578125,
+            "population-standard-deviation": 2.85152651949602,
+            "q25": 767.2757568359375,
+            "q75": 769.0282592773438,
+            "q90": 770.042724609375
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53964,
+            "maximum": 898.8363037109375,
+            "mean": 353.50791141350817,
+            "median": 353.58497619628906,
+            "minimum": 315.96685791015625,
+            "population-standard-deviation": 4.747894334588559,
+            "q25": 353.2616729736328,
+            "q75": 354.05621337890625,
+            "q90": 354.2945861816406
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 778.5234985351562,
+            "mean": 225.16185171398627,
+            "median": 224.92557525634766,
+            "minimum": 184.30459594726562,
+            "population-standard-deviation": 8.619846844844307,
+            "q25": 224.46743774414062,
+            "q75": 225.63839721679688,
+            "q90": 226.1066452026367
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53964,
+            "maximum": 961.897705078125,
+            "mean": 896.1918142311798,
+            "median": 896.238525390625,
+            "minimum": 346.7305908203125,
+            "population-standard-deviation": 3.964747574815465,
+            "q25": 894.5560760498047,
+            "q75": 897.122314453125,
+            "q90": 897.9032653808594
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 775.9472045898438,
+            "mean": 224.85498864726188,
+            "median": 225.10979461669922,
+            "minimum": 149.04360961914062,
+            "population-standard-deviation": 7.2569315972110635,
+            "q25": 224.50647735595703,
+            "q75": 225.41716384887695,
+            "q90": 225.85590667724608
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 49737,
+          "outside_arena_position_count": 4227,
+          "unclassified_positive_transition_start_count": 4227,
+          "unclassified_transition_start_count": 4227,
+          "zone_position_counts": {
+            "boundary-band": 34277,
+            "interior": 15460
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 34277,
+            "interior": 15459
+          }
+        },
+        "recording_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 49737,
+            "value": 0.6891650079417737
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 34277,
+              "maximum": 34.23176522848602,
+              "mean": 3.3516928734297475,
+              "median": 1.7495218639202064,
+              "minimum": 0.0017133384823752684,
+              "population-standard-deviation": 3.9731562603416695,
+              "q25": 0.6949072444419918,
+              "q75": 4.48176172128276,
+              "q90": 9.002470051225755
+            },
+            "interior": {
+              "count": 15459,
+              "maximum": 27.495032377998005,
+              "mean": 4.61456208705137,
+              "median": 2.818043143176415,
+              "minimum": 0.0032710801059829204,
+              "population-standard-deviation": 4.722711133268544,
+              "q25": 0.9155319348862028,
+              "q75": 7.16087329440881,
+              "q90": 11.409525884852616
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53964,
+            "adjacent_transition_opportunities": 53963,
+            "position_status_counts": {
+              "accepted": 53964,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53964,
+              "summary": {
+                "count": 53964,
+                "maximum": 0.999996542930603,
+                "mean": 0.9996223327513313,
+                "median": 0.9997774958610535,
+                "minimum": 0.8357244729995728,
+                "population-standard-deviation": 0.0009486572855520738,
+                "q25": 0.9995768666267395,
+                "q75": 0.9998792409896851,
+                "q90": 0.999933123588562
+              }
+            },
+            "total_samples": 53964,
+            "valid_transition_count": 53963,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53962,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53962,
+              "maximum": 3.1414122121860917,
+              "mean": 0.6550763693270063,
+              "median": 0.34358619174552796,
+              "minimum": 1.15823383328717e-07,
+              "population-standard-deviation": 0.7541918739765401,
+              "q25": 0.13567909544228735,
+              "q75": 0.8663200012593258,
+              "q90": 1.8930285378980527
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53963,
+              "maximum": 40.057944144241226,
+              "mean": 3.735649682163313,
+              "median": 2.0281600236807487,
+              "minimum": 0.0017133384823752684,
+              "population-standard-deviation": 4.241711434143444,
+              "q25": 0.7769846653193466,
+              "q75": 5.244146809185183,
+              "q90": 9.801740362898414
+            },
+            "path-length-px": {
+              "valid-transition-count": 53963,
+              "value": 201586.86379857885
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67067"
+        },
+        "subject_id": "16459-67067",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67067DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67067"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "compact",
+            "intervention": "isotropic-arena-scale",
+            "scale": 0.75
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 408.41543769836426,
+            "maximum": {
+              "x": 834.1196708679199,
+              "y": 715.4082078933716
+            },
+            "minimum": {
+              "x": 426.11149978637695,
+              "y": 306.9927701950073
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 408.00817108154297
+          },
+          "source_arena_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:compact",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 544.5539169311523,
+            "maximum": {
+              "x": 902.1210327148438,
+              "y": 783.4774475097656
+            },
+            "minimum": {
+              "x": 358.1101379394531,
+              "y": 238.92353057861328
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 544.0108947753906
+          },
+          "source_arena_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "expanded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.25
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 680.6923961639404,
+            "maximum": {
+              "x": 970.1223945617676,
+              "y": 851.5466871261597
+            },
+            "minimum": {
+              "x": 290.1087760925293,
+              "y": 170.85429096221924
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 680.0136184692383
+          },
+          "source_arena_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:expanded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53964,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53964,
+            "maximum": 361.8849182128906,
+            "mean": 357.09656993867947,
+            "median": 357.7691650390625,
+            "minimum": 307.36309814453125,
+            "population-standard-deviation": 2.680835587482341,
+            "q25": 356.24434661865234,
+            "q75": 358.0555114746094,
+            "q90": 358.22454833984375
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 836.161376953125,
+            "mean": 783.1532780270715,
+            "median": 782.4767456054688,
+            "minimum": 232.6509246826172,
+            "population-standard-deviation": 6.294963405564472,
+            "q25": 782.2476196289062,
+            "q75": 783.6207885742188,
+            "q90": 784.8677795410156
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53964,
+            "maximum": 942.1473388671875,
+            "mean": 902.0923791084745,
+            "median": 902.1339111328125,
+            "minimum": 361.89178466796875,
+            "population-standard-deviation": 11.512994227615804,
+            "q25": 901.7104949951172,
+            "q75": 902.5031890869141,
+            "q90": 903.3019409179688
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 834.5836791992188,
+            "mean": 783.9463158974291,
+            "median": 783.7868957519531,
+            "minimum": 668.7986450195312,
+            "population-standard-deviation": 2.676191243595223,
+            "q25": 783.3914642333984,
+            "q75": 784.0797271728516,
+            "q90": 785.1583740234375
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53964,
+            "maximum": 505.3082580566406,
+            "mean": 359.0962701613268,
+            "median": 359.6269989013672,
+            "minimum": 313.6888427734375,
+            "population-standard-deviation": 4.423269629623065,
+            "q25": 358.3976745605469,
+            "q75": 360.21783447265625,
+            "q90": 360.451416015625
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 784.4947509765625,
+            "mean": 238.2220052988161,
+            "median": 238.00462341308594,
+            "minimum": 186.8751983642578,
+            "population-standard-deviation": 8.450605745974565,
+            "q25": 237.5851707458496,
+            "q75": 238.50101852416992,
+            "q90": 238.96245422363282
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53964,
+            "maximum": 964.1713256835938,
+            "mean": 902.0374559664442,
+            "median": 902.085205078125,
+            "minimum": 361.90972900390625,
+            "population-standard-deviation": 9.52594333198512,
+            "q25": 901.0776062011719,
+            "q75": 902.7614135742188,
+            "q90": 903.2611999511719
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 791.5087280273438,
+            "mean": 239.68068218393788,
+            "median": 239.8887939453125,
+            "minimum": 162.24864196777344,
+            "population-standard-deviation": 5.165126112042145,
+            "q25": 239.33507919311523,
+            "q75": 240.32574844360352,
+            "q90": 240.8593002319336
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 51181,
+          "outside_arena_position_count": 2783,
+          "unclassified_positive_transition_start_count": 2783,
+          "unclassified_transition_start_count": 2783,
+          "zone_position_counts": {
+            "boundary-band": 40853,
+            "interior": 10328
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 40852,
+            "interior": 10328
+          }
+        },
+        "recording_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 51181,
+            "value": 0.7982063656435006
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 40852,
+              "maximum": 27.018939538104355,
+              "mean": 2.245260356302931,
+              "median": 0.8276562910640285,
+              "minimum": 0.00032868437543545555,
+              "population-standard-deviation": 3.4192698736238167,
+              "q25": 0.24157861046601897,
+              "q75": 2.6100122339610072,
+              "q90": 6.560389692780072
+            },
+            "interior": {
+              "count": 10328,
+              "maximum": 26.610081505177693,
+              "mean": 4.214236277782802,
+              "median": 2.263854441294489,
+              "minimum": 0.00240837642296739,
+              "population-standard-deviation": 4.646961384718129,
+              "q25": 0.8011241355973011,
+              "q75": 6.301890728227971,
+              "q90": 11.244781613749847
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53964,
+            "adjacent_transition_opportunities": 53963,
+            "position_status_counts": {
+              "accepted": 53964,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53964,
+              "summary": {
+                "count": 53964,
+                "maximum": 0.9999943971633911,
+                "mean": 0.9996548113945053,
+                "median": 0.9998050332069397,
+                "minimum": 0.9430892467498779,
+                "population-standard-deviation": 0.0007271476858614195,
+                "q25": 0.9996236562728882,
+                "q75": 0.9999001026153564,
+                "q90": 0.9999439716339111
+              }
+            },
+            "total_samples": 53964,
+            "valid_transition_count": 53963,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53962,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53962,
+              "maximum": 3.1414911906794467,
+              "mean": 0.8877244975944908,
+              "median": 0.5129787582218766,
+              "minimum": 3.266677089719394e-06,
+              "population-standard-deviation": 0.8897191575192067,
+              "q25": 0.18775279481729118,
+              "q75": 1.3957535121107778,
+              "q90": 2.4436908848337815
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53963,
+              "maximum": 27.018939538104355,
+              "mean": 2.663512174710913,
+              "median": 1.0834514682651648,
+              "minimum": 0.00032868437543545555,
+              "population-standard-deviation": 3.741213032738857,
+              "q25": 0.3322458370882744,
+              "q75": 3.3650395669035564,
+              "q90": 7.679611938348792
+            },
+            "path-length-px": {
+              "valid-transition-count": 53963,
+              "value": 143731.107483925
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67071"
+        },
+        "subject_id": "16459-67071",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67071DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67071"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "compact",
+            "intervention": "isotropic-arena-scale",
+            "scale": 0.75
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 411.21255111694336,
+            "maximum": {
+              "x": 839.6303577423096,
+              "y": 709.7166194915771
+            },
+            "minimum": {
+              "x": 428.77694511413574,
+              "y": 298.5040683746338
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 410.8534126281738
+          },
+          "source_arena_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:compact",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 548.2834014892578,
+            "maximum": {
+              "x": 908.1059265136719,
+              "y": 778.2520446777344
+            },
+            "minimum": {
+              "x": 360.30137634277344,
+              "y": 229.96864318847656
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 547.8045501708984
+          },
+          "source_arena_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        },
+        {
+          "condition": {
+            "condition_id": "expanded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.25
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 685.3542518615723,
+            "maximum": {
+              "x": 976.5814952850342,
+              "y": 846.7874698638916
+            },
+            "minimum": {
+              "x": 291.82580757141113,
+              "y": 161.43321800231934
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 684.755687713623
+          },
+          "source_arena_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:expanded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53964,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53964,
+            "maximum": 505.6895446777344,
+            "mean": 361.83498802578094,
+            "median": 362.29722595214844,
+            "minimum": 292.9730224609375,
+            "population-standard-deviation": 3.938887311442935,
+            "q25": 361.89564514160156,
+            "q75": 362.80023193359375,
+            "q90": 363.18751220703126
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 827.7301635742188,
+            "mean": 779.9262043805412,
+            "median": 779.7301025390625,
+            "minimum": 231.05494689941406,
+            "population-standard-deviation": 5.82347195819002,
+            "q25": 779.090576171875,
+            "q75": 780.4757232666016,
+            "q90": 781.1298645019531
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53964,
+            "maximum": 989.9688110351562,
+            "mean": 910.4916901433276,
+            "median": 909.9501342773438,
+            "minimum": 361.1966552734375,
+            "population-standard-deviation": 11.545002341909232,
+            "q25": 909.5851287841797,
+            "q75": 911.0274200439453,
+            "q90": 915.1451477050781
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 818.9642944335938,
+            "mean": 773.6002236976253,
+            "median": 773.2577819824219,
+            "minimum": 685.6133422851562,
+            "population-standard-deviation": 2.5366855100948724,
+            "q25": 772.5067596435547,
+            "q75": 774.3936309814453,
+            "q90": 775.9542053222656
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53964,
+            "maximum": 466.2449645996094,
+            "mean": 359.2534517719839,
+            "median": 359.55677795410156,
+            "minimum": 311.683837890625,
+            "population-standard-deviation": 2.6726998669907003,
+            "q25": 359.09468841552734,
+            "q75": 360.0437316894531,
+            "q90": 360.2925628662109
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 779.0338134765625,
+            "mean": 234.16132211632163,
+            "median": 233.88419342041016,
+            "minimum": 193.84188842773438,
+            "population-standard-deviation": 11.65308270701024,
+            "q25": 233.54964447021484,
+            "q75": 234.27582550048828,
+            "q90": 234.95897521972657
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53964,
+            "maximum": 973.3269653320312,
+            "mean": 902.1955520441,
+            "median": 902.7025756835938,
+            "minimum": 354.41241455078125,
+            "population-standard-deviation": 19.86411904023268,
+            "q25": 902.2582397460938,
+            "q75": 903.2642059326172,
+            "q90": 903.7970397949218
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 774.9362182617188,
+            "mean": 228.2192226593988,
+            "median": 228.61833953857422,
+            "minimum": 155.93214416503906,
+            "population-standard-deviation": 7.72937567610789,
+            "q25": 228.01733779907227,
+            "q75": 228.92334747314453,
+            "q90": 229.40570220947265
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 50029,
+          "outside_arena_position_count": 3935,
+          "unclassified_positive_transition_start_count": 3935,
+          "unclassified_transition_start_count": 3935,
+          "zone_position_counts": {
+            "boundary-band": 32158,
+            "interior": 17871
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 32157,
+            "interior": 17871
+          }
+        },
+        "recording_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 50029,
+            "value": 0.6427871834336085
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 32157,
+              "maximum": 25.910415749783038,
+              "mean": 3.5550607289629474,
+              "median": 1.8681499682072755,
+              "minimum": 0.0018715512825270952,
+              "population-standard-deviation": 4.016374742061512,
+              "q25": 0.7340267559208133,
+              "q75": 5.015926516165984,
+              "q90": 9.573668748641563
+            },
+            "interior": {
+              "count": 17871,
+              "maximum": 25.349871502335233,
+              "mean": 4.07548086550169,
+              "median": 1.976585126076364,
+              "minimum": 0.008607688350893579,
+              "population-standard-deviation": 4.4458005450941585,
+              "q25": 0.6573299847616083,
+              "q75": 6.6431872563439,
+              "q90": 10.968445510795036
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53964,
+            "adjacent_transition_opportunities": 53963,
+            "position_status_counts": {
+              "accepted": 53964,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53964,
+              "summary": {
+                "count": 53964,
+                "maximum": 0.9999960660934448,
+                "mean": 0.9994651745483207,
+                "median": 0.9997050166130066,
+                "minimum": 0.958644688129425,
+                "population-standard-deviation": 0.0011079457229351487,
+                "q25": 0.9994438290596008,
+                "q75": 0.9998472929000854,
+                "q90": 0.999915599822998
+              }
+            },
+            "total_samples": 53964,
+            "valid_transition_count": 53963,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53962,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53962,
+              "maximum": 3.1412132839212434,
+              "mean": 0.7139243970592969,
+              "median": 0.3718861096500581,
+              "minimum": 1.797815265103253e-06,
+              "population-standard-deviation": 0.7965025840597156,
+              "q25": 0.1431667875463742,
+              "q75": 1.005995943837136,
+              "q90": 2.066148563797505
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53963,
+              "maximum": 26.014406579804117,
+              "mean": 3.760848685653836,
+              "median": 1.962499726691804,
+              "minimum": 0.0018715512825270952,
+              "population-standard-deviation": 4.16931463938359,
+              "q25": 0.7326367270563544,
+              "q75": 5.580636483366142,
+              "q90": 10.12330870056568
+            },
+            "path-length-px": {
+              "valid-transition-count": 53963,
+              "value": 202946.67762393795
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67074"
+        },
+        "subject_id": "16459-67074",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67074DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67074"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 545.3664855957031,
+            "maximum": {
+              "x": 922.2929992675781,
+              "y": 778.3652038574219
+            },
+            "minimum": {
+              "x": 377.256591796875,
+              "y": 232.99871826171875
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 545.0364074707031
+          },
+          "source_arena_id": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53962,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53962,
+            "maximum": 382.55072021484375,
+            "mean": 376.98342454840366,
+            "median": 377.5725402832031,
+            "minimum": 328.1681823730469,
+            "population-standard-deviation": 2.788070734469965,
+            "q25": 376.99359130859375,
+            "q75": 378.1095199584961,
+            "q90": 378.41432800292966
+          },
+          "y": {
+            "count": 53962,
+            "maximum": 826.277587890625,
+            "mean": 779.3856931643774,
+            "median": 778.8532104492188,
+            "minimum": 736.3200073242188,
+            "population-standard-deviation": 2.022184154307157,
+            "q25": 778.5431518554688,
+            "q75": 780.0286712646484,
+            "q90": 780.998046875
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53962,
+            "maximum": 959.6257934570312,
+            "mean": 924.2764379895028,
+            "median": 924.4067993164062,
+            "minimum": 369.5395812988281,
+            "population-standard-deviation": 16.535238818391306,
+            "q25": 923.5711059570312,
+            "q75": 925.4458923339844,
+            "q90": 927.3894165039062
+          },
+          "y": {
+            "count": 53962,
+            "maximum": 835.0197143554688,
+            "mean": 776.4220722269603,
+            "median": 776.320556640625,
+            "minimum": 669.890625,
+            "population-standard-deviation": 2.518974752993502,
+            "q25": 775.6330718994141,
+            "q75": 777.0932464599609,
+            "q90": 778.455859375
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53962,
+            "maximum": 920.8316040039062,
+            "mean": 377.01543417040904,
+            "median": 377.1197814941406,
+            "minimum": 331.9908142089844,
+            "population-standard-deviation": 7.133333420919465,
+            "q25": 376.90430450439453,
+            "q75": 377.38697052001953,
+            "q90": 377.8796356201172
+          },
+          "y": {
+            "count": 53962,
+            "maximum": 778.4710693359375,
+            "mean": 236.43895880238705,
+            "median": 235.8609848022461,
+            "minimum": 216.70408630371094,
+            "population-standard-deviation": 3.9734603455066786,
+            "q25": 234.90078735351562,
+            "q75": 236.91437149047852,
+            "q90": 239.78780364990234
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53962,
+            "maximum": 984.1942138671875,
+            "mean": 919.7744252013425,
+            "median": 920.426513671875,
+            "minimum": 370.461181640625,
+            "population-standard-deviation": 18.712792156125854,
+            "q25": 919.7254028320312,
+            "q75": 921.0128326416016,
+            "q90": 921.8938415527343
+          },
+          "y": {
+            "count": 53962,
+            "maximum": 373.1304016113281,
+            "mean": 230.78801075031316,
+            "median": 231.0171356201172,
+            "minimum": 157.33795166015625,
+            "population-standard-deviation": 5.087227878486234,
+            "q25": 230.42919158935547,
+            "q75": 231.4345817565918,
+            "q90": 231.76962890625
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 51673,
+          "outside_arena_position_count": 2289,
+          "unclassified_positive_transition_start_count": 2289,
+          "unclassified_transition_start_count": 2289,
+          "zone_position_counts": {
+            "boundary-band": 32388,
+            "interior": 19285
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 32387,
+            "interior": 19285
+          }
+        },
+        "recording_id": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 51673,
+            "value": 0.6267876840903374
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 32387,
+              "maximum": 24.772644771104808,
+              "mean": 3.421639058154952,
+              "median": 1.9136887672054088,
+              "minimum": 0.004928092813477424,
+              "population-standard-deviation": 3.779333494170071,
+              "q25": 0.7697764753409708,
+              "q75": 4.781362945575822,
+              "q90": 8.966393778598905
+            },
+            "interior": {
+              "count": 19285,
+              "maximum": 23.254600568524424,
+              "mean": 3.974147171586877,
+              "median": 2.376038206769126,
+              "minimum": 0.0030815199124424653,
+              "population-standard-deviation": 3.965467002231734,
+              "q25": 0.943101401428797,
+              "q75": 5.98903652300477,
+              "q90": 9.96334201312547
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53962,
+            "adjacent_transition_opportunities": 53961,
+            "position_status_counts": {
+              "accepted": 53962,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53962,
+              "summary": {
+                "count": 53962,
+                "maximum": 0.9999910593032837,
+                "mean": 0.9995673462256442,
+                "median": 0.9997373223304749,
+                "minimum": 0.9315874576568604,
+                "population-standard-deviation": 0.0008988426365892153,
+                "q25": 0.9995025396347046,
+                "q75": 0.999861478805542,
+                "q90": 0.9999213099479676
+              }
+            },
+            "total_samples": 53962,
+            "valid_transition_count": 53961,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53960,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53960,
+              "maximum": 3.1412503439196717,
+              "mean": 0.6779590067344026,
+              "median": 0.35520684768617344,
+              "minimum": 5.812112321201823e-06,
+              "population-standard-deviation": 0.7664468989438534,
+              "q25": 0.14029035663420064,
+              "q75": 0.923383566365341,
+              "q90": 1.9434746347547676
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53961,
+              "maximum": 24.772644771104808,
+              "mean": 3.570587920622204,
+              "median": 2.0381790892914182,
+              "minimum": 0.0030815199124424653,
+              "population-standard-deviation": 3.812790104116187,
+              "q25": 0.8246519794237165,
+              "q75": 5.113034452218997,
+              "q90": 9.225558098688134
+            },
+            "path-length-px": {
+              "valid-transition-count": 53961,
+              "value": 192672.49478469475
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67064"
+        },
+        "subject_id": "16459-67064",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67064DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67064"
+    },
+    {
+      "conditions": [
+        {
+          "condition": {
+            "condition_id": "recorded",
+            "intervention": "isotropic-arena-scale",
+            "scale": 1.0
+          },
+          "coordinate_frame": {
+            "axis_orientation": "x-right-y-down",
+            "frame_id": "roche-open-field-image",
+            "unit": "px"
+          },
+          "geometry": {
+            "height": 548.9960021972656,
+            "maximum": {
+              "x": 910.5523986816406,
+              "y": 782.262451171875
+            },
+            "minimum": {
+              "x": 360.9891357421875,
+              "y": 233.26644897460938
+            },
+            "type": "axis-aligned-rectangle",
+            "width": 549.5632629394531
+          },
+          "source_arena_id": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded",
+          "zones": {
+            "boundary-band": {
+              "definition": "clearance-fraction-less-than-or-equal",
+              "threshold": 0.1
+            },
+            "interior": {
+              "definition": "clearance-fraction-greater-than",
+              "threshold": 0.1
+            }
+          }
+        }
+      ],
+      "frame_count": 53964,
+      "landmark_quality": {
+        "bl": {
+          "x": {
+            "count": 53964,
+            "maximum": 921.7874755859375,
+            "mean": 358.61285370305103,
+            "median": 358.97486877441406,
+            "minimum": 297.9169616699219,
+            "population-standard-deviation": 5.393079440842373,
+            "q25": 357.90020751953125,
+            "q75": 360.03333282470703,
+            "q90": 360.3601379394531
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 826.581787109375,
+            "mean": 782.2562828660585,
+            "median": 782.0195007324219,
+            "minimum": 739.1383666992188,
+            "population-standard-deviation": 2.1799788120842885,
+            "q25": 781.5779266357422,
+            "q75": 782.5533447265625,
+            "q90": 782.9772705078125
+          }
+        },
+        "br": {
+          "x": {
+            "count": 53964,
+            "maximum": 990.3704833984375,
+            "mean": 911.7621521687156,
+            "median": 911.797607421875,
+            "minimum": 352.8748779296875,
+            "population-standard-deviation": 11.860076920355231,
+            "q25": 911.1536712646484,
+            "q75": 912.4595336914062,
+            "q90": 913.2908752441406
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 833.9503173828125,
+            "mean": 782.6576627335885,
+            "median": 782.4542236328125,
+            "minimum": 638.5817260742188,
+            "population-standard-deviation": 3.3429888191013513,
+            "q25": 782.0438079833984,
+            "q75": 782.9590606689453,
+            "q90": 783.7213745117188
+          }
+        },
+        "tl": {
+          "x": {
+            "count": 53964,
+            "maximum": 915.620361328125,
+            "mean": 366.6236563138175,
+            "median": 365.8448791503906,
+            "minimum": 318.32421875,
+            "population-standard-deviation": 24.754488506251192,
+            "q25": 364.87679290771484,
+            "q75": 366.1649475097656,
+            "q90": 366.53856506347654
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 796.7190551757812,
+            "mean": 233.4711669199144,
+            "median": 233.14126586914062,
+            "minimum": 202.90472412109375,
+            "population-standard-deviation": 13.107863011983111,
+            "q25": 232.70912170410156,
+            "q75": 233.33867263793945,
+            "q90": 233.49982757568358
+          }
+        },
+        "tr": {
+          "x": {
+            "count": 53964,
+            "maximum": 977.6636962890625,
+            "mean": 908.0175295555426,
+            "median": 908.6949157714844,
+            "minimum": 361.5995788574219,
+            "population-standard-deviation": 25.369149818180677,
+            "q25": 908.3614349365234,
+            "q75": 909.1531982421875,
+            "q90": 910.9123962402343
+          },
+          "y": {
+            "count": 53964,
+            "maximum": 792.0609741210938,
+            "mean": 233.84395084716172,
+            "median": 233.5085678100586,
+            "minimum": 157.3492889404297,
+            "population-standard-deviation": 18.82252988930728,
+            "q25": 233.08801651000977,
+            "q75": 233.8759765625,
+            "q90": 234.0433090209961
+          }
+        }
+      },
+      "recorded_measurements": {
+        "quality_control": {
+          "in_arena_position_count": 48936,
+          "outside_arena_position_count": 5028,
+          "unclassified_positive_transition_start_count": 5027,
+          "unclassified_transition_start_count": 5027,
+          "zone_position_counts": {
+            "boundary-band": 35171,
+            "interior": 13765
+          },
+          "zone_valid_transition_counts": {
+            "boundary-band": 35171,
+            "interior": 13765
+          }
+        },
+        "recording_id": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+        "registered_metrics": {
+          "boundary-band-occupancy-fraction": {
+            "in-arena-position-count": 48936,
+            "value": 0.7187142390060487
+          },
+          "zone-conditioned-positive-displacement-px-distribution": {
+            "boundary-band": {
+              "count": 35171,
+              "maximum": 25.93191699097455,
+              "mean": 3.5923656056230113,
+              "median": 2.2190219089626955,
+              "minimum": 0.006847440033984691,
+              "population-standard-deviation": 3.6209847658030214,
+              "q25": 0.9325802648421745,
+              "q75": 5.186451866333084,
+              "q90": 8.87433674048196
+            },
+            "interior": {
+              "count": 13765,
+              "maximum": 25.955696799360872,
+              "mean": 5.003999966539077,
+              "median": 3.7191422605195408,
+              "minimum": 0.009863269919209534,
+              "population-standard-deviation": 4.464816538367508,
+              "q25": 1.1650164570817654,
+              "q75": 7.990343396178082,
+              "q90": 11.443574753014522
+            }
+          }
+        },
+        "source_category": "recorded",
+        "spatial_measurements": {
+          "coordinate_unit": "px",
+          "quality_control": {
+            "accepted_fraction": 1.0,
+            "accepted_positions": 53964,
+            "adjacent_transition_opportunities": 53963,
+            "position_status_counts": {
+              "accepted": 53964,
+              "below-likelihood-threshold": 0,
+              "likelihood-missing": 0,
+              "source-coordinate-missing": 0,
+              "source-pose-missing": 0
+            },
+            "source_likelihood": {
+              "missing_count": 0,
+              "present_count": 53964,
+              "summary": {
+                "count": 53964,
+                "maximum": 0.9999963045120239,
+                "mean": 0.9995495571578356,
+                "median": 0.9997318387031555,
+                "minimum": 0.9775611758232117,
+                "population-standard-deviation": 0.0007119819662122677,
+                "q25": 0.9994865655899048,
+                "q75": 0.9998602867126465,
+                "q90": 0.9999240636825562
+              }
+            },
+            "total_samples": 53964,
+            "valid_transition_count": 53963,
+            "valid_transition_fraction": 1.0,
+            "valid_turn_count": 53962,
+            "zero_transition_count": 0
+          },
+          "recording_id": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+          "registered_metrics": {
+            "absolute-turning-radians-distribution": {
+              "count": 53962,
+              "maximum": 3.1414515606018463,
+              "mean": 0.6175906349364525,
+              "median": 0.32285598920071823,
+              "minimum": 1.1544168193600157e-07,
+              "population-standard-deviation": 0.721335102713001,
+              "q25": 0.13312144195398296,
+              "q75": 0.8027294205461235,
+              "q90": 1.7591729182135432
+            },
+            "adjacent-displacement-px-distribution": {
+              "count": 53963,
+              "maximum": 25.955696799360872,
+              "mean": 3.8555868175392636,
+              "median": 2.4101279247789593,
+              "minimum": 0.006847440033984691,
+              "population-standard-deviation": 3.824459818051354,
+              "q25": 0.9820861444750262,
+              "q75": 5.690000702180827,
+              "q90": 9.502648042083113
+            },
+            "path-length-px": {
+              "valid-transition-count": 53963,
+              "value": 208059.0314348713
+            }
+          },
+          "source_category": "recorded",
+          "subject_id": "16459-67078"
+        },
+        "subject_id": "16459-67078",
+        "world": {
+          "boundary_band_fraction": 0.1,
+          "condition_id": "recorded",
+          "source_arena_id": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv:arena",
+          "world_id": "roche-open-field-v1",
+          "world_instance_id": "roche-open-field-v1:recorded"
+        }
+      },
+      "recording_id": "02052023_001_16459-67078DLC_resnet50_RocheNetworkOmnitechLMAJan2shuffle1_1030000.csv",
+      "subject_id": "16459-67078"
+    }
+  ],
+  "world_id": "roche-open-field-v1"
+}

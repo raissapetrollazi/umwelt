@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "condition_id": "compact",
+      "intervention": "isotropic-arena-scale",
+      "scale": 0.75
+    },
+    {
+      "condition_id": "recorded",
+      "intervention": "isotropic-arena-scale",
+      "scale": 1.0
+    },
+    {
+      "condition_id": "expanded",
+      "intervention": "isotropic-arena-scale",
+      "scale": 1.25
+    }
+  ],
+  "model_id": "boundary-conditioned-random-walk-v1",
+  "paired_seed": "subject-and-replicate-only",
+  "recorded_intervention_counterpart": false,
+  "reflection_count_scope": "full-generated-trajectory-before-observation-mask",
+  "template_subject_ids": [
+    "16459-67049",
+    "16459-67053",
+    "16459-67060",
+    "16459-67067",
+    "16459-67071",
+    "16459-67074"
+  ]
+}

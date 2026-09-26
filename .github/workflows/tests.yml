@@ -31,7 +31,7 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover --start-directory tests
 
-  spatial-quality:
+  research-quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -64,5 +64,10 @@ jobs:
           src/umwelt/spatial_reporting.py
           src/umwelt/world.py
           src/umwelt/world_evaluation.py
+          src/umwelt/world_config.py
+          src/umwelt/world_execution.py
+          src/umwelt/world_lab.py
           src/umwelt/world_model.py
           src/umwelt/world_protocol.py
+          src/umwelt/world_recordings.py
+          src/umwelt/world_reporting.py

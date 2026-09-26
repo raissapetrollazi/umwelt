@@ -1,0 +1,1191 @@
+{
+  "aggregate_animal_medians": {
+    "compact": {
+      "boundary_band_occupancy_fraction": {
+        "missing_count": 0,
+        "p05": -0.003356808316236075,
+        "p50": 0.004484533713477248,
+        "p95": 0.01382171447631754,
+        "present_count": 6
+      },
+      "boundary_band_positive_displacement_count": {
+        "missing_count": 0,
+        "p05": -181.75,
+        "p50": 242.25,
+        "p95": 745.5,
+        "present_count": 6
+      },
+      "boundary_band_positive_displacement_mean_px": {
+        "missing_count": 0,
+        "p05": -0.07194166149462122,
+        "p50": -0.05716271324160793,
+        "p95": -0.03356705367503121,
+        "present_count": 6
+      },
+      "boundary_band_positive_displacement_median_px": {
+        "missing_count": 0,
+        "p05": -0.004543128413500297,
+        "p50": -0.0019106815407870514,
+        "p95": -2.0707419755183754e-05,
+        "present_count": 6
+      },
+      "boundary_band_valid_transition_count": {
+        "missing_count": 0,
+        "p05": -181.75,
+        "p50": 242.25,
+        "p95": 745.5,
+        "present_count": 6
+      },
+      "interior_positive_displacement_count": {
+        "missing_count": 0,
+        "p05": -745.5,
+        "p50": -242.25,
+        "p95": 181.75,
+        "present_count": 6
+      },
+      "interior_positive_displacement_mean_px": {
+        "missing_count": 0,
+        "p05": -0.047878186600805006,
+        "p50": -0.0048140663363192004,
+        "p95": 0.027280480039989286,
+        "present_count": 6
+      },
+      "interior_positive_displacement_median_px": {
+        "missing_count": 0,
+        "p05": -0.005864786887287976,
+        "p50": -0.0017971537043437458,
+        "p95": 0.0012207277423921248,
+        "present_count": 6
+      },
+      "interior_valid_transition_count": {
+        "missing_count": 0,
+        "p05": -745.5,
+        "p50": -242.25,
+        "p95": 181.75,
+        "present_count": 6
+      },
+      "path_length_px": {
+        "missing_count": 0,
+        "p05": -3204.7899930753883,
+        "p50": -1737.9753234266755,
+        "p95": -1226.3402141165243,
+        "present_count": 6
+      },
+      "reflection_count": {
+        "missing_count": 0,
+        "p05": 178.25,
+        "p50": 229.25,
+        "p95": 250.375,
+        "present_count": 6
+      }
+    },
+    "expanded": {
+      "boundary_band_occupancy_fraction": {
+        "missing_count": 0,
+        "p05": -0.008890327058418579,
+        "p50": -0.0024935365909024565,
+        "p95": 0.013360883527653418,
+        "present_count": 6
+      },
+      "boundary_band_positive_displacement_count": {
+        "missing_count": 0,
+        "p05": -479.875,
+        "p50": -134.5,
+        "p95": 720.875,
+        "present_count": 6
+      },
+      "boundary_band_positive_displacement_mean_px": {
+        "missing_count": 0,
+        "p05": 0.0013095809954244975,
+        "p50": 0.020782835485901985,
+        "p95": 0.047455948181976515,
+        "present_count": 6
+      },
+      "boundary_band_positive_displacement_median_px": {
+        "missing_count": 0,
+        "p05": -0.007479621319016416,
+        "p50": 0.0012791455470829716,
+        "p95": 0.0059164683794550865,
+        "present_count": 6
+      },
+      "boundary_band_valid_transition_count": {
+        "missing_count": 0,
+        "p05": -479.875,
+        "p50": -134.5,
+        "p95": 720.875,
+        "present_count": 6
+      },
+      "interior_positive_displacement_count": {
+        "missing_count": 0,
+        "p05": -720.875,
+        "p50": 134.5,
+        "p95": 479.875,
+        "present_count": 6
+      },
+      "interior_positive_displacement_mean_px": {
+        "missing_count": 0,
+        "p05": -0.002636420290116237,
+        "p50": 0.02543230463112378,
+        "p95": 0.04572569258515036,
+        "present_count": 6
+      },
+      "interior_positive_displacement_median_px": {
+        "missing_count": 0,
+        "p05": -0.0024443975135935436,
+        "p50": 0.0014463954902034226,
+        "p95": 0.012519035666827438,
+        "present_count": 6
+      },
+      "interior_valid_transition_count": {
+        "missing_count": 0,
+        "p05": -720.875,
+        "p50": 134.5,
+        "p95": 479.875,
+        "present_count": 6
+      },
+      "path_length_px": {
+        "missing_count": 0,
+        "p05": -439.36204861604347,
+        "p50": 1054.72027539806,
+        "p95": 2059.3356399664626,
+        "present_count": 6
+      },
+      "reflection_count": {
+        "missing_count": 0,
+        "p05": -145.75,
+        "p50": -114.0,
+        "p95": -79.625,
+        "present_count": 6
+      }
+    }
+  },
+  "comparison_scope": "synthetic-model-arena-scale-sensitivity",
+  "delta_metric_ids": [
+    "path_length_px",
+    "boundary_band_occupancy_fraction",
+    "boundary_band_valid_transition_count",
+    "interior_valid_transition_count",
+    "boundary_band_positive_displacement_count",
+    "boundary_band_positive_displacement_mean_px",
+    "boundary_band_positive_displacement_median_px",
+    "interior_positive_displacement_count",
+    "interior_positive_displacement_mean_px",
+    "interior_positive_displacement_median_px",
+    "reflection_count"
+  ],
+  "equal_valid_transition_exposure": true,
+  "model_id": "boundary-conditioned-random-walk-v1",
+  "paired_anchor_condition_id": "recorded",
+  "per_animal": [
+    {
+      "condition_id": "compact",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.06581532416502947,
+          "p50": -0.0021036438447566697,
+          "p95": 0.04147977907106053,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3551.25,
+          "p50": -113.5,
+          "p95": 2239.0,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.16098855938715384,
+          "p50": -0.033700214708914045,
+          "p95": 0.04705912528422118,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.02923375856908944,
+          "p50": 0.0003013462253601551,
+          "p95": 0.02421505636699861,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3551.25,
+          "p50": -113.5,
+          "p95": 2239.0,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2239.0,
+          "p50": 113.5,
+          "p95": 3551.25,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.13708182198801966,
+          "p50": -0.055968509558514956,
+          "p95": 0.09930452280583668,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.03535047677880043,
+          "p50": -0.005866223744472432,
+          "p95": 0.03733415096699211,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2239.0,
+          "p50": 113.5,
+          "p95": 3551.25,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -5480.485763234261,
+          "p50": -1402.9897235893732,
+          "p95": 3762.261770811987,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": 29.0,
+          "p50": 191.0,
+          "p95": 277.0,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67049"
+    },
+    {
+      "condition_id": "compact",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.04350910709648699,
+          "p50": -0.00377452980672921,
+          "p95": 0.049402752531809924,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2345.75,
+          "p50": -204.5,
+          "p95": 2663.5,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.13605466266273403,
+          "p50": -0.06617286257152899,
+          "p95": -0.004084589034573205,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.037344819756855496,
+          "p50": -0.0026709203267856196,
+          "p95": 0.014928699853213268,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2345.75,
+          "p50": -204.5,
+          "p95": 2663.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2663.5,
+          "p50": 204.5,
+          "p95": 2345.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.07920732259204666,
+          "p50": 0.01666234423433588,
+          "p95": 0.08503744614334718,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.027082845014755108,
+          "p50": -0.00019692472976173825,
+          "p95": 0.0425329279021891,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2663.5,
+          "p50": 204.5,
+          "p95": 2345.75,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -6367.406446004359,
+          "p50": -1167.4570442922413,
+          "p95": 2658.979729624909,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": 55.25,
+          "p50": 174.0,
+          "p95": 269.0,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67053"
+    },
+    {
+      "condition_id": "compact",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.04924207327242741,
+          "p50": 0.0067546281711543255,
+          "p95": 0.03743768878676132,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2658.0,
+          "p50": 365.0,
+          "p95": 2020.5,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.12080572477768536,
+          "p50": -0.03352266666373693,
+          "p95": 0.0746539197678373,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.019728836315234533,
+          "p50": -0.004827677931750429,
+          "p95": 0.007568374532036848,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2658.0,
+          "p50": 365.0,
+          "p95": 2020.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2020.5,
+          "p50": -365.0,
+          "p95": 2658.0,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.1468006443810752,
+          "p50": -0.010856987188896383,
+          "p95": 0.05928117820986989,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.01918679735160589,
+          "p50": 0.0016932785664434125,
+          "p95": 0.02068978678217226,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2020.5,
+          "p50": -365.0,
+          "p95": 2658.0,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -5402.636251774071,
+          "p50": -1607.9158887154335,
+          "p95": 1911.7920886660504,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": 134.25,
+          "p50": 251.5,
+          "p95": 331.75,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67060"
+    },
+    {
+      "condition_id": "compact",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.05568990438069826,
+          "p50": 0.010284634200578152,
+          "p95": 0.04193536431695202,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3005.5,
+          "p50": 555.0,
+          "p95": 2263.25,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.17269548610147445,
+          "p50": -0.07292556607339562,
+          "p95": -0.01997286807859433,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.027180124963471053,
+          "p50": -0.0009868683551012003,
+          "p95": 0.019672187729053103,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3005.5,
+          "p50": 555.0,
+          "p95": 2263.25,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2263.25,
+          "p50": -555.0,
+          "p95": 3005.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.07622552350168887,
+          "p50": 0.030819858641873754,
+          "p95": 0.11444676364481143,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.033830315403036604,
+          "p50": -0.001933843573610483,
+          "p95": 0.029718667396340104,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2263.25,
+          "p50": -555.0,
+          "p95": 3005.5,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -5722.358537742999,
+          "p50": -3275.79764718948,
+          "p95": 4112.547350694993,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": 122.25,
+          "p50": 234.5,
+          "p95": 343.25,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67067"
+    },
+    {
+      "condition_id": "compact",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.04693406715588168,
+          "p50": 0.015000741234897336,
+          "p95": 0.056009561930175644,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2532.75,
+          "p50": 809.0,
+          "p95": 3023.0,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.17771530472222496,
+          "p50": -0.06898994775829803,
+          "p95": 0.020410178292109116,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.026887393960156936,
+          "p50": -0.0036894798587499,
+          "p95": 0.02317063916603379,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2532.75,
+          "p50": 809.0,
+          "p95": 3023.0,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3023.0,
+          "p50": -809.0,
+          "p95": 2532.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.11191159124520556,
+          "p50": 0.0012288545162579823,
+          "p95": 0.11103423749705565,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.03299410393179425,
+          "p50": -0.0016604638350770085,
+          "p95": 0.029069285435128878,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3023.0,
+          "p50": -809.0,
+          "p95": 2532.75,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -6909.485126168212,
+          "p50": -2991.7670307331136,
+          "p95": 2752.890074838331,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": 83.5,
+          "p50": 247.0,
+          "p95": 327.5,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67071"
+    },
+    {
+      "condition_id": "compact",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.019267474612704782,
+          "p50": 0.0022144392558001713,
+          "p95": 0.0680221999851753,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -1040.25,
+          "p50": 119.5,
+          "p95": 3671.5,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.17469505182877876,
+          "p50": -0.048152563911686874,
+          "p95": 0.026954644332542133,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.018955802579321335,
+          "p50": -0.0011504427547884832,
+          "p95": 0.017949851478283763,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -1040.25,
+          "p50": 119.5,
+          "p95": 3671.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3671.5,
+          "p50": -119.5,
+          "p95": 1040.25,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.0969462859426864,
+          "p50": -0.023607217727675156,
+          "p95": 0.09582869547845307,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.029498498605499135,
+          "p50": -0.0058604763157346085,
+          "p95": 0.017108951478347012,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3671.5,
+          "p50": -119.5,
+          "p95": 1040.25,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -9219.143670997342,
+          "p50": -1868.0347581379174,
+          "p95": 335.66025697586883,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": 118.25,
+          "p50": 224.0,
+          "p95": 327.5,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67074"
+    },
+    {
+      "condition_id": "expanded",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.08598528376024023,
+          "p50": 0.0026874745153278867,
+          "p95": 0.056427697668384166,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -4638.75,
+          "p50": 144.5,
+          "p95": 3044.5,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.059909733365463236,
+          "p50": 0.04644292180131848,
+          "p95": 0.10948717695366372,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.01929819944187966,
+          "p50": 0.006618578253239971,
+          "p95": 0.03371606549541445,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -4638.75,
+          "p50": 144.5,
+          "p95": 3044.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3044.5,
+          "p50": -144.5,
+          "p95": 4638.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.0886899241655239,
+          "p50": 0.018958592532449803,
+          "p95": 0.09052311326990581,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.03430377824275499,
+          "p50": -0.0035737831240461038,
+          "p95": 0.030392223121046835,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3044.5,
+          "p50": -144.5,
+          "p95": 4638.75,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -4082.4511008436457,
+          "p50": 621.683818527672,
+          "p95": 8352.911972583388,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": -259.75,
+          "p50": -140.5,
+          "p95": -50.75,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67049"
+    },
+    {
+      "condition_id": "expanded",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.05972938383351259,
+          "p50": -0.00244834365841895,
+          "p95": 0.05075676076714769,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3220.25,
+          "p50": -132.0,
+          "p95": 2735.75,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.04372640391189764,
+          "p50": 0.03147967274223773,
+          "p95": 0.09659464309596133,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.02308131709777006,
+          "p50": -0.010057746342158058,
+          "p95": 0.01571916377754523,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3220.25,
+          "p50": -132.0,
+          "p95": 2735.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2735.75,
+          "p50": 132.0,
+          "p95": 3220.25,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.05655024960722699,
+          "p50": 0.012395367404303137,
+          "p95": 0.08750934061508331,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.015523428705870312,
+          "p50": 0.014537908071100114,
+          "p95": 0.028089837949742402,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2735.75,
+          "p50": 132.0,
+          "p95": 3220.25,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -3465.563058306332,
+          "p50": 1393.9638327159919,
+          "p95": 6463.965987557007,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": -216.75,
+          "p50": -147.5,
+          "p95": -64.0,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67053"
+    },
+    {
+      "condition_id": "expanded",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.05400922854548486,
+          "p50": -0.010145840668606243,
+          "p95": 0.07509775216351948,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2914.75,
+          "p50": -547.5,
+          "p95": 4052.75,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.06792402373841244,
+          "p50": 0.04779362364219586,
+          "p95": 0.09699566505169954,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.023504528762971655,
+          "p50": 0.00025475375040850956,
+          "p95": 0.03421937361657068,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2914.75,
+          "p50": -547.5,
+          "p95": 4052.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -4052.75,
+          "p50": 547.5,
+          "p95": 2914.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.06701253668364404,
+          "p50": -0.007647016188256028,
+          "p95": 0.11627777174662302,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.04719199504747018,
+          "p50": 0.0016548511357432627,
+          "p95": 0.028129569845010916,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -4052.75,
+          "p50": 547.5,
+          "p95": 2914.75,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -6062.138386897728,
+          "p50": 2255.9528341397236,
+          "p95": 6618.959874720691,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": -222.5,
+          "p50": -112.0,
+          "p95": 43.75,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67060"
+    },
+    {
+      "condition_id": "expanded",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.057742198502705525,
+          "p50": -0.005123786227855587,
+          "p95": 0.047642873026462085,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -3116.75,
+          "p50": -277.0,
+          "p95": 2572.0,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.06838342309752221,
+          "p50": 0.005242531433409692,
+          "p95": 0.09638570906990951,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.02317523965316054,
+          "p50": 0.0010083695448572794,
+          "p95": 0.015432956294540834,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -3116.75,
+          "p50": -277.0,
+          "p95": 2572.0,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2572.0,
+          "p50": 277.0,
+          "p95": 3116.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.0381067942317761,
+          "p50": 0.03539724992386395,
+          "p95": 0.11848583868848195,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.021154613018029678,
+          "p50": 0.006462418454009411,
+          "p95": 0.028994066864330703,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2572.0,
+          "p50": 277.0,
+          "p95": 3116.75,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -3299.862860184294,
+          "p50": 1469.4840574466798,
+          "p95": 7485.720526808451,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": -253.25,
+          "p50": -116.0,
+          "p95": -24.0,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67067"
+    },
+    {
+      "condition_id": "expanded",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.0461974649766511,
+          "p50": 0.01691868653176193,
+          "p95": 0.08832740345415462,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2493.5,
+          "p50": 913.0,
+          "p95": 4765.75,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.10453109605703603,
+          "p50": -1.402483903900631e-06,
+          "p95": 0.09443943862055504,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.022908979212075797,
+          "p50": 0.0015499215493086638,
+          "p95": 0.03723259232331888,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2493.5,
+          "p50": 913.0,
+          "p95": 4765.75,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -4765.75,
+          "p50": -913.0,
+          "p95": 2493.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.06211558693444075,
+          "p50": 0.04916850680557916,
+          "p95": 0.17017166978725573,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.04133031075399074,
+          "p50": 0.0012379398446635825,
+          "p95": 0.03700996572885207,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -4765.75,
+          "p50": -913.0,
+          "p95": 2493.5,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -6600.121282918706,
+          "p50": -793.0440043306153,
+          "p95": 4857.1652954167,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": -216.25,
+          "p50": -72.5,
+          "p95": -4.0,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67071"
+    },
+    {
+      "condition_id": "expanded",
+      "delta_vs_recorded_condition": {
+        "boundary_band_occupancy_fraction": {
+          "missing_count": 0,
+          "p05": -0.051020124527462754,
+          "p50": -0.002538729523385963,
+          "p95": 0.09582314135349496,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -2752.5,
+          "p50": -137.0,
+          "p95": 5170.25,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.07545183331937177,
+          "p50": 0.01008599822956624,
+          "p95": 0.15457150704127776,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.015598410637067683,
+          "p50": 0.0038101387581004342,
+          "p95": 0.022759410950463854,
+          "present_count": 16
+        },
+        "boundary_band_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -2752.5,
+          "p50": -137.0,
+          "p95": 5170.25,
+          "present_count": 16
+        },
+        "interior_positive_displacement_count": {
+          "missing_count": 0,
+          "p05": -5170.25,
+          "p50": 137.0,
+          "p95": 2752.5,
+          "present_count": 16
+        },
+        "interior_positive_displacement_mean_px": {
+          "missing_count": 0,
+          "p05": -0.09366390111892131,
+          "p50": 0.03190601672979776,
+          "p95": 0.11389289330271368,
+          "present_count": 16
+        },
+        "interior_positive_displacement_median_px": {
+          "missing_count": 0,
+          "p05": -0.027510462499334642,
+          "p50": 0.0009437593177641368,
+          "p95": 0.02044210202677954,
+          "present_count": 16
+        },
+        "interior_valid_transition_count": {
+          "missing_count": 0,
+          "p05": -5170.25,
+          "p50": 137.0,
+          "p95": 2752.5,
+          "present_count": 16
+        },
+        "path_length_px": {
+          "missing_count": 0,
+          "p05": -8336.929436548628,
+          "p50": 715.4767180801282,
+          "p95": 7412.489565609532,
+          "present_count": 16
+        },
+        "reflection_count": {
+          "missing_count": 0,
+          "p05": -254.75,
+          "p50": -101.0,
+          "p95": -0.5,
+          "present_count": 16
+        }
+      },
+      "paired_replicates": 16,
+      "subject_id": "16459-67074"
+    }
+  ],
+  "recorded_animal_intervention_counterpart": false,
+  "reflection_count_scope": "full-generated-trajectory-before-observation-mask"
+}

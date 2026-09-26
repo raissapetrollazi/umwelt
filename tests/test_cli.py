@@ -195,6 +195,28 @@ class CliTests(unittest.TestCase):
         self.assertEqual(payload["generated_series"], 4)
         self.assertEqual(payload["artifact_count"], 8)
 
+    def test_world_reports_compact_run_summary(self) -> None:
+        result = SimpleNamespace(
+            experiment_id="fixture-world",
+            output_directory=Path("world-run"),
+            configuration_sha256="abc789",
+            replicate_records=34,
+            generated_series=34,
+            artifact_count=12,
+        )
+        output = io.StringIO()
+        with (
+            patch("umwelt.cli.load_world_lab_config", return_value=object()),
+            patch("umwelt.cli.run_world_lab", return_value=result),
+        ):
+            exit_code = main(["world", "--config", "world.json"], stdout=output)
+
+        payload = json.loads(output.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["experiment_id"], "fixture-world")
+        self.assertEqual(payload["generated_series"], 34)
+        self.assertEqual(payload["artifact_count"], 12)
+
 
 if __name__ == "__main__":
     unittest.main()

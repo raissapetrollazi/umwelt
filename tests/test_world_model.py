@@ -26,6 +26,7 @@ from umwelt.world import (
 from umwelt.world_model import (
     BOUNDARY_CONDITIONED_MODEL_ID,
     MINIMUM_POSITIVE_DISPLACEMENTS_PER_ZONE,
+    _axis_reflections,
     fit_boundary_conditioned_movement_model,
     generate_boundary_conditioned_trajectory,
 )
@@ -72,6 +73,12 @@ def fitting_steps() -> tuple:
 
 
 class BoundaryConditionedMovementModelTests(unittest.TestCase):
+    def test_reflection_count_tracks_repeated_axis_crossings(self) -> None:
+        self.assertEqual(_axis_reflections(5.0, 0.0, 10.0), 0)
+        self.assertEqual(_axis_reflections(11.0, 0.0, 10.0), 1)
+        self.assertEqual(_axis_reflections(21.0, 0.0, 10.0), 2)
+        self.assertEqual(_axis_reflections(-11.0, 0.0, 10.0), 2)
+
     def test_fit_isolates_zone_displacement_and_shares_baseline_parameters(
         self,
     ) -> None:
@@ -146,7 +153,9 @@ class BoundaryConditionedMovementModelTests(unittest.TestCase):
                 (compact_world,),
             )
 
-    def test_fit_rejects_unclassifiable_recorded_positions(self) -> None:
+    def test_fit_retains_outside_positions_in_baseline_and_reports_zone_exclusions(
+        self,
+    ) -> None:
         outside_steps = tuple(
             RECORDED_PROTOCOL.trajectory_steps(
                 (
@@ -157,11 +166,18 @@ class BoundaryConditionedMovementModelTests(unittest.TestCase):
             )
         )
 
-        with self.assertRaisesRegex(DataError, "inside its world"):
-            fit_boundary_conditioned_movement_model(
-                (outside_steps,),
-                (RECORDED_WORLD,),
-            )
+        fitted = fit_boundary_conditioned_movement_model(
+            (fitting_steps(), outside_steps),
+            (RECORDED_WORLD, RECORDED_WORLD),
+        )
+        self.assertEqual(fitted.excluded_outside_position_count, 1)
+        self.assertEqual(fitted.excluded_positive_transition_start_count, 1)
+        self.assertEqual(
+            fitted.to_dict()["zone_fitting_quality_control"][
+                "outside_positions_retained_in_shared_baseline"
+            ],
+            True,
+        )
 
     def test_generation_is_seeded_bounded_and_bound_to_each_condition(self) -> None:
         model = fit_boundary_conditioned_movement_model(
@@ -191,6 +207,7 @@ class BoundaryConditionedMovementModelTests(unittest.TestCase):
 
                 self.assertEqual(first, second)
                 self.assertEqual(first.world.condition, condition)
+                self.assertGreaterEqual(first.reflection_count, 0)
                 self.assertIs(first.context.source, ObservationSource.SYNTHETIC)
                 self.assertTrue(
                     all(

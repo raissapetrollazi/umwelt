@@ -1,0 +1,246 @@
+{
+  "pre_result_source_quality_amendment": "retain recorded outside positions in spatial metrics; exclude unclassified starts only from zone fitting",
+  "spatial_evaluation": {
+    "acceptance_threshold": null,
+    "deferred_pending_validated_arena_bounds": [
+      "boundary-distance",
+      "center-periphery",
+      "spatial-occupancy",
+      "outside-arena-fraction"
+    ],
+    "distribution_summary_fields": [
+      "count",
+      "mean",
+      "population-standard-deviation",
+      "minimum",
+      "q25",
+      "median",
+      "q75",
+      "q90",
+      "maximum"
+    ],
+    "excluded_due_to_missing_source_support": [
+      "speed",
+      "duration",
+      "acceleration",
+      "time-lag-autocorrelation",
+      "physical-distance"
+    ],
+    "not_registered_in_first_baseline": [
+      "absolute-heading"
+    ],
+    "quality_control": [
+      {
+        "definition": "per-status counts for every derived position sample",
+        "id": "position-status-counts"
+      },
+      {
+        "definition": "present and missing counts plus the fixed distribution summary over available source likelihoods",
+        "id": "source-likelihood-summary"
+      },
+      {
+        "definition": "adjacent frame-pair opportunities, valid and zero displacements, valid turns, and valid displacement fraction over opportunities",
+        "id": "valid-transition-coverage"
+      }
+    ],
+    "registered_metrics": [
+      {
+        "definition": "sum of displacement between adjacent accepted positions",
+        "id": "path-length-px",
+        "required_exposure": "valid-transition-count",
+        "unit": "px"
+      },
+      {
+        "comparison": "empirical-1-wasserstein",
+        "definition": "displacement between adjacent accepted positions, including zero",
+        "id": "adjacent-displacement-px-distribution",
+        "unit": "px-per-adjacent-frame-interval"
+      },
+      {
+        "comparison": "empirical-1-wasserstein",
+        "definition": "absolute turning magnitude across two consecutive nonstationary valid movements",
+        "id": "absolute-turning-radians-distribution",
+        "unit": "radian"
+      }
+    ],
+    "synthetic_observation_mask": "copy development bodycentre availability only; never coordinate values",
+    "unit_of_description": "animal-recording"
+  },
+  "trajectory": {
+    "continuity": {
+      "interpolation_applied_by_protocol": false,
+      "smoothing_applied_by_protocol": false,
+      "turning": "two-consecutive-nonstationary-valid-movements",
+      "valid_displacement": "adjacent-frames-with-accepted-endpoints",
+      "zero_displacement": "retain-and-break-turning"
+    },
+    "input": {
+      "coordinate_frame": {
+        "axis_orientation": "x-right-y-down",
+        "frame_id": "roche-open-field-image",
+        "unit": "px"
+      },
+      "source_category": "recorded"
+    },
+    "position": {
+      "keypoint_name": "bodycentre",
+      "minimum_likelihood": null
+    }
+  },
+  "world_experiment": {
+    "cross_validation": {
+      "condition_id": "recorded",
+      "folds": [
+        {
+          "evaluation_subject_id": "16459-67049",
+          "fitting_subject_ids": [
+            "16459-67053",
+            "16459-67060",
+            "16459-67067",
+            "16459-67071",
+            "16459-67074"
+          ]
+        },
+        {
+          "evaluation_subject_id": "16459-67053",
+          "fitting_subject_ids": [
+            "16459-67049",
+            "16459-67060",
+            "16459-67067",
+            "16459-67071",
+            "16459-67074"
+          ]
+        },
+        {
+          "evaluation_subject_id": "16459-67060",
+          "fitting_subject_ids": [
+            "16459-67049",
+            "16459-67053",
+            "16459-67067",
+            "16459-67071",
+            "16459-67074"
+          ]
+        },
+        {
+          "evaluation_subject_id": "16459-67067",
+          "fitting_subject_ids": [
+            "16459-67049",
+            "16459-67053",
+            "16459-67060",
+            "16459-67071",
+            "16459-67074"
+          ]
+        },
+        {
+          "evaluation_subject_id": "16459-67071",
+          "fitting_subject_ids": [
+            "16459-67049",
+            "16459-67053",
+            "16459-67060",
+            "16459-67067",
+            "16459-67074"
+          ]
+        },
+        {
+          "evaluation_subject_id": "16459-67074",
+          "fitting_subject_ids": [
+            "16459-67049",
+            "16459-67053",
+            "16459-67060",
+            "16459-67067",
+            "16459-67071"
+          ]
+        }
+      ],
+      "legacy_diagnostic_excluded_from_preference": true,
+      "method": "leave-one-animal-out",
+      "model_ids": [
+        "persistent-reflecting-random-walk-v1",
+        "boundary-conditioned-random-walk-v1"
+      ],
+      "predictive_quantile_method": "linear-interpolation-at-p-times-n-minus-one",
+      "predictive_quantiles": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "preference_criterion_ids": [
+        "lower-median-absolute-relative-path-discrepancy",
+        "lower-absolute-relative-path-discrepancy-in-at-least-four-animals",
+        "no-higher-median-adjacent-displacement-distance",
+        "no-higher-median-absolute-turning-distance",
+        "lower-median-boundary-band-occupancy-error"
+      ],
+      "preference_unit": "animal-median-across-replicates",
+      "registered_comparison_metric_ids": [
+        "path-length-signed-relative-difference",
+        "adjacent-displacement-wasserstein-px",
+        "absolute-turning-wasserstein-radians",
+        "boundary-band-occupancy-absolute-difference",
+        "zone-conditioned-positive-displacement-wasserstein-px"
+      ],
+      "retain_all_replicate_comparisons": true
+    },
+    "development_pool_subject_ids": [
+      "16459-67049",
+      "16459-67053",
+      "16459-67060",
+      "16459-67067",
+      "16459-67071",
+      "16459-67074"
+    ],
+    "interventions": {
+      "boundary_band_fraction": 0.1,
+      "comparison_anchor": "recorded",
+      "conditions": [
+        {
+          "condition_id": "compact",
+          "intervention": "isotropic-arena-scale",
+          "scale": 0.75
+        },
+        {
+          "condition_id": "recorded",
+          "intervention": "isotropic-arena-scale",
+          "scale": 1.0
+        },
+        {
+          "condition_id": "expanded",
+          "intervention": "isotropic-arena-scale",
+          "scale": 1.25
+        }
+      ],
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "recorded_coordinates_compared_only_at_recorded_scale": true,
+      "reflection_count_scope": "full-generated-trajectory-before-observation-mask",
+      "registered_metric_ids": [
+        "path-length-px-with-valid-transition-count",
+        "boundary-band-occupancy-fraction",
+        "zone-transition-counts",
+        "zone-positive-displacement-summaries",
+        "reflection-counts"
+      ],
+      "template_subject_ids": [
+        "16459-67049",
+        "16459-67053",
+        "16459-67060",
+        "16459-67067",
+        "16459-67071",
+        "16459-67074"
+      ]
+    },
+    "legacy_diagnostic_subject_ids": [
+      "16459-67064",
+      "16459-67078"
+    ],
+    "protocol_id": "umwelt.behavioral-world.v1",
+    "simulation": {
+      "availability_mask": "recorded-bodycentre-availability-only",
+      "master_seed": 1730,
+      "paired_across_models_and_conditions": true,
+      "replicates": 16,
+      "seed_derivation": "sha256-first-eight-bytes-big-endian",
+      "seed_namespace": "v0.3-behavioral-world",
+      "seed_payload_template": "{master_seed}|{seed_namespace}|{subject_id}|{replicate}"
+    }
+  }
+}

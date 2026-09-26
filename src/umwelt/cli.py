@@ -21,6 +21,8 @@ from umwelt.spatial_config import load_spatial_lab_config
 from umwelt.spatial_lab import run_spatial_lab
 from umwelt.temporal_config import load_temporal_lab_config
 from umwelt.temporal_lab import run_temporal_lab
+from umwelt.world_config import load_world_lab_config
+from umwelt.world_lab import run_world_lab
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -72,6 +74,12 @@ def _parser() -> argparse.ArgumentParser:
     )
     spatial.add_argument("--config", type=Path, required=True)
     spatial.add_argument("--output", type=Path)
+
+    world = commands.add_parser(
+        "world", help="Run the paired v0.3 behavioral-world experiment."
+    )
+    world.add_argument("--config", type=Path, required=True)
+    world.add_argument("--output", type=Path)
     return parser
 
 
@@ -239,6 +247,24 @@ def _spatial(arguments: argparse.Namespace, output: TextIO) -> int:
     return 0
 
 
+def _world(arguments: argparse.Namespace, output: TextIO) -> int:
+    result = run_world_lab(
+        load_world_lab_config(arguments.config), output_directory=arguments.output
+    )
+    _print_json(
+        {
+            "experiment_id": result.experiment_id,
+            "output_directory": str(result.output_directory),
+            "configuration_sha256": result.configuration_sha256,
+            "replicate_records": result.replicate_records,
+            "generated_series": result.generated_series,
+            "artifact_count": result.artifact_count,
+        },
+        output,
+    )
+    return 0
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -263,6 +289,8 @@ def main(
             return _individual(arguments, output)
         if arguments.command == "spatial":
             return _spatial(arguments, output)
+        if arguments.command == "world":
+            return _world(arguments, output)
     except UmweltError as error:
         errors.write(f"error: {error}\n")
         return 2

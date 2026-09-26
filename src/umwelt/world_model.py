@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import atan2, cos, exp, isfinite, log, pi, sin
+from math import atan2, cos, exp, floor, isfinite, log, pi, sin
 from random import Random
 from statistics import fmean, pstdev
 
@@ -74,6 +74,8 @@ class BoundaryConditionedMovementModel:
 
     shared_baseline: SpatialMovementModel
     zone_displacements: tuple[ZoneDisplacementParameters, ...]
+    excluded_outside_position_count: int = 0
+    excluded_positive_transition_start_count: int = 0
     boundary_band_fraction: float = V03_BOUNDARY_BAND_FRACTION
     model_id: str = BOUNDARY_CONDITIONED_MODEL_ID
 
@@ -84,6 +86,11 @@ class BoundaryConditionedMovementModel:
             raise DataError("Boundary-conditioned fitting requires the v0.2 baseline.")
         if self.boundary_band_fraction != V03_BOUNDARY_BAND_FRACTION:
             raise DataError("Boundary-conditioned zone fraction is frozen at 0.10.")
+        if (
+            self.excluded_outside_position_count < 0
+            or self.excluded_positive_transition_start_count < 0
+        ):
+            raise DataError("Zone-fitting exclusion counts must be non-negative.")
         expected = tuple(WorldZone)
         if tuple(parameters.zone for parameters in self.zone_displacements) != expected:
             raise DataError(
@@ -128,6 +135,15 @@ class BoundaryConditionedMovementModel:
             "minimum_positive_displacements_per_zone": (
                 MINIMUM_POSITIVE_DISPLACEMENTS_PER_ZONE
             ),
+            "zone_fitting_quality_control": {
+                "outside_recorded_position_count": (
+                    self.excluded_outside_position_count
+                ),
+                "unclassified_positive_transition_start_count": (
+                    self.excluded_positive_transition_start_count
+                ),
+                "outside_positions_retained_in_shared_baseline": True,
+            },
         }
 
 
@@ -138,10 +154,13 @@ class GeneratedWorldTrajectory:
     world: OpenFieldWorld
     frames: tuple[SpatialFrame, ...]
     seed: int
+    reflection_count: int
 
     def __post_init__(self) -> None:
         if not self.frames:
             raise DataError("A generated world trajectory must contain frames.")
+        if self.reflection_count < 0:
+            raise DataError("Generated reflection count must be non-negative.")
         context = self.frames[0].context
         if context.source is not ObservationSource.SYNTHETIC:
             raise DataError("Generated world trajectories must be synthetic.")
@@ -159,6 +178,19 @@ class GeneratedWorldTrajectory:
     @property
     def context(self) -> SpatialContext:
         return self.frames[0].context
+
+
+def _axis_reflections(value: float, minimum: float, maximum: float) -> int:
+    """Count crossed axis boundaries for one attempted movement endpoint."""
+
+    if not isfinite(value):
+        raise DataError("Synthetic attempted movement must remain finite.")
+    width = maximum - minimum
+    if value > maximum:
+        return floor((value - maximum) / width) + 1
+    if value < minimum:
+        return floor((minimum - value) / width) + 1
+    return 0
 
 
 def _fit_zone_parameters(
@@ -195,6 +227,8 @@ def fit_boundary_conditioned_movement_model(
             "Boundary-conditioned fitting requires one world per trajectory."
         )
     samples: dict[WorldZone, list[float]] = {zone: [] for zone in WorldZone}
+    outside_position_count = 0
+    unclassified_positive_start_count = 0
 
     for steps, world in zip(trajectories, worlds, strict=True):
         if not steps:
@@ -208,14 +242,10 @@ def fit_boundary_conditioned_movement_model(
         if world.boundary_band_fraction != V03_BOUNDARY_BAND_FRACTION:
             raise DataError("Model fitting requires the frozen boundary-zone fraction.")
         measured = measure_world_steps(steps, world=world)
-        if (
-            measured.outside_arena_position_count
-            or measured.unclassified_positive_transition_start_count
-        ):
-            raise DataError(
-                "Model fitting requires every accepted position and positive "
-                "transition start inside its world."
-            )
+        outside_position_count += measured.outside_arena_position_count
+        unclassified_positive_start_count += (
+            measured.unclassified_positive_transition_start_count
+        )
         for zone in WorldZone:
             samples[zone].extend(measured.positive_displacements(zone))
 
@@ -226,6 +256,8 @@ def fit_boundary_conditioned_movement_model(
     return BoundaryConditionedMovementModel(
         shared_baseline=baseline,
         zone_displacements=_fit_zone_parameters(samples),
+        excluded_outside_position_count=outside_position_count,
+        excluded_positive_transition_start_count=unclassified_positive_start_count,
     )
 
 
@@ -265,6 +297,7 @@ def generate_boundary_conditioned_trajectory(
     heading = rng.uniform(-pi, pi)
     frames: list[SpatialFrame] = []
     previous_index: int | None = None
+    reflection_count = 0
 
     for frame_index in frame_indices:
         if previous_index is not None and frame_index == previous_index + 1:
@@ -279,6 +312,12 @@ def generate_boundary_conditioned_trajectory(
                     if arena.coordinate_frame.axis_orientation
                     is AxisOrientation.X_RIGHT_Y_DOWN
                     else dy_math
+                )
+                reflection_count += _axis_reflections(
+                    point.x + dx, arena.minimum.x, arena.maximum.x
+                )
+                reflection_count += _axis_reflections(
+                    point.y + dy_coordinate, arena.minimum.y, arena.maximum.y
                 )
                 x, x_direction = _reflect(
                     point.x + dx,
@@ -299,4 +338,9 @@ def generate_boundary_conditioned_trajectory(
         frames.append(SpatialFrame(context, frame_index, pose))
         previous_index = frame_index
 
-    return GeneratedWorldTrajectory(world=world, frames=tuple(frames), seed=seed)
+    return GeneratedWorldTrajectory(
+        world=world,
+        frames=tuple(frames),
+        seed=seed,
+        reflection_count=reflection_count,
+    )
