@@ -58,6 +58,7 @@ jobs:
           src/umwelt/calms21.py
           src/umwelt/calms21_audit.py
           src/umwelt/dyad.py
+          src/umwelt/social_model.py
           src/umwelt/spatial_config.py
           src/umwelt/spatial_evaluation.py
           src/umwelt/spatial_execution.py
