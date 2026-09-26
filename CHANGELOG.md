@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+## 0.4.0 - 2026-09-26
+
+- Add a two-animal observation contract with explicit role, recording, source,
+  image-coordinate, and gap-aware pair-distance provenance.
+- Add an optional streaming CalMS21 Task 1 adapter and a checksum, schema,
+  identity, pose-quality, and data-rights source audit.
+- Freeze fitting/development/test splits, S0 and S1 generators, paired seeds,
+  metrics, exclusions, and a three-part preference rule before model outcomes.
+- Run the canonical 14-pair development and 19-pair held-out comparison once.
+  S1 meets the declared rule in both phases, but retains substantial absolute
+  distance error and barely improves signed-distance-change discrepancy.
+- Preserve compact local model, comparison, provenance, seed, and artifact-hash
+  outputs, with the held-out run bound to the development manifest and code.
+- Add an optional offline, read-only HTML results panel without raw poses and
+  document the separate non-commercial CalMS21 data terms.
+
 ## 0.3.0 - 2026-09-26
 
 - Align the architecture and scope documentation with the completed v0.2

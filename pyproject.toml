@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "umwelt"
-version = "0.4.0.dev0"
+version = "0.4.0"
 description = "Computational laboratory for explicit, reproducible models of animal behavior."
 readme = "README.md"
 requires-python = ">=3.12"
