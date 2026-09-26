@@ -87,6 +87,10 @@ class WorldEvaluationTests(unittest.TestCase):
         )
         self.assertEqual(measured.positive_displacements(WorldZone.INTERIOR), (10.0,))
         self.assertEqual(measured.spatial.displacements_px, (10.0, 0.0, 10.0))
+        self.assertEqual(
+            dict(measured.zone_valid_transition_counts),
+            {"boundary-band": 1, "interior": 2},
+        )
 
     def test_recorded_outside_positions_remain_quality_control(self) -> None:
         measured = measure_world_trajectory(
@@ -106,6 +110,12 @@ class WorldEvaluationTests(unittest.TestCase):
             measured.positive_displacements(WorldZone.BOUNDARY_BAND), (10.0,)
         )
         self.assertEqual(measured.spatial.path_length_px, 20.0)
+        self.assertEqual(measured.unclassified_transition_start_count, 1)
+        self.assertEqual(measured.unclassified_positive_transition_start_count, 1)
+        self.assertEqual(
+            dict(measured.zone_valid_transition_counts),
+            {"boundary-band": 1, "interior": 0},
+        )
 
     def test_synthetic_outside_position_is_an_invariant_violation(self) -> None:
         with self.assertRaisesRegex(DataError, "inside their declared world"):

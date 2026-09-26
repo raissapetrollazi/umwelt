@@ -17,6 +17,11 @@
   explicit world conditions.
 - Freeze the v0.3 cross-validation folds, paired seed derivation, comparison
   metrics, preference rule, and arena-size intervention protocol before results.
+- Record the pre-result source-quality rule for out-of-arena Roche positions:
+  retain them in spatial measurements, count them in quality control, and omit
+  only unclassifiable transition starts from zone-conditioned fitting.
+- Measure valid transition exposure by world zone and count repeated axis
+  reflections for the declared arena-size intervention summaries.
 
 ## 0.2.0 - 2026-08-13
 

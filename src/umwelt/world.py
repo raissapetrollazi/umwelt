@@ -12,6 +12,7 @@ from umwelt.spatial import Point2D
 
 
 V03_BOUNDARY_BAND_FRACTION = 0.10
+V03_WORLD_ID = "roche-open-field-v1"
 
 
 class WorldZone(StrEnum):

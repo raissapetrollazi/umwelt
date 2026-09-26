@@ -31,6 +31,8 @@ WORLD_QUALITY_CONTROL_IDS = (
     "in-arena-position-count",
     "outside-arena-position-count",
     "zone-position-counts",
+    "zone-valid-transition-counts",
+    "unclassified-transition-start-count",
     "unclassified-positive-transition-start-count",
 )
 
@@ -42,7 +44,9 @@ class WorldMeasurements:
     world: OpenFieldWorld
     spatial: SpatialMeasurements
     zone_position_counts: tuple[tuple[str, int], ...]
+    zone_valid_transition_counts: tuple[tuple[str, int], ...]
     outside_arena_position_count: int
+    unclassified_transition_start_count: int
     unclassified_positive_transition_start_count: int
     zone_positive_displacements_px: tuple[tuple[str, tuple[float, ...]], ...]
 
@@ -53,15 +57,25 @@ class WorldMeasurements:
         if tuple(name for name, _ in self.zone_position_counts) != expected_zones:
             raise DataError("World position counts must include every declared zone.")
         if (
+            tuple(name for name, _ in self.zone_valid_transition_counts)
+            != expected_zones
+        ):
+            raise DataError("World transition counts must include every declared zone.")
+        if (
             tuple(name for name, _ in self.zone_positive_displacements_px)
             != expected_zones
         ):
             raise DataError(
                 "World displacement samples must include every declared zone."
             )
-        counts = tuple(count for _, count in self.zone_position_counts) + (
-            self.outside_arena_position_count,
-            self.unclassified_positive_transition_start_count,
+        counts = (
+            tuple(count for _, count in self.zone_position_counts)
+            + tuple(count for _, count in self.zone_valid_transition_counts)
+            + (
+                self.outside_arena_position_count,
+                self.unclassified_transition_start_count,
+                self.unclassified_positive_transition_start_count,
+            )
         )
         if any(count < 0 for count in counts):
             raise DataError("World measurement counts must be non-negative.")
@@ -72,6 +86,19 @@ class WorldMeasurements:
             raise DataError(
                 "World position counts must cover every accepted spatial position."
             )
+        if (
+            sum(count for _, count in self.zone_valid_transition_counts)
+            + self.unclassified_transition_start_count
+            != self.spatial.quality_control.valid_transition_count
+        ):
+            raise DataError(
+                "World transition counts must cover every valid spatial transition."
+            )
+        if (
+            self.unclassified_positive_transition_start_count
+            > self.unclassified_transition_start_count
+        ):
+            raise DataError("Unclassified positive transitions exceed all transitions.")
         classified_displacements = tuple(
             value
             for _, values in self.zone_positive_displacements_px
@@ -137,6 +164,10 @@ class WorldMeasurements:
                 "in_arena_position_count": self.in_arena_position_count,
                 "outside_arena_position_count": self.outside_arena_position_count,
                 "zone_position_counts": dict(self.zone_position_counts),
+                "zone_valid_transition_counts": dict(self.zone_valid_transition_counts),
+                "unclassified_transition_start_count": (
+                    self.unclassified_transition_start_count
+                ),
                 "unclassified_positive_transition_start_count": (
                     self.unclassified_positive_transition_start_count
                 ),
@@ -192,9 +223,11 @@ def measure_world_steps(
         raise DataError("World and trajectory must share a coordinate frame.")
 
     zone_counts: Counter[WorldZone] = Counter()
+    zone_transitions: Counter[WorldZone] = Counter()
     zone_displacements: dict[WorldZone, list[float]] = {zone: [] for zone in WorldZone}
     outside_positions = 0
     unclassified_transition_starts = 0
+    unclassified_positive_transition_starts = 0
     previous_step: TrajectoryStep | None = None
 
     for step in materialized:
@@ -211,19 +244,27 @@ def measure_world_steps(
                         "Synthetic positions must remain inside their declared world."
                     )
 
-        if step.displacement is not None and step.displacement > 0:
+        if step.displacement is not None:
             start = previous_step.point if previous_step is not None else None
             if start is None:
                 raise DataError(
                     "A valid displacement must retain its transition-start position."
                 )
             if world.arena.contains(start):
-                zone_displacements[world.zone(start)].append(step.displacement)
+                zone = world.zone(start)
+                zone_transitions[zone] += 1
+                if step.displacement > 0:
+                    zone_displacements[zone].append(step.displacement)
             else:
                 unclassified_transition_starts += 1
+                if step.displacement > 0:
+                    unclassified_positive_transition_starts += 1
         previous_step = step
 
     ordered_counts = tuple((zone.value, zone_counts[zone]) for zone in WorldZone)
+    ordered_transitions = tuple(
+        (zone.value, zone_transitions[zone]) for zone in WorldZone
+    )
     ordered_displacements = tuple(
         (zone.value, tuple(zone_displacements[zone])) for zone in WorldZone
     )
@@ -231,8 +272,12 @@ def measure_world_steps(
         world=world,
         spatial=spatial,
         zone_position_counts=ordered_counts,
+        zone_valid_transition_counts=ordered_transitions,
         outside_arena_position_count=outside_positions,
-        unclassified_positive_transition_start_count=(unclassified_transition_starts),
+        unclassified_transition_start_count=unclassified_transition_starts,
+        unclassified_positive_transition_start_count=(
+            unclassified_positive_transition_starts
+        ),
         zone_positive_displacements_px=ordered_displacements,
     )
 
