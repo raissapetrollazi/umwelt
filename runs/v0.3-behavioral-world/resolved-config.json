@@ -1,0 +1,14 @@
+{
+  "dataset": {
+    "directory": "/home/lucie/Projects/umwelt/data/raw/roche-open-field"
+  },
+  "experiment_id": "v0.3-roche-behavioral-world",
+  "output": {
+    "directory": "/home/lucie/Projects/umwelt/runs/v0.3-behavioral-world"
+  },
+  "schema_version": "umwelt.world-lab.v1",
+  "simulation": {
+    "replicates": 16,
+    "seed": 1730
+  }
+}

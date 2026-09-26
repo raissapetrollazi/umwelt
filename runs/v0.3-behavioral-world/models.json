@@ -1,0 +1,487 @@
+{
+  "cross_validation_folds": [
+    {
+      "boundary-conditioned-random-walk-v1": {
+        "environmental_dependency": {
+          "affected_parameter": "positive-displacement",
+          "boundary_band_fraction": 0.1,
+          "input": "transition-start-zone"
+        },
+        "minimum_positive_displacements_per_zone": 2,
+        "model_id": "boundary-conditioned-random-walk-v1",
+        "positive_displacement_by_zone": {
+          "boundary-band": {
+            "family": "lognormal",
+            "log_mean": 0.3744774540488424,
+            "log_std": 1.4365764100379492,
+            "sample_count": 171960
+          },
+          "interior": {
+            "family": "lognormal",
+            "log_mean": 0.8726734291558952,
+            "log_std": 1.3561107160873538,
+            "sample_count": 79755
+          }
+        },
+        "shared_with_baseline": {
+          "boundary_rule": "repeated-axis-reflection",
+          "initial_position_fraction": [
+            0.4178579733700437,
+            0.31477498684168176
+          ],
+          "model_id": "persistent-reflecting-random-walk-v1",
+          "stationary_probability": 0.0,
+          "turning": {
+            "family": "zero-mean-normal-radians",
+            "std": 1.0704304950040184
+          }
+        },
+        "zone_fitting_quality_control": {
+          "outside_positions_retained_in_shared_baseline": true,
+          "outside_recorded_position_count": 18049,
+          "unclassified_positive_transition_start_count": 18049
+        }
+      },
+      "evaluation_subject_id": "16459-67049",
+      "fitting_subject_ids": [
+        "16459-67053",
+        "16459-67060",
+        "16459-67067",
+        "16459-67071",
+        "16459-67074"
+      ],
+      "persistent-reflecting-random-walk-v1": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.4178579733700437,
+          0.31477498684168176
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "positive_displacement": {
+          "family": "lognormal",
+          "log_mean": 0.5480032356625563,
+          "log_std": 1.4088729692223612
+        },
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.0704304950040184
+        }
+      }
+    },
+    {
+      "boundary-conditioned-random-walk-v1": {
+        "environmental_dependency": {
+          "affected_parameter": "positive-displacement",
+          "boundary_band_fraction": 0.1,
+          "input": "transition-start-zone"
+        },
+        "minimum_positive_displacements_per_zone": 2,
+        "model_id": "boundary-conditioned-random-walk-v1",
+        "positive_displacement_by_zone": {
+          "boundary-band": {
+            "family": "lognormal",
+            "log_mean": 0.371267839337123,
+            "log_std": 1.442571882144463,
+            "sample_count": 170402
+          },
+          "interior": {
+            "family": "lognormal",
+            "log_mean": 0.7832433989936793,
+            "log_std": 1.3478846457625853,
+            "sample_count": 82342
+          }
+        },
+        "shared_with_baseline": {
+          "boundary_rule": "repeated-axis-reflection",
+          "initial_position_fraction": [
+            0.27624788737461864,
+            0.2808948435526016
+          ],
+          "model_id": "persistent-reflecting-random-walk-v1",
+          "stationary_probability": 0.0,
+          "turning": {
+            "family": "zero-mean-normal-radians",
+            "std": 1.0775766260995845
+          }
+        },
+        "zone_fitting_quality_control": {
+          "outside_positions_retained_in_shared_baseline": true,
+          "outside_recorded_position_count": 17060,
+          "unclassified_positive_transition_start_count": 17060
+        }
+      },
+      "evaluation_subject_id": "16459-67053",
+      "fitting_subject_ids": [
+        "16459-67049",
+        "16459-67060",
+        "16459-67067",
+        "16459-67071",
+        "16459-67074"
+      ],
+      "persistent-reflecting-random-walk-v1": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.27624788737461864,
+          0.2808948435526016
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "positive_displacement": {
+          "family": "lognormal",
+          "log_mean": 0.520194192200894,
+          "log_std": 1.4051981781663783
+        },
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.0775766260995845
+        }
+      }
+    },
+    {
+      "boundary-conditioned-random-walk-v1": {
+        "environmental_dependency": {
+          "affected_parameter": "positive-displacement",
+          "boundary_band_fraction": 0.1,
+          "input": "transition-start-zone"
+        },
+        "minimum_positive_displacements_per_zone": 2,
+        "model_id": "boundary-conditioned-random-walk-v1",
+        "positive_displacement_by_zone": {
+          "boundary-band": {
+            "family": "lognormal",
+            "log_mean": 0.34697081457100465,
+            "log_std": 1.4349232438974204,
+            "sample_count": 170758
+          },
+          "interior": {
+            "family": "lognormal",
+            "log_mean": 0.803603573092945,
+            "log_std": 1.3531936856512223,
+            "sample_count": 82697
+          }
+        },
+        "shared_with_baseline": {
+          "boundary_rule": "repeated-axis-reflection",
+          "initial_position_fraction": [
+            0.4038755108085829,
+            0.17974375453595862
+          ],
+          "model_id": "persistent-reflecting-random-walk-v1",
+          "stationary_probability": 0.0,
+          "turning": {
+            "family": "zero-mean-normal-radians",
+            "std": 1.078536502560126
+          }
+        },
+        "zone_fitting_quality_control": {
+          "outside_positions_retained_in_shared_baseline": true,
+          "outside_recorded_position_count": 16300,
+          "unclassified_positive_transition_start_count": 16300
+        }
+      },
+      "evaluation_subject_id": "16459-67060",
+      "fitting_subject_ids": [
+        "16459-67049",
+        "16459-67053",
+        "16459-67067",
+        "16459-67071",
+        "16459-67074"
+      ],
+      "persistent-reflecting-random-walk-v1": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.4038755108085829,
+          0.17974375453595862
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "positive_displacement": {
+          "family": "lognormal",
+          "log_mean": 0.5120964199691659,
+          "log_std": 1.4061099027640023
+        },
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.078536502560126
+        }
+      }
+    },
+    {
+      "boundary-conditioned-random-walk-v1": {
+        "environmental_dependency": {
+          "affected_parameter": "positive-displacement",
+          "boundary_band_fraction": 0.1,
+          "input": "transition-start-zone"
+        },
+        "minimum_positive_displacements_per_zone": 2,
+        "model_id": "boundary-conditioned-random-walk-v1",
+        "positive_displacement_by_zone": {
+          "boundary-band": {
+            "family": "lognormal",
+            "log_mean": 0.3850762187942798,
+            "log_std": 1.4274253068686449,
+            "sample_count": 168640
+          },
+          "interior": {
+            "family": "lognormal",
+            "log_mean": 0.8364408557863043,
+            "log_std": 1.3459163468883772,
+            "sample_count": 85109
+          }
+        },
+        "shared_with_baseline": {
+          "boundary_rule": "repeated-axis-reflection",
+          "initial_position_fraction": [
+            0.23275119784859283,
+            0.3422625964953219
+          ],
+          "model_id": "persistent-reflecting-random-walk-v1",
+          "stationary_probability": 0.0,
+          "turning": {
+            "family": "zero-mean-normal-radians",
+            "std": 1.0785933235753389
+          }
+        },
+        "zone_fitting_quality_control": {
+          "outside_positions_retained_in_shared_baseline": true,
+          "outside_recorded_position_count": 16005,
+          "unclassified_positive_transition_start_count": 16005
+        }
+      },
+      "evaluation_subject_id": "16459-67067",
+      "fitting_subject_ids": [
+        "16459-67049",
+        "16459-67053",
+        "16459-67060",
+        "16459-67071",
+        "16459-67074"
+      ],
+      "persistent-reflecting-random-walk-v1": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.23275119784859283,
+          0.3422625964953219
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "positive_displacement": {
+          "family": "lognormal",
+          "log_mean": 0.5475127018881045,
+          "log_std": 1.3974643789169734
+        },
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.0785933235753389
+        }
+      }
+    },
+    {
+      "boundary-conditioned-random-walk-v1": {
+        "environmental_dependency": {
+          "affected_parameter": "positive-displacement",
+          "boundary_band_fraction": 0.1,
+          "input": "transition-start-zone"
+        },
+        "minimum_positive_displacements_per_zone": 2,
+        "model_id": "boundary-conditioned-random-walk-v1",
+        "positive_displacement_by_zone": {
+          "boundary-band": {
+            "family": "lognormal",
+            "log_mean": 0.5749067390118575,
+            "log_std": 1.2907074771384166,
+            "sample_count": 162065
+          },
+          "interior": {
+            "family": "lognormal",
+            "log_mean": 0.8512794886764391,
+            "log_std": 1.3464903219996385,
+            "sample_count": 90240
+          }
+        },
+        "shared_with_baseline": {
+          "boundary_rule": "repeated-axis-reflection",
+          "initial_position_fraction": [
+            0.34314704447991684,
+            0.3412052405398323
+          ],
+          "model_id": "persistent-reflecting-random-walk-v1",
+          "stationary_probability": 0.0,
+          "turning": {
+            "family": "zero-mean-normal-radians",
+            "std": 1.02322643719739
+          }
+        },
+        "zone_fitting_quality_control": {
+          "outside_positions_retained_in_shared_baseline": true,
+          "outside_recorded_position_count": 17449,
+          "unclassified_positive_transition_start_count": 17449
+        }
+      },
+      "evaluation_subject_id": "16459-67071",
+      "fitting_subject_ids": [
+        "16459-67049",
+        "16459-67053",
+        "16459-67060",
+        "16459-67067",
+        "16459-67074"
+      ],
+      "persistent-reflecting-random-walk-v1": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.34314704447991684,
+          0.3412052405398323
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "positive_displacement": {
+          "family": "lognormal",
+          "log_mean": 0.6777868446708122,
+          "log_std": 1.3025053051234015
+        },
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.02322643719739
+        }
+      }
+    },
+    {
+      "boundary-conditioned-random-walk-v1": {
+        "environmental_dependency": {
+          "affected_parameter": "positive-displacement",
+          "boundary_band_fraction": 0.1,
+          "input": "transition-start-zone"
+        },
+        "minimum_positive_displacements_per_zone": 2,
+        "model_id": "boundary-conditioned-random-walk-v1",
+        "positive_displacement_by_zone": {
+          "boundary-band": {
+            "family": "lognormal",
+            "log_mean": 0.36742376191219356,
+            "log_std": 1.4356869995845265,
+            "sample_count": 170760
+          },
+          "interior": {
+            "family": "lognormal",
+            "log_mean": 0.8826513599002088,
+            "log_std": 1.328660890196472,
+            "sample_count": 82697
+          }
+        },
+        "shared_with_baseline": {
+          "boundary_rule": "repeated-axis-reflection",
+          "initial_position_fraction": [
+            0.4155048470606014,
+            0.27954326788986206
+          ],
+          "model_id": "persistent-reflecting-random-walk-v1",
+          "stationary_probability": 0.0,
+          "turning": {
+            "family": "zero-mean-normal-radians",
+            "std": 1.0649517129314823
+          }
+        },
+        "zone_fitting_quality_control": {
+          "outside_positions_retained_in_shared_baseline": true,
+          "outside_recorded_position_count": 16297,
+          "unclassified_positive_transition_start_count": 16297
+        }
+      },
+      "evaluation_subject_id": "16459-67074",
+      "fitting_subject_ids": [
+        "16459-67049",
+        "16459-67053",
+        "16459-67060",
+        "16459-67067",
+        "16459-67071"
+      ],
+      "persistent-reflecting-random-walk-v1": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.4155048470606014,
+          0.27954326788986206
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "positive_displacement": {
+          "family": "lognormal",
+          "log_mean": 0.5457315767417419,
+          "log_std": 1.4017235972904054
+        },
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.0649517129314823
+        }
+      }
+    }
+  ],
+  "final_fit_subject_ids": [
+    "16459-67049",
+    "16459-67053",
+    "16459-67060",
+    "16459-67067",
+    "16459-67071",
+    "16459-67074"
+  ],
+  "final_models": {
+    "boundary-conditioned-random-walk-v1": {
+      "environmental_dependency": {
+        "affected_parameter": "positive-displacement",
+        "boundary_band_fraction": 0.1,
+        "input": "transition-start-zone"
+      },
+      "minimum_positive_displacements_per_zone": 2,
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "positive_displacement_by_zone": {
+        "boundary-band": {
+          "family": "lognormal",
+          "log_mean": 0.4018990656189764,
+          "log_std": 1.415393916806075,
+          "sample_count": 202917
+        },
+        "interior": {
+          "family": "lognormal",
+          "log_mean": 0.838338690934053,
+          "log_std": 1.3468042999078782,
+          "sample_count": 100568
+        }
+      },
+      "shared_with_baseline": {
+        "boundary_rule": "repeated-axis-reflection",
+        "initial_position_fraction": [
+          0.3482307434903927,
+          0.2897374483092097
+        ],
+        "model_id": "persistent-reflecting-random-walk-v1",
+        "stationary_probability": 0.0,
+        "turning": {
+          "family": "zero-mean-normal-radians",
+          "std": 1.0657326937028495
+        }
+      },
+      "zone_fitting_quality_control": {
+        "outside_positions_retained_in_shared_baseline": true,
+        "outside_recorded_position_count": 20232,
+        "unclassified_positive_transition_start_count": 20232
+      }
+    },
+    "persistent-reflecting-random-walk-v1": {
+      "boundary_rule": "repeated-axis-reflection",
+      "initial_position_fraction": [
+        0.3482307434903927,
+        0.2897374483092097
+      ],
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "positive_displacement": {
+        "family": "lognormal",
+        "log_mean": 0.5585528829820319,
+        "log_std": 1.388594066511102
+      },
+      "stationary_probability": 0.0,
+      "turning": {
+        "family": "zero-mean-normal-radians",
+        "std": 1.0657326937028495
+      }
+    }
+  }
+}

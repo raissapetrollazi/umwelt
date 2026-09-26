@@ -1,0 +1,61 @@
+{
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "bytes": 35894,
+      "name": "intervention-comparison.json",
+      "sha256": "eb2af80dd8af7b1ed0fd56f3a28c7a2ed9eaa6c342a5076f8eed04bca6428d75"
+    },
+    {
+      "bytes": 738,
+      "name": "interventions.json",
+      "sha256": "c6e2210dea000f4d9c437088cc880ef1fe9e09160babb1b786984d371701ad1b"
+    },
+    {
+      "bytes": 35753,
+      "name": "model-comparison.json",
+      "sha256": "cdb65835a5a99b1a3c21ff8ebbaa4d7140fe02bf19ec73abddc85ae4f617c5c3"
+    },
+    {
+      "bytes": 15881,
+      "name": "models.json",
+      "sha256": "857950e97019cd22f2b30c0f53cc26e20dc4c609e74f2d277a193b4ed90a1706"
+    },
+    {
+      "bytes": 7598,
+      "name": "protocol.json",
+      "sha256": "e664460c520cb69d5bedab2cae20c66d00711f7b24a07fd2ef54c64b4771e653"
+    },
+    {
+      "bytes": 9096,
+      "name": "provenance.json",
+      "sha256": "ab1265ddb4de29f8c0ba107423a97f7a53695834d2b86d030db2750795e1c912"
+    },
+    {
+      "bytes": 2198695,
+      "name": "replicate-metrics.jsonl",
+      "sha256": "a768db2ab7072360820ce2f03708e599dc0919a786decd1d6d92effdd80041d6"
+    },
+    {
+      "bytes": 3064,
+      "name": "report.md",
+      "sha256": "13c6344fdbe2bbee1960a1ec4bd8bbe4056280400ccbe223338f48b20140d437"
+    },
+    {
+      "bytes": 344,
+      "name": "resolved-config.json",
+      "sha256": "106a38b64db93b5261956de3317c98255ecb6c6d3fe5dc24ae5848470cccff1e"
+    },
+    {
+      "bytes": 13499,
+      "name": "seeds.json",
+      "sha256": "e2c3194b4145aebf7b9199986b133962f07a5c9b6ccd017bb1f36032c7dc3cf6"
+    },
+    {
+      "bytes": 92654,
+      "name": "world.json",
+      "sha256": "f1cebbc31c3b717b26cc56de6801f58e6aa4d311d803e8a7a7cc080bebb27262"
+    }
+  ],
+  "schema_version": "umwelt.artifacts.v1"
+}

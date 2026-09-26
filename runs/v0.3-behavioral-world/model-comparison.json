@@ -1,0 +1,1041 @@
+{
+  "cross_validation": [
+    {
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.2453843917747132,
+          "p50": 0.2480976515921375,
+          "p95": 0.2520580167986993,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.524948669827194,
+          "p50": 1.5879323915265737,
+          "p95": 1.6387731458421009,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.19711415690064488,
+          "p50": 0.22849737223222366,
+          "p95": 0.28439684215104344,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.313469808347959,
+          "p50": 1.3616377843064358,
+          "p95": 1.5054769846229634,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.8143804555384555,
+          "p50": 1.911498744838611,
+          "p95": 1.9535680166048155,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.27912192406339487,
+          "p50": 0.2977183722193,
+          "p95": 0.3154310841544096,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.27912192406339487,
+          "p50": 0.2977183722193,
+          "p95": 0.3154310841544096,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67049"
+    },
+    {
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.24565796904455817,
+          "p50": 0.24833422570750385,
+          "p95": 0.2519551131782327,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.6177311844858413,
+          "p50": 1.6828017827438062,
+          "p95": 1.7336165998453783,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.08703427403746514,
+          "p50": 0.12861599179703812,
+          "p95": 0.1746042410463987,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.3214093884854334,
+          "p50": 1.3778276781984804,
+          "p95": 1.4517646933046553,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.1423307155063833,
+          "p50": 2.201694797564956,
+          "p95": 2.277248933515901,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.3895421451475119,
+          "p50": 0.42364371181494054,
+          "p95": 0.4516411652367267,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.3895421451475119,
+          "p50": 0.42364371181494054,
+          "p95": 0.4516411652367267,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67049"
+    },
+    {
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.26536586636741527,
+          "p50": 0.2666960831559205,
+          "p95": 0.2705297780269828,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.5709841076211015,
+          "p50": 1.6416187306447512,
+          "p95": 1.6664619066543398,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.23107913540979674,
+          "p50": 0.2745696944482654,
+          "p95": 0.31988260018703457,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2840159599655772,
+          "p50": 1.3470477177965983,
+          "p95": 1.4164870035869819,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.7321359531865372,
+          "p50": 2.8058672643310185,
+          "p95": 2.8427912962207,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.07714416987778679,
+          "p50": 0.08077574179348229,
+          "p95": 0.09614881275599636,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.07714416987778679,
+          "p50": 0.08077574179348229,
+          "p95": 0.09614881275599636,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67053"
+    },
+    {
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.265678760488759,
+          "p50": 0.26674046625005354,
+          "p95": 0.27115794718136654,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.543058294756172,
+          "p50": 1.6177403795909158,
+          "p95": 1.6336956662303774,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.15458230712771792,
+          "p50": 0.20258468127914425,
+          "p95": 0.2459593149549984,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2812927708210422,
+          "p50": 1.3681524271618448,
+          "p95": 1.4196095688084633,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.412857029350441,
+          "p50": 2.5255500198138208,
+          "p95": 2.5607845575915524,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.1382951250556623,
+          "p50": 0.16675727205941906,
+          "p95": 0.17974626423316584,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.1382951250556623,
+          "p50": 0.16675727205941906,
+          "p95": 0.17974626423316584,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67053"
+    },
+    {
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.26130614990181095,
+          "p50": 0.26368246739010415,
+          "p95": 0.26599718592359667,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.487575726323421,
+          "p50": 1.540934254856889,
+          "p95": 1.6149162539508768,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.24017691309986106,
+          "p50": 0.2896135641385357,
+          "p95": 0.31677569374585923,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.1612033510074116,
+          "p50": 1.2230281108895062,
+          "p95": 1.2792834178756975,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.3594639195008065,
+          "p50": 2.432319848243547,
+          "p95": 2.527314570642846,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.008483434379358099,
+          "p50": 0.021582436228807577,
+          "p95": 0.03576185805021638,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.007811776610933175,
+          "p50": 0.021582436228807577,
+          "p95": 0.03576185805021638,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67060"
+    },
+    {
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.2615750888644945,
+          "p50": 0.26403221552807954,
+          "p95": 0.26575731607923453,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.4153986338596076,
+          "p50": 1.475427183974701,
+          "p95": 1.5249817251041549,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.15701808204895581,
+          "p50": 0.20724230976053595,
+          "p95": 0.24802025020120827,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2777581202979065,
+          "p50": 1.353222634430531,
+          "p95": 1.468059307500936,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.036933217523019,
+          "p50": 2.098049467060502,
+          "p95": 2.146690990256125,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.08977701282586,
+          "p50": 0.10654532387812607,
+          "p95": 0.12560150266685371,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.08977701282586,
+          "p50": 0.10654532387812607,
+          "p95": 0.12560150266685371,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67060"
+    },
+    {
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.26551328953867986,
+          "p50": 0.2681660197270368,
+          "p95": 0.27130665576079815,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2507063215196892,
+          "p50": 1.3111109379407946,
+          "p95": 1.3470916168581268,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.2742773050287206,
+          "p50": 0.3265714270359847,
+          "p95": 0.3486694924129026,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 0.9872371980406196,
+          "p50": 1.0896369876143572,
+          "p95": 1.1564707201789313,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.8825103600353512,
+          "p50": 1.9721886880366843,
+          "p95": 2.003896750541134,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.17612625438753116,
+          "p50": 0.1962098014130045,
+          "p95": 0.21020737112707677,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.17612625438753116,
+          "p50": 0.1962098014130045,
+          "p95": 0.21020737112707677,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67067"
+    },
+    {
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.26604354300296335,
+          "p50": 0.26849029532219115,
+          "p95": 0.27169867220392563,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2814670760579556,
+          "p50": 1.3416330367344709,
+          "p95": 1.3875198843629344,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.1904621690121169,
+          "p50": 0.21983360181917347,
+          "p95": 0.2792204152503498,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.0271782740832966,
+          "p50": 1.0871266912744066,
+          "p95": 1.1587626600587244,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.7817832504469244,
+          "p50": 1.863933714875189,
+          "p95": 1.9403837371894173,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.2653845776370012,
+          "p50": 0.28801329608127413,
+          "p95": 0.31600488488285644,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.2653845776370012,
+          "p50": 0.28801329608127413,
+          "p95": 0.31600488488285644,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67067"
+    },
+    {
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.22602305861890418,
+          "p50": 0.22764896774813434,
+          "p95": 0.2298297148584492,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.8175427414103569,
+          "p50": 1.8609258853361472,
+          "p95": 1.898789208297047,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.4034246593207669,
+          "p50": 0.4253003542284831,
+          "p95": 0.4717479859829862,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.087318389923855,
+          "p50": 2.1807738922000897,
+          "p95": 2.24747656088401,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2613204372940348,
+          "p50": 1.31468804529151,
+          "p95": 1.3550944266074565,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.6823857456584111,
+          "p50": 0.6986736922042147,
+          "p95": 0.7128892543932754,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.6823857456584111,
+          "p50": 0.6986736922042147,
+          "p95": 0.7128892543932754,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67071"
+    },
+    {
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.2239376463592005,
+          "p50": 0.22688960572365324,
+          "p95": 0.22917020048901104,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.1325401276773595,
+          "p50": 2.1902740141042574,
+          "p95": 2.331156774424895,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.2848780356457243,
+          "p50": 0.3119377421167049,
+          "p95": 0.35831588309958234,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.661416846779928,
+          "p50": 1.7138354155522622,
+          "p95": 1.7503274470095924,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.5815401300525311,
+          "p50": 1.6752189134368831,
+          "p95": 1.7477534588739823,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.8006496639756586,
+          "p50": 0.8223255124944131,
+          "p95": 0.8752191172837089,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.8006496639756586,
+          "p50": 0.8223255124944131,
+          "p95": 0.8752191172837089,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67071"
+    },
+    {
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.23643910297468623,
+          "p50": 0.23879260680571907,
+          "p95": 0.24202179471040786,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.3661378808497022,
+          "p50": 1.426594390172051,
+          "p95": 1.4687738065738674,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.2528744638427702,
+          "p50": 0.2911638790084362,
+          "p95": 0.330393735950101,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.1415883147417538,
+          "p50": 1.236418277559801,
+          "p95": 1.288024044513535,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.6326339865551798,
+          "p50": 1.7032284525099002,
+          "p95": 1.751940624269823,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.1791718269737576,
+          "p50": 0.1940976006358009,
+          "p95": 0.20821014068901916,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.1791718269737576,
+          "p50": 0.1940976006358009,
+          "p95": 0.20821014068901916,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67074"
+    },
+    {
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.23619684810574446,
+          "p50": 0.23902975782738312,
+          "p95": 0.2422527293333896,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.361482018503395,
+          "p50": 1.4247789795061754,
+          "p95": 1.4612723079498362,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.13204391014030187,
+          "p50": 0.18615869036415483,
+          "p95": 0.2403429613596333,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.2525811994252465,
+          "p50": 1.3066737484280178,
+          "p95": 1.3807609377015098,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.8706988988913178,
+          "p50": 1.9193044002013253,
+          "p95": 1.987421638884511,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.26316621652604383,
+          "p50": 0.3024180207659482,
+          "p95": 0.32850081026565864,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.26316621652604383,
+          "p50": 0.3024180207659482,
+          "p95": 0.32850081026565864,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67074"
+    }
+  ],
+  "decision": {
+    "aggregate_animal_medians": {
+      "boundary-conditioned-random-walk-v1": {
+        "absolute_relative_path_length": 0.2952156584236112,
+        "absolute_turning_wasserstein_radians": 0.2561832206177917,
+        "adjacent_displacement_wasserstein_px": 1.5465837817828083,
+        "boundary_band_occupancy_absolute_difference": 0.20491349551984012
+      },
+      "persistent-reflecting-random-walk-v1": {
+        "absolute_relative_path_length": 0.19515370102440271,
+        "absolute_turning_wasserstein_radians": 0.2558900594911208,
+        "adjacent_displacement_wasserstein_px": 1.5644333231917313,
+        "boundary_band_occupancy_absolute_difference": 0.29038872157348594
+      }
+    },
+    "criteria": {
+      "lower-absolute-relative-path-discrepancy-in-at-least-four-animals": false,
+      "lower-median-absolute-relative-path-discrepancy": false,
+      "lower-median-boundary-band-occupancy-error": true,
+      "no-higher-median-absolute-turning-distance": false,
+      "no-higher-median-adjacent-displacement-distance": true
+    },
+    "decision_scope": "development-only-eligibility-for-independent-evaluation",
+    "eligible_for_independent_evaluation": false,
+    "path_improved_animal_count": 0,
+    "subject_medians": [
+      {
+        "boundary-conditioned-random-walk-v1": {
+          "absolute_relative_path_length": 0.42364371181494054,
+          "absolute_turning_wasserstein_radians": 0.24833422570750385,
+          "adjacent_displacement_wasserstein_px": 1.6828017827438062,
+          "boundary_band_occupancy_absolute_difference": 0.12861599179703812
+        },
+        "persistent-reflecting-random-walk-v1": {
+          "absolute_relative_path_length": 0.2977183722193,
+          "absolute_turning_wasserstein_radians": 0.2480976515921375,
+          "adjacent_displacement_wasserstein_px": 1.5879323915265737,
+          "boundary_band_occupancy_absolute_difference": 0.22849737223222366
+        },
+        "subject_id": "16459-67049"
+      },
+      {
+        "boundary-conditioned-random-walk-v1": {
+          "absolute_relative_path_length": 0.16675727205941906,
+          "absolute_turning_wasserstein_radians": 0.26674046625005354,
+          "adjacent_displacement_wasserstein_px": 1.6177403795909158,
+          "boundary_band_occupancy_absolute_difference": 0.20258468127914425
+        },
+        "persistent-reflecting-random-walk-v1": {
+          "absolute_relative_path_length": 0.08077574179348229,
+          "absolute_turning_wasserstein_radians": 0.2666960831559205,
+          "adjacent_displacement_wasserstein_px": 1.6416187306447512,
+          "boundary_band_occupancy_absolute_difference": 0.2745696944482654
+        },
+        "subject_id": "16459-67053"
+      },
+      {
+        "boundary-conditioned-random-walk-v1": {
+          "absolute_relative_path_length": 0.10654532387812607,
+          "absolute_turning_wasserstein_radians": 0.26403221552807954,
+          "adjacent_displacement_wasserstein_px": 1.475427183974701,
+          "boundary_band_occupancy_absolute_difference": 0.20724230976053595
+        },
+        "persistent-reflecting-random-walk-v1": {
+          "absolute_relative_path_length": 0.021582436228807577,
+          "absolute_turning_wasserstein_radians": 0.26368246739010415,
+          "adjacent_displacement_wasserstein_px": 1.540934254856889,
+          "boundary_band_occupancy_absolute_difference": 0.2896135641385357
+        },
+        "subject_id": "16459-67060"
+      },
+      {
+        "boundary-conditioned-random-walk-v1": {
+          "absolute_relative_path_length": 0.28801329608127413,
+          "absolute_turning_wasserstein_radians": 0.26849029532219115,
+          "adjacent_displacement_wasserstein_px": 1.3416330367344709,
+          "boundary_band_occupancy_absolute_difference": 0.21983360181917347
+        },
+        "persistent-reflecting-random-walk-v1": {
+          "absolute_relative_path_length": 0.1962098014130045,
+          "absolute_turning_wasserstein_radians": 0.2681660197270368,
+          "adjacent_displacement_wasserstein_px": 1.3111109379407946,
+          "boundary_band_occupancy_absolute_difference": 0.3265714270359847
+        },
+        "subject_id": "16459-67067"
+      },
+      {
+        "boundary-conditioned-random-walk-v1": {
+          "absolute_relative_path_length": 0.8223255124944131,
+          "absolute_turning_wasserstein_radians": 0.22688960572365324,
+          "adjacent_displacement_wasserstein_px": 2.1902740141042574,
+          "boundary_band_occupancy_absolute_difference": 0.3119377421167049
+        },
+        "persistent-reflecting-random-walk-v1": {
+          "absolute_relative_path_length": 0.6986736922042147,
+          "absolute_turning_wasserstein_radians": 0.22764896774813434,
+          "adjacent_displacement_wasserstein_px": 1.8609258853361472,
+          "boundary_band_occupancy_absolute_difference": 0.4253003542284831
+        },
+        "subject_id": "16459-67071"
+      },
+      {
+        "boundary-conditioned-random-walk-v1": {
+          "absolute_relative_path_length": 0.3024180207659482,
+          "absolute_turning_wasserstein_radians": 0.23902975782738312,
+          "adjacent_displacement_wasserstein_px": 1.4247789795061754,
+          "boundary_band_occupancy_absolute_difference": 0.18615869036415483
+        },
+        "persistent-reflecting-random-walk-v1": {
+          "absolute_relative_path_length": 0.1940976006358009,
+          "absolute_turning_wasserstein_radians": 0.23879260680571907,
+          "adjacent_displacement_wasserstein_px": 1.426594390172051,
+          "boundary_band_occupancy_absolute_difference": 0.2911638790084362
+        },
+        "subject_id": "16459-67074"
+      }
+    ]
+  },
+  "legacy_diagnostic": [
+    {
+      "excluded_from_preference": true,
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.24639787018693715,
+          "p50": 0.24886359343764164,
+          "p95": 0.25207240403659004,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.363785616354358,
+          "p50": 1.4201609656508842,
+          "p95": 1.4671025185917896,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.24586221802162234,
+          "p50": 0.2808590676565506,
+          "p95": 0.31415101384090255,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.1428439052110102,
+          "p50": 1.257550266267784,
+          "p95": 1.3447509869814367,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.6707324555936176,
+          "p50": 1.7632502646925965,
+          "p95": 1.7974173552266508,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.24399847609662018,
+          "p50": 0.2599709640081981,
+          "p95": 0.2765672742107876,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.24399847609662018,
+          "p50": 0.2599709640081981,
+          "p95": 0.2765672742107876,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67064"
+    },
+    {
+      "excluded_from_preference": true,
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.2466177016556645,
+          "p50": 0.2495967810682994,
+          "p95": 0.25275148228695415,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.431106323299212,
+          "p50": 1.5187251793956462,
+          "p95": 1.5632828916135637,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.10780210164343026,
+          "p50": 0.14802485098555992,
+          "p95": 0.21480332472634045,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.1804078648705787,
+          "p50": 1.2349572076913167,
+          "p95": 1.2815679920481724,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.7847417807964003,
+          "p50": 1.884032791844389,
+          "p95": 2.0119098585943544,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.3247170118675394,
+          "p50": 0.3631166896973142,
+          "p95": 0.3914877143965014,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.3247170118675394,
+          "p50": 0.3631166896973142,
+          "p95": 0.3914877143965014,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67064"
+    },
+    {
+      "excluded_from_preference": true,
+      "model_id": "persistent-reflecting-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.27616318125668443,
+          "p50": 0.27991101195407264,
+          "p95": 0.2826201758904249,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.6044641946495475,
+          "p50": 1.6704950239270948,
+          "p95": 1.7261544710926497,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.335685738524246,
+          "p50": 0.36750787921062955,
+          "p95": 0.40759942172045094,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.4337910561607041,
+          "p50": 1.5093121527005942,
+          "p95": 1.5941923950799253,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.4384062990525255,
+          "p50": 2.4914335593497707,
+          "p95": 2.562500838356431,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.14761933391524967,
+          "p50": 0.16566159492094373,
+          "p95": 0.18489722611697013,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.14761933391524967,
+          "p50": 0.16566159492094373,
+          "p95": 0.18489722611697013,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67078"
+    },
+    {
+      "excluded_from_preference": true,
+      "model_id": "boundary-conditioned-random-walk-v1",
+      "predictive": {
+        "absolute_turning_wasserstein_radians": {
+          "missing_count": 0,
+          "p05": 0.2761785823031362,
+          "p50": 0.2807235474815244,
+          "p95": 0.2821950447118069,
+          "present_count": 16
+        },
+        "adjacent_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.6738879420087454,
+          "p50": 1.7233093865203128,
+          "p95": 1.785483876072961,
+          "present_count": 16
+        },
+        "boundary_band_occupancy_absolute_difference": {
+          "missing_count": 0,
+          "p05": 0.20716950547999427,
+          "p50": 0.2683399153828925,
+          "p95": 0.3035115112616265,
+          "present_count": 16
+        },
+        "boundary_band_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 1.4527997683308067,
+          "p50": 1.5251828217132108,
+          "p95": 1.5859896070745159,
+          "present_count": 16
+        },
+        "interior_positive_displacement_wasserstein_px": {
+          "missing_count": 0,
+          "p05": 2.327292641390697,
+          "p50": 2.4002368823406774,
+          "p95": 2.4934072318060734,
+          "present_count": 16
+        },
+        "path_length_absolute_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.23134919229768655,
+          "p50": 0.26109531239209693,
+          "p95": 0.29560186119521525,
+          "present_count": 16
+        },
+        "path_length_signed_relative_difference": {
+          "missing_count": 0,
+          "p05": 0.23134919229768655,
+          "p50": 0.26109531239209693,
+          "p95": 0.29560186119521525,
+          "present_count": 16
+        }
+      },
+      "replicate_count": 16,
+      "subject_id": "16459-67078"
+    }
+  ],
+  "legacy_diagnostic_used_for_model_selection": false,
+  "population_or_validation_claim": false,
+  "predictive_quantile_method": "linear-interpolation-at-p-times-n-minus-one",
+  "predictive_quantiles": [
+    0.05,
+    0.5,
+    0.95
+  ],
+  "registered_predictive_metric_ids": [
+    "path_length_signed_relative_difference",
+    "path_length_absolute_relative_difference",
+    "adjacent_displacement_wasserstein_px",
+    "absolute_turning_wasserstein_radians",
+    "boundary_band_occupancy_absolute_difference",
+    "boundary_band_positive_displacement_wasserstein_px",
+    "interior_positive_displacement_wasserstein_px"
+  ]
+}
