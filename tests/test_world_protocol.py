@@ -129,6 +129,10 @@ class WorldProtocolTests(unittest.TestCase):
             serialized["cross_validation"]["predictive_quantiles"],
             [0.05, 0.5, 0.95],
         )
+        self.assertEqual(
+            serialized["simulation"]["seed_payload_template"],
+            "{master_seed}|{seed_namespace}|{subject_id}|{replicate}",
+        )
 
     def test_seed_is_deterministic_and_shared_across_model_conditions(self) -> None:
         protocol = WorldExperimentProtocol(master_seed=1729, replicates=3)

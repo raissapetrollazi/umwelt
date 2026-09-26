@@ -155,6 +155,9 @@ class WorldExperimentProtocol:
                 "replicates": self.replicates,
                 "seed_derivation": "sha256-first-eight-bytes-big-endian",
                 "seed_namespace": WORLD_SEED_NAMESPACE,
+                "seed_payload_template": (
+                    "{master_seed}|{seed_namespace}|{subject_id}|{replicate}"
+                ),
                 "paired_across_models_and_conditions": True,
                 "availability_mask": "recorded-bodycentre-availability-only",
             },
