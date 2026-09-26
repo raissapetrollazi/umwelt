@@ -4,7 +4,7 @@ Umwelt is an open-source computational laboratory for studying animal behavior t
 
 ## Status
 
-Umwelt `0.2.0` is pre-alpha research software. The repository contains three narrow mouse experiments:
+Umwelt `0.3.0` is pre-alpha research software. The repository contains three narrow mouse experiments:
 
 - **v0.1 temporal laboratory:** a complete recorded-to-synthetic sleep/activity workflow using the COMPASS dataset, including replicated temporal model comparison and a retained individual-variation development experiment;
 - **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes;
