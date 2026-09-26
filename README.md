@@ -9,6 +9,8 @@ Umwelt `0.2.0` is pre-alpha research software with two narrow mouse experiments:
 - **v0.1 temporal laboratory:** a complete recorded-to-synthetic sleep/activity workflow using the COMPASS dataset, including replicated temporal model comparison and a retained individual-variation development experiment;
 - **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes.
 
+Development toward v0.3 has begun with a minimal behavioral world, environment-linked measurements, and a boundary-conditioned movement model. Its cross-validated experiment and interventions are still pending.
+
 Umwelt is not a general animal simulator, a validated biological model, a veterinary or medical tool, or a finished research platform.
 
 ## Scientific question

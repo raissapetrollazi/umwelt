@@ -110,8 +110,10 @@ development animals.
 
 ## v0.3 - Behavioral World
 
-**Status:** planned. The first experiment is specified, but no v0.3 environment,
-model, intervention, or result is implemented.
+**Status:** in development. The first experiment is specified, and its minimal
+world, environment-linked measurements, and boundary-conditioned model are
+implemented. Cross-validated comparison, paired interventions, artifacts, and
+results remain planned.
 
 **Purpose:** give the environment one narrow causal role without introducing a
 general world simulator.
