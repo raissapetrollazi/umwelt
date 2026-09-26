@@ -1,3 +1,3 @@
 """Umwelt: explicit computational models of animal behavior."""
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"

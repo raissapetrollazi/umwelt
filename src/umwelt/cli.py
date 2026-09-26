@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import TextIO
 
 from umwelt import __version__
+from umwelt.calms21_audit import audit_calms21_task1
 from umwelt.config import load_experiment_config
 from umwelt.datasets.compass import download_compass, load_compass_week, verify_compass
 from umwelt.errors import ConfigurationError, UmweltError
@@ -19,6 +20,8 @@ from umwelt.experiment import run_experiment
 from umwelt.individual_lab import run_individual_variation_lab
 from umwelt.spatial_config import load_spatial_lab_config
 from umwelt.spatial_lab import run_spatial_lab
+from umwelt.social_lab import run_social_development, run_social_test
+from umwelt.social_view import render_social_dashboard
 from umwelt.temporal_config import load_temporal_lab_config
 from umwelt.temporal_lab import run_temporal_lab
 from umwelt.world_config import load_world_lab_config
@@ -80,6 +83,32 @@ def _parser() -> argparse.ArgumentParser:
     )
     world.add_argument("--config", type=Path, required=True)
     world.add_argument("--output", type=Path)
+
+    social_audit = commands.add_parser(
+        "social-audit", help="Audit CalMS21 Task 1 before social model fitting."
+    )
+    social_audit.add_argument("--archive", type=Path, required=True)
+    social_audit.add_argument("--output", type=Path, required=True)
+
+    social_develop = commands.add_parser(
+        "social-develop", help="Fit and compare the frozen v0.4 development models."
+    )
+    social_develop.add_argument("--archive", type=Path, required=True)
+    social_develop.add_argument("--output", type=Path, required=True)
+
+    social_test = commands.add_parser(
+        "social-test", help="Evaluate the frozen v0.4 models on held-out pairs."
+    )
+    social_test.add_argument("--archive", type=Path, required=True)
+    social_test.add_argument("--development", type=Path, required=True)
+    social_test.add_argument("--output", type=Path, required=True)
+
+    social_view = commands.add_parser(
+        "social-view", help="Build an offline read-only v0.4 result dashboard."
+    )
+    social_view.add_argument("--development", type=Path, required=True)
+    social_view.add_argument("--test", type=Path, required=True)
+    social_view.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -265,6 +294,59 @@ def _world(arguments: argparse.Namespace, output: TextIO) -> int:
     return 0
 
 
+def _social_audit(arguments: argparse.Namespace, output: TextIO) -> int:
+    destination: Path = arguments.output
+    if destination.exists():
+        raise ConfigurationError("Social audit output already exists.")
+    report = audit_calms21_task1(arguments.archive)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with destination.open("x", encoding="utf-8") as stream:
+        _print_json(report, stream)
+    _print_json(
+        {
+            "audit_path": str(destination.resolve()),
+            "archive_md5": report["archive_md5"],
+            "train_sequence_count": report["train_sequence_count"],
+            "test_sequence_count": report["test_sequence_count"],
+            "test_trajectory_outcomes_inspected": False,
+        },
+        output,
+    )
+    return 0
+
+
+def _social_develop(arguments: argparse.Namespace, output: TextIO) -> int:
+    result = run_social_development(
+        arguments.archive, output_directory=arguments.output
+    )
+    _print_json(
+        {**asdict(result), "output_directory": str(result.output_directory)}, output
+    )
+    return 0
+
+
+def _social_test(arguments: argparse.Namespace, output: TextIO) -> int:
+    result = run_social_test(
+        arguments.archive,
+        development_directory=arguments.development,
+        output_directory=arguments.output,
+    )
+    _print_json(
+        {**asdict(result), "output_directory": str(result.output_directory)}, output
+    )
+    return 0
+
+
+def _social_view(arguments: argparse.Namespace, output: TextIO) -> int:
+    path = render_social_dashboard(
+        arguments.development,
+        arguments.test,
+        output_path=arguments.output,
+    )
+    _print_json({"dashboard_path": str(path)}, output)
+    return 0
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -291,6 +373,14 @@ def main(
             return _spatial(arguments, output)
         if arguments.command == "world":
             return _world(arguments, output)
+        if arguments.command == "social-audit":
+            return _social_audit(arguments, output)
+        if arguments.command == "social-develop":
+            return _social_develop(arguments, output)
+        if arguments.command == "social-test":
+            return _social_test(arguments, output)
+        if arguments.command == "social-view":
+            return _social_view(arguments, output)
     except UmweltError as error:
         errors.write(f"error: {error}\n")
         return 2

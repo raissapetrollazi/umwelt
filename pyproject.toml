@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "umwelt"
-version = "0.3.0"
+version = "0.4.0"
 description = "Computational laboratory for explicit, reproducible models of animal behavior."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -22,6 +22,7 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
+calms21 = ["ijson>=3.5,<4"]
 dev = [
     "mypy==2.1.0",
     "ruff==0.15.14",

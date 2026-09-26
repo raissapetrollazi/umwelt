@@ -26,7 +26,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install Umwelt
-        run: python -m pip install --editable .
+        run: python -m pip install --editable '.[calms21]'
 
       - name: Run unit tests
         run: python -m unittest discover --start-directory tests
@@ -44,7 +44,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install development checks
-        run: python -m pip install --editable '.[dev]'
+        run: python -m pip install --editable '.[dev,calms21]'
 
       - name: Check lint
         run: ruff check .
@@ -52,9 +52,16 @@ jobs:
       - name: Check formatting
         run: ruff format --check .
 
-      - name: Check spatial and world typing
+      - name: Check research model typing
         run: >-
           mypy
+          src/umwelt/calms21.py
+          src/umwelt/calms21_audit.py
+          src/umwelt/dyad.py
+          src/umwelt/social_model.py
+          src/umwelt/social_evaluation.py
+          src/umwelt/social_lab.py
+          src/umwelt/social_view.py
           src/umwelt/spatial_config.py
           src/umwelt/spatial_evaluation.py
           src/umwelt/spatial_execution.py

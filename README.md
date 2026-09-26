@@ -4,13 +4,14 @@ Umwelt is an open-source computational laboratory for studying animal behavior t
 
 ## Status
 
-Umwelt `0.3.0` is pre-alpha research software. The repository contains three narrow mouse experiments:
+Umwelt `0.4.0` is pre-alpha research software. The repository contains four narrow mouse experiments:
 
 - **v0.1 temporal laboratory:** a complete recorded-to-synthetic sleep/activity workflow using the COMPASS dataset, including replicated temporal model comparison and a retained individual-variation development experiment;
 - **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes;
-- **v0.3 behavioral-world laboratory:** a six-fold animal-level development comparison of a boundary-conditioned movement model, followed by paired synthetic arena-size interventions. The retained canonical run does not qualify the candidate for independent evaluation under its pre-declared rule.
+- **v0.3 behavioral-world laboratory:** a six-fold animal-level development comparison of a boundary-conditioned movement model, followed by paired synthetic arena-size interventions. The retained canonical run does not qualify the candidate for independent evaluation under its pre-declared rule;
+- **v0.4 social-pair laboratory:** a frozen comparison of independent and directionally coupled pair movement using CalMS21 Task 1 poses, with a separate development split, once-run held-out test, and optional offline read-only result panel.
 
-The v0.3 experiment is implemented and reproducible; its negative model-selection result does not establish biological validity or finish the longer research roadmap.
+The v0.3 negative result remains final. The v0.4 candidate met its pre-declared preference rule on development and held-out pairs, but retains substantial absolute distance error and does not establish a biological social mechanism.
 
 Umwelt is not a general animal simulator, a validated biological model, a veterinary or medical tool, or a finished research platform.
 
@@ -59,6 +60,14 @@ Version 0.3 adds an explicit boundary band to the Roche image-space arena. A can
 
 The [canonical 16-replicate run](runs/v0.3-behavioral-world/report.md) met two of five pre-declared preference criteria. It reduced median boundary-band occupancy error but increased absolute path-length discrepancy for every cross-validation animal, so it is **not eligible for independent evaluation** under this rule. This is a complete negative development experiment, not a validation result. See `docs/v0.3-research-direction.md` for the frozen protocol and interpretation boundaries.
 
+## v0.4 social-pair experiment
+
+CalMS21 Task 1 supplies resident and intruder poses with seven keypoints per animal. Umwelt preserves identities, recording/frame context, and confidence values; derives gap-aware neck-to-neck distance and adjacent signed distance change; and fits two explicit image-space generators. S0 moves the animals independently. S1 adds one fitted directional response by the resident to the intruder's current position. Both use the same recorded frame grid, availability mask, image limits, and paired random seeds.
+
+The [frozen experiment](docs/v0.4-frozen-experiment.md) uses 56 training sequences for fitting, 14 for development, and the source's 19 held-out test sequences. In the [canonical result](docs/v0.4-results.md), S1 reduced equal-pair mean distance W1 from 144.27 to 100.57 pixels on held-out test and improved 13 of 19 pairs. Signed-distance-change W1 barely changed (2.135 to 2.131 pixels), and six pairs had worse distance error. These are model-comparison results in image coordinates, not evidence of recovered intention or biological mechanism. The optional local HTML panel summarizes both phases without embedding raw poses.
+
+The CalMS21 data are subject to separate CC-BY-NC-SA terms reported by its [dataset paper](https://arxiv.org/html/2104.02710v4). The raw archive and generated experiment artifacts stay outside Git. A future commercial use of the data or its derivatives needs a separate rights decision or another dataset; registering the Umwelt software does not change the source terms.
+
 ## Quick start
 
 Python 3.12 or newer is required.
@@ -79,9 +88,16 @@ umwelt spatial --config examples/v0.2-spatial-lab.json
 
 # v0.3, using the same Roche source files
 umwelt world --config examples/v0.3-world-lab.json
+
+# v0.4, after obtaining the CalMS21 Task 1 archive as documented in data/README.md
+python -m pip install -e '.[calms21]'
+umwelt social-audit --archive data/raw/calms21/task1_classic_classification.zip --output runs/v0.4-source-audit/report.json
+umwelt social-develop --archive data/raw/calms21/task1_classic_classification.zip --output runs/v0.4-social-development
+umwelt social-test --archive data/raw/calms21/task1_classic_classification.zip --development runs/v0.4-social-development --output runs/v0.4-social-heldout-test
+umwelt social-view --development runs/v0.4-social-development --test runs/v0.4-social-heldout-test --output runs/v0.4-social-dashboard.html
 ```
 
-Downloaded source data remains under `data/raw/` and is excluded from Git. Roche data uses the manual source workflow documented in `data/README.md`.
+Downloaded source data remains under `data/raw/` and is excluded from Git. Roche and CalMS21 preparation are documented in `data/README.md`. Experiment commands require new output paths and never overwrite existing results.
 
 ## Spatial artifacts
 
@@ -112,7 +128,7 @@ The v0.3 run adds `world.json`, `models.json`, `interventions.json`, `model-comp
 
 ## Planned direction
 
-The v0.3 candidate's failed preference rule remains final. A [separate transfer audit](docs/v0.3-follow-up-evaluation.md) is proposed for a metadata-screened open-field cohort, pending source-compatibility checks. The [v0.4 direction](docs/v0.4-research-direction.md) proposes one narrow generative pair-distance experiment using CalMS21 as a candidate source; no social model or data adapter is implemented yet. Later milestones may add neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. See `docs/roadmap.md`.
+The v0.3 candidate's failed preference rule remains final. A [separate transfer audit](docs/v0.3-follow-up-evaluation.md) is proposed for a metadata-screened open-field cohort, pending source-compatibility checks. The v0.4 social experiment is complete as a narrow comparison; broader front-end experiment control is planned around v0.7. Later milestones may add neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. See `docs/roadmap.md`.
 
 ## Non-goals
 
@@ -132,6 +148,9 @@ The v0.3 candidate's failed preference rule remains final. A [separate transfer 
 - `docs/v0.3-performance.md`
 - `docs/v0.3-follow-up-evaluation.md`
 - `docs/v0.4-research-direction.md`
+- `docs/v0.4-source-audit.md`
+- `docs/v0.4-frozen-experiment.md`
+- `docs/v0.4-results.md`
 - `docs/architecture.md`
 - `docs/scientific-principles.md`
 - `docs/data-and-ethics.md`
@@ -140,4 +159,4 @@ The v0.3 candidate's failed preference rule remains final. A [separate transfer 
 
 ## License
 
-Umwelt is licensed under the Apache License 2.0. The COMPASS source data has its own CC0 1.0 terms; the Roche open-field source data is CC BY 4.0. Source datasets remain governed by their original terms.
+Umwelt is licensed under the Apache License 2.0. The COMPASS source data has its own CC0 1.0 terms; the Roche open-field source data is CC BY 4.0; the CalMS21 paper reports CC-BY-NC-SA terms for its data. Source datasets remain governed by their original terms.
