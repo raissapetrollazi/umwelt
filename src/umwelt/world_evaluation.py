@@ -229,14 +229,17 @@ def measure_world_steps(
     unclassified_transition_starts = 0
     unclassified_positive_transition_starts = 0
     previous_step: TrajectoryStep | None = None
+    previous_zone: WorldZone | None = None
 
     for step in materialized:
         if step.context != spatial.context:
             raise DataError("World evaluation cannot mix trajectory contexts.")
         point = step.point
+        position_zone: WorldZone | None = None
         if point is not None:
             if world.arena.contains(point):
-                zone_counts[world.zone(point)] += 1
+                position_zone = world.zone(point)
+                zone_counts[position_zone] += 1
             else:
                 outside_positions += 1
                 if step.context.source is ObservationSource.SYNTHETIC:
@@ -250,16 +253,16 @@ def measure_world_steps(
                 raise DataError(
                     "A valid displacement must retain its transition-start position."
                 )
-            if world.arena.contains(start):
-                zone = world.zone(start)
-                zone_transitions[zone] += 1
+            if previous_zone is not None:
+                zone_transitions[previous_zone] += 1
                 if step.displacement > 0:
-                    zone_displacements[zone].append(step.displacement)
+                    zone_displacements[previous_zone].append(step.displacement)
             else:
                 unclassified_transition_starts += 1
                 if step.displacement > 0:
                     unclassified_positive_transition_starts += 1
         previous_step = step
+        previous_zone = position_zone
 
     ordered_counts = tuple((zone.value, zone_counts[zone]) for zone in WorldZone)
     ordered_transitions = tuple(

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.3.0 - 2026-09-26
+
 - Align the architecture and scope documentation with the completed v0.2
   spatial laboratory.
 - Define the v0.3 behavioral-world research direction around an explicit
@@ -22,6 +24,15 @@
   only unclassifiable transition starts from zone-conditioned fitting.
 - Measure valid transition exposure by world zone and count repeated axis
   reflections for the declared arena-size intervention summaries.
+- Execute paired leave-one-animal-out model comparisons, keep the two previously
+  inspected animals separate, and run the final model across three arena scales.
+- Preserve the canonical 16-replicate v0.3 run with source and artifact hashes.
+  The candidate passes two of five declared criteria and worsens path-length
+  discrepancy in every cross-validation animal, so it is not promoted.
+- Reuse measured position zones for transition classification, with identical
+  analytical artifacts in a measured one-replicate before/after comparison.
+- Document a gated frozen-model transfer audit and the first proposed v0.4
+  dyadic social-geometry experiment; neither follow-up is implemented yet.
 
 ## 0.2.0 - 2026-08-13
 

@@ -4,7 +4,7 @@ Umwelt is an open-source computational laboratory for studying animal behavior t
 
 ## Status
 
-Umwelt `0.2.0` is pre-alpha research software. The repository contains three narrow mouse experiments:
+Umwelt `0.3.0` is pre-alpha research software. The repository contains three narrow mouse experiments:
 
 - **v0.1 temporal laboratory:** a complete recorded-to-synthetic sleep/activity workflow using the COMPASS dataset, including replicated temporal model comparison and a retained individual-variation development experiment;
 - **v0.2 spatial laboratory:** a complete recorded-to-synthetic open-field movement workflow using the Roche pose dataset, with pinned control split, explicit image-space geometry, pre-declared spatial metrics, a seeded persistent reflecting random-walk baseline, replicated development comparison, provenance, reporting, and artifact hashes;
@@ -112,7 +112,7 @@ The v0.3 run adds `world.json`, `models.json`, `interventions.json`, `model-comp
 
 ## Planned direction
 
-The next research decision is how to respond to the v0.3 candidate's failed preference rule. Any revised model requires a new declared experiment and independent evaluation plan. Later milestones may add social context, neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. Those capabilities remain planned unless repository evidence explicitly shows otherwise. See `docs/v0.3-research-direction.md` and `docs/roadmap.md`.
+The v0.3 candidate's failed preference rule remains final. A [separate transfer audit](docs/v0.3-follow-up-evaluation.md) is proposed for a metadata-screened open-field cohort, pending source-compatibility checks. The [v0.4 direction](docs/v0.4-research-direction.md) proposes one narrow generative pair-distance experiment using CalMS21 as a candidate source; no social model or data adapter is implemented yet. Later milestones may add neural or physiological modalities, latent-state experiments, general counterfactual branching, multimodal ethology, multiple species, and additional model families. See `docs/roadmap.md`.
 
 ## Non-goals
 
@@ -129,6 +129,9 @@ The next research decision is how to respond to the v0.3 candidate's failed pref
 - `docs/v0.1-research-direction.md`
 - `docs/v0.2-research-direction.md`
 - `docs/v0.3-research-direction.md`
+- `docs/v0.3-performance.md`
+- `docs/v0.3-follow-up-evaluation.md`
+- `docs/v0.4-research-direction.md`
 - `docs/architecture.md`
 - `docs/scientific-principles.md`
 - `docs/data-and-ethics.md`
