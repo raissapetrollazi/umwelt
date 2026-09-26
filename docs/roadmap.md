@@ -155,7 +155,8 @@ completion boundary.
 
 ## v0.4 - Social Animals
 
-**Status:** research direction proposed; source and model not implemented.
+**Status:** implementation in progress. Pair identity and gap-aware geometry are
+implemented; source adoption and generative comparison remain under audit.
 
 The first proposed experiment uses a pair of individually identified mice in
 one image-space recording. It asks whether one explicit dependence on the
@@ -175,6 +176,10 @@ Later areas may include:
 - simple modeled social variables.
 
 This milestone must not claim true social cognition or intention. It should remain distinct from abstract population-game or general artificial-life systems: Umwelt's emphasis is empirical animal behavior and experimentally grounded behavioral models.
+
+Once the v0.4 observation and report formats settle, add a small, read-only
+visualization of recorded and synthetic trajectories, pair distance, valid-frame
+coverage, and provenance. Keep it optional; the same run must work headlessly.
 
 ## v0.5 - Neural Mouse
 
@@ -199,6 +204,10 @@ Synthetic latent state is not equivalent to real animal mental state.
 ## v0.7 - Counterfactual Laboratory
 
 Support controlled branching from reproducible initial conditions.
+
+This is the earliest planned milestone for a broader interactive interface to
+set up, launch, and compare interventions. The interface should call the same
+versioned experiment contracts used by the CLI.
 
 Examples include:
 
